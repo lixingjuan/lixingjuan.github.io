@@ -25,21 +25,23 @@ git config --global user.name '李幸娟'
 git config user.name '李幸娟'
 
 # 删除本地仓库的远程关联
-git remote rm origin 
+git remote rm origin
 
 # 为本地仓库添加远程仓库
-git remote add origin https://xxx.git 
+git remote add origin https://xxx.git
 
 ```
 
 ## 修改git配置
 
-解决gitlat忽略大小写的问题
+解决gitlab忽略大小写的问题
 
 ```bash
 # 使git检测大小写
 git config core.ignorecase false
 ```
+
+
 ## 提交类操作
 
 ```bash
@@ -52,6 +54,7 @@ git add .
 # commit时漏提交
 git add missed-file // missed-file 为遗漏提交文件
 git commit --amend --no-edit
+
 
 ```
 
@@ -76,19 +79,22 @@ git branch
 git branch -r
 
 # 查看所有本地分支
-git branch -a 
+git branch -a
 
 # 查看当前分支状态
 git status
 
+# 当前分支与远程某分支关联
+git push --set-upstream origin feature-finance-apply
 ```
+
+
 
 修改分支
 
 ```bash
 # 本地分支重命名dev->uat
 git branch -m dev uat
-
 ```
 
 切换分支
@@ -108,6 +114,7 @@ git checkout -b dev
 <!-- git switch -c dev -->
 <!-- ``` -->
 
+
 删除分支
 
 ```bash
@@ -116,6 +123,9 @@ git push origin -d dev
 
 # 删除本地dev分支
 git branch -d dev
+
+# 强行删除本地某分支
+git branch -D feat-finance-apply
 ```
 
 推动分支代码
@@ -141,6 +151,10 @@ git push --set-upstream origin <本地分支名>
 # 将【远程指定分支】拉取到【本地指定分支】上：
 git pull origin <远程分支名>:<本地分支名>
 
+# 报错：fatal: refusing to merge unrelated histories（两个分支是两个不同的版本，具有不同的提交历史）
+git pull origin master --allow-unrelated-histories
+
+
 ```
 
 ## 查看历史commit记录
@@ -160,7 +174,7 @@ git reset --soft HEAD^
 git reset --soft HEAD～2
 
 # 回退到某次提交，并将commit的内容撤回到暂存区，撤销commit, 不撤销add
-git reset --soft e79fcfb 
+git reset --soft e79fcfb
 
 # 回退到某次提交 => 删除工作空间改动代码,撤销commit,撤销add
 git reset --hard 9dac256
@@ -169,6 +183,8 @@ git reset --hard 9dac256
 git reset --mixed 9dac256
 
 ```
+
+
 
 
 ## 文件暂存
@@ -189,9 +205,10 @@ git stash pop
 
 
 ## 查看git 状态
+
 ```bash
 git status
-# 有改动了之后.未add查看  
+# 有改动了之后.未add查看
 On branch master
 Your branch is up to date with 'origin/master'.
 
@@ -214,7 +231,7 @@ Changes to be committed:
 
         modified:   README.md
         new file:   git-test.md
-        
+
 # 刚提交完查看
 PS D:\gitLab\git_test> git status
 On branch master
@@ -223,6 +240,9 @@ Your branch is up to date with 'origin/master'.
 nothing to commit, working tree clean
 
 ```
+
+
+
 
 ## 拉取远程分支代码
 
@@ -236,18 +256,22 @@ git pull
 
 ```
 
+
+
 ## 查看两个分支的代码差异
 
 ```bash
 # 显示出查看dev和uat所有有差异的文件列表
-Git diff dev uat --stat 
+Git diff dev uat --stat
 
 # 显示出所有有差异的文件的详细差异
-Git diff dev uat 
+Git diff dev uat
 
 # 显示dev和master分支 src/index.js 的详细差异
 Git diff branch1 branch2 src/index.js
 ```
+
+
 
 ## 查看git 仓库的位置
 
@@ -271,5 +295,26 @@ git remote set-url origin 仓库的url
 git rm -r --cached .
 ```
 
+## 修理代码分支
+
+```bash
+
+```
+
 ## 相关文章：
 - 最常见的 Git 问题和操作清单汇总： https://juejin.im/post/5d5d61e96fb9a06ace5254bd
+- [git merge和git rebase的区别](https://www.jianshu.com/p/6960811ac89c)
+
+
+## git 设置代码 & 移除
+https://blog.csdn.net/mnbvcxz111123/article/details/53894242
+
+
+
+ceshi-feature
+ceshi-feature-2
+ceshi-feature-2
+ceshi-feature-3
+ceshi-feature-3
+ceshi-feature-3
+ceshi-feature-3

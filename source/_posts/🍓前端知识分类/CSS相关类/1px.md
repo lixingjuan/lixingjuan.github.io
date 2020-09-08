@@ -50,11 +50,14 @@ div::after{
 
 
 /* 有圆角边框 */
+/* 问题: 会产生遮罩 */
+/* 处理方案:pointer-events */
 .border-1px {
   position: relative;
   &::before {
     content: "";
     position: absolute;
+    display: block;
     left: 0;
     top: 0;
 +   width: 200%;

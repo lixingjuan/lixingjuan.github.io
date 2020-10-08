@@ -299,19 +299,19 @@ document.addEventListener('DOMContentLoaded', function () {
 <p><a href="/Blog/2-%E6%A1%86%E6%9E%B6/Vue/5%E6%BA%90%E7%A0%81-Vue%E5%AE%9E%E4%BE%8B%E6%8C%82%E8%BD%BD%E7%9A%84%E5%AE%9E%E7%8E%B0">5源码-Vue实例挂载的实现</a></p>
 </li>
 <li>
-<p><a href="/Blog/2-%E6%A1%86%E6%9E%B6/Vue/6%E6%BA%90%E7%A0%81-render">6源码-render</a></p>
-</li>
-<li>
 <p><a href="/Blog/2-%E6%A1%86%E6%9E%B6/Vue/6%E6%BA%90%E7%A0%81-%E5%90%88%E5%B9%B6%E9%85%8D%E7%BD%AE">6源码-合并配置</a></p>
 </li>
 <li>
-<p><a href="/Blog/2-%E6%A1%86%E6%9E%B6/Vue/7%E6%BA%90%E7%A0%81-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F">7源码-生命周期</a></p>
+<p><a href="/Blog/2-%E6%A1%86%E6%9E%B6/Vue/7%E6%BA%90%E7%A0%81-render">7源码-render</a></p>
 </li>
 <li>
-<p><a href="/Blog/2-%E6%A1%86%E6%9E%B6/Vue/8%E6%BA%90%E7%A0%81-createElement">8源码-createElement</a></p>
+<p><a href="/Blog/2-%E6%A1%86%E6%9E%B6/Vue/8%E6%BA%90%E7%A0%81-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F">8源码-生命周期</a></p>
 </li>
 <li>
 <p><a href="/Blog/2-%E6%A1%86%E6%9E%B6/Vue/9%E6%BA%90%E7%A0%81-_update">9源码-_update</a></p>
+</li>
+<li>
+<p><a href="/Blog/2-%E6%A1%86%E6%9E%B6/Vue/9%E6%BA%90%E7%A0%81-createElement">9源码-createElement</a></p>
 </li>
 <li>
 <p><a href="/Blog/2-%E6%A1%86%E6%9E%B6/Vue/9%E6%BA%90%E7%A0%81-patch">9源码-patch</a></p>
@@ -392,6 +392,9 @@ document.addEventListener('DOMContentLoaded', function () {
 <li>
 <p><a href="/Blog/4-%E4%B8%80%E4%BA%9B%E5%B7%A5%E5%85%B7/webpack/perttier">perttier</a></p>
 </li>
+<li>
+<p>[webpack 热更新原理](/Blog/4-一些工具/webpack/webpack 热更新原理)</p>
+</li>
 </ul>
 <h2 id="指令">指令</h2>
 <ul>
@@ -439,9 +442,6 @@ document.addEventListener('DOMContentLoaded', function () {
 </li>
 <li>
 <p><a href="/Blog//ToMyself">ToMyself</a></p>
-</li>
-<li>
-<p><a href="/Blog//%E7%9F%A5%E8%AF%86%E7%82%B9%E7%9B%AE%E5%BD%95">知识点目录</a></p>
 </li>
 </ul>
 
@@ -551,14 +551,14 @@ function sidebar_toggle() {
 <li>客户端每次请求都带有token, 可以将其放在请求头里面，每次请求都携带token</li>
 <li>服务端验证token, 所有需要校验身份的接口都会被校验token, 若token解析后的数据包含用户身份信息，则返回数据，否则抛出错误</li>
 </ol>
-<h1 id="JWT">JWT</h1>
+<h2 id="JWT">JWT</h2>
 <p>JWT由三部分组成：</p>
 <ol>
 <li>header 头部</li>
 <li>payload  载荷</li>
 <li>signature 签证</li>
 </ol>
-<h2 id="header">header</h2>
+<h3 id="header">header</h3>
 <ol>
 <li><mark>声明类型</mark>， 这是jwt</li>
 <li><mark>声明类型的算法</mark>，通常直接使用 HMAC SHA256</li>
@@ -570,7 +570,7 @@ function sidebar_toggle() {
 <p>对称加密: 即收发信双方采用用同样的<strong>密钥</strong>进行加密和解密；</p>
 </blockquote>
 <p><code>eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9</code></p>
-<h2 id="payload">payload</h2>
+<h3 id="payload">payload</h3>
 <p>存放有效信息的地方。由三部分组成</p>
 <ol>
 <li>标准中注册的声明</li>
@@ -591,7 +591,7 @@ function sidebar_toggle() {
 <p>该部分可以添加任何信息，一般添加用户的相关信息</p>
 <p><strong>私有的声明</strong></p>
 <p>私有的声明是提供者和消费者所共同定义的声明，一般不建议存放敏感信息，因为base64是对称加密的，也可以归类于明文信息；</p>
-<h2 id="signature">signature</h2>
+<h3 id="signature">signature</h3>
 <p>第三部分是一个签证信息，该签证信息由三部分组成</p>
 <ol>
 <li>header(base64后的)</li>
@@ -606,14 +606,39 @@ function sidebar_toggle() {
 <p>jwt是保存在服务器端，jwt的签发也是发生在服务器端的，<mark>secret就是用来进行jwt的签发和jwt的验证</mark>，所以他就是服务器端的私钥，任何场景都不应该泄露给客户端。<br>
 一旦客户端得知这个secret, 那就意味着客户端可以自我签发jwt了</p>
 </blockquote>
-<h2 id="应用：">应用：</h2>
+<h3 id="应用：">应用：</h3>
 <p>一般是在请求头添加 <code>Authorization</code>, 并添加  <code>Bearer</code> 标注</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">fetch(<span class="string">'api/user/1'</span>, &#123;</span><br><span class="line">  headers: &#123;</span><br><span class="line">    <span class="string">'Authorization'</span>: <span class="string">'Bearer '</span> + token</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>优点</p>
+<h3 id="JWT优点">JWT优点</h3>
+<p>不需要请求数据库</p>
+<h3 id="JWT缺点-注销登录后，token仍然有效">JWT缺点: 注销登录后，token仍然有效</h3>
+<p>注销登录后，token仍然有效，相比session 而言，注销后，后段可以将该sessionId从数据库删除掉，与之相关的场景有</p>
 <ol>
-<li>不需要操作数据库，直接代码里校验</li>
+<li>退出登录;</li>
+<li>修改密码;</li>
+<li>服务端修改了某个用户具有的权限或者角色；</li>
+<li>用户的帐户被删除/暂停。</li>
+<li>用户由管理员注销；</li>
 </ol>
-<p><a href="https://www.jianshu.com/p/576dbf44b2ae" target="_blank" rel="noopener">什么是 JWT – JSON WEB TOKEN</a></p>
+<p>一些解决方案</p>
+<ol>
+<li><mark>将 token 存入内存数据库</mark>：将 token 存入 DB 中，redis 内存数据库在这里是是不错的选择。如果需要让某个 token 失效就直接从 redis 中删除这个 token 即可。但是，这样会导致每次使用 token 发送请求都要先从 DB 中查询 token 是否存在的步骤，而且违背了 JWT 的无状态原则</li>
+<li><mark>黑名单机制</mark>：和上面的方式类似，使用内存数据库比如 redis 维护一个黑名单，如果想让某个 token 失效的话就直接将这个 token 加入到 黑名单 即可。然后，每次使用 token 进行请求的话都会先判断这个 token 是否存在于黑名单中</li>
+<li><mark>修改密钥 (Secret)</mark> : 为每个用户都创建一个专属密钥，若想让某个 token 失效，我们直接修改对应用户的密钥即可。但是，这样相比于前两种引入内存数据库带来了危害更大，比如：1⃣️如果服务是分布式的，则每次发出新的 token 时都必须在多台机器同步密钥。为此，你需要将必须将机密存储在数据库或其他外部服务中，这样和 Session 认证就没太大区别了。2⃣️  如果用户同时在两个浏览器打开系统，或者在手机端也打开了系统，如果它从一个地方将账号退出，那么其他地方都要重新进行登录，这是不可取的；</li>
+<li><mark>保持令牌的有效期限短并经常轮换</mark> ：很简单的一种方式，但是，会导致用户登录状态不会被持久记录，而且需要用户经常登录，用户体验差；</li>
+</ol>
+<h2 id="token优点">token优点</h2>
+<ol>
+<li>无状态</li>
+<li>有效避免了CSRF 攻击</li>
+<li>适合移动端应用</li>
+<li>单点登录友好</li>
+</ol>
+<h1 id="参考文章">参考文章</h1>
+<ol>
+<li><a href="https://www.jianshu.com/p/576dbf44b2ae" target="_blank" rel="noopener">什么是 JWT – JSON WEB TOKEN</a></li>
+<li><a href="https://mp.weixin.qq.com/s?__biz=Mzg2OTA0Njk0OA==&amp;mid=2247485655&amp;idx=1&amp;sn=583eeeb081ea21a8ec6347c72aa223d6&amp;chksm=cea2471cf9d5ce0aa135f2fb9aa32d98ebb3338292beaccc1aae43d1178b16c0125eb4139ca4" target="_blank" rel="noopener"></a></li>
+</ol>
 
 </div>
 

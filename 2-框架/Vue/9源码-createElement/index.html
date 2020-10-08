@@ -10,7 +10,7 @@
 
     <title>
         
-          知识点目录 - 李幸娟的前端博客
+          2-框架/Vue/9源码-createElement - 李幸娟的前端博客
         
     </title>
 
@@ -299,19 +299,19 @@ document.addEventListener('DOMContentLoaded', function () {
 <p><a href="/Blog/2-%E6%A1%86%E6%9E%B6/Vue/5%E6%BA%90%E7%A0%81-Vue%E5%AE%9E%E4%BE%8B%E6%8C%82%E8%BD%BD%E7%9A%84%E5%AE%9E%E7%8E%B0">5源码-Vue实例挂载的实现</a></p>
 </li>
 <li>
-<p><a href="/Blog/2-%E6%A1%86%E6%9E%B6/Vue/6%E6%BA%90%E7%A0%81-render">6源码-render</a></p>
-</li>
-<li>
 <p><a href="/Blog/2-%E6%A1%86%E6%9E%B6/Vue/6%E6%BA%90%E7%A0%81-%E5%90%88%E5%B9%B6%E9%85%8D%E7%BD%AE">6源码-合并配置</a></p>
 </li>
 <li>
-<p><a href="/Blog/2-%E6%A1%86%E6%9E%B6/Vue/7%E6%BA%90%E7%A0%81-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F">7源码-生命周期</a></p>
+<p><a href="/Blog/2-%E6%A1%86%E6%9E%B6/Vue/7%E6%BA%90%E7%A0%81-render">7源码-render</a></p>
 </li>
 <li>
-<p><a href="/Blog/2-%E6%A1%86%E6%9E%B6/Vue/8%E6%BA%90%E7%A0%81-createElement">8源码-createElement</a></p>
+<p><a href="/Blog/2-%E6%A1%86%E6%9E%B6/Vue/8%E6%BA%90%E7%A0%81-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F">8源码-生命周期</a></p>
 </li>
 <li>
 <p><a href="/Blog/2-%E6%A1%86%E6%9E%B6/Vue/9%E6%BA%90%E7%A0%81-_update">9源码-_update</a></p>
+</li>
+<li>
+<p><a href="/Blog/2-%E6%A1%86%E6%9E%B6/Vue/9%E6%BA%90%E7%A0%81-createElement">9源码-createElement</a></p>
 </li>
 <li>
 <p><a href="/Blog/2-%E6%A1%86%E6%9E%B6/Vue/9%E6%BA%90%E7%A0%81-patch">9源码-patch</a></p>
@@ -392,6 +392,9 @@ document.addEventListener('DOMContentLoaded', function () {
 <li>
 <p><a href="/Blog/4-%E4%B8%80%E4%BA%9B%E5%B7%A5%E5%85%B7/webpack/perttier">perttier</a></p>
 </li>
+<li>
+<p>[webpack 热更新原理](/Blog/4-一些工具/webpack/webpack 热更新原理)</p>
+</li>
 </ul>
 <h2 id="指令">指令</h2>
 <ul>
@@ -439,9 +442,6 @@ document.addEventListener('DOMContentLoaded', function () {
 </li>
 <li>
 <p><a href="/Blog//ToMyself">ToMyself</a></p>
-</li>
-<li>
-<p><a href="/Blog//%E7%9F%A5%E8%AF%86%E7%82%B9%E7%9B%AE%E5%BD%95">知识点目录</a></p>
 </li>
 </ul>
 
@@ -498,59 +498,25 @@ function sidebar_toggle() {
 </header>
 </div>
             <div class="book-content"><div class="book-post">
-  <h1 id="🦕🐳🦖-知识点目录-🦖🐳🦕">🦕🐳🦖 知识点目录  🦖🐳🦕</h1>
-<h2 id="JS基础类">JS基础类</h2>
+  <h1 id="createElement-创建VNode的过程">createElement 创建VNode的过程</h1>
+<p>vue.js使用<code>createElement</code>创建<code>VNode</code>，定义在 <code>src/core/create-element.js</code>中；</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* createElement */</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createElement</span>(<span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">  context: Component,</span></span></span><br><span class="line"><span class="function"><span class="params">  tag: any,</span></span></span><br><span class="line"><span class="function"><span class="params">  data: any,</span></span></span><br><span class="line"><span class="function"><span class="params">  children: any,</span></span></span><br><span class="line"><span class="function"><span class="params">  normalizationType: any, <span class="regexp">//</span> ？？ normalizationType是个啥</span></span></span><br><span class="line"><span class="function"><span class="params">  alwaysNormalize: boolean</span></span></span><br><span class="line"><span class="function"><span class="params"></span>): <span class="title">VNode</span> | <span class="title">Array</span>&lt;<span class="title">VNode</span>&gt; </span>&#123;</span><br><span class="line">  <span class="comment">// 若data是数组，？？ 或原始结点 ？？isPrimitive是什么操作？=&gt; 满足这个判断条件，说明第三个位置传递的实际上是第四个参数，children</span></span><br><span class="line">  <span class="keyword">if</span> (<span class="built_in">Array</span>.isArray(data) || isPrimitive(data)) &#123;</span><br><span class="line">    normalizationType = children;</span><br><span class="line">    children = data;</span><br><span class="line">    data = <span class="literal">undefined</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// ？？ 如果总是规范化？</span></span><br><span class="line">  <span class="keyword">if</span> (isTrue(alwaysNormalize)) &#123;</span><br><span class="line">    normalizationType = ALWAYS_NORMALIZE;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> _createElement(context, tag, data, children, normalizationType);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>createElement</code>实际上是对 <code>_createElement</code>做了一层封装，它允许传入的参数更加灵活，在处理完这些参数后，再去调用真正创建 <code>VNode</code>的函数 <code>_createElement</code>；</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">_createElement</span>(<span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">  context: Component,</span></span></span><br><span class="line"><span class="function"><span class="params">  tag?: string | Class&lt;Component&gt; | Function | Object,</span></span></span><br><span class="line"><span class="function"><span class="params">  data?: VNodeData,</span></span></span><br><span class="line"><span class="function"><span class="params">  children?: any,</span></span></span><br><span class="line"><span class="function"><span class="params">  normalizationType?: number</span></span></span><br><span class="line"><span class="function"><span class="params"></span>):<span class="title">VNode</span>|<span class="title">Array</span>&lt;<span class="title">VNode</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 以下这些是对参数一致的处理，因为data是可以没有的，如果没有传递该参数的化，后免的桉树依次前移</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (isDef(data) &amp;&amp; isDef(data: any).__ob__) &#123; </span><br><span class="line">    <span class="comment">// ？？ 说实话我没见过这个警告</span></span><br><span class="line">    <span class="comment">// 避免将observed对象当作数据</span></span><br><span class="line">    <span class="comment">// 始终在每个渲染中创建新的 vnode 对象</span></span><br><span class="line">    process.env.NODE_ENV !== <span class="string">'production'</span> &amp;&amp; warn(</span><br><span class="line">      <span class="string">`Avoid using objseved data object as vnode data:$(JSON.string(data)\n)`</span> +</span><br><span class="line">      <span class="string">'Always create fresh vnode data Object in each render!'</span>,</span><br><span class="line">      context</span><br><span class="line">    )</span><br><span class="line">    <span class="keyword">return</span>  createEmptyVNode()</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="comment">// v-bind 的对象语法</span></span><br><span class="line">  <span class="keyword">if</span> (isDef(data) &amp;&amp; isDef(data.is)) &#123; </span><br><span class="line">    tag = data.is</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (!tag) &#123; </span><br><span class="line">    <span class="comment">// 如果组件 :is 被设为假值</span></span><br><span class="line">    <span class="keyword">return</span> createEmptyVNode()</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="comment">// warn against non-primitive key 警告非原始密钥 ??</span></span><br><span class="line">  <span class="comment">// ?? isDef() 和 isPrimitive() 具体是干嘛的</span></span><br><span class="line">  <span class="keyword">if</span> (process.env.NODE_ENV !== <span class="string">'production'</span> &amp;&amp; isDef(data) &amp;&amp; isDef(data.key) &amp;&amp; !isPrimitive(data.key)) &#123; </span><br><span class="line">    <span class="keyword">if</span> (!__WEEX__ || !(<span class="string">'@binding'</span> <span class="keyword">in</span> data.key)) &#123; </span><br><span class="line">      warn(</span><br><span class="line">        <span class="string">'Avoid using non-primitive value as key,'</span> + <span class="comment">// 避免使用非原始值作为键</span></span><br><span class="line">        <span class="string">'use string/numver value instead.'</span>, </span><br><span class="line">        context</span><br><span class="line">      )</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// ...............</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 把children拍平，搞成 一维数组</span></span><br><span class="line">  <span class="keyword">if</span> (normalizationType === ALWAY_NORMALIZE) &#123;</span><br><span class="line">    children = normalizeChildren(children)</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (normalizationType === SIMPLE_NORMALIZE) &#123; </span><br><span class="line">    children = simpleNormalizeChildren(children)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 处理tag</span></span><br><span class="line">  <span class="keyword">if</span>(<span class="keyword">typeof</span> tag === <span class="string">'string'</span>)&#123;  <span class="comment">// tag 是字符串</span></span><br><span class="line">    <span class="keyword">if</span>()&#123;</span><br><span class="line">      <span class="comment">// 如果是原生结点，创建 VNode 即可</span></span><br><span class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span>()&#123;</span><br><span class="line">      <span class="comment">// 组件tag,一堆处理</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;<span class="keyword">else</span> &#123;                       <span class="comment">// tag 是函数组件</span></span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>_createElement</code> 有五个参数；</p>
 <ol>
-<li><input type="checkbox" id="checkbox0"><label for="checkbox0"> all和apply的原理是什么？</label></li>
-<li><input type="checkbox" id="checkbox1" checked="true"><label for="checkbox1"> 手写 bind ？</label></li>
-<li><input type="checkbox" id="checkbox2"><label for="checkbox2"> 手写 promise ？</label></li>
-<li><input type="checkbox" id="checkbox3" checked="true"><label for="checkbox3"> 手写 柯里化实现？普通版和高级版</label></li>
-<li><input type="checkbox" id="checkbox4"><label for="checkbox4"> 手写 实现深拷贝</label></li>
-<li><input type="checkbox" id="checkbox5"><label for="checkbox5"> 闭包相关 闭包原理？闭包应用场景？闭包常见的坑？</label></li>
-<li><input type="checkbox" id="checkbox6" checked="true"><label for="checkbox6"> ew的原理是什么？</label></li>
-<li><input type="checkbox" id="checkbox7"><label for="checkbox7"> his相关 如何正确判断this的指向？</label></li>
-<li><input type="checkbox" id="checkbox8"><label for="checkbox8"> 什么是防抖？什么是节流？</label></li>
-<li><input type="checkbox" id="checkbox9"><label for="checkbox9"> 继承的方式有哪些？优缺点是什么？</label></li>
-<li><input type="checkbox" id="checkbox10"><label for="checkbox10"> 前端跨域产生原因？常见解决方法？</label></li>
-<li><input type="checkbox" id="checkbox11" checked="true"><label for="checkbox11"> Http和https区别？</label></li>
-<li><input type="checkbox" id="checkbox12"><label for="checkbox12"> 箭头函数有哪些特点？</label></li>
-<li><input type="checkbox" id="checkbox13" checked="true"><label for="checkbox13"> 判断数据类型的方法有哪些？区别是什么？</label></li>
-<li><input type="checkbox" id="checkbox14" checked="true"><label for="checkbox14"> 说一下对原型链的理解？</label></li>
-<li><input type="checkbox" id="checkbox15"><label for="checkbox15"> 判断两个对象相等？</label></li>
-<li><input type="checkbox" id="checkbox16"><label for="checkbox16"> AMD，common.js规范</label></li>
-<li><input type="checkbox" id="checkbox17"><label for="checkbox17"> ci</label></li>
+<li><code>context</code>, 代表上下文环境，他是<code>Component</code>类型；</li>
+<li><code>tag</code>, 代表标签，可以是一个<code>字符串</code>或<code>Component</code></li>
+<li><code>data</code>, 表示VNode的数据，他是一个<code>VNodeData</code>类型；</li>
+<li><code>children</code>, 表示当前结点的字节点，任意类型；</li>
+<li><code>normalizationType</code>, 表示字节点规范的类型，类型不同规范的方法就不同，它主要参考render函数是编译生成的还是用户手写的；</li>
 </ol>
-<h2 id="框架类">框架类</h2>
-<ol>
-<li><input type="checkbox" id="checkbox18"><label for="checkbox18"> Vue为什么data以函数返回？（避免变量共享，这样他们就在同一个对象）</label></li>
-<li><input type="checkbox" id="checkbox19"><label for="checkbox19"> 是否遇到过Vue深层次对象双向绑定后，子组件未监听到更新的情况？怎么解决？（1使用this.$set , 2 deep:true有性能问题）</label></li>
-<li><input type="checkbox" id="checkbox20"><label for="checkbox20"> vue的响应式怎么做的？</label></li>
-</ol>
-<h2 id="算法">算法</h2>
-<ol>
-<li><input type="checkbox" id="checkbox21" checked="true"><label for="checkbox21"> 二叉树前中后遍历？</label></li>
-<li><input type="checkbox" id="checkbox22" checked="true"><label for="checkbox22"> 多叉树深度优先遍历?广度优先遍历？</label></li>
-<li><input type="checkbox" id="checkbox23"><label for="checkbox23"> 顺序排序?</label></li>
-<li><input type="checkbox" id="checkbox24"><label for="checkbox24"> 数组扁平化?</label></li>
-</ol>
-<h2 id="性能优化类">性能优化类</h2>
-<ol>
-<li><input type="checkbox" id="checkbox25" checked="true"><label for="checkbox25"> CDN 原理</label></li>
-<li><input type="checkbox" id="checkbox26"><label for="checkbox26"> 介绍下缓存？</label></li>
-<li><input type="checkbox" id="checkbox27"><label for="checkbox27"> CSS优化讲一下？</label></li>
-<li><input type="checkbox" id="checkbox28"><label for="checkbox28"> 前端有哪些地方可以优化？</label></li>
-<li><input type="checkbox" id="checkbox29"><label for="checkbox29"> 几种缓存策略的对比简单说一下？</label></li>
-<li><input type="checkbox" id="checkbox30" checked="true"><label for="checkbox30"> 什么是防抖和节流？有什么区别？如何实现？(TODO:看下lodash的实现)</label></li>
-</ol>
-<h2 id="网络安全类">网络安全类</h2>
-<ol>
-<li><input type="checkbox" id="checkbox31" checked="true"><label for="checkbox31"> 输入URL后发生了什么?</label></li>
-<li><input type="checkbox" id="checkbox32"><label for="checkbox32"> 前端鉴权 cookies, session, token,</label></li>
-</ol>
-<h2 id="参考文章">参考文章</h2>
-<ol>
-<li><input type="checkbox" id="checkbox33"><label for="checkbox33"> </label><a href="https://juejin.im/post/5d124a12f265da1b9163a28d" target="_blank" rel="noopener">20道经典面试题</a></li>
-</ol>
+<h2 id="children-的规范化">children 的规范化</h2>
+<p>由于<code>virtual DOM</code>实际上是一个树状结构，每一个<code>VNode</code>可能会有若干个字节点，这些字节点也应该是 <code>VNode</code> 类型，因为需要把他们规范化为 <code>VNode</code>类型</p>
+<p>TODO: 。。。。。。。这里还有好多详细的，晚点在看</p>
+<h2 id="总结">总结</h2>
+<p>大致了解了 <code>createElement</code> 创建 <code>VNode</code>的过程， 每个 <code>VNode</code>都有 <code>children</code>, <code>children</code> 每个元素也是一个 <code>VNode</code>，这样就形成了 <strong>VNode Tree</strong>, 他很好的描述了我们的 <strong>DOM tree</strong></p>
+<p>回到 mountComponent 函数的过程，我们已经知道 vm._render 是如何创建了一个 <code>VNode</code>，接下来就是要把这个<code>VNode</code>渲染为一个真实的DOM并渲染出来，这个过程是通过 vm._update完成的</p>
 
 </div>
 

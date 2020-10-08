@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+
+    
+      <link rel="icon" href="/Blog/favicon.png" />
+    
+
+    <title>
+        
+          🍓前端知识分类/JS相关类/前端模块化规范 - 李幸娟的前端博客
+        
+    </title>
+
+    <!-- Spectre.css framework -->
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">
+
+    <!-- theme css & js -->
+    
+<link rel="stylesheet" href="/Blog/css/book.css">
+
+    
+<script src="/Blog/js/book.js"></script>
+
+
+    <!-- tocbot -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+    
+    <!-- katex -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/zooming/2.1.1/zooming.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const zooming = new Zooming()
+    zooming.listen('.book-content img')
+})
+</script>
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+  <body>
+    <div class="book-container">
+      <div class="book-sidebar">
+        <div class="book-brand">
+  <a href="/Blog/">
+    <img src="/Blog/favicon.png">
+    <span>李幸娟的前端博客</span>
+  </a>
+</div> <div class="book-menu">
+  <ul>
+<li>
+<p><a href="/Blog">Home</a></p>
+</li>
+<li>
+<p><a href="/Blog//README">README</a></p>
+</li>
+<li>
+<p><a href="/Blog//ToMyself">ToMyself</a></p>
+</li>
+<li>
+<p><a href="/Blog//%E7%9F%A5%E8%AF%86%E7%82%B9%E7%9B%AE%E5%BD%95">知识点目录</a></p>
+</li>
+</ul>
+<h1 style="color:#448d55;">🍓前端知识分类</h1> 
+<h2 id="CSS相关类">CSS相关类</h2>
+<ul>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/CSS%E7%9B%B8%E5%85%B3%E7%B1%BB/1px">1px</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/CSS%E7%9B%B8%E5%85%B3%E7%B1%BB/Grid%E9%80%9F%E6%88%90">Grid速成</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/CSS%E7%9B%B8%E5%85%B3%E7%B1%BB/blur%E5%92%8Cchange">blur和change</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/CSS%E7%9B%B8%E5%85%B3%E7%B1%BB/flex">flex</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/CSS%E7%9B%B8%E5%85%B3%E7%B1%BB/less%E9%80%9F%E6%88%90">less速成</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/CSS%E7%9B%B8%E5%85%B3%E7%B1%BB/scss%E9%80%9F%E6%88%90">scss速成</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/CSS%E7%9B%B8%E5%85%B3%E7%B1%BB/%E5%AE%9E%E7%8E%B0%E5%B1%85%E4%B8%AD">实现居中</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/CSS%E7%9B%B8%E5%85%B3%E7%B1%BB/%E5%B8%B8%E8%A7%81%E5%B8%83%E5%B1%80">常见布局</a></p>
+</li>
+</ul>
+<h2 id="Deno相关类">Deno相关类</h2>
+<ul>
+<li><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/Deno%E7%9B%B8%E5%85%B3%E7%B1%BB/index">index</a></li>
+</ul>
+<h2 id="JS相关类">JS相关类</h2>
+<ul>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/Class%E7%9B%B8%E5%85%B3">Class相关</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/EventLoop">EventLoop</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/Generate">Generate</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/Promise">Promise</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/Proxy">Proxy</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/Reflect">Reflect</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/Set+Map%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0">Set+Map学习笔记</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/async">async</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/bind">bind</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/call%E5%92%8Capply">call和apply</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/flat%E5%AE%9E%E7%8E%B0">flat实现</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/for%E5%92%8CforEach%E7%9A%84%E5%8C%BA%E5%88%AB">for和forEach的区别</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/promise%E6%89%8B%E5%86%99">promise手写</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/this%E7%9B%B8%E5%85%B3">this相关</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/%E4%BD%9C%E7%94%A8%E5%9F%9F%E7%9B%B8%E5%85%B3">作用域相关</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/%E5%87%BD%E6%95%B0%E6%9F%AF%E9%87%8C%E5%8C%96">函数柯里化</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/%E5%87%BD%E6%95%B0%E7%9A%84%E5%86%85%E9%83%A8%E5%B1%9E%E6%80%A7">函数的内部属性</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/%E5%87%BD%E6%95%B0%E7%9A%84%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F">函数的执行顺序</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/%E5%88%A4%E6%96%AD%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B">判断数据类型</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/%E5%89%8D%E7%AB%AF%E6%A8%A1%E5%9D%97%E5%8C%96%E8%A7%84%E8%8C%83">前端模块化规范</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/%E5%8E%9F%E5%9E%8B%E5%92%8C%E5%8E%9F%E5%9E%8B%E9%93%BE">原型和原型链</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/%E5%90%88%E5%B9%B6%E7%A9%BA%E5%80%BC">合并空值</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/%E5%BA%9F%E5%BC%83">废弃</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/%E6%89%A9%E5%85%85%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%8A%9F%E8%83%BD">扩充类型的功能</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/%E6%95%B0%E7%BB%84">数组</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/%E6%AD%A3%E5%88%99">正则</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/%E6%B7%B1%E6%8B%B7%E8%B4%9D">深拷贝</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/%E7%AB%8B%E5%8D%B3%E6%89%A7%E8%A1%8C%E5%87%BD%E6%95%B0">立即执行函数</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0">箭头函数</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/%E7%BB%A7%E6%89%BF%E7%9B%B8%E5%85%B3">继承相关</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/%E9%97%AD%E5%8C%85%E7%9B%B8%E5%85%B3">闭包相关</a></p>
+</li>
+</ul>
+<h2 id="TypeScript">TypeScript</h2>
+<ul>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/TypeScript/index">index</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/TypeScript/ts">ts</a></p>
+</li>
+</ul>
+<h2 id="dva相关类">dva相关类</h2>
+<ul>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/dva%E7%9B%B8%E5%85%B3%E7%B1%BB/dva%E6%8A%BD%E7%A6%BB%E6%95%B0%E7%BB%84%E8%B7%AF%E7%94%B1+%E5%8A%A8%E6%80%81%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE%E6%96%B9%E6%B3%95">dva抽离数组路由+动态路由配置方法</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/dva%E7%9B%B8%E5%85%B3%E7%B1%BB/dva%E7%9A%84%E4%B8%80%E4%BA%9B%E7%82%B9">dva的一些点</a></p>
+</li>
+</ul>
+<h2 id="react相关类">react相关类</h2>
+<ul>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/react%E7%9B%B8%E5%85%B3%E7%B1%BB/Fiber">Fiber</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/react%E7%9B%B8%E5%85%B3%E7%B1%BB/React-redux%E6%80%8E%E4%B9%88%E7%94%A8">React-redux怎么用</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/react%E7%9B%B8%E5%85%B3%E7%B1%BB/Redux%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB%E6%80%BB%E7%BB%93">Redux源码阅读总结</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/react%E7%9B%B8%E5%85%B3%E7%B1%BB/react-dom">react-dom</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/react%E7%9B%B8%E5%85%B3%E7%B1%BB/react-redux%E6%BA%90%E7%A0%81">react-redux源码</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/react%E7%9B%B8%E5%85%B3%E7%B1%BB/%E5%90%84%E4%B8%AA%E5%9C%B0%E6%96%B9%E7%9A%84%E6%89%93%E5%8D%B0">各个地方的打印</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/react%E7%9B%B8%E5%85%B3%E7%B1%BB/%E8%AF%BB%E6%BA%90%E7%A0%81%E7%9A%84%E7%90%86%E8%A7%A3">读源码的理解</a></p>
+</li>
+</ul>
+<h2 id="vue相关类">vue相关类</h2>
+<ul>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/vue%E7%9B%B8%E5%85%B3%E7%B1%BB/0%E6%BA%90%E7%A0%81-%E4%B8%BB%E7%BA%BF">0源码-主线</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/vue%E7%9B%B8%E5%85%B3%E7%B1%BB/1%E6%BA%90%E7%A0%81-%E7%9B%AE%E5%BD%95">1源码-目录</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/vue%E7%9B%B8%E5%85%B3%E7%B1%BB/2%E6%BA%90%E7%A0%81-%E6%9E%84%E5%BB%BA%E8%BF%87%E7%A8%8B">2源码-构建过程</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/vue%E7%9B%B8%E5%85%B3%E7%B1%BB/3%E6%BA%90%E7%A0%81-%E6%95%B0%E6%8D%AE%E9%A9%B1%E5%8A%A8">3源码-数据驱动</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/vue%E7%9B%B8%E5%85%B3%E7%B1%BB/4%E6%BA%90%E7%A0%81-newVue">4源码-newVue</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/vue%E7%9B%B8%E5%85%B3%E7%B1%BB/5%E6%BA%90%E7%A0%81-Vue%E5%AE%9E%E4%BE%8B%E6%8C%82%E8%BD%BD%E7%9A%84%E5%AE%9E%E7%8E%B0">5源码-Vue实例挂载的实现</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/vue%E7%9B%B8%E5%85%B3%E7%B1%BB/6%E6%BA%90%E7%A0%81-render">6源码-render</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/vue%E7%9B%B8%E5%85%B3%E7%B1%BB/6%E6%BA%90%E7%A0%81-%E5%90%88%E5%B9%B6%E9%85%8D%E7%BD%AE">6源码-合并配置</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/vue%E7%9B%B8%E5%85%B3%E7%B1%BB/7%E6%BA%90%E7%A0%81-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F">7源码-生命周期</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/vue%E7%9B%B8%E5%85%B3%E7%B1%BB/8%E6%BA%90%E7%A0%81-createElement">8源码-createElement</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/vue%E7%9B%B8%E5%85%B3%E7%B1%BB/9%E6%BA%90%E7%A0%81-_update">9源码-_update</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/vue%E7%9B%B8%E5%85%B3%E7%B1%BB/9%E6%BA%90%E7%A0%81-patch">9源码-patch</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/vue%E7%9B%B8%E5%85%B3%E7%B1%BB/9%E6%BA%90%E7%A0%81-%E5%BC%82%E6%AD%A5%E7%BB%84%E4%BB%B6">9源码-异步组件</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/vue%E7%9B%B8%E5%85%B3%E7%B1%BB/9%E6%BA%90%E7%A0%81-%E7%BB%84%E4%BB%B6%E6%B3%A8%E5%86%8C">9源码-组件注册</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/vue%E7%9B%B8%E5%85%B3%E7%B1%BB/10%E6%95%B0%E6%8D%AE%E5%8A%AB%E6%8C%81">10数据劫持</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/vue%E7%9B%B8%E5%85%B3%E7%B1%BB/10%E6%BA%90%E7%A0%81-createComponent">10源码-createComponent</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/vue%E7%9B%B8%E5%85%B3%E7%B1%BB/11%E6%BA%90%E7%A0%81-%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86">11源码-响应式原理</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/vue%E7%9B%B8%E5%85%B3%E7%B1%BB/12%E5%AF%B9%E8%B1%A1%E5%92%8C%E6%95%B0%E7%BB%84%E7%9A%84%E5%A4%84%E7%90%86">12对象和数组的处理</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/vue%E7%9B%B8%E5%85%B3%E7%B1%BB/13%E6%BA%90%E7%A0%81-nextTick">13源码-nextTick</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/vue%E7%9B%B8%E5%85%B3%E7%B1%BB/13%E6%BA%90%E7%A0%81-%E4%BE%9D%E8%B5%96%E6%94%B6%E9%9B%86">13源码-依赖收集</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/vue%E7%9B%B8%E5%85%B3%E7%B1%BB/14%E6%BA%90%E7%A0%81-%E6%B4%BE%E5%8F%91%E6%9B%B4%E6%96%B0">14源码-派发更新</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/vue%E7%9B%B8%E5%85%B3%E7%B1%BB/README">README</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/vue%E7%9B%B8%E5%85%B3%E7%B1%BB/key%E7%9A%84%E4%BD%9C%E7%94%A8">key的作用</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/vue%E7%9B%B8%E5%85%B3%E7%B1%BB/%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83">开发规范</a></p>
+</li>
+</ul>
+<h2 id="性能优化类">性能优化类</h2>
+<ul>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E7%B1%BB/%E5%8A%A0%E5%BF%AB%E9%A6%96%E5%B1%8F%E6%B8%B2%E6%9F%93">加快首屏渲染</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E7%B1%BB/%E9%98%B2%E6%8A%96%E5%92%8C%E8%8A%82%E6%B5%81">防抖和节流</a></p>
+</li>
+</ul>
+<h2 id="暂未分类">暂未分类</h2>
+<ul>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/%E6%9A%82%E6%9C%AA%E5%88%86%E7%B1%BB/Map%E5%92%8CObject">Map和Object</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/%E6%9A%82%E6%9C%AA%E5%88%86%E7%B1%BB/%5B%E8%99%9A%E6%8B%9FDOM%5D%5BAST%E8%AF%AD%E6%B3%95%E6%A0%91%5D%5Bbabel%E7%BC%96%E8%AF%91%5D">[虚拟DOM][AST语法树][babel编译]</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/%E6%9A%82%E6%9C%AA%E5%88%86%E7%B1%BB/error">error</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/%E6%9A%82%E6%9C%AA%E5%88%86%E7%B1%BB/oneLine">oneLine</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/%E6%9A%82%E6%9C%AA%E5%88%86%E7%B1%BB/price">price</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/%E6%9A%82%E6%9C%AA%E5%88%86%E7%B1%BB/%E4%BD%8D%E6%8E%A9%E7%A0%81">位掩码</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/%E6%9A%82%E6%9C%AA%E5%88%86%E7%B1%BB/%E5%AD%A6%E4%B9%A0%E6%96%87%E7%AB%A0%E7%9B%AE%E5%BD%95">学习文章目录</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/%E6%9A%82%E6%9C%AA%E5%88%86%E7%B1%BB/%E6%95%B0%E7%BB%84%E6%B7%B1%E6%8B%B7%E8%B4%9D+%E6%B5%85%E6%8B%B7%E8%B4%9D%E9%97%AE%E9%A2%98">数组深拷贝+浅拷贝问题</a></p>
+</li>
+</ul>
+<h2 id="框架">框架</h2>
+<ul>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/%E6%A1%86%E6%9E%B6/vue%E5%92%8Creact%E5%AF%B9%E6%AF%94">vue和react对比</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/%E6%A1%86%E6%9E%B6/%E6%A1%86%E6%9E%B6%E9%80%9A%E8%AF%86">框架通识</a></p>
+</li>
+</ul>
+<h2 id="浏览器相关类">浏览器相关类</h2>
+<ul>
+<li><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9B%B8%E5%85%B3%E7%B1%BB/%E6%B5%8F%E8%A7%88%E5%99%A8">浏览器</a></li>
+</ul>
+<h2 id="算法相关类">算法相关类</h2>
+<ul>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3%E7%B1%BB/js%E4%B8%89%E7%A7%8D%E9%81%8D%E5%8E%86">js三种遍历</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3%E7%B1%BB/%E5%B8%B8%E8%A7%81%E6%8E%92%E5%BA%8F">常见排序</a></p>
+</li>
+</ul>
+<h2 id="网络和安全类">网络和安全类</h2>
+<ul>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/%E7%BD%91%E7%BB%9C%E5%92%8C%E5%AE%89%E5%85%A8%E7%B1%BB/CDN%E7%9A%84%E5%8E%9F%E7%90%86">CDN的原理</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/%E7%BD%91%E7%BB%9C%E5%92%8C%E5%AE%89%E5%85%A8%E7%B1%BB/HTTP2.0">HTTP2.0</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/%E7%BD%91%E7%BB%9C%E5%92%8C%E5%AE%89%E5%85%A8%E7%B1%BB/cookie%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E5%AE%89%E5%85%A8">cookie为什么不安全</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/%E7%BD%91%E7%BB%9C%E5%92%8C%E5%AE%89%E5%85%A8%E7%B1%BB/%E5%89%8D%E7%AB%AF%E9%89%B4%E6%9D%83">前端鉴权</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/%E7%BD%91%E7%BB%9C%E5%92%8C%E5%AE%89%E5%85%A8%E7%B1%BB/%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95">加密算法</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/%E7%BD%91%E7%BB%9C%E5%92%8C%E5%AE%89%E5%85%A8%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C">计算机网络</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/%E7%BD%91%E7%BB%9C%E5%92%8C%E5%AE%89%E5%85%A8%E7%B1%BB/%E8%BE%93%E5%85%A5URL%E5%90%8E%E5%8F%91%E7%94%9F%E4%BA%86%E4%BB%80%E4%B9%88">输入URL后发生了什么</a></p>
+</li>
+</ul>
+<h1 style="color:#448d55;">🐖小李的读书笔记</h1> 
+<ul>
+<li>
+<p><a href="/Blog/%F0%9F%90%96%E5%B0%8F%E6%9D%8E%E7%9A%84%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/test">test</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%90%96%E5%B0%8F%E6%9D%8E%E7%9A%84%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E3%80%8ALinux%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AE%9E%E7%94%A8%E6%95%99%E7%A8%8B%E3%80%8B">《Linux操作系统实用教程》</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%90%96%E5%B0%8F%E6%9D%8E%E7%9A%84%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F">设计模式</a></p>
+</li>
+</ul>
+<h1 style="color:#448d55;">🦖工具类</h1> 
+<h2 id="git相关操作">git相关操作</h2>
+<ul>
+<li>
+<p><a href="/Blog/%F0%9F%A6%96%E5%B7%A5%E5%85%B7%E7%B1%BB/git%E7%9B%B8%E5%85%B3%E6%93%8D%E4%BD%9C/git%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C%E2%9D%A4">git常用操作❤</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%A6%96%E5%B7%A5%E5%85%B7%E7%B1%BB/git%E7%9B%B8%E5%85%B3%E6%93%8D%E4%BD%9C/%E4%BB%A3%E7%A0%81%E6%8F%90%E4%BA%A4%E6%A0%A1%E9%AA%8C">代码提交校验</a></p>
+</li>
+</ul>
+<h2 id="webpack">webpack</h2>
+<ul>
+<li>
+<p><a href="/Blog/%F0%9F%A6%96%E5%B7%A5%E5%85%B7%E7%B1%BB/webpack/antd%E6%8C%89%E9%9C%80%E5%8A%A0%E8%BD%BD">antd按需加载</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%A6%96%E5%B7%A5%E5%85%B7%E7%B1%BB/webpack/eslint">eslint</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%A6%96%E5%B7%A5%E5%85%B7%E7%B1%BB/webpack/perttier">perttier</a></p>
+</li>
+</ul>
+<h2 id="指令">指令</h2>
+<ul>
+<li>
+<p><a href="/Blog/%F0%9F%A6%96%E5%B7%A5%E5%85%B7%E7%B1%BB/%E6%8C%87%E4%BB%A4/MAC-shell">MAC-shell</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%A6%96%E5%B7%A5%E5%85%B7%E7%B1%BB/%E6%8C%87%E4%BB%A4/index">index</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%A6%96%E5%B7%A5%E5%85%B7%E7%B1%BB/%E6%8C%87%E4%BB%A4/tree">tree</a></p>
+</li>
+</ul>
+<h2 id="数据库">数据库</h2>
+<ul>
+<li>
+<p><a href="/Blog/%F0%9F%A6%96%E5%B7%A5%E5%85%B7%E7%B1%BB/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4">MySQL常用命令</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%A6%96%E5%B7%A5%E5%85%B7%E7%B1%BB/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%B8%B8%E7%94%A8SQL">常用SQL</a></p>
+</li>
+</ul>
+<h2 id="无归类">无归类</h2>
+<ul>
+<li>
+<p><a href="/Blog/%F0%9F%A6%96%E5%B7%A5%E5%85%B7%E7%B1%BB/%E6%97%A0%E5%BD%92%E7%B1%BB/chrome%E6%B5%8F%E8%A7%88%E5%99%A8%E8%B7%A8%E5%9F%9F%E8%AE%BE%E7%BD%AE">chrome浏览器跨域设置</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%A6%96%E5%B7%A5%E5%85%B7%E7%B1%BB/%E6%97%A0%E5%BD%92%E7%B1%BB/%E5%BF%AB%E6%8D%B7%E9%94%AE">快捷键</a></p>
+</li>
+</ul>
+<h2 id="系统操作">系统操作</h2>
+<ul>
+<li>
+<p><a href="/Blog/%F0%9F%A6%96%E5%B7%A5%E5%85%B7%E7%B1%BB/%E7%B3%BB%E7%BB%9F%E6%93%8D%E4%BD%9C/cross-env">cross-env</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%A6%96%E5%B7%A5%E5%85%B7%E7%B1%BB/%E7%B3%BB%E7%BB%9F%E6%93%8D%E4%BD%9C/%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA">安装虚拟机</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%A6%96%E5%B7%A5%E5%85%B7%E7%B1%BB/%E7%B3%BB%E7%BB%9F%E6%93%8D%E4%BD%9C/%E6%9F%A5%E7%9C%8B%E6%9C%AC%E5%9C%B0ip%E4%B9%8B%E7%B1%BB%E7%9A%84%E9%85%8D%E7%BD%AE(window)">查看本地ip之类的配置(window)</a></p>
+</li>
+</ul>
+
+</div>
+
+
+<script src="/Blog/js/book-menu.js"></script>
+
+      </div>
+
+      <div class="sidebar-toggle" onclick="sidebar_toggle()" onmouseover="add_inner()" onmouseleave="remove_inner()">
+  <div class="sidebar-toggle-inner"></div>
+</div>
+
+<script>
+function add_inner() {
+  let inner = document.querySelector('.sidebar-toggle-inner')
+  inner.classList.add('show')  
+}
+
+function remove_inner() {
+  let inner = document.querySelector('.sidebar-toggle-inner')
+  inner.classList.remove('show')
+}
+
+function sidebar_toggle() {
+    let sidebar_toggle = document.querySelector('.sidebar-toggle')
+    let sidebar = document.querySelector('.book-sidebar')
+    let content = document.querySelector('.off-canvas-content')
+    if (sidebar_toggle.classList.contains('extend')) { // show
+        sidebar_toggle.classList.remove('extend')
+        sidebar.classList.remove('hide')
+        content.classList.remove('extend')
+    }
+    else { // hide
+        sidebar_toggle.classList.add('extend')
+        sidebar.classList.add('hide')
+        content.classList.add('extend')
+    }
+}
+</script>
+
+      <div class="off-canvas-content">
+        <div class="columns">
+          <div class="column col-10 col-lg-12">
+            <div class="book-navbar"><!-- For Responsive Layout -->
+
+<header class="navbar">
+  <section class="navbar-section">
+    <a onclick="open_sidebar()">
+      <i class="icon icon-menu"></i>
+    </a>
+  </section>
+</header>
+</div>
+            <div class="book-content"><div class="book-post">
+  <h1 id="前端模块化规范">前端模块化规范</h1>
+<p>共有四种前端模块化规范</p>
+<ol>
+<li>ES6 Module</li>
+<li>CommonJS (node)</li>
+<li>AMD</li>
+<li>CMD</li>
+</ol>
+<h2 id="ES6-Module">ES6 Module</h2>
+<p>ES6模块采用在编译的时候被 JavaScript 引擎静态分析并加载，所以无法实现条件加载<br>
+ES6模块输出的是 <strong>值的引用</strong></p>
+<p><strong>ES6的运行机制</strong></p>
+<ul>
+<li>JS引擎对脚本静态分析的时候，遇到模块加载命令import，生成一个只读引用。等到脚本真正执行的时候，再根据这个只读引用，到被加载的那个模块里取值；</li>
+<li>输出的是值的引用，也就是说，原始值变了，import 加载的值也会跟着变化。</li>
+<li>因此，ES6模块是动态引用，并且不会缓存值，模块里面的变量绑定其所在的模块；</li>
+</ul>
+<p><strong>使用方法</strong></p>
+<p>两种情况</p>
+<p>情况1: export { 变量1, 变量2 }</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** 定义模块 math.js **/</span></span><br><span class="line"><span class="keyword">const</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">const</span> b = <span class="number">2</span>;</span><br><span class="line">+ <span class="keyword">export</span> &#123; a, b &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/** 引用模块 **/</span></span><br><span class="line">+ <span class="keyword">import</span> &#123; a, b&#125; <span class="keyword">from</span> <span class="string">'./math.js'</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(a)</span><br><span class="line"><span class="built_in">console</span>.log(b)</span><br></pre></td></tr></table></figure>
+<p>情况2: export default</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** export default **/</span></span><br><span class="line"><span class="comment">//定义</span></span><br><span class="line"><span class="keyword">const</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">const</span> b = <span class="number">2</span>;</span><br><span class="line">+ <span class="keyword">export</span> <span class="keyword">default</span> &#123; a,b &#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//引用</span></span><br><span class="line">+ <span class="keyword">import</span> math <span class="keyword">from</span> <span class="string">'./math'</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(math.a) <span class="comment">// 1</span></span><br><span class="line"><span class="built_in">console</span>.log(math.b) <span class="comment">// 2</span></span><br></pre></td></tr></table></figure>
+<h2 id="CommonJS">CommonJS</h2>
+<p>CommonJS 采用同步加载模块，在服务器端模块文件都保存在磁盘，读取速度特别块，所以这样做不会有什么问题；<br>
+但是对于浏览器来说，由于网速等原因，采用异步加载的方式更合适，所以一般CommonJS一般用在Node.js中；</p>
+<p>CommonJS模块输出的是 <strong>值的拷贝</strong></p>
+<p>四个环境变量: module、exports、require、global<br>
+<br></p>
+<p>module.exports使用方法</p>
+<ul>
+<li>module.exports定义当前模块对外输出的接口（不推荐直接用exports），</li>
+<li>require 引入模块;</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 举例1 */</span></span><br><span class="line"><span class="comment">// 定义模块</span></span><br><span class="line"><span class="keyword">var</span> basicNum = <span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> a + b;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">module</span>.exports = &#123; </span><br><span class="line">  add,</span><br><span class="line">  basicNum</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 引用模块</span></span><br><span class="line"><span class="keyword">var</span> math = <span class="built_in">require</span>(<span class="string">'./math'</span>);</span><br><span class="line">math.add(<span class="number">2</span>, <span class="number">5</span>);</span><br><span class="line"><span class="comment">// 或</span></span><br><span class="line"><span class="keyword">const</span> &#123; add &#125; = <span class="built_in">require</span>(<span class="string">'./math'</span>)</span><br></pre></td></tr></table></figure>
+<p>引用node核心模块</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 举例2  */</span></span><br><span class="line"><span class="comment">// 引用“核心”模块时，不需要带路径</span></span><br><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>);</span><br><span class="line">http.createService(...).listen(<span class="number">3000</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 举例3 */</span></span><br><span class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span>(<span class="params">name, age</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">    <span class="keyword">this</span>.age = age;</span><br><span class="line">    <span class="keyword">this</span>.about = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.name + <span class="string">'is'</span> + <span class="keyword">this</span>.age + <span class="string">'岁'</span>);</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> Rocker = <span class="built_in">require</span>(<span class="string">'./rocker.js'</span>);</span><br><span class="line"><span class="keyword">var</span> r = <span class="keyword">new</span> Rocker(<span class="string">'occy'</span>,<span class="number">98</span>);</span><br><span class="line">r.about();</span><br></pre></td></tr></table></figure>
+<p>使用exports</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 举例4 */</span></span><br><span class="line"><span class="comment">/* exports是指向的module.exports的引用 */</span></span><br><span class="line"><span class="comment">// ？？？？文章说不建议使用？为什么？？？看起来没什么问题啊？</span></span><br><span class="line"><span class="comment">// 定义</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">handleAdd</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> a + b;</span><br><span class="line">&#125;</span><br><span class="line">exports.handleAdd = handleAdd;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 引用</span></span><br><span class="line"><span class="keyword">const</span> test = <span class="built_in">require</span>(<span class="string">'./components/test'</span>)</span><br><span class="line">test.handleAdd(<span class="number">1</span>,<span class="number">2</span>)    <span class="comment">// 3</span></span><br></pre></td></tr></table></figure>
+<h2 id="ES6、CommonJS-模块的差异">ES6、CommonJS 模块的差异</h2>
+<p>ES6模块是编译时输出接口，CommonJS模块是运行时加载</p>
+<ul>
+<li>编译时加载: <strong>ES6模块不是对象，而是通过 export 命令显式指定输出的代码</strong>，import时采用静态命令的形式。即在import时可以指定加载某个输出值，而不是加载整个模块；</li>
+<li>运行时加载：（common.js）模块就是对象，也就是在输入时是先加载整个模块，生成一个对象，然后再从这个对象上面读取方法；</li>
+</ul>
+<p>CommonJS 加载的是一个对象（即module.exports属性），该对象只有在脚本运行完才会生成。而 ES6 模块不是对象，它的对外接口只是一种静态定义，在代码静态解析阶段就会生成。</p>
+<h2 id="AMD规范">AMD规范</h2>
+<p>AMD规范采用异步方式加载模块，所有的依赖都定义在一个回调函数里，等到模块加载完之后，这个回调函数才会运行。<br>
+语法：<code>required.config()</code>指定路径、<code>defined()</code>定义模块、<code>required()</code>加载模块</p>
+<p>引用模块的时候，我们将模块名放在 [] 作为<code>require()</code> 的第一参数； 如果我们定义的模块本身也依赖其他模块，那就需要将他们呢放在 [] 作为 <code>defien()</code> 的第一参数；</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 首先引入 `require.js`  */</span></span><br><span class="line">&lt;script src=<span class="string">'js/required'</span> data-main=<span class="string">'js/main'</span> /&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 引入 `main.js` 主模块/入口文件 */</span></span><br><span class="line"><span class="built_in">require</span>.config(&#123;</span><br><span class="line">  baseUrl: <span class="string">"js/lib"</span>,</span><br><span class="line">  path: &#123;</span><br><span class="line">    <span class="string">"jquery"</span>: <span class="string">"jquery.min"</span>,   <span class="comment">// ??? 实际路径为 js/lib/jquery.min</span></span><br><span class="line">    <span class="string">"underscore"</span>: <span class="string">"underscore.min"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">？？？<span class="comment">/* 执行基本操作 */</span></span><br><span class="line">required([ <span class="string">"jquery"</span>, <span class="string">"underscore"</span> ], <span class="function"><span class="keyword">function</span>(<span class="params"> $, _ </span>)</span>&#123;</span><br><span class="line">  <span class="comment">// ... some code here</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>如下示例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 定义 math.js 模块(独立模块，不依赖其他) */</span></span><br><span class="line">define(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">const</span> basicNum = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">const</span> add = <span class="function"><span class="keyword">function</span> (<span class="params">x, y</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x + y ;</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    add,</span><br><span class="line">    basicNum</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 定义一个依赖 underscore.js 的模块 */</span></span><br><span class="line">define([<span class="string">"underscore"</span>], <span class="function"><span class="keyword">function</span>(<span class="params">_</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> classify = <span class="function"><span class="keyword">function</span>(<span class="params">list</span>) </span>&#123;</span><br><span class="line">    _.countBy(list, <span class="function"><span class="keyword">function</span>(<span class="params">num</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> num &gt; <span class="number">30</span> ? <span class="string">"old"</span> : <span class="string">"young"</span>;</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">return</span> &#123; classify &#125;;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/* 引用模块 */</span></span><br><span class="line"><span class="built_in">require</span>([<span class="string">"jquery"</span>, <span class="string">"underscore"</span>], <span class="function"><span class="keyword">function</span>(<span class="params">$, math</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> sum = math.add(<span class="number">10</span>, <span class="number">20</span>);</span><br><span class="line">  $(<span class="string">"#sum"</span>.html(sum));</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="CMD-和-sea-js">CMD 和 sea.js</h2>
+<p>但是CMD是另一种js模块化方案，与AMD很类似，但是不同点在于：</p>
+<ul>
+<li>AMD(required.js)推崇前置、提前执行；</li>
+<li>CMD推崇依赖就近、延迟执行；(此规范产生于sea.js推广过程中)</li>
+</ul>
+<p>AMD、CMD、sea.js的写法分别如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/* AMD写法 */</span></span><br><span class="line"><span class="comment">// require.js在声明依赖的模块时会在第一时间加载并执行模块内的代码</span></span><br><span class="line">define([<span class="string">"a"</span>, <span class="string">"b"</span>], <span class="function"><span class="keyword">function</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line"><span class="meta">  "use strict"</span>;</span><br><span class="line">  <span class="comment">/* 等于在最前面声明并初始化了要用到的所有模块 */</span></span><br><span class="line">  <span class="keyword">const</span> aa = <span class="number">5</span>;</span><br><span class="line">  <span class="keyword">if</span> (aa !== <span class="number">3</span>) &#123;</span><br><span class="line">    <span class="comment">// ??? =&gt; 即使没用到某个模块，如，b, 但b 还是提前执行了</span></span><br><span class="line">    b.foo();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">/* CMD 写法 */</span></span><br><span class="line">define(<span class="function"><span class="keyword">function</span>(<span class="params">require, exports, module</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> a = required(<span class="string">"./a"</span>); <span class="comment">// ？？？在需要时声明</span></span><br><span class="line">  a.doSomething();</span><br><span class="line">  <span class="keyword">if</span> (<span class="literal">false</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> b = <span class="built_in">require</span>(<span class="string">"./b"</span>);</span><br><span class="line">    b.doSomething();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">/* sea.js写法 */</span></span><br><span class="line"><span class="comment">// 定义模块 math.js</span></span><br><span class="line">define(<span class="function"><span class="keyword">function</span>(<span class="params">require, exports, module</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> $ = <span class="built_in">require</span>(<span class="string">'jquery.js'</span>);</span><br><span class="line">    <span class="keyword">var</span> add = <span class="function"><span class="keyword">function</span>(<span class="params">a,b</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> a+b;</span><br><span class="line">    &#125;</span><br><span class="line">    exports.add = add;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// 加载模块</span></span><br><span class="line">seajs.use([<span class="string">'math.js'</span>], <span class="function"><span class="keyword">function</span>(<span class="params">math</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> sum = math.add(<span class="number">1</span>+<span class="number">2</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="require-ensure">require.ensure</h2>
+<h2 id="参考文章：">参考文章：</h2>
+<ul>
+<li><a href="https://juejin.im/post/5aaa37c8f265da23945f365c" target="_blank" rel="noopener">前端模块化：CommonJS,AMD,CMD,ES6</a></li>
+</ul>
+
+</div>
+
+
+  <div class="book-comments">
+    
+
+
+
+
+  </div>
+
+
+
+<script src="/Blog/js/book-post.js"></script>
+</div>
+          </div>
+          <div class="column col-2 hide-lg">
+            <div class="book-post-info">
+  
+    <div class="book-post-meta">
+
+  <div class="author">
+
+    <!-- Author image -->
+    <div class="author-img">
+      
+        <figure
+          class="avatar avatar-lg"
+          data-initial="甜"
+          style="background-color: #3b4351;">
+        </figure>
+      
+    </div>
+
+    <!-- Author title -->
+    <div class="author-title">
+      <div>甜里甜气</div>
+      <div>2020-09-19</div>
+    </div>
+  </div>
+
+  
+
+  <div class="divider"></div>
+</div>
+  
+
+  <div class="book-tocbot"></div>
+<div class="book-tocbot-menu">
+  <a class="book-toc-expand" onclick="expand_toc()">Expand all</a>
+  <a onclick="go_top()">⬆ Top</a>
+  <a onclick="go_bottom()">⬇ Bottom</a>
+</div>
+
+
+<script src="/Blog/js/book-toc.js"></script>
+
+
+</div>
+          </div>
+        </div>
+      </div>
+
+      <a class="off-canvas-overlay" onclick="hide_canvas()"></a>
+    </div>
+  </body>
+</html>
+
+
+<script src="/Blog/js/book.js"></script>
+

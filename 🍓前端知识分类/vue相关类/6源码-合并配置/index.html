@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+
+    
+      <link rel="icon" href="/Blog/favicon.png" />
+    
+
+    <title>
+        
+          🍓前端知识分类/vue相关类/6源码-合并配置 - 李幸娟的前端博客
+        
+    </title>
+
+    <!-- Spectre.css framework -->
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">
+
+    <!-- theme css & js -->
+    
+<link rel="stylesheet" href="/Blog/css/book.css">
+
+    
+<script src="/Blog/js/book.js"></script>
+
+
+    <!-- tocbot -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+    
+    <!-- katex -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/zooming/2.1.1/zooming.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const zooming = new Zooming()
+    zooming.listen('.book-content img')
+})
+</script>
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+  <body>
+    <div class="book-container">
+      <div class="book-sidebar">
+        <div class="book-brand">
+  <a href="/Blog/">
+    <img src="/Blog/favicon.png">
+    <span>李幸娟的前端博客</span>
+  </a>
+</div> <div class="book-menu">
+  <ul>
+<li>
+<p><a href="/Blog">Home</a></p>
+</li>
+<li>
+<p><a href="/Blog//README">README</a></p>
+</li>
+<li>
+<p><a href="/Blog//ToMyself">ToMyself</a></p>
+</li>
+<li>
+<p><a href="/Blog//%E7%9F%A5%E8%AF%86%E7%82%B9%E7%9B%AE%E5%BD%95">知识点目录</a></p>
+</li>
+</ul>
+<h1 style="color:#448d55;">🍓前端知识分类</h1> 
+<h2 id="CSS相关类">CSS相关类</h2>
+<ul>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/CSS%E7%9B%B8%E5%85%B3%E7%B1%BB/1px">1px</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/CSS%E7%9B%B8%E5%85%B3%E7%B1%BB/Grid%E9%80%9F%E6%88%90">Grid速成</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/CSS%E7%9B%B8%E5%85%B3%E7%B1%BB/blur%E5%92%8Cchange">blur和change</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/CSS%E7%9B%B8%E5%85%B3%E7%B1%BB/flex">flex</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/CSS%E7%9B%B8%E5%85%B3%E7%B1%BB/less%E9%80%9F%E6%88%90">less速成</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/CSS%E7%9B%B8%E5%85%B3%E7%B1%BB/scss%E9%80%9F%E6%88%90">scss速成</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/CSS%E7%9B%B8%E5%85%B3%E7%B1%BB/%E5%AE%9E%E7%8E%B0%E5%B1%85%E4%B8%AD">实现居中</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/CSS%E7%9B%B8%E5%85%B3%E7%B1%BB/%E5%B8%B8%E8%A7%81%E5%B8%83%E5%B1%80">常见布局</a></p>
+</li>
+</ul>
+<h2 id="Deno相关类">Deno相关类</h2>
+<ul>
+<li><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/Deno%E7%9B%B8%E5%85%B3%E7%B1%BB/index">index</a></li>
+</ul>
+<h2 id="JS相关类">JS相关类</h2>
+<ul>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/Class%E7%9B%B8%E5%85%B3">Class相关</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/EventLoop">EventLoop</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/Generate">Generate</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/Promise">Promise</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/Proxy">Proxy</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/Reflect">Reflect</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/Set+Map%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0">Set+Map学习笔记</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/async">async</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/bind">bind</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/call%E5%92%8Capply">call和apply</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/flat%E5%AE%9E%E7%8E%B0">flat实现</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/for%E5%92%8CforEach%E7%9A%84%E5%8C%BA%E5%88%AB">for和forEach的区别</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/promise%E6%89%8B%E5%86%99">promise手写</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/this%E7%9B%B8%E5%85%B3">this相关</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/%E4%BD%9C%E7%94%A8%E5%9F%9F%E7%9B%B8%E5%85%B3">作用域相关</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/%E5%87%BD%E6%95%B0%E6%9F%AF%E9%87%8C%E5%8C%96">函数柯里化</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/%E5%87%BD%E6%95%B0%E7%9A%84%E5%86%85%E9%83%A8%E5%B1%9E%E6%80%A7">函数的内部属性</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/%E5%87%BD%E6%95%B0%E7%9A%84%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F">函数的执行顺序</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/%E5%88%A4%E6%96%AD%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B">判断数据类型</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/%E5%89%8D%E7%AB%AF%E6%A8%A1%E5%9D%97%E5%8C%96%E8%A7%84%E8%8C%83">前端模块化规范</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/%E5%8E%9F%E5%9E%8B%E5%92%8C%E5%8E%9F%E5%9E%8B%E9%93%BE">原型和原型链</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/%E5%90%88%E5%B9%B6%E7%A9%BA%E5%80%BC">合并空值</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/%E5%BA%9F%E5%BC%83">废弃</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/%E6%89%A9%E5%85%85%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%8A%9F%E8%83%BD">扩充类型的功能</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/%E6%95%B0%E7%BB%84">数组</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/%E6%AD%A3%E5%88%99">正则</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/%E6%B7%B1%E6%8B%B7%E8%B4%9D">深拷贝</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/%E7%AB%8B%E5%8D%B3%E6%89%A7%E8%A1%8C%E5%87%BD%E6%95%B0">立即执行函数</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0">箭头函数</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/%E7%BB%A7%E6%89%BF%E7%9B%B8%E5%85%B3">继承相关</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/%E9%97%AD%E5%8C%85%E7%9B%B8%E5%85%B3">闭包相关</a></p>
+</li>
+</ul>
+<h2 id="TypeScript">TypeScript</h2>
+<ul>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/TypeScript/index">index</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/TypeScript/ts">ts</a></p>
+</li>
+</ul>
+<h2 id="dva相关类">dva相关类</h2>
+<ul>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/dva%E7%9B%B8%E5%85%B3%E7%B1%BB/dva%E6%8A%BD%E7%A6%BB%E6%95%B0%E7%BB%84%E8%B7%AF%E7%94%B1+%E5%8A%A8%E6%80%81%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE%E6%96%B9%E6%B3%95">dva抽离数组路由+动态路由配置方法</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/dva%E7%9B%B8%E5%85%B3%E7%B1%BB/dva%E7%9A%84%E4%B8%80%E4%BA%9B%E7%82%B9">dva的一些点</a></p>
+</li>
+</ul>
+<h2 id="react相关类">react相关类</h2>
+<ul>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/react%E7%9B%B8%E5%85%B3%E7%B1%BB/Fiber">Fiber</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/react%E7%9B%B8%E5%85%B3%E7%B1%BB/React-redux%E6%80%8E%E4%B9%88%E7%94%A8">React-redux怎么用</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/react%E7%9B%B8%E5%85%B3%E7%B1%BB/Redux%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB%E6%80%BB%E7%BB%93">Redux源码阅读总结</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/react%E7%9B%B8%E5%85%B3%E7%B1%BB/react-dom">react-dom</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/react%E7%9B%B8%E5%85%B3%E7%B1%BB/react-redux%E6%BA%90%E7%A0%81">react-redux源码</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/react%E7%9B%B8%E5%85%B3%E7%B1%BB/%E5%90%84%E4%B8%AA%E5%9C%B0%E6%96%B9%E7%9A%84%E6%89%93%E5%8D%B0">各个地方的打印</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/react%E7%9B%B8%E5%85%B3%E7%B1%BB/%E8%AF%BB%E6%BA%90%E7%A0%81%E7%9A%84%E7%90%86%E8%A7%A3">读源码的理解</a></p>
+</li>
+</ul>
+<h2 id="vue相关类">vue相关类</h2>
+<ul>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/vue%E7%9B%B8%E5%85%B3%E7%B1%BB/0%E6%BA%90%E7%A0%81-%E4%B8%BB%E7%BA%BF">0源码-主线</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/vue%E7%9B%B8%E5%85%B3%E7%B1%BB/1%E6%BA%90%E7%A0%81-%E7%9B%AE%E5%BD%95">1源码-目录</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/vue%E7%9B%B8%E5%85%B3%E7%B1%BB/2%E6%BA%90%E7%A0%81-%E6%9E%84%E5%BB%BA%E8%BF%87%E7%A8%8B">2源码-构建过程</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/vue%E7%9B%B8%E5%85%B3%E7%B1%BB/3%E6%BA%90%E7%A0%81-%E6%95%B0%E6%8D%AE%E9%A9%B1%E5%8A%A8">3源码-数据驱动</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/vue%E7%9B%B8%E5%85%B3%E7%B1%BB/4%E6%BA%90%E7%A0%81-newVue">4源码-newVue</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/vue%E7%9B%B8%E5%85%B3%E7%B1%BB/5%E6%BA%90%E7%A0%81-Vue%E5%AE%9E%E4%BE%8B%E6%8C%82%E8%BD%BD%E7%9A%84%E5%AE%9E%E7%8E%B0">5源码-Vue实例挂载的实现</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/vue%E7%9B%B8%E5%85%B3%E7%B1%BB/6%E6%BA%90%E7%A0%81-render">6源码-render</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/vue%E7%9B%B8%E5%85%B3%E7%B1%BB/6%E6%BA%90%E7%A0%81-%E5%90%88%E5%B9%B6%E9%85%8D%E7%BD%AE">6源码-合并配置</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/vue%E7%9B%B8%E5%85%B3%E7%B1%BB/7%E6%BA%90%E7%A0%81-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F">7源码-生命周期</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/vue%E7%9B%B8%E5%85%B3%E7%B1%BB/8%E6%BA%90%E7%A0%81-createElement">8源码-createElement</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/vue%E7%9B%B8%E5%85%B3%E7%B1%BB/9%E6%BA%90%E7%A0%81-_update">9源码-_update</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/vue%E7%9B%B8%E5%85%B3%E7%B1%BB/9%E6%BA%90%E7%A0%81-patch">9源码-patch</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/vue%E7%9B%B8%E5%85%B3%E7%B1%BB/9%E6%BA%90%E7%A0%81-%E5%BC%82%E6%AD%A5%E7%BB%84%E4%BB%B6">9源码-异步组件</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/vue%E7%9B%B8%E5%85%B3%E7%B1%BB/9%E6%BA%90%E7%A0%81-%E7%BB%84%E4%BB%B6%E6%B3%A8%E5%86%8C">9源码-组件注册</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/vue%E7%9B%B8%E5%85%B3%E7%B1%BB/10%E6%95%B0%E6%8D%AE%E5%8A%AB%E6%8C%81">10数据劫持</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/vue%E7%9B%B8%E5%85%B3%E7%B1%BB/10%E6%BA%90%E7%A0%81-createComponent">10源码-createComponent</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/vue%E7%9B%B8%E5%85%B3%E7%B1%BB/11%E6%BA%90%E7%A0%81-%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86">11源码-响应式原理</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/vue%E7%9B%B8%E5%85%B3%E7%B1%BB/12%E5%AF%B9%E8%B1%A1%E5%92%8C%E6%95%B0%E7%BB%84%E7%9A%84%E5%A4%84%E7%90%86">12对象和数组的处理</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/vue%E7%9B%B8%E5%85%B3%E7%B1%BB/13%E6%BA%90%E7%A0%81-nextTick">13源码-nextTick</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/vue%E7%9B%B8%E5%85%B3%E7%B1%BB/13%E6%BA%90%E7%A0%81-%E4%BE%9D%E8%B5%96%E6%94%B6%E9%9B%86">13源码-依赖收集</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/vue%E7%9B%B8%E5%85%B3%E7%B1%BB/14%E6%BA%90%E7%A0%81-%E6%B4%BE%E5%8F%91%E6%9B%B4%E6%96%B0">14源码-派发更新</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/vue%E7%9B%B8%E5%85%B3%E7%B1%BB/README">README</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/vue%E7%9B%B8%E5%85%B3%E7%B1%BB/key%E7%9A%84%E4%BD%9C%E7%94%A8">key的作用</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/vue%E7%9B%B8%E5%85%B3%E7%B1%BB/%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83">开发规范</a></p>
+</li>
+</ul>
+<h2 id="性能优化类">性能优化类</h2>
+<ul>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E7%B1%BB/%E5%8A%A0%E5%BF%AB%E9%A6%96%E5%B1%8F%E6%B8%B2%E6%9F%93">加快首屏渲染</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E7%B1%BB/%E9%98%B2%E6%8A%96%E5%92%8C%E8%8A%82%E6%B5%81">防抖和节流</a></p>
+</li>
+</ul>
+<h2 id="暂未分类">暂未分类</h2>
+<ul>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/%E6%9A%82%E6%9C%AA%E5%88%86%E7%B1%BB/Map%E5%92%8CObject">Map和Object</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/%E6%9A%82%E6%9C%AA%E5%88%86%E7%B1%BB/%5B%E8%99%9A%E6%8B%9FDOM%5D%5BAST%E8%AF%AD%E6%B3%95%E6%A0%91%5D%5Bbabel%E7%BC%96%E8%AF%91%5D">[虚拟DOM][AST语法树][babel编译]</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/%E6%9A%82%E6%9C%AA%E5%88%86%E7%B1%BB/error">error</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/%E6%9A%82%E6%9C%AA%E5%88%86%E7%B1%BB/oneLine">oneLine</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/%E6%9A%82%E6%9C%AA%E5%88%86%E7%B1%BB/price">price</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/%E6%9A%82%E6%9C%AA%E5%88%86%E7%B1%BB/%E4%BD%8D%E6%8E%A9%E7%A0%81">位掩码</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/%E6%9A%82%E6%9C%AA%E5%88%86%E7%B1%BB/%E5%AD%A6%E4%B9%A0%E6%96%87%E7%AB%A0%E7%9B%AE%E5%BD%95">学习文章目录</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/%E6%9A%82%E6%9C%AA%E5%88%86%E7%B1%BB/%E6%95%B0%E7%BB%84%E6%B7%B1%E6%8B%B7%E8%B4%9D+%E6%B5%85%E6%8B%B7%E8%B4%9D%E9%97%AE%E9%A2%98">数组深拷贝+浅拷贝问题</a></p>
+</li>
+</ul>
+<h2 id="框架">框架</h2>
+<ul>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/%E6%A1%86%E6%9E%B6/vue%E5%92%8Creact%E5%AF%B9%E6%AF%94">vue和react对比</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/%E6%A1%86%E6%9E%B6/%E6%A1%86%E6%9E%B6%E9%80%9A%E8%AF%86">框架通识</a></p>
+</li>
+</ul>
+<h2 id="浏览器相关类">浏览器相关类</h2>
+<ul>
+<li><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9B%B8%E5%85%B3%E7%B1%BB/%E6%B5%8F%E8%A7%88%E5%99%A8">浏览器</a></li>
+</ul>
+<h2 id="算法相关类">算法相关类</h2>
+<ul>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3%E7%B1%BB/js%E4%B8%89%E7%A7%8D%E9%81%8D%E5%8E%86">js三种遍历</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3%E7%B1%BB/%E5%B8%B8%E8%A7%81%E6%8E%92%E5%BA%8F">常见排序</a></p>
+</li>
+</ul>
+<h2 id="网络和安全类">网络和安全类</h2>
+<ul>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/%E7%BD%91%E7%BB%9C%E5%92%8C%E5%AE%89%E5%85%A8%E7%B1%BB/CDN%E7%9A%84%E5%8E%9F%E7%90%86">CDN的原理</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/%E7%BD%91%E7%BB%9C%E5%92%8C%E5%AE%89%E5%85%A8%E7%B1%BB/HTTP2.0">HTTP2.0</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/%E7%BD%91%E7%BB%9C%E5%92%8C%E5%AE%89%E5%85%A8%E7%B1%BB/cookie%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E5%AE%89%E5%85%A8">cookie为什么不安全</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/%E7%BD%91%E7%BB%9C%E5%92%8C%E5%AE%89%E5%85%A8%E7%B1%BB/%E5%89%8D%E7%AB%AF%E9%89%B4%E6%9D%83">前端鉴权</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/%E7%BD%91%E7%BB%9C%E5%92%8C%E5%AE%89%E5%85%A8%E7%B1%BB/%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95">加密算法</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/%E7%BD%91%E7%BB%9C%E5%92%8C%E5%AE%89%E5%85%A8%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C">计算机网络</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%8D%93%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/%E7%BD%91%E7%BB%9C%E5%92%8C%E5%AE%89%E5%85%A8%E7%B1%BB/%E8%BE%93%E5%85%A5URL%E5%90%8E%E5%8F%91%E7%94%9F%E4%BA%86%E4%BB%80%E4%B9%88">输入URL后发生了什么</a></p>
+</li>
+</ul>
+<h1 style="color:#448d55;">🐖小李的读书笔记</h1> 
+<ul>
+<li>
+<p><a href="/Blog/%F0%9F%90%96%E5%B0%8F%E6%9D%8E%E7%9A%84%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/test">test</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%90%96%E5%B0%8F%E6%9D%8E%E7%9A%84%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E3%80%8ALinux%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AE%9E%E7%94%A8%E6%95%99%E7%A8%8B%E3%80%8B">《Linux操作系统实用教程》</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%90%96%E5%B0%8F%E6%9D%8E%E7%9A%84%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F">设计模式</a></p>
+</li>
+</ul>
+<h1 style="color:#448d55;">🦖工具类</h1> 
+<h2 id="git相关操作">git相关操作</h2>
+<ul>
+<li>
+<p><a href="/Blog/%F0%9F%A6%96%E5%B7%A5%E5%85%B7%E7%B1%BB/git%E7%9B%B8%E5%85%B3%E6%93%8D%E4%BD%9C/git%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C%E2%9D%A4">git常用操作❤</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%A6%96%E5%B7%A5%E5%85%B7%E7%B1%BB/git%E7%9B%B8%E5%85%B3%E6%93%8D%E4%BD%9C/%E4%BB%A3%E7%A0%81%E6%8F%90%E4%BA%A4%E6%A0%A1%E9%AA%8C">代码提交校验</a></p>
+</li>
+</ul>
+<h2 id="webpack">webpack</h2>
+<ul>
+<li>
+<p><a href="/Blog/%F0%9F%A6%96%E5%B7%A5%E5%85%B7%E7%B1%BB/webpack/antd%E6%8C%89%E9%9C%80%E5%8A%A0%E8%BD%BD">antd按需加载</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%A6%96%E5%B7%A5%E5%85%B7%E7%B1%BB/webpack/eslint">eslint</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%A6%96%E5%B7%A5%E5%85%B7%E7%B1%BB/webpack/perttier">perttier</a></p>
+</li>
+</ul>
+<h2 id="指令">指令</h2>
+<ul>
+<li>
+<p><a href="/Blog/%F0%9F%A6%96%E5%B7%A5%E5%85%B7%E7%B1%BB/%E6%8C%87%E4%BB%A4/MAC-shell">MAC-shell</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%A6%96%E5%B7%A5%E5%85%B7%E7%B1%BB/%E6%8C%87%E4%BB%A4/index">index</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%A6%96%E5%B7%A5%E5%85%B7%E7%B1%BB/%E6%8C%87%E4%BB%A4/tree">tree</a></p>
+</li>
+</ul>
+<h2 id="数据库">数据库</h2>
+<ul>
+<li>
+<p><a href="/Blog/%F0%9F%A6%96%E5%B7%A5%E5%85%B7%E7%B1%BB/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4">MySQL常用命令</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%A6%96%E5%B7%A5%E5%85%B7%E7%B1%BB/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%B8%B8%E7%94%A8SQL">常用SQL</a></p>
+</li>
+</ul>
+<h2 id="无归类">无归类</h2>
+<ul>
+<li>
+<p><a href="/Blog/%F0%9F%A6%96%E5%B7%A5%E5%85%B7%E7%B1%BB/%E6%97%A0%E5%BD%92%E7%B1%BB/chrome%E6%B5%8F%E8%A7%88%E5%99%A8%E8%B7%A8%E5%9F%9F%E8%AE%BE%E7%BD%AE">chrome浏览器跨域设置</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%A6%96%E5%B7%A5%E5%85%B7%E7%B1%BB/%E6%97%A0%E5%BD%92%E7%B1%BB/%E5%BF%AB%E6%8D%B7%E9%94%AE">快捷键</a></p>
+</li>
+</ul>
+<h2 id="系统操作">系统操作</h2>
+<ul>
+<li>
+<p><a href="/Blog/%F0%9F%A6%96%E5%B7%A5%E5%85%B7%E7%B1%BB/%E7%B3%BB%E7%BB%9F%E6%93%8D%E4%BD%9C/cross-env">cross-env</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%A6%96%E5%B7%A5%E5%85%B7%E7%B1%BB/%E7%B3%BB%E7%BB%9F%E6%93%8D%E4%BD%9C/%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA">安装虚拟机</a></p>
+</li>
+<li>
+<p><a href="/Blog/%F0%9F%A6%96%E5%B7%A5%E5%85%B7%E7%B1%BB/%E7%B3%BB%E7%BB%9F%E6%93%8D%E4%BD%9C/%E6%9F%A5%E7%9C%8B%E6%9C%AC%E5%9C%B0ip%E4%B9%8B%E7%B1%BB%E7%9A%84%E9%85%8D%E7%BD%AE(window)">查看本地ip之类的配置(window)</a></p>
+</li>
+</ul>
+
+</div>
+
+
+<script src="/Blog/js/book-menu.js"></script>
+
+      </div>
+
+      <div class="sidebar-toggle" onclick="sidebar_toggle()" onmouseover="add_inner()" onmouseleave="remove_inner()">
+  <div class="sidebar-toggle-inner"></div>
+</div>
+
+<script>
+function add_inner() {
+  let inner = document.querySelector('.sidebar-toggle-inner')
+  inner.classList.add('show')  
+}
+
+function remove_inner() {
+  let inner = document.querySelector('.sidebar-toggle-inner')
+  inner.classList.remove('show')
+}
+
+function sidebar_toggle() {
+    let sidebar_toggle = document.querySelector('.sidebar-toggle')
+    let sidebar = document.querySelector('.book-sidebar')
+    let content = document.querySelector('.off-canvas-content')
+    if (sidebar_toggle.classList.contains('extend')) { // show
+        sidebar_toggle.classList.remove('extend')
+        sidebar.classList.remove('hide')
+        content.classList.remove('extend')
+    }
+    else { // hide
+        sidebar_toggle.classList.add('extend')
+        sidebar.classList.add('hide')
+        content.classList.add('extend')
+    }
+}
+</script>
+
+      <div class="off-canvas-content">
+        <div class="columns">
+          <div class="column col-10 col-lg-12">
+            <div class="book-navbar"><!-- For Responsive Layout -->
+
+<header class="navbar">
+  <section class="navbar-section">
+    <a onclick="open_sidebar()">
+      <i class="icon icon-menu"></i>
+    </a>
+  </section>
+</header>
+</div>
+            <div class="book-content"><div class="book-post">
+  <h1 id="合并配置">合并配置</h1>
+<p>new Vue 的过程通常有两种场景</p>
+<ol>
+<li>外部我们的代码主动调用 <code>new Vue(options)</code> 的方式实例化一个Vue 对象；</li>
+<li>组件过程中，内部通过 <code>new Vue(options)</code> 实例化子组件；</li>
+</ol>
+<p>无论哪种场景都会执行实例的 _init(options) 方法，他首先会执行一个 mergeOptions 的逻辑（定义于 <code>src/core/instance/init.js</code>）</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Vue.prototyp._init = <span class="function"><span class="keyword">function</span>(<span class="params">options?: Object</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// merge options</span></span><br><span class="line">  <span class="keyword">if</span> (options &amp;&amp; options._isComponents) &#123;</span><br><span class="line">    <span class="comment">// optimize internal component instantiation</span></span><br><span class="line">    <span class="comment">// since dynamic options merging is pretty slow, and none of the</span></span><br><span class="line">    <span class="comment">// internal component options needs special treatment.</span></span><br><span class="line">    <span class="comment">// 优化内部组件实例化</span></span><br><span class="line">    <span class="comment">// 因为动态选项合并非常慢，而且没有内部组件选项需要特殊处理。</span></span><br><span class="line">    initInternalComponent(vm, options);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    vm.$options = mergeOptions(resolveConstructorOptions(vm.constructor), options || &#123;&#125;, vm);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// ......</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>可以看到不同场景对于 options 的合并逻辑是不一样的，并且传入的options 值也有非常大的不同，接下来分析两种场景的options 合并过程：</p>
+<h2 id="外部调用场景">外部调用场景</h2>
+<p>举例</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">"vue"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> childComp = &#123;</span><br><span class="line">  template: <span class="string">"&lt;div&gt;&#123;&#123;msg&#125;&#125;&lt;/div&gt;"</span>,</span><br><span class="line">  created() &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"child created"</span>);</span><br><span class="line">  &#125;,</span><br><span class="line">  mounted() &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"child mounted"</span>);</span><br><span class="line">  &#125;,</span><br><span class="line">  data() &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      msg: <span class="string">"Hello Vue"</span></span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Vue.mixin(&#123;</span><br><span class="line">  created() &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"parent created"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> app = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="string">"#app"</span>,</span><br><span class="line">  render: <span class="function"><span class="params">h</span> =&gt;</span> h(childComp)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>当执行 new Vue 的时候，在执行 this._init(options) 的时候，就会执行如下逻辑去合并options:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; V4MAPPED, resolve &#125; <span class="keyword">from</span> <span class="string">"dns"</span>;</span><br><span class="line"></span><br><span class="line">vm.$options = mergeOptions(</span><br><span class="line">    resolveConstructorOptions(vm.constructor), </span><br><span class="line">    options || &#123;&#125;,</span><br><span class="line">    vm</span><br><span class="line">  );</span><br></pre></td></tr></table></figure>
+<p>这里通过 mergeOptions 方法合并，它实际上就是把 resolveConstructorOptions(vm.constructor) 的返回值与options 做合并，resolveConstructorOptions 的实现先不考虑，在这个场景下，他还是简单返回 vm.constructor.options, 相当于 Vue.options, 那么这个值又是什么呢？其实在 initClobalAPI(Vue) 的时候定义了这个值，代码在 <code>src/core/global-api/index.js</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">initGlobalAPI</span> (<span class="params">Vue: GlobalAPI</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">  Vue.options = <span class="built_in">Object</span>.create(<span class="literal">null</span>)</span><br><span class="line"></span><br><span class="line">  ASSET_TYPES.forEach(<span class="function"><span class="params">type</span> =&gt;</span> &#123;</span><br><span class="line">    Vue.options[type + <span class="string">'s'</span>] = <span class="built_in">Object</span>.create(<span class="literal">null</span>)</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  <span class="comment">// this is used to identify the "base" constructor to extend all plain-object</span></span><br><span class="line">  <span class="comment">// components with in Weex's multi-instance scenarios.</span></span><br><span class="line">  Vue.options._base = Vue</span><br><span class="line"></span><br><span class="line">  extend(Vue.options.components, builtInComponents)</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>首先通过 <code>Vue.options = Object.create(null)</code> 创建一个空对象，<br>
+然后遍历 <code>ASSET_TYPES</code> (<code>src/shared/constants.js</code>)</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> ASSET_TYPES = [</span><br><span class="line">  <span class="string">'component'</span>,</span><br><span class="line">  <span class="string">'directive'</span>,</span><br><span class="line">  <span class="string">'filter'</span></span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p>所以上面遍历的代码相当于</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Vue.options.components = &#123;&#125;</span><br><span class="line">Vue.options.directives = &#123;&#125;</span><br><span class="line">Vue.options.filters = &#123;&#125;</span><br></pre></td></tr></table></figure>
+<p>接着执行了 <code> Vue.options._base = Vue</code></p>
+<p>最后通过 extend(Vue.options.components, builtInComponents) 把一些内置组件扩展到 Vue.options.components 上<br>
+(vue 的内置组件目前有 <code>&lt;keep-alive&gt;</code>, <code>&lt;transition&gt;</code>, <code>&lt;transition-group&gt;</code>,这也就是为什么使用这些组件不需要注册的原因 )</p>
+<p>回到 mergeOptions 函数（定义于<code>src/core/util/options.js</code>）</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 将两个选项对象合并到一个新的对象中。</span></span><br><span class="line"><span class="comment"> * 用于实例化和继承的核心实用程序。</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">mergeOptions</span> (<span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">  parent: Object,</span></span></span><br><span class="line"><span class="function"><span class="params">  child: Object,</span></span></span><br><span class="line"><span class="function"><span class="params">  vm?: Component</span></span></span><br><span class="line"><span class="function"><span class="params"></span>): <span class="title">Object</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (process.env.NODE_ENV !== <span class="string">"production"</span>) &#123;</span><br><span class="line">    checkComponents(child);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> child === <span class="string">"function"</span>) &#123;</span><br><span class="line">    child = child.options;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  normalizeProps(child, vm);</span><br><span class="line">  normalizeInject(child, vm);</span><br><span class="line">  normalizeDirectives(child);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> extendsFrom = child.extends;</span><br><span class="line">  <span class="keyword">if</span> (extendsFrom) &#123;</span><br><span class="line">    parent = mergeOptions(parent, extendsFrom, vm);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (child.mixins) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>, l = child.mixins.length; i &lt; l; i++) &#123;</span><br><span class="line">      parent = mergeOptions(parent, child.mixins[i], vm);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> options = &#123;&#125;;</span><br><span class="line">  <span class="keyword">let</span> key;</span><br><span class="line">  <span class="keyword">for</span> (key <span class="keyword">in</span> parent) &#123;</span><br><span class="line">    mergeField(key); <span class="comment">// SEE-HERE:</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">for</span> (key <span class="keyword">in</span> child) &#123;</span><br><span class="line">    <span class="keyword">if</span> (!hasOwn(parent, key)) &#123;</span><br><span class="line">      mergeField(key);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">mergeField</span>(<span class="params">key</span>) </span>&#123;    <span class="comment">// SEE-HERE:</span></span><br><span class="line">    <span class="keyword">const</span> strat = strats[key] || defaultStrat;</span><br><span class="line">    options[key] = strat(parent[key], child[key], vm, key);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> options;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>mergeOptions 主要功能就是 <code>parent</code> 和   <code>child</code> 这两个对象根据一些合并策略，合并成一个新对象并返回；<br>
+核心步骤：</p>
+<ol>
+<li>先递归把 <code>extends</code> 和 <code>mixins</code> 合并到 <code>parent</code></li>
+<li>遍历 <code>parent</code>, 调用 <code>mergeField</code>;</li>
+<li>遍历 <code>child</code>, 如果 key 不在 perent 的自身属性上，则调用 <code>mergeField</code>.</li>
+</ol>
+<h3 id="mergeField">mergeField</h3>
+<p><code>mergeField</code> 对于不同的key有不同的合并策略, 举例来说，对于生命周期函数，他的合并策略如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">mergeHook</span> (<span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">  parentVal: ?Array&lt;Function&gt;,</span></span></span><br><span class="line"><span class="function"><span class="params">  childVal: ?Function | ?Array&lt;Function&gt;</span></span></span><br><span class="line"><span class="function"><span class="params"></span>): ?<span class="title">Array</span>&lt;<span class="title">Function</span>&gt; </span>&#123;</span><br><span class="line">   <span class="keyword">return</span> childVal</span><br><span class="line">    ? parentVal</span><br><span class="line">    <span class="comment">// 如果`parentVal`存在就把 childVal 添加到 parentVal 后返回新数组</span></span><br><span class="line">    <span class="comment">// 所以一旦 parent 和 child 都定义了相同的钩子函数，那么它们会把 2 个钩子函数合并成一个数组</span></span><br><span class="line">      ? parentVal.concat(childVal) </span><br><span class="line">      : <span class="built_in">Array</span>.isArray(childVal)</span><br><span class="line">        ? childVal</span><br><span class="line">        : [childVal]</span><br><span class="line">    : parentVal</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">LIFECYCLE_HOOKS.forEach(<span class="function"><span class="params">hook</span> =&gt;</span> &#123;</span><br><span class="line">  strats[hook] = mergeHook</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/* LIFECYCLE_HOOKS(`src/shared/constants.js`) */</span></span><br><span class="line"><span class="comment">// 这里定义了vue.js所有的钩子函数名称，所以对于钩子函数，他们的合并策略都是 mergeHook函数</span></span><br><span class="line"><span class="comment">// 其它属性的合并策略的定义都可以在 `src/core/util/options.js`</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> LIFECYCLE_HOOKS = [</span><br><span class="line">  <span class="string">'beforeCreate'</span>,</span><br><span class="line">  <span class="string">'created'</span>,</span><br><span class="line">  <span class="string">'beforeMount'</span>,</span><br><span class="line">  <span class="string">'mounted'</span>,</span><br><span class="line">  <span class="string">'beforeUpdate'</span>,</span><br><span class="line">  <span class="string">'updated'</span>,</span><br><span class="line">  <span class="string">'beforeDestroy'</span>,</span><br><span class="line">  <span class="string">'destroyed'</span>,</span><br><span class="line">  <span class="string">'activated'</span>,</span><br><span class="line">  <span class="string">'deactivated'</span>,</span><br><span class="line">  <span class="string">'errorCaptured'</span></span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p>通过执行 mergeField 函数，把合并后的结果保存到 options 对象中，并在最后返回它</p>
+<p>当我们执行完 <code>mergeOptions</code>后， vm.$options的值差不多如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">vm.$options = &#123;</span><br><span class="line">  components: &#123; &#125;,</span><br><span class="line">  created: [</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">created</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'parent created'</span>) </span><br><span class="line">    &#125;</span><br><span class="line">  ],</span><br><span class="line">  directives: &#123; &#125;,</span><br><span class="line">  filters: &#123; &#125;,</span><br><span class="line">  _base: <span class="function"><span class="keyword">function</span> <span class="title">Vue</span>(<span class="params">options</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// ......</span></span><br><span class="line">  &#125;,</span><br><span class="line">  el: <span class="string">"#app"</span>,</span><br><span class="line">  render: <span class="function"><span class="keyword">function</span> (<span class="params">h</span>) </span>&#123;  </span><br><span class="line">    <span class="comment">//......</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="组件调用场景">组件调用场景</h2>
+<p>由于组件的构造函数是通过 Vue.extend 继承自 Vue 的，先来回顾下该过程</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* src/core/global-api/extend.js  */</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Class inheritance</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">Vue.extend = <span class="function"><span class="keyword">function</span>(<span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">  extendOptions: Object</span></span></span><br><span class="line"><span class="function"><span class="params"></span>): <span class="title">Function</span> </span>&#123;</span><br><span class="line">  <span class="comment">// ......</span></span><br><span class="line"></span><br><span class="line">  Sub.options = mergeOptions(</span><br><span class="line">    Super.options, </span><br><span class="line">    extendOptions <span class="comment">// 对应前面定义的组件对象</span></span><br><span class="line">  );</span><br><span class="line"></span><br><span class="line">  <span class="comment">// ......</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 在扩展时保留对超级选项的引用,</span></span><br><span class="line">  <span class="comment">// 稍后在实例化时，我们可以检查Super的选项是否已更新。</span></span><br><span class="line">  Sub.superOptions = Super.options;</span><br><span class="line">  Sub.extendOptions = extendOptions;</span><br><span class="line">  Sub.sealedOptions = extend(&#123;&#125;, Sub.options);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// ......</span></span><br><span class="line">  <span class="keyword">return</span> Sub;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>回忆下组件的初始化过程</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* src/core/vdom/create-component.js */</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">createComponentInstanceForVnode</span> (<span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">  vnode: any, <span class="regexp">//</span> 我们知道它是MountedComponentVNode，但 flow 不知道</span></span></span><br><span class="line"><span class="function"><span class="params">  parent: any, <span class="regexp">//</span> activeInstance 处于生命周期状态</span></span></span><br><span class="line"><span class="function"><span class="params"></span>): <span class="title">Component</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> options: InternalComponentOptions = &#123;</span><br><span class="line">    _isComponent: <span class="literal">true</span>,</span><br><span class="line">    _parentVnode: vnode,</span><br><span class="line">    parent</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// ......</span></span><br><span class="line">  </span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> vnode.componentOptions.Ctor(options)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里的 <code>vnode.componentOptions.Ctor</code> 指向 <code>vue.extend</code> 的返回值 <code>Sub</code>,<br>
+所以接着执行  <code>this._init(options)</code>,<br>
+因为 <code>options._isComponent</code> 为true, 那么合并 options 的过程走到了 <code>initInternalComponent(vm, options)</code> 逻辑;</p>
+<p>看一下代码实现：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">initInternalComponent</span>(<span class="params">vm: Component, options: InternalComponentOptions</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> opts = (vm.$options = <span class="built_in">Object</span>.create(vm.constructor.options));</span><br><span class="line">  <span class="comment">// 这样做是因为它比动态枚举要快</span></span><br><span class="line">  <span class="keyword">const</span> parentVnode = options._parentVnode;</span><br><span class="line">  opts.parent = options.parent;</span><br><span class="line">  opts._parentVnode = parentVnode;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> vnodeComponentOptions = parentVnode.componentOptions;</span><br><span class="line">  opts.propsData = vnodeComponentOptions.propsData;</span><br><span class="line">  opts._parentListeners = vnodeComponentOptions.listeners;</span><br><span class="line">  opts._renderChildren = vnodeComponentOptions.children;</span><br><span class="line">  opts._componentTag = vnodeComponentOptions.tag;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (options.render) &#123;</span><br><span class="line">    opts.render = options.render;</span><br><span class="line">    opts.staticRenderFns = options.staticRenderFns;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>initInternalComponent</code> 方法:<br>
+首先执行 <code>const opts = (vm.$options = Object.create(vm.constructor.options))</code>, 这里的<code>vm.constructor</code> 就是子组件的构造函数 <code>Sub</code>, 相当于 <code>vm.$options = Sub.options</code>;<br>
+然后又把实例化子组件传入的子组件父 <code>VNode</code>实例 <code>parentVnode</code>、 子组件的父 Vue 实例 <code>parent</code>, 保存到 <code>vm.$options</code>中，另外还保留了 <code>parentVnode</code> 配置中的如 <code>propsData</code> 等其它的属性。</p>
+<p>这么看来，initInternalComponent 只是做了简单一层对象赋值，并不涉及到递归、合并策略等复杂逻辑</p>
+<p>因此，在 组件调用场景 中，执行完如下合并后</p>
+<p><code>initInternalComponent(vm, options)</code></p>
+<p><code>vm.$options</code> 的值差不多如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">vm.$options = &#123;</span><br><span class="line">  parent: Vue <span class="comment">/*父Vue实例*/</span>,</span><br><span class="line">  propsData: <span class="literal">undefined</span>,</span><br><span class="line">  _componentTag: <span class="literal">undefined</span>,</span><br><span class="line">  _parentVnode: VNode <span class="comment">/*父VNode实例*/</span>,</span><br><span class="line">  _renderChildren: <span class="literal">undefined</span>,</span><br><span class="line">  __proto__: &#123;</span><br><span class="line">    components: &#123;&#125;,</span><br><span class="line">    directives: &#123;&#125;,</span><br><span class="line">    filters: &#123;&#125;,</span><br><span class="line">    _base: <span class="function"><span class="keyword">function</span> <span class="title">Vue</span>(<span class="params">options</span>) </span>&#123;</span><br><span class="line">      <span class="comment">//...</span></span><br><span class="line">    &#125;,</span><br><span class="line">    _Ctor: &#123;&#125;,</span><br><span class="line">    created: [</span><br><span class="line">      <span class="function"><span class="keyword">function</span> <span class="title">created</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"parent created"</span>);</span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="function"><span class="keyword">function</span> <span class="title">created</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"child created"</span>);</span><br><span class="line">      &#125;</span><br><span class="line">    ],</span><br><span class="line">    mounted: [</span><br><span class="line">      <span class="function"><span class="keyword">function</span> <span class="title">mounted</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"child mounted"</span>);</span><br><span class="line">      &#125;</span><br><span class="line">    ],</span><br><span class="line">    data() &#123;</span><br><span class="line">      <span class="keyword">return</span> &#123;</span><br><span class="line">        msg: <span class="string">"Hello Vue"</span></span><br><span class="line">      &#125;;</span><br><span class="line">    &#125;,</span><br><span class="line">    template: <span class="string">"&lt;div&gt;&#123;&#123;msg&#125;&#125;&lt;/div&gt;"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="总结">总结</h2>
+<ol>
+<li>外部调用场景下的合并配置是通过 <code>mergeOptions</code>, 并遵循一定的合并策略；</li>
+<li>组件合并是通过 <code>initInternalComponent</code>, 他的合并更快；</li>
+<li>框架和库的设计都是类似的，自身定义了很多默认配置，同时在初始化阶段传入自定义配置， 然后merge配置，来达到定制化不同需求的目的；</li>
+</ol>
+
+</div>
+
+
+  <div class="book-comments">
+    
+
+
+
+
+  </div>
+
+
+
+<script src="/Blog/js/book-post.js"></script>
+</div>
+          </div>
+          <div class="column col-2 hide-lg">
+            <div class="book-post-info">
+  
+    <div class="book-post-meta">
+
+  <div class="author">
+
+    <!-- Author image -->
+    <div class="author-img">
+      
+        <figure
+          class="avatar avatar-lg"
+          data-initial="甜"
+          style="background-color: #3b4351;">
+        </figure>
+      
+    </div>
+
+    <!-- Author title -->
+    <div class="author-title">
+      <div>甜里甜气</div>
+      <div>2020-09-19</div>
+    </div>
+  </div>
+
+  
+
+  <div class="divider"></div>
+</div>
+  
+
+  <div class="book-tocbot"></div>
+<div class="book-tocbot-menu">
+  <a class="book-toc-expand" onclick="expand_toc()">Expand all</a>
+  <a onclick="go_top()">⬆ Top</a>
+  <a onclick="go_bottom()">⬇ Bottom</a>
+</div>
+
+
+<script src="/Blog/js/book-toc.js"></script>
+
+
+</div>
+          </div>
+        </div>
+      </div>
+
+      <a class="off-canvas-overlay" onclick="hide_canvas()"></a>
+    </div>
+  </body>
+</html>
+
+
+<script src="/Blog/js/book.js"></script>
+

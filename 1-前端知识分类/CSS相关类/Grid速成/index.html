@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+
+    
+      <link rel="icon" href="/Blog/favicon.png" />
+    
+
+    <title>
+        
+          1-前端知识分类/CSS相关类/Grid速成 - 李幸娟的前端博客
+        
+    </title>
+
+    <!-- Spectre.css framework -->
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">
+
+    <!-- theme css & js -->
+    
+<link rel="stylesheet" href="/Blog/css/book.css">
+
+    
+<script src="/Blog/js/book.js"></script>
+
+
+    <!-- tocbot -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+    
+    <!-- katex -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/zooming/2.1.1/zooming.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const zooming = new Zooming()
+    zooming.listen('.book-content img')
+})
+</script>
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+  <body>
+    <div class="book-container">
+      <div class="book-sidebar">
+        <div class="book-brand">
+  <a href="/Blog/">
+    <img src="/Blog/favicon.png">
+    <span>李幸娟的前端博客</span>
+  </a>
+</div> <div class="book-menu">
+  <ul>
+<li><a href="/Blog">Home</a></li>
+</ul>
+<h1 style="color:#448d55;">前端知识分类</h1> 
+<h2 id="CSS相关类">CSS相关类</h2>
+<ul>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/CSS%E7%9B%B8%E5%85%B3%E7%B1%BB/1px">1px</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/CSS%E7%9B%B8%E5%85%B3%E7%B1%BB/Grid%E9%80%9F%E6%88%90">Grid速成</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/CSS%E7%9B%B8%E5%85%B3%E7%B1%BB/bfc">bfc</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/CSS%E7%9B%B8%E5%85%B3%E7%B1%BB/blur%E5%92%8Cchange">blur和change</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/CSS%E7%9B%B8%E5%85%B3%E7%B1%BB/css3%E5%8A%A8%E7%94%BB%E5%B1%9E%E6%80%A7">css3动画属性</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/CSS%E7%9B%B8%E5%85%B3%E7%B1%BB/flex">flex</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/CSS%E7%9B%B8%E5%85%B3%E7%B1%BB/less%E9%80%9F%E6%88%90">less速成</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/CSS%E7%9B%B8%E5%85%B3%E7%B1%BB/scss%E9%80%9F%E6%88%90">scss速成</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/CSS%E7%9B%B8%E5%85%B3%E7%B1%BB/%E5%AE%9E%E7%8E%B0%E5%B1%85%E4%B8%AD">实现居中</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/CSS%E7%9B%B8%E5%85%B3%E7%B1%BB/%E5%B8%B8%E8%A7%81%E5%B8%83%E5%B1%80">常见布局</a></p>
+</li>
+</ul>
+<h2 id="Deno相关类">Deno相关类</h2>
+<ul>
+<li><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/Deno%E7%9B%B8%E5%85%B3%E7%B1%BB/index">index</a></li>
+</ul>
+<h2 id="JS相关类">JS相关类</h2>
+<ul>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/Class%E7%9B%B8%E5%85%B3">Class相关</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/EventLoop">EventLoop</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/Generate">Generate</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/Promise">Promise</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/Proxy">Proxy</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/Reflect">Reflect</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/Set+Map%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0">Set+Map学习笔记</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/async">async</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/bind">bind</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/call%E5%92%8Capply">call和apply</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/flat%E5%AE%9E%E7%8E%B0">flat实现</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/for%E5%92%8CforEach%E7%9A%84%E5%8C%BA%E5%88%AB">for和forEach的区别</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/promise%E6%89%8B%E5%86%99">promise手写</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/this%E7%9B%B8%E5%85%B3">this相关</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/%E4%BA%8B%E4%BB%B6%E5%A7%94%E6%89%98">事件委托</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/%E4%BD%9C%E7%94%A8%E5%9F%9F%E7%9B%B8%E5%85%B3">作用域相关</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/%E5%87%BD%E6%95%B0%E6%9F%AF%E9%87%8C%E5%8C%96">函数柯里化</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/%E5%87%BD%E6%95%B0%E7%9A%84%E5%86%85%E9%83%A8%E5%B1%9E%E6%80%A7">函数的内部属性</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/%E5%87%BD%E6%95%B0%E7%9A%84%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F">函数的执行顺序</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/%E5%88%A4%E6%96%AD%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B">判断数据类型</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/%E5%89%8D%E7%AB%AF%E6%A8%A1%E5%9D%97%E5%8C%96%E8%A7%84%E8%8C%83">前端模块化规范</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/%E5%8E%9F%E5%9E%8B%E5%92%8C%E5%8E%9F%E5%9E%8B%E9%93%BE">原型和原型链</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/%E5%90%88%E5%B9%B6%E7%A9%BA%E5%80%BC">合并空值</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/%E5%BA%9F%E5%BC%83">废弃</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/%E6%89%A9%E5%85%85%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%8A%9F%E8%83%BD">扩充类型的功能</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/%E6%95%B0%E7%BB%84">数组</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/%E6%AD%A3%E5%88%99">正则</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/%E6%B7%B1%E6%8B%B7%E8%B4%9D">深拷贝</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/%E7%AB%8B%E5%8D%B3%E6%89%A7%E8%A1%8C%E5%87%BD%E6%95%B0">立即执行函数</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0">箭头函数</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/%E7%BB%A7%E6%89%BF%E7%9B%B8%E5%85%B3">继承相关</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/%E9%97%AD%E5%8C%85%E7%9B%B8%E5%85%B3">闭包相关</a></p>
+</li>
+</ul>
+<h2 id="dva相关类">dva相关类</h2>
+<ul>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/dva%E7%9B%B8%E5%85%B3%E7%B1%BB/dva%E6%8A%BD%E7%A6%BB%E6%95%B0%E7%BB%84%E8%B7%AF%E7%94%B1+%E5%8A%A8%E6%80%81%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE%E6%96%B9%E6%B3%95">dva抽离数组路由+动态路由配置方法</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/dva%E7%9B%B8%E5%85%B3%E7%B1%BB/dva%E7%9A%84%E4%B8%80%E4%BA%9B%E7%82%B9">dva的一些点</a></p>
+</li>
+</ul>
+<h2 id="性能优化类">性能优化类</h2>
+<ul>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E7%B1%BB/%E5%8A%A0%E5%BF%AB%E9%A6%96%E5%B1%8F%E6%B8%B2%E6%9F%93">加快首屏渲染</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E7%B1%BB/%E9%98%B2%E6%8A%96%E5%92%8C%E8%8A%82%E6%B5%81">防抖和节流</a></p>
+</li>
+</ul>
+<h2 id="暂未分类">暂未分类</h2>
+<ul>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/%E6%9A%82%E6%9C%AA%E5%88%86%E7%B1%BB/Map%E5%92%8CObject">Map和Object</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/%E6%9A%82%E6%9C%AA%E5%88%86%E7%B1%BB/%5B%E8%99%9A%E6%8B%9FDOM%5D%5BAST%E8%AF%AD%E6%B3%95%E6%A0%91%5D%5Bbabel%E7%BC%96%E8%AF%91%5D">[虚拟DOM][AST语法树][babel编译]</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/%E6%9A%82%E6%9C%AA%E5%88%86%E7%B1%BB/error">error</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/%E6%9A%82%E6%9C%AA%E5%88%86%E7%B1%BB/oneLine">oneLine</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/%E6%9A%82%E6%9C%AA%E5%88%86%E7%B1%BB/price">price</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/%E6%9A%82%E6%9C%AA%E5%88%86%E7%B1%BB/%E4%BD%8D%E6%8E%A9%E7%A0%81">位掩码</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/%E6%9A%82%E6%9C%AA%E5%88%86%E7%B1%BB/%E5%AD%A6%E4%B9%A0%E6%96%87%E7%AB%A0%E7%9B%AE%E5%BD%95">学习文章目录</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/%E6%9A%82%E6%9C%AA%E5%88%86%E7%B1%BB/%E6%95%B0%E7%BB%84%E6%B7%B1%E6%8B%B7%E8%B4%9D+%E6%B5%85%E6%8B%B7%E8%B4%9D%E9%97%AE%E9%A2%98">数组深拷贝+浅拷贝问题</a></p>
+</li>
+</ul>
+<h2 id="浏览器相关类">浏览器相关类</h2>
+<ul>
+<li><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9B%B8%E5%85%B3%E7%B1%BB/%E6%B5%8F%E8%A7%88%E5%99%A8">浏览器</a></li>
+</ul>
+<h2 id="算法相关类">算法相关类</h2>
+<ul>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3%E7%B1%BB/js%E4%B8%89%E7%A7%8D%E9%81%8D%E5%8E%86">js三种遍历</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3%E7%B1%BB/%E5%B8%B8%E8%A7%81%E6%8E%92%E5%BA%8F">常见排序</a></p>
+</li>
+</ul>
+<h2 id="网络和安全类">网络和安全类</h2>
+<ul>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/%E7%BD%91%E7%BB%9C%E5%92%8C%E5%AE%89%E5%85%A8%E7%B1%BB/CDN%E7%9A%84%E5%8E%9F%E7%90%86">CDN的原理</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/%E7%BD%91%E7%BB%9C%E5%92%8C%E5%AE%89%E5%85%A8%E7%B1%BB/HTTP2.0">HTTP2.0</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/%E7%BD%91%E7%BB%9C%E5%92%8C%E5%AE%89%E5%85%A8%E7%B1%BB/cookie%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E5%AE%89%E5%85%A8">cookie为什么不安全</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/%E7%BD%91%E7%BB%9C%E5%92%8C%E5%AE%89%E5%85%A8%E7%B1%BB/%E5%89%8D%E7%AB%AF%E9%89%B4%E6%9D%83">前端鉴权</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/%E7%BD%91%E7%BB%9C%E5%92%8C%E5%AE%89%E5%85%A8%E7%B1%BB/%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95">加密算法</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/%E7%BD%91%E7%BB%9C%E5%92%8C%E5%AE%89%E5%85%A8%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C">计算机网络</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/%E7%BD%91%E7%BB%9C%E5%92%8C%E5%AE%89%E5%85%A8%E7%B1%BB/%E8%BE%93%E5%85%A5URL%E5%90%8E%E5%8F%91%E7%94%9F%E4%BA%86%E4%BB%80%E4%B9%88">输入URL后发生了什么</a></p>
+</li>
+</ul>
+<h1 style="color:#448d55;">框架</h1> 
+<h2 id="Vue">Vue</h2>
+<ul>
+<li>
+<p><a href="/Blog/2-%E6%A1%86%E6%9E%B6/Vue/0%E6%BA%90%E7%A0%81-%E4%B8%BB%E7%BA%BF">0源码-主线</a></p>
+</li>
+<li>
+<p><a href="/Blog/2-%E6%A1%86%E6%9E%B6/Vue/1%E6%BA%90%E7%A0%81-%E7%9B%AE%E5%BD%95">1源码-目录</a></p>
+</li>
+<li>
+<p><a href="/Blog/2-%E6%A1%86%E6%9E%B6/Vue/2%E6%BA%90%E7%A0%81-%E6%9E%84%E5%BB%BA%E8%BF%87%E7%A8%8B">2源码-构建过程</a></p>
+</li>
+<li>
+<p><a href="/Blog/2-%E6%A1%86%E6%9E%B6/Vue/3%E6%BA%90%E7%A0%81-%E6%95%B0%E6%8D%AE%E9%A9%B1%E5%8A%A8">3源码-数据驱动</a></p>
+</li>
+<li>
+<p><a href="/Blog/2-%E6%A1%86%E6%9E%B6/Vue/4%E6%BA%90%E7%A0%81-newVue">4源码-newVue</a></p>
+</li>
+<li>
+<p><a href="/Blog/2-%E6%A1%86%E6%9E%B6/Vue/5%E6%BA%90%E7%A0%81-Vue%E5%AE%9E%E4%BE%8B%E6%8C%82%E8%BD%BD%E7%9A%84%E5%AE%9E%E7%8E%B0">5源码-Vue实例挂载的实现</a></p>
+</li>
+<li>
+<p><a href="/Blog/2-%E6%A1%86%E6%9E%B6/Vue/6%E6%BA%90%E7%A0%81-render">6源码-render</a></p>
+</li>
+<li>
+<p><a href="/Blog/2-%E6%A1%86%E6%9E%B6/Vue/6%E6%BA%90%E7%A0%81-%E5%90%88%E5%B9%B6%E9%85%8D%E7%BD%AE">6源码-合并配置</a></p>
+</li>
+<li>
+<p><a href="/Blog/2-%E6%A1%86%E6%9E%B6/Vue/7%E6%BA%90%E7%A0%81-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F">7源码-生命周期</a></p>
+</li>
+<li>
+<p><a href="/Blog/2-%E6%A1%86%E6%9E%B6/Vue/8%E6%BA%90%E7%A0%81-createElement">8源码-createElement</a></p>
+</li>
+<li>
+<p><a href="/Blog/2-%E6%A1%86%E6%9E%B6/Vue/9%E6%BA%90%E7%A0%81-_update">9源码-_update</a></p>
+</li>
+<li>
+<p><a href="/Blog/2-%E6%A1%86%E6%9E%B6/Vue/9%E6%BA%90%E7%A0%81-patch">9源码-patch</a></p>
+</li>
+<li>
+<p><a href="/Blog/2-%E6%A1%86%E6%9E%B6/Vue/9%E6%BA%90%E7%A0%81-%E5%BC%82%E6%AD%A5%E7%BB%84%E4%BB%B6">9源码-异步组件</a></p>
+</li>
+<li>
+<p><a href="/Blog/2-%E6%A1%86%E6%9E%B6/Vue/9%E6%BA%90%E7%A0%81-%E7%BB%84%E4%BB%B6%E6%B3%A8%E5%86%8C">9源码-组件注册</a></p>
+</li>
+<li>
+<p><a href="/Blog/2-%E6%A1%86%E6%9E%B6/Vue/10%E6%95%B0%E6%8D%AE%E5%8A%AB%E6%8C%81">10数据劫持</a></p>
+</li>
+<li>
+<p><a href="/Blog/2-%E6%A1%86%E6%9E%B6/Vue/10%E6%BA%90%E7%A0%81-createComponent">10源码-createComponent</a></p>
+</li>
+<li>
+<p><a href="/Blog/2-%E6%A1%86%E6%9E%B6/Vue/11%E6%BA%90%E7%A0%81-%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86">11源码-响应式原理</a></p>
+</li>
+<li>
+<p><a href="/Blog/2-%E6%A1%86%E6%9E%B6/Vue/12%E5%AF%B9%E8%B1%A1%E5%92%8C%E6%95%B0%E7%BB%84%E7%9A%84%E5%A4%84%E7%90%86">12对象和数组的处理</a></p>
+</li>
+<li>
+<p><a href="/Blog/2-%E6%A1%86%E6%9E%B6/Vue/13%E6%BA%90%E7%A0%81-nextTick">13源码-nextTick</a></p>
+</li>
+<li>
+<p><a href="/Blog/2-%E6%A1%86%E6%9E%B6/Vue/13%E6%BA%90%E7%A0%81-%E4%BE%9D%E8%B5%96%E6%94%B6%E9%9B%86">13源码-依赖收集</a></p>
+</li>
+<li>
+<p><a href="/Blog/2-%E6%A1%86%E6%9E%B6/Vue/14%E6%BA%90%E7%A0%81-%E6%B4%BE%E5%8F%91%E6%9B%B4%E6%96%B0">14源码-派发更新</a></p>
+</li>
+<li>
+<p><a href="/Blog/2-%E6%A1%86%E6%9E%B6/Vue/README">README</a></p>
+</li>
+<li>
+<p><a href="/Blog/2-%E6%A1%86%E6%9E%B6/Vue/key%E7%9A%84%E4%BD%9C%E7%94%A8">key的作用</a></p>
+</li>
+<li>
+<p><a href="/Blog/2-%E6%A1%86%E6%9E%B6/Vue/%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83">开发规范</a></p>
+</li>
+</ul>
+<h2 id="公共类">公共类</h2>
+<ul>
+<li>
+<p><a href="/Blog/2-%E6%A1%86%E6%9E%B6/%E5%85%AC%E5%85%B1%E7%B1%BB/vue%E5%92%8Creact%E5%AF%B9%E6%AF%94">vue和react对比</a></p>
+</li>
+<li>
+<p><a href="/Blog/2-%E6%A1%86%E6%9E%B6/%E5%85%AC%E5%85%B1%E7%B1%BB/%E6%A1%86%E6%9E%B6%E9%80%9A%E8%AF%86">框架通识</a></p>
+</li>
+</ul>
+<h1 style="color:#448d55;">小李的读书笔记</h1> 
+<ul>
+<li>
+<p><a href="/Blog/3-%E5%B0%8F%E6%9D%8E%E7%9A%84%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E3%80%8ALinux%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AE%9E%E7%94%A8%E6%95%99%E7%A8%8B%E3%80%8B">《Linux操作系统实用教程》</a></p>
+</li>
+<li>
+<p><a href="/Blog/3-%E5%B0%8F%E6%9D%8E%E7%9A%84%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F">设计模式</a></p>
+</li>
+</ul>
+<h1 style="color:#448d55;">一些工具</h1> 
+<h2 id="git相关操作">git相关操作</h2>
+<ul>
+<li>
+<p><a href="/Blog/4-%E4%B8%80%E4%BA%9B%E5%B7%A5%E5%85%B7/git%E7%9B%B8%E5%85%B3%E6%93%8D%E4%BD%9C/git%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C%E2%9D%A4">git常用操作❤</a></p>
+</li>
+<li>
+<p><a href="/Blog/4-%E4%B8%80%E4%BA%9B%E5%B7%A5%E5%85%B7/git%E7%9B%B8%E5%85%B3%E6%93%8D%E4%BD%9C/%E4%BB%A3%E7%A0%81%E6%8F%90%E4%BA%A4%E6%A0%A1%E9%AA%8C">代码提交校验</a></p>
+</li>
+</ul>
+<h2 id="webpack">webpack</h2>
+<ul>
+<li>
+<p><a href="/Blog/4-%E4%B8%80%E4%BA%9B%E5%B7%A5%E5%85%B7/webpack/antd%E6%8C%89%E9%9C%80%E5%8A%A0%E8%BD%BD">antd按需加载</a></p>
+</li>
+<li>
+<p><a href="/Blog/4-%E4%B8%80%E4%BA%9B%E5%B7%A5%E5%85%B7/webpack/eslint">eslint</a></p>
+</li>
+<li>
+<p><a href="/Blog/4-%E4%B8%80%E4%BA%9B%E5%B7%A5%E5%85%B7/webpack/perttier">perttier</a></p>
+</li>
+</ul>
+<h2 id="指令">指令</h2>
+<ul>
+<li>
+<p><a href="/Blog/4-%E4%B8%80%E4%BA%9B%E5%B7%A5%E5%85%B7/%E6%8C%87%E4%BB%A4/MAC-shell">MAC-shell</a></p>
+</li>
+<li>
+<p><a href="/Blog/4-%E4%B8%80%E4%BA%9B%E5%B7%A5%E5%85%B7/%E6%8C%87%E4%BB%A4/index">index</a></p>
+</li>
+<li>
+<p><a href="/Blog/4-%E4%B8%80%E4%BA%9B%E5%B7%A5%E5%85%B7/%E6%8C%87%E4%BB%A4/tree">tree</a></p>
+</li>
+</ul>
+<h2 id="数据库">数据库</h2>
+<ul>
+<li>
+<p><a href="/Blog/4-%E4%B8%80%E4%BA%9B%E5%B7%A5%E5%85%B7/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4">MySQL常用命令</a></p>
+</li>
+<li>
+<p><a href="/Blog/4-%E4%B8%80%E4%BA%9B%E5%B7%A5%E5%85%B7/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%B8%B8%E7%94%A8SQL">常用SQL</a></p>
+</li>
+</ul>
+<h2 id="无归类">无归类</h2>
+<ul>
+<li>
+<p><a href="/Blog/4-%E4%B8%80%E4%BA%9B%E5%B7%A5%E5%85%B7/%E6%97%A0%E5%BD%92%E7%B1%BB/chrome%E6%B5%8F%E8%A7%88%E5%99%A8%E8%B7%A8%E5%9F%9F%E8%AE%BE%E7%BD%AE">chrome浏览器跨域设置</a></p>
+</li>
+<li>
+<p><a href="/Blog/4-%E4%B8%80%E4%BA%9B%E5%B7%A5%E5%85%B7/%E6%97%A0%E5%BD%92%E7%B1%BB/%E5%BF%AB%E6%8D%B7%E9%94%AE">快捷键</a></p>
+</li>
+</ul>
+<h2 id="系统操作">系统操作</h2>
+<ul>
+<li>
+<p><a href="/Blog/4-%E4%B8%80%E4%BA%9B%E5%B7%A5%E5%85%B7/%E7%B3%BB%E7%BB%9F%E6%93%8D%E4%BD%9C/cross-env">cross-env</a></p>
+</li>
+<li>
+<p><a href="/Blog/4-%E4%B8%80%E4%BA%9B%E5%B7%A5%E5%85%B7/%E7%B3%BB%E7%BB%9F%E6%93%8D%E4%BD%9C/%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA">安装虚拟机</a></p>
+</li>
+<li>
+<p><a href="/Blog/4-%E4%B8%80%E4%BA%9B%E5%B7%A5%E5%85%B7/%E7%B3%BB%E7%BB%9F%E6%93%8D%E4%BD%9C/%E6%9F%A5%E7%9C%8B%E6%9C%AC%E5%9C%B0ip%E4%B9%8B%E7%B1%BB%E7%9A%84%E9%85%8D%E7%BD%AE(window)">查看本地ip之类的配置(window)</a></p>
+</li>
+<li>
+<p><a href="/Blog//README">README</a></p>
+</li>
+<li>
+<p><a href="/Blog//ToMyself">ToMyself</a></p>
+</li>
+<li>
+<p><a href="/Blog//%E7%9F%A5%E8%AF%86%E7%82%B9%E7%9B%AE%E5%BD%95">知识点目录</a></p>
+</li>
+</ul>
+
+</div>
+
+
+<script src="/Blog/js/book-menu.js"></script>
+
+      </div>
+
+      <div class="sidebar-toggle" onclick="sidebar_toggle()" onmouseover="add_inner()" onmouseleave="remove_inner()">
+  <div class="sidebar-toggle-inner"></div>
+</div>
+
+<script>
+function add_inner() {
+  let inner = document.querySelector('.sidebar-toggle-inner')
+  inner.classList.add('show')  
+}
+
+function remove_inner() {
+  let inner = document.querySelector('.sidebar-toggle-inner')
+  inner.classList.remove('show')
+}
+
+function sidebar_toggle() {
+    let sidebar_toggle = document.querySelector('.sidebar-toggle')
+    let sidebar = document.querySelector('.book-sidebar')
+    let content = document.querySelector('.off-canvas-content')
+    if (sidebar_toggle.classList.contains('extend')) { // show
+        sidebar_toggle.classList.remove('extend')
+        sidebar.classList.remove('hide')
+        content.classList.remove('extend')
+    }
+    else { // hide
+        sidebar_toggle.classList.add('extend')
+        sidebar.classList.add('hide')
+        content.classList.add('extend')
+    }
+}
+</script>
+
+      <div class="off-canvas-content">
+        <div class="columns">
+          <div class="column col-10 col-lg-12">
+            <div class="book-navbar"><!-- For Responsive Layout -->
+
+<header class="navbar">
+  <section class="navbar-section">
+    <a onclick="open_sidebar()">
+      <i class="icon icon-menu"></i>
+    </a>
+  </section>
+</header>
+</div>
+            <div class="book-content"><div class="book-post">
+  <h1 id="测试">测试</h1>
+<p><a href="https://jsbin.com/piyunuwume/edit?html,css,output" target="_blank" rel="noopener">效果测试</a></p>
+<h1 id="grid-速成">grid 速成</h1>
+<h1 id="容器属性">容器属性</h1>
+<ol>
+<li>display: grid/inline-grid;</li>
+<li>grid-template-rows: 每行行高;</li>
+<li>grid-template-columns: 每列列宽;</li>
+<li>grid-row-gap: 行与行的间隔（行间距）;</li>
+<li>grid-column-gap: 列与列的间隔（列间距）;</li>
+<li>grid-gap: grid-column-gap和grid-row-gap的合并简写形式;</li>
+<li>grid-template-areas: 定义每个子区域名称</li>
+<li>grid-auto-flow: 元素流动方向，默认值是row，即&quot;先行后列&quot;。也可以将它设成column，变成&quot;先列后行&quot;;</li>
+<li>justify-items：单元格内容的水平位置（左中右）</li>
+<li>align-items：单元格内容的垂直位置（上中下）</li>
+<li>place-items：align-items属性和justify-items属性的合并简写形式。</li>
+<li>justify-content: 整个内容区域在容器里面的水平位置（左中右）</li>
+<li>align-content: 整个内容区域的垂直位置（上中下）</li>
+<li>grid-auto-rows: 浏览器自动创建的多余网格的行高 (写法同grid-template-rows)</li>
+<li>grid-auto-columns: 浏览器自动创建的多余网格的列宽 (写法同grid-template-columns)</li>
+<li>grid-template: grid-template-columns、grid-template-rows和grid-template-areas这三个属性的合并简写形式</li>
+<li>grid: grid-template-rows、grid-template-columns、grid-template-areas、 grid-auto-rows、grid-auto-columns、grid-auto-flow六个属性的合并简写形式</li>
+</ol>
+<p><strong>display</strong></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">display</span>: <span class="selector-tag">grid</span>;</span><br><span class="line">display: inline-grid;   // 允许grid后紧跟元素，同inline-block</span><br></pre></td></tr></table></figure>
+<h2 id="列宽">列宽</h2>
+<p><strong>grid-templete-columns</strong></p>
+<table>
+<thead>
+<tr>
+<th>name</th>
+<th>属性值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>普通用法</strong></td>
+<td>:100px 100px;</td>
+<td>2列, 宽为100px</td>
+</tr>
+<tr>
+<td><strong>百分比</strong></td>
+<td>:45% 45%;</td>
+<td>2列, 宽为容器的45%</td>
+</tr>
+<tr>
+<td><strong>repeat</strong></td>
+<td>:repeat(2, 100px);</td>
+<td>2列, 宽为100px</td>
+</tr>
+<tr>
+<td><strong>repeat多列</strong></td>
+<td>:repeat(2, 100px 120px);</td>
+<td>4列, 宽度依次为100px 120px 100px 120px</td>
+</tr>
+<tr>
+<td><strong>auto-fill</strong></td>
+<td>:repeat(auto-fill, 100px);</td>
+<td>列数不固定，每列宽100px</td>
+</tr>
+<tr>
+<td><strong>fr</strong></td>
+<td>:100px 1fr 2fr;</td>
+<td>3列，第一列10px, 剩余空间均分三份，第二列1份，第三列两份</td>
+</tr>
+<tr>
+<td><strong>minmax</strong></td>
+<td>:1fr 1fr minmax(100px 1fr);</td>
+<td>3列，第3列最窄100px，最宽1fr, 第1，2列宽均为1fr (若容器宽度为100px, 则总宽度溢出)</td>
+</tr>
+<tr>
+<td><strong>auto</strong></td>
+<td>:100px auto 100px;</td>
+<td>3列, 其他宽度都给中间列</td>
+</tr>
+</tbody>
+</table>
+<h2 id="行高">行高</h2>
+<p><strong>grid-templete-rows</strong></p>
+<p>使用同grid-templete-columns</p>
+<h2 id="自动生成的行和列的宽度">自动生成的行和列的宽度</h2>
+<p>如果一个容器只有三列, 但是一个项目指定在第五列，则会自动生成一个第四列，该属性则用于指定自动生成的列的宽度；<br>
+若不指定，浏览器则完全按照单元格内容的大小赋予宽度；</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">grid-auto-columns</span>: <span class="selector-attr">[]</span></span><br><span class="line"><span class="selector-tag">grid-auto-rows</span>: <span class="selector-attr">[]</span></span><br></pre></td></tr></table></figure>
+<h2 id="网格线命名">网格线命名</h2>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: grid;</span><br><span class="line">  grid-template-columns: [c1 x1] 100px [c2] 100px [c3] auto [c4]; // 同一根线有多个名字, 如 [c1 x1]</span><br><span class="line">  <span class="selector-tag">grid-template-rows</span>: <span class="selector-attr">[r1]</span> 100<span class="selector-tag">px</span> <span class="selector-attr">[r2]</span> 100<span class="selector-tag">px</span> <span class="selector-attr">[r3]</span> <span class="selector-tag">auto</span> <span class="selector-attr">[r4]</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="区域命名">区域命名</h2>
+<p><strong>grid-template-areas</strong>: 划分了9个区域的名字</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: grid;</span><br><span class="line">  <span class="attribute">grid-template-columns</span>: <span class="number">100px</span> <span class="number">100px</span> <span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">grid-template-rows</span>: <span class="number">100px</span> <span class="number">100px</span> <span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">grid-template-areas</span>: <span class="string">'a b c'</span></span><br><span class="line">                       <span class="string">'d e f'</span></span><br><span class="line">                       <span class="string">'g h i'</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果某些区域不需要利用，则使用&quot;点&quot;（.）表示。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">grid-template-areas: 'a . c'</span><br><span class="line">                     'd . f'</span><br><span class="line">                     'g . i';</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注意，区域的命名会影响到网格线。每个区域的起始网格线，会自动命名为区域名-start，终止网格线自动命名为区域名-end。<br>
+比如，区域名为header，则起始位置的水平网格线和垂直网格线叫做header-start，终止位置的水平网格线和垂直网格线叫做header-end</p>
+</blockquote>
+<h2 id="列-行间隔">列/行间隔</h2>
+<p><strong>grid-column-gap</strong><br>
+<strong>grid-row-gap</strong><br>
+<strong>grid-gap</strong> : <grid-row-gap> <grid-column-gap></p>
+<p>注：grid-可省略</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">grid-column-gap: 10px;  // 列间隔 10px;</span><br><span class="line">grid-row-gap: 10px;     // 行间隔 10px;</span><br><span class="line">grid-gap: 10px 12px;         // 缩写，行间隔均为10px, 列间隔均为12px;</span><br><span class="line"></span><br><span class="line">grid-column-gap: 10px 12px;  // 第一列列间隔 10px，后面的都为12px;</span><br><span class="line">grid-row-gap: 10px 12px;  // 第一行行间隔 10px，后面的都为12px;</span><br></pre></td></tr></table></figure>
+<h2 id="flow顺序">flow顺序</h2>
+<p><strong>grid-auto-flow</strong></p>
+<p>默认flow方向为 <strong>先行后列</strong>，若该属性值为 <strong>column</strong> , 则 <strong>先列后行</strong></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">grid-auto-flow: row;    // 先行后列</span><br><span class="line">grid-auto-flow: column; // 先列后行</span><br><span class="line">grid-auto-flow: row/column dense; // 某些项目设置位置后，其他项目怎么flow</span><br></pre></td></tr></table></figure>
+<h2 id="grid位置">grid位置</h2>
+<p><strong>justify-content</strong> 整个grid 容器在其父容器的水平位置<br>
+<strong>align-content</strong>   整个grid 容器在其父容器的垂直位置<br>
+<strong>place-content</strong>   缩写， <align-content> <justify-content></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  <span class="attribute">justify-content</span>: start | end | center | stretch | space-around | space-between | space-evenly;</span><br><span class="line">  <span class="attribute">align-content</span>: start | end | center | stretch | space-around | space-between | space-evenly;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="单元格内容位置">单元格内容位置</h2>
+<p>设置在父元素上</p>
+<p><strong>justify-items</strong>,</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">justify-items: start | end | center | stretch;</span><br></pre></td></tr></table></figure>
+<p><strong>align-items</strong> :单元格内容的垂直位置</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">align-items: start | end | center | stretch;</span><br></pre></td></tr></table></figure>
+<p><strong>place-items</strong> :简写</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">place-items</span>: &lt;<span class="selector-tag">align-items</span>&gt; &lt;<span class="selector-tag">justify-items</span>&gt;;</span><br><span class="line">place-items: center end; // 垂直方向居中，水平方向对齐结束位置</span><br></pre></td></tr></table></figure>
+<ul>
+<li>start：对齐单元格的起始边缘;</li>
+<li>end：对齐单元格的结束边缘;</li>
+<li>center：单元格内部居中;</li>
+<li>stretch：拉伸，占满单元格的整个宽度（默认值);</li>
+</ul>
+<h2 id="多余行-列">多余行/列</h2>
+<p>多余行/列： 有时只定义了三行，但是某个元素被指定于第五行，浏览器就会生成多余的行来放置该元素；</p>
+<p><strong>grid-auto-columns</strong> :多余生成的列宽度<br>
+<strong>grid-auto-rows</strong> :多余生成的行高度</p>
+<h2 id="缩写">缩写</h2>
+<p><strong>grid-template</strong> :grid-template-columns、grid-template-rows和grid-template-areas这三个属性的合并简写形式;<br>
+<strong>grid</strong> : 属性是grid-template-rows、grid-template-columns、grid-template-areas、 grid-auto-rows、grid-auto-columns、grid-auto-flow这六个属性的合并简写形式; （不易读，不推荐）</p>
+<h1 id="项目属性">项目属性</h1>
+<h2 id="指定项目位置">指定项目位置</h2>
+<p>通过指定项目四个边框的位置，指定项目的位置<br>
+使用这四个属性，如果产生了项目的重叠，则使用z-index属性指定项目的重叠顺序。</p>
+<ul>
+<li>grid-column-start属性：左边框所在的垂直网格线</li>
+<li>grid-column-end属性：右边框所在的垂直网格线</li>
+<li>grid-row-start属性：上边框所在的水平网格线</li>
+<li>grid-row-end属性：下边框所在的水平网格线</li>
+</ul>
+<h2 id="指定项目区域">指定项目区域</h2>
+<p><strong>grid-area</strong></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item-1</span> &#123;</span><br><span class="line">  <span class="attribute">grid-area</span>: e;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="指定项目对齐方式">指定项目对齐方式</h2>
+<p><strong>justify-self</strong><br>
+<strong>align-self</strong><br>
+<strong>place-self</strong></p>
+<p>用法同 <strong>justify-items</strong>， <strong>align-items</strong></p>
+<h1 id="参考文章">参考文章</h1>
+<ol>
+<li><a href="http://www.ruanyifeng.com/blog/2019/03/grid-layout-tutorial.html" target="_blank" rel="noopener">阮一峰grid</a></li>
+</ol>
+
+</div>
+
+
+  <div class="book-comments">
+    
+
+
+
+
+  </div>
+
+
+
+<script src="/Blog/js/book-post.js"></script>
+</div>
+          </div>
+          <div class="column col-2 hide-lg">
+            <div class="book-post-info">
+  
+    <div class="book-post-meta">
+
+  <div class="author">
+
+    <!-- Author image -->
+    <div class="author-img">
+      
+        <figure
+          class="avatar avatar-lg"
+          data-initial="甜"
+          style="background-color: #3b4351;">
+        </figure>
+      
+    </div>
+
+    <!-- Author title -->
+    <div class="author-title">
+      <div>甜里甜气</div>
+      <div>2020-09-19</div>
+    </div>
+  </div>
+
+  
+
+  <div class="divider"></div>
+</div>
+  
+
+  <div class="book-tocbot"></div>
+<div class="book-tocbot-menu">
+  <a class="book-toc-expand" onclick="expand_toc()">Expand all</a>
+  <a onclick="go_top()">⬆ Top</a>
+  <a onclick="go_bottom()">⬇ Bottom</a>
+</div>
+
+
+<script src="/Blog/js/book-toc.js"></script>
+
+
+</div>
+          </div>
+        </div>
+      </div>
+
+      <a class="off-canvas-overlay" onclick="hide_canvas()"></a>
+    </div>
+  </body>
+</html>
+
+
+<script src="/Blog/js/book.js"></script>
+

@@ -509,7 +509,8 @@ function sidebar_toggle() {
 <p>next-tick.js 声明了 microTimerFunc 和 macroTimerFunc 2 个变量，它们分别对应的是 micro task 的函数和 macro task 的函数。<br>
 对于 macro task 的实现，优先检测是否支持原生 setImmediate, 这是一个高版本 IE 和 Edge 才支持的特性，不支持的话再去检测是否支持原生的  MessageChannel, 如果也不支持的话就会降级为 setTimeout 0;<br>
 而对于 micro task 的实现，则检测浏览器是否原生支持 Promise，不支持的话直接指向 macro task 的实现;</p>
-<p><code>next-tick.js</code> 对外暴露了 2 个函数，先来看 <code>nextTick</code>, 即上一节派发更新中用到的函数  <code>nextTick(flushSchedulerQueue)</code> 所用到的函数。 他的逻辑也很简单，把传入的回调函数 cb 压入 <code>callbacks</code> 数组, 最后一次性地根据 useMacroTask 条件执行 <code>macroTimerFunc</code> 或者是 <code>microTimerFunc</code>, 而他们呢都会在下一个 tick 执行 flushCallbacks, flushCallbacks 的逻辑非常简单，对 callbacks 遍历，然后执行相应的回调函数。</p>
+<p><code>next-tick.js</code> 对外暴露了 2 个函数，先来看 <code>nextTick</code>, 即上一节派发更新中用到的函数  <code>nextTick(flushSchedulerQueue)</code> 所用到的函数。<br>
+next-tick的实现逻辑也很简单，把传入的回调函数 cb 压入 <code>callbacks</code> 数组, 最后一次性地根据 useMacroTask 条件执行 <code>macroTimerFunc</code> 或者是 <code>microTimerFunc</code>, 而他们呢都会在下一个 tick 执行 flushCallbacks, flushCallbacks 的逻辑非常简单，对 callbacks 遍历，然后执行相应的回调函数。</p>
 <p><strong>为什么接连多次修改DOM，但是并不会引起重复渲染？</strong></p>
 <p>这里使用 <code>callbacks</code> 而不是直接在 nextTick 中执行回调函数的原因是 <mark>保证在同一个tick内多次执行 nextTick</mark>, 不会开启多个异步任务，而是<mark>把这些异步任务异步任务都压缩成一个同步任务</mark>，在一个tick中执行完毕</p>
 <p>nextTick 最后还有一段逻辑：</p>

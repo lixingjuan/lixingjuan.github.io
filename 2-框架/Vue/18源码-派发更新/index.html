@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+
+    
+      <link rel="icon" href="/Blog/favicon.png" />
+    
+
+    <title>
+        
+          2-框架/Vue/18源码-派发更新 - 李幸娟的前端博客
+        
+    </title>
+
+    <!-- Spectre.css framework -->
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">
+
+    <!-- theme css & js -->
+    
+<link rel="stylesheet" href="/Blog/css/book.css">
+
+    
+<script src="/Blog/js/book.js"></script>
+
+
+    <!-- tocbot -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+    
+    <!-- katex -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/zooming/2.1.1/zooming.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const zooming = new Zooming()
+    zooming.listen('.book-content img')
+})
+</script>
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+  <body>
+    <div class="book-container">
+      <div class="book-sidebar">
+        <div class="book-brand">
+  <a href="/Blog/">
+    <img src="/Blog/favicon.png">
+    <span>李幸娟的前端博客</span>
+  </a>
+</div> <div class="book-menu">
+  <ul>
+<li><a href="/Blog">Home</a></li>
+</ul>
+<h1 style="color:#448d55;">前端知识分类</h1> 
+<h2 id="CSS相关类">CSS相关类</h2>
+<ul>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/CSS%E7%9B%B8%E5%85%B3%E7%B1%BB/1px">1px</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/CSS%E7%9B%B8%E5%85%B3%E7%B1%BB/Grid%E9%80%9F%E6%88%90">Grid速成</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/CSS%E7%9B%B8%E5%85%B3%E7%B1%BB/bfc">bfc</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/CSS%E7%9B%B8%E5%85%B3%E7%B1%BB/blur%E5%92%8Cchange">blur和change</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/CSS%E7%9B%B8%E5%85%B3%E7%B1%BB/css3%E5%8A%A8%E7%94%BB%E5%B1%9E%E6%80%A7">css3动画属性</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/CSS%E7%9B%B8%E5%85%B3%E7%B1%BB/flex">flex</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/CSS%E7%9B%B8%E5%85%B3%E7%B1%BB/less%E9%80%9F%E6%88%90">less速成</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/CSS%E7%9B%B8%E5%85%B3%E7%B1%BB/scss%E9%80%9F%E6%88%90">scss速成</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/CSS%E7%9B%B8%E5%85%B3%E7%B1%BB/%E5%AE%9E%E7%8E%B0%E5%B1%85%E4%B8%AD">实现居中</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/CSS%E7%9B%B8%E5%85%B3%E7%B1%BB/%E5%B8%B8%E8%A7%81%E5%B8%83%E5%B1%80">常见布局</a></p>
+</li>
+</ul>
+<h2 id="Deno相关类">Deno相关类</h2>
+<ul>
+<li><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/Deno%E7%9B%B8%E5%85%B3%E7%B1%BB/index">index</a></li>
+</ul>
+<h2 id="JS相关类">JS相关类</h2>
+<ul>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/Class%E7%9B%B8%E5%85%B3">Class相关</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/EventLoop">EventLoop</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/Generate">Generate</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/Promise">Promise</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/Proxy">Proxy</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/Reflect">Reflect</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/Set+Map%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0">Set+Map学习笔记</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/async">async</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/bind">bind</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/call%E5%92%8Capply">call和apply</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/flat%E5%AE%9E%E7%8E%B0">flat实现</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/for%E5%92%8CforEach%E7%9A%84%E5%8C%BA%E5%88%AB">for和forEach的区别</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/this%E7%9B%B8%E5%85%B3">this相关</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/%E4%BA%8B%E4%BB%B6%E5%A7%94%E6%89%98">事件委托</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/%E4%BD%9C%E7%94%A8%E5%9F%9F%E7%9B%B8%E5%85%B3">作用域相关</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/%E5%87%BD%E6%95%B0%E6%9F%AF%E9%87%8C%E5%8C%96">函数柯里化</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/%E5%87%BD%E6%95%B0%E7%9A%84%E5%86%85%E9%83%A8%E5%B1%9E%E6%80%A7">函数的内部属性</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/%E5%87%BD%E6%95%B0%E7%9A%84%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F">函数的执行顺序</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/%E5%88%A4%E6%96%AD%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B">判断数据类型</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/%E5%89%8D%E7%AB%AF%E6%A8%A1%E5%9D%97%E5%8C%96%E8%A7%84%E8%8C%83">前端模块化规范</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/%E5%8E%9F%E5%9E%8B%E5%92%8C%E5%8E%9F%E5%9E%8B%E9%93%BE">原型和原型链</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/%E5%90%88%E5%B9%B6%E7%A9%BA%E5%80%BC">合并空值</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/%E5%BA%9F%E5%BC%83">废弃</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/%E6%89%A9%E5%85%85%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%8A%9F%E8%83%BD">扩充类型的功能</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/%E6%95%B0%E7%BB%84">数组</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/%E6%AD%A3%E5%88%99">正则</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/%E6%B7%B1%E6%8B%B7%E8%B4%9D">深拷贝</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/%E7%AB%8B%E5%8D%B3%E6%89%A7%E8%A1%8C%E5%87%BD%E6%95%B0">立即执行函数</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0">箭头函数</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/%E7%BB%A7%E6%89%BF%E7%9B%B8%E5%85%B3">继承相关</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E7%9B%B8%E5%85%B3%E7%B1%BB/%E9%97%AD%E5%8C%85%E7%9B%B8%E5%85%B3">闭包相关</a></p>
+</li>
+</ul>
+<h2 id="dva相关类">dva相关类</h2>
+<ul>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/dva%E7%9B%B8%E5%85%B3%E7%B1%BB/dva%E6%8A%BD%E7%A6%BB%E6%95%B0%E7%BB%84%E8%B7%AF%E7%94%B1+%E5%8A%A8%E6%80%81%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE%E6%96%B9%E6%B3%95">dva抽离数组路由+动态路由配置方法</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/dva%E7%9B%B8%E5%85%B3%E7%B1%BB/dva%E7%9A%84%E4%B8%80%E4%BA%9B%E7%82%B9">dva的一些点</a></p>
+</li>
+</ul>
+<h2 id="性能优化类">性能优化类</h2>
+<ul>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E7%B1%BB/%E5%8A%A0%E5%BF%AB%E9%A6%96%E5%B1%8F%E6%B8%B2%E6%9F%93">加快首屏渲染</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E7%B1%BB/%E9%98%B2%E6%8A%96%E5%92%8C%E8%8A%82%E6%B5%81">防抖和节流</a></p>
+</li>
+</ul>
+<h2 id="暂未分类">暂未分类</h2>
+<ul>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/%E6%9A%82%E6%9C%AA%E5%88%86%E7%B1%BB/Map%E5%92%8CObject">Map和Object</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/%E6%9A%82%E6%9C%AA%E5%88%86%E7%B1%BB/%5B%E8%99%9A%E6%8B%9FDOM%5D%5BAST%E8%AF%AD%E6%B3%95%E6%A0%91%5D%5Bbabel%E7%BC%96%E8%AF%91%5D">[虚拟DOM][AST语法树][babel编译]</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/%E6%9A%82%E6%9C%AA%E5%88%86%E7%B1%BB/error">error</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/%E6%9A%82%E6%9C%AA%E5%88%86%E7%B1%BB/oneLine">oneLine</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/%E6%9A%82%E6%9C%AA%E5%88%86%E7%B1%BB/price">price</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/%E6%9A%82%E6%9C%AA%E5%88%86%E7%B1%BB/%E4%BD%8D%E6%8E%A9%E7%A0%81">位掩码</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/%E6%9A%82%E6%9C%AA%E5%88%86%E7%B1%BB/%E5%AD%A6%E4%B9%A0%E6%96%87%E7%AB%A0%E7%9B%AE%E5%BD%95">学习文章目录</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/%E6%9A%82%E6%9C%AA%E5%88%86%E7%B1%BB/%E6%95%B0%E7%BB%84%E6%B7%B1%E6%8B%B7%E8%B4%9D+%E6%B5%85%E6%8B%B7%E8%B4%9D%E9%97%AE%E9%A2%98">数组深拷贝+浅拷贝问题</a></p>
+</li>
+</ul>
+<h2 id="浏览器相关类">浏览器相关类</h2>
+<ul>
+<li><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9B%B8%E5%85%B3%E7%B1%BB/%E6%B5%8F%E8%A7%88%E5%99%A8">浏览器</a></li>
+</ul>
+<h2 id="算法相关类">算法相关类</h2>
+<ul>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3%E7%B1%BB/js%E4%B8%89%E7%A7%8D%E9%81%8D%E5%8E%86">js三种遍历</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3%E7%B1%BB/%E5%B8%B8%E8%A7%81%E6%8E%92%E5%BA%8F">常见排序</a></p>
+</li>
+</ul>
+<h1 style="color:#448d55;">框架</h1> 
+<h2 id="Vue">Vue</h2>
+<ul>
+<li>
+<p><a href="/Blog/2-%E6%A1%86%E6%9E%B6/Vue/0%E6%BA%90%E7%A0%81-%E4%B8%BB%E7%BA%BF">0源码-主线</a></p>
+</li>
+<li>
+<p><a href="/Blog/2-%E6%A1%86%E6%9E%B6/Vue/1%E6%BA%90%E7%A0%81-%E7%9B%AE%E5%BD%95">1源码-目录</a></p>
+</li>
+<li>
+<p><a href="/Blog/2-%E6%A1%86%E6%9E%B6/Vue/2%E6%BA%90%E7%A0%81-%E6%9E%84%E5%BB%BA%E8%BF%87%E7%A8%8B">2源码-构建过程</a></p>
+</li>
+<li>
+<p><a href="/Blog/2-%E6%A1%86%E6%9E%B6/Vue/3%E6%BA%90%E7%A0%81-%E6%95%B0%E6%8D%AE%E9%A9%B1%E5%8A%A8">3源码-数据驱动</a></p>
+</li>
+<li>
+<p><a href="/Blog/2-%E6%A1%86%E6%9E%B6/Vue/4%E6%BA%90%E7%A0%81-newVue">4源码-newVue</a></p>
+</li>
+<li>
+<p><a href="/Blog/2-%E6%A1%86%E6%9E%B6/Vue/5%E6%BA%90%E7%A0%81-Vue%E5%AE%9E%E4%BE%8B%E6%8C%82%E8%BD%BD%E7%9A%84%E5%AE%9E%E7%8E%B0">5源码-Vue实例挂载的实现</a></p>
+</li>
+<li>
+<p><a href="/Blog/2-%E6%A1%86%E6%9E%B6/Vue/6%E6%BA%90%E7%A0%81-render">6源码-render</a></p>
+</li>
+<li>
+<p><a href="/Blog/2-%E6%A1%86%E6%9E%B6/Vue/7%E6%BA%90%E7%A0%81-createElement">7源码-createElement</a></p>
+</li>
+<li>
+<p><a href="/Blog/2-%E6%A1%86%E6%9E%B6/Vue/8%E6%BA%90%E7%A0%81-_update">8源码-_update</a></p>
+</li>
+<li>
+<p><a href="/Blog/2-%E6%A1%86%E6%9E%B6/Vue/9%E6%BA%90%E7%A0%81-createComponent">9源码-createComponent</a></p>
+</li>
+<li>
+<p><a href="/Blog/2-%E6%A1%86%E6%9E%B6/Vue/10%E6%BA%90%E7%A0%81-patch">10源码-patch</a></p>
+</li>
+<li>
+<p><a href="/Blog/2-%E6%A1%86%E6%9E%B6/Vue/11%E6%BA%90%E7%A0%81-%E5%90%88%E5%B9%B6%E9%85%8D%E7%BD%AE">11源码-合并配置</a></p>
+</li>
+<li>
+<p><a href="/Blog/2-%E6%A1%86%E6%9E%B6/Vue/12%E6%BA%90%E7%A0%81-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F">12源码-生命周期</a></p>
+</li>
+<li>
+<p><a href="/Blog/2-%E6%A1%86%E6%9E%B6/Vue/12%E6%BA%90%E7%A0%81-%E7%BB%84%E4%BB%B6%E6%B3%A8%E5%86%8C">12源码-组件注册</a></p>
+</li>
+<li>
+<p><a href="/Blog/2-%E6%A1%86%E6%9E%B6/Vue/13%E6%BA%90%E7%A0%81-nextTick">13源码-nextTick</a></p>
+</li>
+<li>
+<p><a href="/Blog/2-%E6%A1%86%E6%9E%B6/Vue/13%E6%BA%90%E7%A0%81-%E5%BC%82%E6%AD%A5%E7%BB%84%E4%BB%B6">13源码-异步组件</a></p>
+</li>
+<li>
+<p><a href="/Blog/2-%E6%A1%86%E6%9E%B6/Vue/14%E6%95%B0%E6%8D%AE%E5%8A%AB%E6%8C%81">14数据劫持</a></p>
+</li>
+<li>
+<p><a href="/Blog/2-%E6%A1%86%E6%9E%B6/Vue/15%E6%BA%90%E7%A0%81-%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86">15源码-响应式原理</a></p>
+</li>
+<li>
+<p><a href="/Blog/2-%E6%A1%86%E6%9E%B6/Vue/16%E5%AF%B9%E8%B1%A1%E5%92%8C%E6%95%B0%E7%BB%84%E7%9A%84%E5%A4%84%E7%90%86">16对象和数组的处理</a></p>
+</li>
+<li>
+<p><a href="/Blog/2-%E6%A1%86%E6%9E%B6/Vue/17%E6%BA%90%E7%A0%81-%E4%BE%9D%E8%B5%96%E6%94%B6%E9%9B%86">17源码-依赖收集</a></p>
+</li>
+<li>
+<p><a href="/Blog/2-%E6%A1%86%E6%9E%B6/Vue/18%E6%BA%90%E7%A0%81-%E6%B4%BE%E5%8F%91%E6%9B%B4%E6%96%B0">18源码-派发更新</a></p>
+</li>
+<li>
+<p><a href="/Blog/2-%E6%A1%86%E6%9E%B6/Vue/README">README</a></p>
+</li>
+<li>
+<p><a href="/Blog/2-%E6%A1%86%E6%9E%B6/Vue/key%E7%9A%84%E4%BD%9C%E7%94%A8">key的作用</a></p>
+</li>
+<li>
+<p><a href="/Blog/2-%E6%A1%86%E6%9E%B6/Vue/%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83">开发规范</a></p>
+</li>
+</ul>
+<h2 id="公共类">公共类</h2>
+<ul>
+<li>
+<p><a href="/Blog/2-%E6%A1%86%E6%9E%B6/%E5%85%AC%E5%85%B1%E7%B1%BB/vue%E5%92%8Creact%E5%AF%B9%E6%AF%94">vue和react对比</a></p>
+</li>
+<li>
+<p><a href="/Blog/2-%E6%A1%86%E6%9E%B6/%E5%85%AC%E5%85%B1%E7%B1%BB/%E6%A1%86%E6%9E%B6%E9%80%9A%E8%AF%86">框架通识</a></p>
+</li>
+</ul>
+<h1 style="color:#448d55;">小李的读书笔记</h1> 
+<ul>
+<li>
+<p><a href="/Blog/3-%E5%B0%8F%E6%9D%8E%E7%9A%84%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E3%80%8ALinux%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AE%9E%E7%94%A8%E6%95%99%E7%A8%8B%E3%80%8B">《Linux操作系统实用教程》</a></p>
+</li>
+<li>
+<p><a href="/Blog/3-%E5%B0%8F%E6%9D%8E%E7%9A%84%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F">设计模式</a></p>
+</li>
+</ul>
+<h1 style="color:#448d55;">网络和安全类</h1> 
+<ul>
+<li>
+<p><a href="/Blog/4-%E7%BD%91%E7%BB%9C%E5%92%8C%E5%AE%89%E5%85%A8%E7%B1%BB/CDN%E7%9A%84%E5%8E%9F%E7%90%86">CDN的原理</a></p>
+</li>
+<li>
+<p><a href="/Blog/4-%E7%BD%91%E7%BB%9C%E5%92%8C%E5%AE%89%E5%85%A8%E7%B1%BB/HTTP2.0">HTTP2.0</a></p>
+</li>
+<li>
+<p><a href="/Blog/4-%E7%BD%91%E7%BB%9C%E5%92%8C%E5%AE%89%E5%85%A8%E7%B1%BB/cookie%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E5%AE%89%E5%85%A8">cookie为什么不安全</a></p>
+</li>
+<li>
+<p><a href="/Blog/4-%E7%BD%91%E7%BB%9C%E5%92%8C%E5%AE%89%E5%85%A8%E7%B1%BB/%E5%89%8D%E7%AB%AF%E9%89%B4%E6%9D%83">前端鉴权</a></p>
+</li>
+<li>
+<p><a href="/Blog/4-%E7%BD%91%E7%BB%9C%E5%92%8C%E5%AE%89%E5%85%A8%E7%B1%BB/%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95">加密算法</a></p>
+</li>
+<li>
+<p><a href="/Blog/4-%E7%BD%91%E7%BB%9C%E5%92%8C%E5%AE%89%E5%85%A8%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C">计算机网络</a></p>
+</li>
+<li>
+<p><a href="/Blog/4-%E7%BD%91%E7%BB%9C%E5%92%8C%E5%AE%89%E5%85%A8%E7%B1%BB/%E8%BE%93%E5%85%A5URL%E5%90%8E%E5%8F%91%E7%94%9F%E4%BA%86%E4%BB%80%E4%B9%88">输入URL后发生了什么</a></p>
+</li>
+</ul>
+<h1 style="color:#448d55;">一些工具</h1> 
+<h2 id="git相关操作">git相关操作</h2>
+<ul>
+<li>
+<p><a href="/Blog/5-%E4%B8%80%E4%BA%9B%E5%B7%A5%E5%85%B7/git%E7%9B%B8%E5%85%B3%E6%93%8D%E4%BD%9C/git%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C%E2%9D%A4">git常用操作❤</a></p>
+</li>
+<li>
+<p><a href="/Blog/5-%E4%B8%80%E4%BA%9B%E5%B7%A5%E5%85%B7/git%E7%9B%B8%E5%85%B3%E6%93%8D%E4%BD%9C/%E4%BB%A3%E7%A0%81%E6%8F%90%E4%BA%A4%E6%A0%A1%E9%AA%8C">代码提交校验</a></p>
+</li>
+</ul>
+<h2 id="webpack">webpack</h2>
+<ul>
+<li>
+<p><a href="/Blog/5-%E4%B8%80%E4%BA%9B%E5%B7%A5%E5%85%B7/webpack/antd%E6%8C%89%E9%9C%80%E5%8A%A0%E8%BD%BD">antd按需加载</a></p>
+</li>
+<li>
+<p><a href="/Blog/5-%E4%B8%80%E4%BA%9B%E5%B7%A5%E5%85%B7/webpack/eslint">eslint</a></p>
+</li>
+<li>
+<p><a href="/Blog/5-%E4%B8%80%E4%BA%9B%E5%B7%A5%E5%85%B7/webpack/perttier">perttier</a></p>
+</li>
+<li>
+<p><a href="/Blog/5-%E4%B8%80%E4%BA%9B%E5%B7%A5%E5%85%B7/webpack/webpack%E7%83%AD%E6%9B%B4%E6%96%B0%E5%8E%9F%E7%90%86">webpack热更新原理</a></p>
+</li>
+</ul>
+<h2 id="指令">指令</h2>
+<ul>
+<li>
+<p><a href="/Blog/5-%E4%B8%80%E4%BA%9B%E5%B7%A5%E5%85%B7/%E6%8C%87%E4%BB%A4/MAC-shell">MAC-shell</a></p>
+</li>
+<li>
+<p><a href="/Blog/5-%E4%B8%80%E4%BA%9B%E5%B7%A5%E5%85%B7/%E6%8C%87%E4%BB%A4/index">index</a></p>
+</li>
+<li>
+<p><a href="/Blog/5-%E4%B8%80%E4%BA%9B%E5%B7%A5%E5%85%B7/%E6%8C%87%E4%BB%A4/tree">tree</a></p>
+</li>
+</ul>
+<h2 id="数据库">数据库</h2>
+<ul>
+<li>
+<p><a href="/Blog/5-%E4%B8%80%E4%BA%9B%E5%B7%A5%E5%85%B7/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4">MySQL常用命令</a></p>
+</li>
+<li>
+<p><a href="/Blog/5-%E4%B8%80%E4%BA%9B%E5%B7%A5%E5%85%B7/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%B8%B8%E7%94%A8SQL">常用SQL</a></p>
+</li>
+</ul>
+<h2 id="无归类">无归类</h2>
+<ul>
+<li>
+<p><a href="/Blog/5-%E4%B8%80%E4%BA%9B%E5%B7%A5%E5%85%B7/%E6%97%A0%E5%BD%92%E7%B1%BB/chrome%E6%B5%8F%E8%A7%88%E5%99%A8%E8%B7%A8%E5%9F%9F%E8%AE%BE%E7%BD%AE">chrome浏览器跨域设置</a></p>
+</li>
+<li>
+<p><a href="/Blog/5-%E4%B8%80%E4%BA%9B%E5%B7%A5%E5%85%B7/%E6%97%A0%E5%BD%92%E7%B1%BB/%E5%BF%AB%E6%8D%B7%E9%94%AE">快捷键</a></p>
+</li>
+</ul>
+<h2 id="系统操作">系统操作</h2>
+<ul>
+<li>
+<p><a href="/Blog/5-%E4%B8%80%E4%BA%9B%E5%B7%A5%E5%85%B7/%E7%B3%BB%E7%BB%9F%E6%93%8D%E4%BD%9C/cross-env">cross-env</a></p>
+</li>
+<li>
+<p><a href="/Blog/5-%E4%B8%80%E4%BA%9B%E5%B7%A5%E5%85%B7/%E7%B3%BB%E7%BB%9F%E6%93%8D%E4%BD%9C/%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA">安装虚拟机</a></p>
+</li>
+<li>
+<p><a href="/Blog/5-%E4%B8%80%E4%BA%9B%E5%B7%A5%E5%85%B7/%E7%B3%BB%E7%BB%9F%E6%93%8D%E4%BD%9C/%E6%9F%A5%E7%9C%8B%E6%9C%AC%E5%9C%B0ip%E4%B9%8B%E7%B1%BB%E7%9A%84%E9%85%8D%E7%BD%AE(window)">查看本地ip之类的配置(window)</a></p>
+</li>
+<li>
+<p><a href="/Blog//README">README</a></p>
+</li>
+<li>
+<p><a href="/Blog//ToMyself">ToMyself</a></p>
+</li>
+<li>
+<p><a href="/Blog//%E4%BA%86%E8%A7%A3%E7%B1%BB">了解类</a></p>
+</li>
+</ul>
+
+</div>
+
+
+<script src="/Blog/js/book-menu.js"></script>
+
+      </div>
+
+      <div class="sidebar-toggle" onclick="sidebar_toggle()" onmouseover="add_inner()" onmouseleave="remove_inner()">
+  <div class="sidebar-toggle-inner"></div>
+</div>
+
+<script>
+function add_inner() {
+  let inner = document.querySelector('.sidebar-toggle-inner')
+  inner.classList.add('show')  
+}
+
+function remove_inner() {
+  let inner = document.querySelector('.sidebar-toggle-inner')
+  inner.classList.remove('show')
+}
+
+function sidebar_toggle() {
+    let sidebar_toggle = document.querySelector('.sidebar-toggle')
+    let sidebar = document.querySelector('.book-sidebar')
+    let content = document.querySelector('.off-canvas-content')
+    if (sidebar_toggle.classList.contains('extend')) { // show
+        sidebar_toggle.classList.remove('extend')
+        sidebar.classList.remove('hide')
+        content.classList.remove('extend')
+    }
+    else { // hide
+        sidebar_toggle.classList.add('extend')
+        sidebar.classList.add('hide')
+        content.classList.add('extend')
+    }
+}
+</script>
+
+      <div class="off-canvas-content">
+        <div class="columns">
+          <div class="column col-10 col-lg-12">
+            <div class="book-navbar"><!-- For Responsive Layout -->
+
+<header class="navbar">
+  <section class="navbar-section">
+    <a onclick="open_sidebar()">
+      <i class="icon icon-menu"></i>
+    </a>
+  </section>
+</header>
+</div>
+            <div class="book-content"><div class="book-post">
+  <p>响应式数据依赖收集过程，收集的目的就是为了当我们修改数据的时候， 可以对相关的依赖派发更新，那么这一节我们来详细分析这个过程</p>
+<p>先回顾下 setter 部分的逻辑</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">defineReactive</span>(<span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">  obj: Object,</span></span></span><br><span class="line"><span class="function"><span class="params">  key: string,</span></span></span><br><span class="line"><span class="function"><span class="params">  val: any,</span></span></span><br><span class="line"><span class="function"><span class="params">  customSetter?: ?Function,</span></span></span><br><span class="line"><span class="function"><span class="params">  shallow?: boolean</span></span></span><br><span class="line"><span class="function"><span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> dep = <span class="keyword">new</span> Dep();</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> property = <span class="built_in">Object</span>.getOwnPropertyDescriptor(obj, key);</span><br><span class="line">  <span class="keyword">if</span> (property &amp;&amp; property.configurable === <span class="literal">false</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// cater for pre-defined getter/setters</span></span><br><span class="line">  <span class="keyword">const</span> getter = property &amp;&amp; property.get;</span><br><span class="line">  <span class="keyword">const</span> setter = property &amp;&amp; property.set;</span><br><span class="line">  <span class="keyword">if</span> ((!getter || setter) &amp;&amp; <span class="built_in">arguments</span>.length === <span class="number">2</span>) &#123;</span><br><span class="line">    val = obj[key];</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> childOb = !shallow &amp;&amp; observe(val);</span><br><span class="line">  <span class="built_in">Object</span>.defineProperty(obj, key, &#123;</span><br><span class="line">    enumerable: <span class="literal">true</span>,</span><br><span class="line">    configurable: <span class="literal">true</span>,</span><br><span class="line">    <span class="keyword">get</span>: function reactiveGetter() &#123;</span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="keyword">set</span>: function reactiveSetter(newVal) &#123;</span><br><span class="line">      <span class="keyword">const</span> value = getter ? getter.call(obj) : val;</span><br><span class="line">      <span class="comment">/* eslint-disable no-self-compare */</span></span><br><span class="line">      <span class="keyword">if</span> (newVal === value || (newVal !== newVal &amp;&amp; value !== value)) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="comment">/* eslint-enable no-self-compare */</span></span><br><span class="line">      <span class="keyword">if</span> (process.env.NODE_ENV !== <span class="string">"production"</span> &amp;&amp; customSetter) &#123;</span><br><span class="line">        customSetter();</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="comment">// #7981: for accessor properties without setter</span></span><br><span class="line">      <span class="keyword">if</span> (getter &amp;&amp; !setter) <span class="keyword">return</span>;</span><br><span class="line">      <span class="keyword">if</span> (setter) &#123;</span><br><span class="line">        setter.call(obj, newVal);</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        val = newVal;</span><br><span class="line">      &#125;</span><br><span class="line">      childOb = !shallow &amp;&amp; observe(newVal);</span><br><span class="line">      dep.notify();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>setter 的逻辑有 2 个关键的点:</p>
+<ol>
+<li><code>一个是 childOb = !shallow &amp;&amp; observe(newVal)</code>, 如果 shallow 为 false 的情况，会对新设置的值变成一个响应式对象;</li>
+<li>另一个是 <code>dep.notify()</code>，通知所有的订阅者，这是本节的关键，接下来我会带大家完整的分析整个派发更新的过程</li>
+</ol>
+<h1 id="过程分析">过程分析</h1>
+<p>当我们在组件中对响应的数据做了修改，就会触发 setter 的逻辑，最后调用 dep.notify() 方法， 它是 Dep 的一个实例方法;</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* src/core/observer/dep.js */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dep</span> </span>&#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">  notify () &#123;</span><br><span class="line">  <span class="comment">// stabilize the subscriber list first</span></span><br><span class="line">    <span class="keyword">const</span> subs = <span class="keyword">this</span>.subs.slice()</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>, l = subs.length; i &lt; l; i++) &#123;</span><br><span class="line">      subs[i].update()</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里的逻辑非常简单，遍历所有的 subs，也就是 Watcher 的实例数组，然后调用每一个 watcher 的 update 方法</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Watcher</span> </span>&#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">  update () &#123;</span><br><span class="line">    <span class="comment">/* istanbul ignore else */</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.computed) &#123;</span><br><span class="line">      <span class="comment">// 计算属性观察器具有两种模式：惰性和激活。</span></span><br><span class="line">      <span class="comment">// 默认情况下初始化为惰性，并且仅在以下情况下激活</span></span><br><span class="line">      <span class="comment">// 它由至少一个订阅者依赖，该订阅者通常是另一个计算的属性或组件的渲染函数</span></span><br><span class="line">      <span class="keyword">if</span> (<span class="keyword">this</span>.dep.subs.length === <span class="number">0</span>) &#123;</span><br><span class="line">      <span class="comment">//在惰性模式下，我们直到需要时才执行计算，</span></span><br><span class="line">      <span class="comment">//因此，我们仅将观察者标记为肮脏。访问已计算的属性时，将在this.evaluate（）中即时执行实际计算</span></span><br><span class="line">        <span class="keyword">this</span>.dirty = <span class="literal">true</span></span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="comment">// 在激活模式下，我们要主动执行计算</span></span><br><span class="line">      <span class="comment">// 但仅在值确实发生更改时通知我们的订阅者</span></span><br><span class="line">        <span class="keyword">this</span>.getAndInvoke(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">          <span class="keyword">this</span>.dep.notify()</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">this</span>.sync) &#123;</span><br><span class="line">      <span class="keyword">this</span>.run()</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      queueWatcher(<span class="keyword">this</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里对于 Watcher 的不同状态，会执行不同的逻辑，computed 和 sync 等状态的分析我会之后抽一小节详细介绍，在一般组件数据更新的场景，会走到最后一个 queueWatcher(this) 的逻辑</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* src/core/observer/scheduler.js */</span></span><br><span class="line"><span class="keyword">const</span> queue: <span class="built_in">Array</span>&lt;Watcher&gt; = []</span><br><span class="line"><span class="keyword">let</span> has: &#123; [key: number]: ?<span class="literal">true</span> &#125; = &#123;&#125;</span><br><span class="line"><span class="keyword">let</span> waiting = <span class="literal">false</span></span><br><span class="line"><span class="keyword">let</span> flushing = <span class="literal">false</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Push a watcher into the watcher queue.</span></span><br><span class="line"><span class="comment"> * Jobs with duplicate IDs will be skipped unless it's</span></span><br><span class="line"><span class="comment"> * pushed when the queue is being flushed.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">queueWatcher</span> (<span class="params">watcher: Watcher</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> id = watcher.id</span><br><span class="line">  <span class="keyword">if</span> (has[id] == <span class="literal">null</span>) &#123;</span><br><span class="line">    has[id] = <span class="literal">true</span></span><br><span class="line">    <span class="keyword">if</span> (!flushing) &#123;</span><br><span class="line">      queue.push(watcher)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="comment">// if already flushing, splice the watcher based on its id</span></span><br><span class="line">      <span class="comment">// if already past its id, it will be run next immediately.</span></span><br><span class="line">      <span class="keyword">let</span> i = queue.length - <span class="number">1</span></span><br><span class="line">      <span class="keyword">while</span> (i &gt; index &amp;&amp; queue[i].id &gt; watcher.id) &#123;</span><br><span class="line">        i--</span><br><span class="line">      &#125;</span><br><span class="line">      queue.splice(i + <span class="number">1</span>, <span class="number">0</span>, watcher)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// queue the flush</span></span><br><span class="line">    <span class="keyword">if</span> (!waiting) &#123;</span><br><span class="line">      waiting = <span class="literal">true</span></span><br><span class="line">      nextTick(flushSchedulerQueue)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里引入了一个队列的概念，这也是 Vue 在做派发更新的时候的一个优化的点，它并不会每次数据改变都触发 watcher 的回调，而是把这些 watcher 先添加到一个队列里，然后在 nextTick 后执行 flushSchedulerQueue</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> queue: <span class="built_in">Array</span>&lt;Watcher&gt; = []</span><br><span class="line"><span class="keyword">let</span> has: &#123; [key: number]: ?<span class="literal">true</span> &#125; = &#123;&#125;</span><br><span class="line"><span class="keyword">let</span> waiting = <span class="literal">false</span></span><br><span class="line"><span class="keyword">let</span> flushing = <span class="literal">false</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Push a watcher into the watcher queue.</span></span><br><span class="line"><span class="comment"> * Jobs with duplicate IDs will be skipped unless it's</span></span><br><span class="line"><span class="comment"> * pushed when the queue is being flushed.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">queueWatcher</span> (<span class="params">watcher: Watcher</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> id = watcher.id</span><br><span class="line">  <span class="keyword">if</span> (has[id] == <span class="literal">null</span>) &#123;</span><br><span class="line">    has[id] = <span class="literal">true</span></span><br><span class="line">    <span class="keyword">if</span> (!flushing) &#123;</span><br><span class="line">      queue.push(watcher)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="comment">// if already flushing, splice the watcher based on its id</span></span><br><span class="line">      <span class="comment">// if already past its id, it will be run next immediately.</span></span><br><span class="line">      <span class="keyword">let</span> i = queue.length - <span class="number">1</span></span><br><span class="line">      <span class="keyword">while</span> (i &gt; index &amp;&amp; queue[i].id &gt; watcher.id) &#123;</span><br><span class="line">        i--</span><br><span class="line">      &#125;</span><br><span class="line">      queue.splice(i + <span class="number">1</span>, <span class="number">0</span>, watcher)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// queue the flush</span></span><br><span class="line">    <span class="keyword">if</span> (!waiting) &#123;</span><br><span class="line">      waiting = <span class="literal">true</span></span><br><span class="line">      nextTick(flushSchedulerQueue)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里引入了一个队列的概念，这也是 Vue 在做派发更新的时候的一个优化的点，它并不会每次数据改变都触发 watcher 的回调，而是把这些 watcher 先添加到一个队列里，然后在 nextTick 后执行 flushSchedulerQueue</p>
+<p>这里有几个细节要注意一下，</p>
+<ul>
+<li>首先用 has 对象保证同一个 Watcher 只添加一次；</li>
+<li>接着对 flushing 的判断，else 部分的逻辑稍后我会讲；</li>
+<li>最后通过 waiting 保证对 nextTick(flushSchedulerQueue) 的调用逻辑只有一次，另外 nextTick 的实现我之后会抽一小节专门去讲，目前就可以理解它是在下一个 tick，也就是异步的去执行 flushSchedulerQueue</li>
+</ul>
+<p>接下来我们来看 flushSchedulerQueue 的实现</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* src/core/observer/scheduler.js */</span></span><br><span class="line"><span class="keyword">let</span> flushing = <span class="literal">false</span></span><br><span class="line"><span class="keyword">let</span> index = <span class="number">0</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Flush both queues and run the watchers.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">flushSchedulerQueue</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  flushing = <span class="literal">true</span></span><br><span class="line">  <span class="keyword">let</span> watcher, id</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Sort queue before flush.</span></span><br><span class="line">  <span class="comment">// This ensures that:</span></span><br><span class="line">  <span class="comment">// 1. Components are updated from parent to child. (because parent is always</span></span><br><span class="line">  <span class="comment">//    created before the child)</span></span><br><span class="line">  <span class="comment">// 2. A component's user watchers are run before its render watcher (because</span></span><br><span class="line">  <span class="comment">//    user watchers are created before the render watcher)</span></span><br><span class="line">  <span class="comment">// 3. If a component is destroyed during a parent component's watcher run,</span></span><br><span class="line">  <span class="comment">//    its watchers can be skipped.</span></span><br><span class="line">  queue.sort(<span class="function">(<span class="params">a, b</span>) =&gt;</span> a.id - b.id)</span><br><span class="line"></span><br><span class="line">  <span class="comment">// do not cache length because more watchers might be pushed</span></span><br><span class="line">  <span class="comment">// as we run existing watchers</span></span><br><span class="line">  <span class="keyword">for</span> (index = <span class="number">0</span>; index &lt; queue.length; index++) &#123;</span><br><span class="line">    watcher = queue[index]</span><br><span class="line">    <span class="keyword">if</span> (watcher.before) &#123;</span><br><span class="line">      watcher.before()</span><br><span class="line">    &#125;</span><br><span class="line">    id = watcher.id</span><br><span class="line">    has[id] = <span class="literal">null</span></span><br><span class="line">    watcher.run()</span><br><span class="line">    <span class="comment">// in dev build, check and stop circular updates.</span></span><br><span class="line">    <span class="keyword">if</span> (process.env.NODE_ENV !== <span class="string">'production'</span> &amp;&amp; has[id] != <span class="literal">null</span>) &#123;</span><br><span class="line">      circular[id] = (circular[id] || <span class="number">0</span>) + <span class="number">1</span></span><br><span class="line">      <span class="keyword">if</span> (circular[id] &gt; MAX_UPDATE_COUNT) &#123;</span><br><span class="line">        warn(</span><br><span class="line">          <span class="string">'You may have an infinite update loop '</span> + (</span><br><span class="line">            watcher.user</span><br><span class="line">              ? <span class="string">`in watcher with expression "<span class="subst">$&#123;watcher.expression&#125;</span>"`</span></span><br><span class="line">              : <span class="string">`in a component render function.`</span></span><br><span class="line">          ),</span><br><span class="line">          watcher.vm</span><br><span class="line">        )</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// keep copies of post queues before resetting state</span></span><br><span class="line">  <span class="keyword">const</span> activatedQueue = activatedChildren.slice()</span><br><span class="line">  <span class="keyword">const</span> updatedQueue = queue.slice()</span><br><span class="line"></span><br><span class="line">  resetSchedulerState()</span><br><span class="line"></span><br><span class="line">  <span class="comment">// call component updated and activated hooks</span></span><br><span class="line">  callActivatedHooks(activatedQueue)</span><br><span class="line">  callUpdatedHooks(updatedQueue)</span><br><span class="line"></span><br><span class="line">  <span class="comment">// devtool hook</span></span><br><span class="line">  <span class="comment">/* istanbul ignore if */</span></span><br><span class="line">  <span class="keyword">if</span> (devtools &amp;&amp; config.devtools) &#123;</span><br><span class="line">    devtools.emit(<span class="string">'flush'</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="队列排序">队列排序</h2>
+<p><code>queue.sort((a, b) =&gt; a.id - b.id)</code> 对队列做了从小到大的排序，这么做主要有以下要确保以下几点</p>
+<ol>
+<li>组件的更新由父到子；因为父组件的创建过程是先于子的，所以 watcher 的创建也是先父后子，执行顺序也应该保持先父后子</li>
+<li>用户的自定义 watcher 要优先于渲染 watcher 执行；因为用户自定义 watcher 是在渲染 watcher 之前创建的。</li>
+<li>如果一个组件在父组件的 watcher 执行期间被销毁，那么它对应的 watcher 执行都可以被跳过，所以父组件的 watcher 应该先执行</li>
+</ol>
+<h2 id="队列遍历">队列遍历</h2>
+<p>在对 queue 排序后，接着就是要对它做遍历，拿到对应的 watcher，执行 watcher.run()。这里需要注意一个细节，在遍历的时候每次都会对 queue.length 求值，因为在 watcher.run() 的时候，很可能用户会再次添加新的 watcher，这样会再次执行到 queueWatcher，如下</p>
+<h1 id="派发更新">派发更新</h1>
+<p>Vue 数据修改派发更新的过程, 实际上就是当数据发生变化的 时候，触发 setter 逻辑，把在依赖过程中订阅的的所有观察者，也就是 <code>watcher</code> ，都触发它们的 <code>update</code> 过程，这个过程又利用了队列做了进一步优化，在 nextTick 后执行所有 <code>watcher</code> 的 <code>run</code> ，最后执行它们的回调函数。</p>
+
+</div>
+
+
+  <div class="book-comments">
+    
+
+
+
+
+  </div>
+
+
+
+<script src="/Blog/js/book-post.js"></script>
+</div>
+          </div>
+          <div class="column col-2 hide-lg">
+            <div class="book-post-info">
+  
+    <div class="book-post-meta">
+
+  <div class="author">
+
+    <!-- Author image -->
+    <div class="author-img">
+      
+        <figure
+          class="avatar avatar-lg"
+          data-initial="甜"
+          style="background-color: #3b4351;">
+        </figure>
+      
+    </div>
+
+    <!-- Author title -->
+    <div class="author-title">
+      <div>甜里甜气</div>
+      <div>2020-10-05</div>
+    </div>
+  </div>
+
+  
+
+  <div class="divider"></div>
+</div>
+  
+
+  <div class="book-tocbot"></div>
+<div class="book-tocbot-menu">
+  <a class="book-toc-expand" onclick="expand_toc()">Expand all</a>
+  <a onclick="go_top()">⬆ Top</a>
+  <a onclick="go_bottom()">⬇ Bottom</a>
+</div>
+
+
+<script src="/Blog/js/book-toc.js"></script>
+
+
+</div>
+          </div>
+        </div>
+      </div>
+
+      <a class="off-canvas-overlay" onclick="hide_canvas()"></a>
+    </div>
+  </body>
+</html>
+
+
+<script src="/Blog/js/book.js"></script>
+

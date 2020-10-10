@@ -499,7 +499,8 @@ img {
         justify-content: space-between;
         padding: 0; }
       .book-sidebar .book-menu .accordion .accordion-body {
-        margin: 0; }
+        margin: 0;
+        overflow: scroll; }
       .book-sidebar .book-menu .accordion input:checked ~ .accordion-header .icon {
         transform: rotate(-180deg); }
       .book-sidebar .book-menu .accordion i.icon-arrow-down::before {

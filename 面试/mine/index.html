@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+
+    
+      <link rel="icon" href="/Blog/favicon.png" />
+    
+
+    <title>
+        
+          面试/mine - 李幸娟的前端博客
+        
+    </title>
+
+    <!-- Spectre.css framework -->
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">
+
+    <!-- theme css & js -->
+    
+<link rel="stylesheet" href="/Blog/css/book.css">
+
+    
+<script src="/Blog/js/book.js"></script>
+
+
+    <!-- tocbot -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+    
+    <!-- katex -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/zooming/2.1.1/zooming.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const zooming = new Zooming()
+    zooming.listen('.book-content img')
+})
+</script>
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+  <body>
+    <div class="book-container">
+      <div class="book-sidebar">
+        <div class="book-brand">
+  <a href="/Blog/">
+    <img src="/Blog/favicon.png">
+    <span>李幸娟的前端博客</span>
+  </a>
+</div> <div class="book-menu">
+  <ul>
+<li><a href="/Blog">Home</a></li>
+</ul>
+<h1 style="color:#448d55;">前端知识分类</h1> 
+<h2 id="CSS相关类">CSS相关类</h2>
+<ul>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/CSS%E7%9B%B8%E5%85%B3%E7%B1%BB/1px">1px</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/CSS%E7%9B%B8%E5%85%B3%E7%B1%BB/Grid%E9%80%9F%E6%88%90">Grid速成</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/CSS%E7%9B%B8%E5%85%B3%E7%B1%BB/bfc">bfc</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/CSS%E7%9B%B8%E5%85%B3%E7%B1%BB/blur%E5%92%8Cchange">blur和change</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/CSS%E7%9B%B8%E5%85%B3%E7%B1%BB/css3%E5%8A%A8%E7%94%BB%E5%B1%9E%E6%80%A7">css3动画属性</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/CSS%E7%9B%B8%E5%85%B3%E7%B1%BB/flex">flex</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/CSS%E7%9B%B8%E5%85%B3%E7%B1%BB/less%E9%80%9F%E6%88%90">less速成</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/CSS%E7%9B%B8%E5%85%B3%E7%B1%BB/scss%E9%80%9F%E6%88%90">scss速成</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/CSS%E7%9B%B8%E5%85%B3%E7%B1%BB/%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%BF%E7%94%A8rem?">为什么使用rem?</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/CSS%E7%9B%B8%E5%85%B3%E7%B1%BB/%E5%AE%9E%E7%8E%B0%E5%B1%85%E4%B8%AD">实现居中</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/CSS%E7%9B%B8%E5%85%B3%E7%B1%BB/%E5%B8%B8%E8%A7%81%E5%B8%83%E5%B1%80">常见布局</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/CSS%E7%9B%B8%E5%85%B3%E7%B1%BB/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%80%82%E9%85%8D">移动端适配</a></p>
+</li>
+</ul>
+<h2 id="Deno相关类">Deno相关类</h2>
+<ul>
+<li><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/Deno%E7%9B%B8%E5%85%B3%E7%B1%BB/index">index</a></li>
+</ul>
+<h2 id="JS基础">JS基础</h2>
+<ul>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E5%9F%BA%E7%A1%80/0.1+0.2">0.1+0.2</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E5%9F%BA%E7%A1%80/Class%E7%9B%B8%E5%85%B3">Class相关</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E5%9F%BA%E7%A1%80/EventLoop">EventLoop</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E5%9F%BA%E7%A1%80/Generate">Generate</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E5%9F%BA%E7%A1%80/Promise">Promise</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E5%9F%BA%E7%A1%80/Proxy">Proxy</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E5%9F%BA%E7%A1%80/Reflect">Reflect</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E5%9F%BA%E7%A1%80/Set+Map%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0">Set+Map学习笔记</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E5%9F%BA%E7%A1%80/async">async</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E5%9F%BA%E7%A1%80/bind">bind</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E5%9F%BA%E7%A1%80/call%E5%92%8Capply">call和apply</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E5%9F%BA%E7%A1%80/flat%E5%AE%9E%E7%8E%B0">flat实现</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E5%9F%BA%E7%A1%80/for%E5%92%8CforEach%E7%9A%84%E5%8C%BA%E5%88%AB">for和forEach的区别</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E5%9F%BA%E7%A1%80/this%E7%9B%B8%E5%85%B3">this相关</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E5%9F%BA%E7%A1%80/%E4%BA%8B%E4%BB%B6%E5%A7%94%E6%89%98">事件委托</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E5%9F%BA%E7%A1%80/%E4%BD%9C%E7%94%A8%E5%9F%9F%E7%9B%B8%E5%85%B3">作用域相关</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E5%9F%BA%E7%A1%80/%E5%87%BD%E6%95%B0%E6%9F%AF%E9%87%8C%E5%8C%96">函数柯里化</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E5%9F%BA%E7%A1%80/%E5%87%BD%E6%95%B0%E7%9A%84%E5%86%85%E9%83%A8%E5%B1%9E%E6%80%A7">函数的内部属性</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E5%9F%BA%E7%A1%80/%E5%87%BD%E6%95%B0%E7%9A%84%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F">函数的执行顺序</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E5%9F%BA%E7%A1%80/%E5%88%A4%E6%96%AD%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B">判断数据类型</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E5%9F%BA%E7%A1%80/%E5%89%8D%E7%AB%AF%E6%A8%A1%E5%9D%97%E5%8C%96%E8%A7%84%E8%8C%83">前端模块化规范</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E5%9F%BA%E7%A1%80/%E5%8E%9F%E5%9E%8B%E5%92%8C%E5%8E%9F%E5%9E%8B%E9%93%BE">原型和原型链</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E5%9F%BA%E7%A1%80/%E5%90%88%E5%B9%B6%E7%A9%BA%E5%80%BC">合并空值</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E5%9F%BA%E7%A1%80/%E5%BA%9F%E5%BC%83">废弃</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E5%9F%BA%E7%A1%80/%E6%89%A9%E5%85%85%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%8A%9F%E8%83%BD">扩充类型的功能</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E5%9F%BA%E7%A1%80/%E6%95%B0%E7%BB%84">数组</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E5%9F%BA%E7%A1%80/%E6%AD%A3%E5%88%99">正则</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E5%9F%BA%E7%A1%80/%E6%B7%B1%E6%8B%B7%E8%B4%9D">深拷贝</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E5%9F%BA%E7%A1%80/%E7%AB%8B%E5%8D%B3%E6%89%A7%E8%A1%8C%E5%87%BD%E6%95%B0">立即执行函数</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E5%9F%BA%E7%A1%80/%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0">箭头函数</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E5%9F%BA%E7%A1%80/%E7%BB%A7%E6%89%BF%E7%9B%B8%E5%85%B3">继承相关</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/JS%E5%9F%BA%E7%A1%80/%E9%97%AD%E5%8C%85%E7%9B%B8%E5%85%B3">闭包相关</a></p>
+</li>
+</ul>
+<h2 id="dva相关类">dva相关类</h2>
+<ul>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/dva%E7%9B%B8%E5%85%B3%E7%B1%BB/dva%E6%8A%BD%E7%A6%BB%E6%95%B0%E7%BB%84%E8%B7%AF%E7%94%B1+%E5%8A%A8%E6%80%81%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE%E6%96%B9%E6%B3%95">dva抽离数组路由+动态路由配置方法</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/dva%E7%9B%B8%E5%85%B3%E7%B1%BB/dva%E7%9A%84%E4%B8%80%E4%BA%9B%E7%82%B9">dva的一些点</a></p>
+</li>
+</ul>
+<h2 id="性能优化类">性能优化类</h2>
+<ul>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E7%B1%BB/%E5%8A%A0%E5%BF%AB%E9%A6%96%E5%B1%8F%E6%B8%B2%E6%9F%93">加快首屏渲染</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E7%B1%BB/%E9%98%B2%E6%8A%96%E5%92%8C%E8%8A%82%E6%B5%81">防抖和节流</a></p>
+</li>
+</ul>
+<h2 id="暂未分类">暂未分类</h2>
+<ul>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/%E6%9A%82%E6%9C%AA%E5%88%86%E7%B1%BB/Map%E5%92%8CObject">Map和Object</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/%E6%9A%82%E6%9C%AA%E5%88%86%E7%B1%BB/%5B%E8%99%9A%E6%8B%9FDOM%5D%5BAST%E8%AF%AD%E6%B3%95%E6%A0%91%5D%5Bbabel%E7%BC%96%E8%AF%91%5D">[虚拟DOM][AST语法树][babel编译]</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/%E6%9A%82%E6%9C%AA%E5%88%86%E7%B1%BB/error">error</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/%E6%9A%82%E6%9C%AA%E5%88%86%E7%B1%BB/oneLine">oneLine</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/%E6%9A%82%E6%9C%AA%E5%88%86%E7%B1%BB/price">price</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/%E6%9A%82%E6%9C%AA%E5%88%86%E7%B1%BB/%E4%BD%8D%E6%8E%A9%E7%A0%81">位掩码</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/%E6%9A%82%E6%9C%AA%E5%88%86%E7%B1%BB/%E5%AD%A6%E4%B9%A0%E6%96%87%E7%AB%A0%E7%9B%AE%E5%BD%95">学习文章目录</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/%E6%9A%82%E6%9C%AA%E5%88%86%E7%B1%BB/%E6%95%B0%E7%BB%84%E6%B7%B1%E6%8B%B7%E8%B4%9D+%E6%B5%85%E6%8B%B7%E8%B4%9D%E9%97%AE%E9%A2%98">数组深拷贝+浅拷贝问题</a></p>
+</li>
+</ul>
+<h2 id="浏览器相关类">浏览器相关类</h2>
+<ul>
+<li><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9B%B8%E5%85%B3%E7%B1%BB/%E6%B5%8F%E8%A7%88%E5%99%A8">浏览器</a></li>
+</ul>
+<h2 id="算法相关类">算法相关类</h2>
+<ul>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3%E7%B1%BB/js%E4%B8%89%E7%A7%8D%E9%81%8D%E5%8E%86">js三种遍历</a></p>
+</li>
+<li>
+<p><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3%E7%B1%BB/%E5%B8%B8%E8%A7%81%E6%8E%92%E5%BA%8F">常见排序</a></p>
+</li>
+</ul>
+<h2 id="类型">类型</h2>
+<ul>
+<li><a href="/Blog/1-%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E5%88%86%E7%B1%BB/%E7%B1%BB%E5%9E%8B/%E5%9B%BE%E7%89%87%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2">图片类型转换</a></li>
+</ul>
+<h1 style="color:#448d55;">框架</h1> 
+<h2 id="React">React</h2>
+<ul>
+<li>
+<p><a href="/Blog/2-%E6%A1%86%E6%9E%B6/React/Fiber">Fiber</a></p>
+</li>
+<li>
+<p><a href="/Blog/2-%E6%A1%86%E6%9E%B6/React/React-redux%E6%80%8E%E4%B9%88%E7%94%A8">React-redux怎么用</a></p>
+</li>
+<li>
+<p><a href="/Blog/2-%E6%A1%86%E6%9E%B6/React/Redux%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB%E6%80%BB%E7%BB%93">Redux源码阅读总结</a></p>
+</li>
+<li>
+<p><a href="/Blog/2-%E6%A1%86%E6%9E%B6/React/diff%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0crud">diff算法实现crud</a></p>
+</li>
+<li>
+<p><a href="/Blog/2-%E6%A1%86%E6%9E%B6/React/react-dom">react-dom</a></p>
+</li>
+<li>
+<p><a href="/Blog/2-%E6%A1%86%E6%9E%B6/React/react-redux%E6%BA%90%E7%A0%81">react-redux源码</a></p>
+</li>
+<li>
+<p><a href="/Blog/2-%E6%A1%86%E6%9E%B6/React/react%E5%BC%80%E5%8F%91%E4%B8%AD%E4%BC%98%E5%8C%96%E7%82%B9">react开发中优化点</a></p>
+</li>
+<li>
+<p><a href="/Blog/2-%E6%A1%86%E6%9E%B6/React/%E5%90%84%E4%B8%AA%E5%9C%B0%E6%96%B9%E7%9A%84%E6%89%93%E5%8D%B0">各个地方的打印</a></p>
+</li>
+<li>
+<p><a href="/Blog/2-%E6%A1%86%E6%9E%B6/React/%E8%AF%BB%E6%BA%90%E7%A0%81%E7%9A%84%E7%90%86%E8%A7%A3">读源码的理解</a></p>
+</li>
+</ul>
+<h2 id="Vue">Vue</h2>
+<ul>
+<li>
+<p><a href="/Blog/2-%E6%A1%86%E6%9E%B6/Vue/0%E6%BA%90%E7%A0%81-%E4%B8%BB%E7%BA%BF">0源码-主线</a></p>
+</li>
+<li>
+<p><a href="/Blog/2-%E6%A1%86%E6%9E%B6/Vue/1%E6%BA%90%E7%A0%81-%E7%9B%AE%E5%BD%95">1源码-目录</a></p>
+</li>
+<li>
+<p><a href="/Blog/2-%E6%A1%86%E6%9E%B6/Vue/2%E6%BA%90%E7%A0%81-%E6%9E%84%E5%BB%BA%E8%BF%87%E7%A8%8B">2源码-构建过程</a></p>
+</li>
+<li>
+<p><a href="/Blog/2-%E6%A1%86%E6%9E%B6/Vue/3%E6%BA%90%E7%A0%81-%E6%95%B0%E6%8D%AE%E9%A9%B1%E5%8A%A8">3源码-数据驱动</a></p>
+</li>
+<li>
+<p><a href="/Blog/2-%E6%A1%86%E6%9E%B6/Vue/4%E6%BA%90%E7%A0%81-newVue">4源码-newVue</a></p>
+</li>
+<li>
+<p><a href="/Blog/2-%E6%A1%86%E6%9E%B6/Vue/5%E6%BA%90%E7%A0%81-Vue%E5%AE%9E%E4%BE%8B%E6%8C%82%E8%BD%BD%E7%9A%84%E5%AE%9E%E7%8E%B0">5源码-Vue实例挂载的实现</a></p>
+</li>
+<li>
+<p><a href="/Blog/2-%E6%A1%86%E6%9E%B6/Vue/6%E6%BA%90%E7%A0%81-render">6源码-render</a></p>
+</li>
+<li>
+<p><a href="/Blog/2-%E6%A1%86%E6%9E%B6/Vue/7%E6%BA%90%E7%A0%81-createElement">7源码-createElement</a></p>
+</li>
+<li>
+<p><a href="/Blog/2-%E6%A1%86%E6%9E%B6/Vue/8%E6%BA%90%E7%A0%81-_update">8源码-_update</a></p>
+</li>
+<li>
+<p><a href="/Blog/2-%E6%A1%86%E6%9E%B6/Vue/9%E6%BA%90%E7%A0%81-createComponent">9源码-createComponent</a></p>
+</li>
+<li>
+<p><a href="/Blog/2-%E6%A1%86%E6%9E%B6/Vue/10%E6%BA%90%E7%A0%81-patch">10源码-patch</a></p>
+</li>
+<li>
+<p><a href="/Blog/2-%E6%A1%86%E6%9E%B6/Vue/11%E6%BA%90%E7%A0%81-%E5%90%88%E5%B9%B6%E9%85%8D%E7%BD%AE">11源码-合并配置</a></p>
+</li>
+<li>
+<p><a href="/Blog/2-%E6%A1%86%E6%9E%B6/Vue/12%E6%BA%90%E7%A0%81-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F">12源码-生命周期</a></p>
+</li>
+<li>
+<p><a href="/Blog/2-%E6%A1%86%E6%9E%B6/Vue/12%E6%BA%90%E7%A0%81-%E7%BB%84%E4%BB%B6%E6%B3%A8%E5%86%8C">12源码-组件注册</a></p>
+</li>
+<li>
+<p><a href="/Blog/2-%E6%A1%86%E6%9E%B6/Vue/13%E6%BA%90%E7%A0%81-nextTick">13源码-nextTick</a></p>
+</li>
+<li>
+<p><a href="/Blog/2-%E6%A1%86%E6%9E%B6/Vue/13%E6%BA%90%E7%A0%81-%E5%BC%82%E6%AD%A5%E7%BB%84%E4%BB%B6">13源码-异步组件</a></p>
+</li>
+<li>
+<p><a href="/Blog/2-%E6%A1%86%E6%9E%B6/Vue/14%E6%95%B0%E6%8D%AE%E5%8A%AB%E6%8C%81">14数据劫持</a></p>
+</li>
+<li>
+<p><a href="/Blog/2-%E6%A1%86%E6%9E%B6/Vue/15%E6%BA%90%E7%A0%81-%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86">15源码-响应式原理</a></p>
+</li>
+<li>
+<p><a href="/Blog/2-%E6%A1%86%E6%9E%B6/Vue/16%E5%AF%B9%E8%B1%A1%E5%92%8C%E6%95%B0%E7%BB%84%E7%9A%84%E5%A4%84%E7%90%86">16对象和数组的处理</a></p>
+</li>
+<li>
+<p><a href="/Blog/2-%E6%A1%86%E6%9E%B6/Vue/17%E6%BA%90%E7%A0%81-%E4%BE%9D%E8%B5%96%E6%94%B6%E9%9B%86">17源码-依赖收集</a></p>
+</li>
+<li>
+<p><a href="/Blog/2-%E6%A1%86%E6%9E%B6/Vue/18%E6%BA%90%E7%A0%81-%E6%B4%BE%E5%8F%91%E6%9B%B4%E6%96%B0">18源码-派发更新</a></p>
+</li>
+<li>
+<p><a href="/Blog/2-%E6%A1%86%E6%9E%B6/Vue/README">README</a></p>
+</li>
+<li>
+<p><a href="/Blog/2-%E6%A1%86%E6%9E%B6/Vue/key%E7%9A%84%E4%BD%9C%E7%94%A8">key的作用</a></p>
+</li>
+<li>
+<p><a href="/Blog/2-%E6%A1%86%E6%9E%B6/Vue/%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83">开发规范</a></p>
+</li>
+</ul>
+<h2 id="公共类">公共类</h2>
+<ul>
+<li>
+<p><a href="/Blog/2-%E6%A1%86%E6%9E%B6/%E5%85%AC%E5%85%B1%E7%B1%BB/vue%E5%92%8Creact%E5%AF%B9%E6%AF%94">vue和react对比</a></p>
+</li>
+<li>
+<p><a href="/Blog/2-%E6%A1%86%E6%9E%B6/%E5%85%AC%E5%85%B1%E7%B1%BB/%E6%A1%86%E6%9E%B6%E9%80%9A%E8%AF%86">框架通识</a></p>
+</li>
+</ul>
+<h1 style="color:#448d55;">小李的读书笔记</h1> 
+<ul>
+<li>
+<p><a href="/Blog/3-%E5%B0%8F%E6%9D%8E%E7%9A%84%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E3%80%8AJavascript%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B8%8E%E5%BC%80%E5%8F%91%E5%AE%9E%E8%B7%B5%E3%80%8B">《Javascript设计模式与开发实践》</a></p>
+</li>
+<li>
+<p><a href="/Blog/3-%E5%B0%8F%E6%9D%8E%E7%9A%84%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E3%80%8ALinux%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AE%9E%E7%94%A8%E6%95%99%E7%A8%8B%E3%80%8B">《Linux操作系统实用教程》</a></p>
+</li>
+<li>
+<p><a href="/Blog/3-%E5%B0%8F%E6%9D%8E%E7%9A%84%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E3%80%8AWeb%E5%89%8D%E7%AB%AF%E9%BB%91%E5%AE%A2%E6%8A%80%E6%9C%AF%E6%8F%AD%E7%A7%98%E3%80%8B">《Web前端黑客技术揭秘》</a></p>
+</li>
+<li>
+<p><a href="/Blog/3-%E5%B0%8F%E6%9D%8E%E7%9A%84%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E3%80%8A%E4%BD%A0%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84javascript%E3%80%8B">《你不知道的javascript》</a></p>
+</li>
+<li>
+<p><a href="/Blog/3-%E5%B0%8F%E6%9D%8E%E7%9A%84%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E6%85%95%E5%AE%A2%E8%AF%BE%E7%A8%8Breact+ts%E5%BC%80%E5%8F%91%E7%BB%84%E4%BB%B6">慕客课程react+ts开发组件</a></p>
+</li>
+</ul>
+<h1 style="color:#448d55;">网络和安全类</h1> 
+<ul>
+<li>
+<p><a href="/Blog/4-%E7%BD%91%E7%BB%9C%E5%92%8C%E5%AE%89%E5%85%A8%E7%B1%BB/CDN%E7%9A%84%E5%8E%9F%E7%90%86">CDN的原理</a></p>
+</li>
+<li>
+<p><a href="/Blog/4-%E7%BD%91%E7%BB%9C%E5%92%8C%E5%AE%89%E5%85%A8%E7%B1%BB/HTTP2.0">HTTP2.0</a></p>
+</li>
+<li>
+<p><a href="/Blog/4-%E7%BD%91%E7%BB%9C%E5%92%8C%E5%AE%89%E5%85%A8%E7%B1%BB/cookie%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E5%AE%89%E5%85%A8">cookie为什么不安全</a></p>
+</li>
+<li>
+<p><a href="/Blog/4-%E7%BD%91%E7%BB%9C%E5%92%8C%E5%AE%89%E5%85%A8%E7%B1%BB/get%E5%92%8Cpost%E5%8C%BA%E5%88%AB%EF%BC%9F">get和post区别？</a></p>
+</li>
+<li>
+<p><a href="/Blog/4-%E7%BD%91%E7%BB%9C%E5%92%8C%E5%AE%89%E5%85%A8%E7%B1%BB/%E5%89%8D%E7%AB%AF%E9%89%B4%E6%9D%83">前端鉴权</a></p>
+</li>
+<li>
+<p><a href="/Blog/4-%E7%BD%91%E7%BB%9C%E5%92%8C%E5%AE%89%E5%85%A8%E7%B1%BB/%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95">加密算法</a></p>
+</li>
+<li>
+<p><a href="/Blog/4-%E7%BD%91%E7%BB%9C%E5%92%8C%E5%AE%89%E5%85%A8%E7%B1%BB/%E5%B8%B8%E8%A7%81%E7%9A%84%E7%BD%91%E7%BB%9C%E6%94%BB%E5%87%BB">常见的网络攻击</a></p>
+</li>
+<li>
+<p><a href="/Blog/4-%E7%BD%91%E7%BB%9C%E5%92%8C%E5%AE%89%E5%85%A8%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C">计算机网络</a></p>
+</li>
+<li>
+<p><a href="/Blog/4-%E7%BD%91%E7%BB%9C%E5%92%8C%E5%AE%89%E5%85%A8%E7%B1%BB/%E8%BE%93%E5%85%A5URL%E5%90%8E%E5%8F%91%E7%94%9F%E4%BA%86%E4%BB%80%E4%B9%88">输入URL后发生了什么</a></p>
+</li>
+</ul>
+<h1 style="color:#448d55;">一些工具</h1> 
+<h2 id="git相关操作">git相关操作</h2>
+<ul>
+<li>
+<p><a href="/Blog/5-%E4%B8%80%E4%BA%9B%E5%B7%A5%E5%85%B7/git%E7%9B%B8%E5%85%B3%E6%93%8D%E4%BD%9C/git%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C%E2%9D%A4">git常用操作❤</a></p>
+</li>
+<li>
+<p><a href="/Blog/5-%E4%B8%80%E4%BA%9B%E5%B7%A5%E5%85%B7/git%E7%9B%B8%E5%85%B3%E6%93%8D%E4%BD%9C/%E4%BB%A3%E7%A0%81%E6%8F%90%E4%BA%A4%E6%A0%A1%E9%AA%8C">代码提交校验</a></p>
+</li>
+</ul>
+<h2 id="webpack">webpack</h2>
+<ul>
+<li>
+<p><a href="/Blog/5-%E4%B8%80%E4%BA%9B%E5%B7%A5%E5%85%B7/webpack/antd%E6%8C%89%E9%9C%80%E5%8A%A0%E8%BD%BD">antd按需加载</a></p>
+</li>
+<li>
+<p><a href="/Blog/5-%E4%B8%80%E4%BA%9B%E5%B7%A5%E5%85%B7/webpack/eslint">eslint</a></p>
+</li>
+<li>
+<p><a href="/Blog/5-%E4%B8%80%E4%BA%9B%E5%B7%A5%E5%85%B7/webpack/perttier">perttier</a></p>
+</li>
+<li>
+<p><a href="/Blog/5-%E4%B8%80%E4%BA%9B%E5%B7%A5%E5%85%B7/webpack/webpack%E7%83%AD%E6%9B%B4%E6%96%B0%E5%8E%9F%E7%90%86">webpack热更新原理</a></p>
+</li>
+</ul>
+<h2 id="指令">指令</h2>
+<ul>
+<li>
+<p><a href="/Blog/5-%E4%B8%80%E4%BA%9B%E5%B7%A5%E5%85%B7/%E6%8C%87%E4%BB%A4/MAC-shell">MAC-shell</a></p>
+</li>
+<li>
+<p><a href="/Blog/5-%E4%B8%80%E4%BA%9B%E5%B7%A5%E5%85%B7/%E6%8C%87%E4%BB%A4/index">index</a></p>
+</li>
+<li>
+<p><a href="/Blog/5-%E4%B8%80%E4%BA%9B%E5%B7%A5%E5%85%B7/%E6%8C%87%E4%BB%A4/tree">tree</a></p>
+</li>
+</ul>
+<h2 id="数据库">数据库</h2>
+<ul>
+<li>
+<p><a href="/Blog/5-%E4%B8%80%E4%BA%9B%E5%B7%A5%E5%85%B7/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4">MySQL常用命令</a></p>
+</li>
+<li>
+<p><a href="/Blog/5-%E4%B8%80%E4%BA%9B%E5%B7%A5%E5%85%B7/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%B8%B8%E7%94%A8SQL">常用SQL</a></p>
+</li>
+</ul>
+<h2 id="无归类">无归类</h2>
+<ul>
+<li>
+<p><a href="/Blog/5-%E4%B8%80%E4%BA%9B%E5%B7%A5%E5%85%B7/%E6%97%A0%E5%BD%92%E7%B1%BB/chrome%E6%B5%8F%E8%A7%88%E5%99%A8%E8%B7%A8%E5%9F%9F%E8%AE%BE%E7%BD%AE">chrome浏览器跨域设置</a></p>
+</li>
+<li>
+<p><a href="/Blog/5-%E4%B8%80%E4%BA%9B%E5%B7%A5%E5%85%B7/%E6%97%A0%E5%BD%92%E7%B1%BB/%E5%BF%AB%E6%8D%B7%E9%94%AE">快捷键</a></p>
+</li>
+</ul>
+<h2 id="系统操作">系统操作</h2>
+<ul>
+<li>
+<p><a href="/Blog/5-%E4%B8%80%E4%BA%9B%E5%B7%A5%E5%85%B7/%E7%B3%BB%E7%BB%9F%E6%93%8D%E4%BD%9C/cross-env">cross-env</a></p>
+</li>
+<li>
+<p><a href="/Blog/5-%E4%B8%80%E4%BA%9B%E5%B7%A5%E5%85%B7/%E7%B3%BB%E7%BB%9F%E6%93%8D%E4%BD%9C/%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA">安装虚拟机</a></p>
+</li>
+<li>
+<p><a href="/Blog/5-%E4%B8%80%E4%BA%9B%E5%B7%A5%E5%85%B7/%E7%B3%BB%E7%BB%9F%E6%93%8D%E4%BD%9C/%E6%9F%A5%E7%9C%8B%E6%9C%AC%E5%9C%B0ip%E4%B9%8B%E7%B1%BB%E7%9A%84%E9%85%8D%E7%BD%AE(window)">查看本地ip之类的配置(window)</a></p>
+</li>
+</ul>
+<h1 style="color:#448d55;">方案</h1> 
+<ul>
+<li>
+<p><a href="/Blog/6-%E6%96%B9%E6%A1%88/Node%E7%AB%AF%E9%80%9A%E8%BF%87html%E5%AF%BC%E5%87%BAword">Node端通过html导出word</a></p>
+</li>
+<li>
+<p><a href="/Blog/6-%E6%96%B9%E6%A1%88/%E5%AF%BC%E5%87%BAword">导出word</a></p>
+</li>
+</ul>
+<h1 style="color:#448d55;">2020</h1> 
+<ul>
+<li>
+<p><a href="/Blog/2020/20201225">20201225</a></p>
+</li>
+<li>
+<p><a href="/Blog/2020/20201231">20201231</a></p>
+</li>
+</ul>
+<h1 style="color:#448d55;">2021</h1> 
+<ul>
+<li>
+<p><a href="/Blog/2021/20200103">20200103</a></p>
+</li>
+<li>
+<p><a href="/Blog/2021/20200118">20200118</a></p>
+</li>
+<li>
+<p><a href="/Blog/2021/20200129">20200129</a></p>
+</li>
+<li>
+<p><a href="/Blog/2021/20210105">20210105</a></p>
+</li>
+<li>
+<p><a href="/Blog/2021/20210118">20210118</a></p>
+</li>
+<li>
+<p><a href="/Blog/2021/%E5%86%B7%E9%97%A8%E5%B1%9E%E6%80%A7">冷门属性</a></p>
+</li>
+<li>
+<p><a href="/Blog/2021/%E5%89%8D%E7%AB%AF%E5%9B%A2%E9%98%9F%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB%E4%B8%BB%E9%A2%98">前端团队技术分享主题</a></p>
+</li>
+<li>
+<p><a href="/Blog//README">README</a></p>
+</li>
+<li>
+<p><a href="/Blog//ToMyself">ToMyself</a></p>
+</li>
+</ul>
+<h1 style="color:#448d55;">jianli</h1> 
+<ul>
+<li>
+<p><a href="/Blog/jianli/index">index</a></p>
+</li>
+<li>
+<p><a href="/Blog//like">like</a></p>
+</li>
+<li>
+<p><a href="/Blog//%E4%BA%86%E8%A7%A3%E7%B1%BB">了解类</a></p>
+</li>
+<li>
+<p><a href="/Blog//%E5%BE%AE%E4%BF%A1%E5%92%8Capp%E5%AF%BC%E5%87%BA%E5%9B%BE%E7%89%87%E8%B8%A9%E5%9D%91%E7%BB%8F%E5%8E%86">微信和app导出图片踩坑经历</a></p>
+</li>
+</ul>
+<h1 style="color:#448d55;">杂货教程</h1> 
+<ul>
+<li><a href="/Blog/%E6%9D%82%E8%B4%A7%E6%95%99%E7%A8%8B/markdown%E6%94%AF%E6%8C%81xmind">markdown支持xmind</a></li>
+</ul>
+<h1 style="color:#448d55;">知识梳理</h1> 
+<ul>
+<li>
+<p><a href="/Blog/%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86/react">react</a></p>
+</li>
+<li>
+<p><a href="/Blog/%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86/vue">vue</a></p>
+</li>
+<li>
+<p><a href="/Blog/%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86/%E7%BD%91%E7%BB%9C">网络</a></p>
+</li>
+<li>
+<p><a href="/Blog//%E9%9D%A2%E7%BB%8F">面经</a></p>
+</li>
+</ul>
+<h1 style="color:#448d55;">面试</h1> 
+<ul>
+<li>
+<p><a href="/Blog/%E9%9D%A2%E8%AF%95/interview-other">interview-other</a></p>
+</li>
+<li>
+<p><a href="/Blog/%E9%9D%A2%E8%AF%95/mine">mine</a></p>
+</li>
+<li>
+<p><a href="/Blog/%E9%9D%A2%E8%AF%95/other-people">other-people</a></p>
+</li>
+<li>
+<p><a href="/Blog/%E9%9D%A2%E8%AF%95/%E5%A4%A7%E7%BA%B2">大纲</a></p>
+</li>
+<li>
+<p><a href="/Blog/%E9%9D%A2%E8%AF%95/%E6%96%87%E7%AB%A0%E3%80%8A%E5%A6%82%E4%BD%95%E8%BF%9B%E9%98%BF%E9%87%8C%E3%80%8B">文章《如何进阿里》</a></p>
+</li>
+</ul>
+<h1 style="color:#448d55;">面试知识点</h1> 
+<ul>
+<li>
+<p><a href="/Blog/%E9%9D%A2%E8%AF%95%E7%9F%A5%E8%AF%86%E7%82%B9/%E4%B8%80%E4%B8%AA%E6%B7%98%E5%AE%9D%E6%8A%80%E6%9C%AF%E4%B8%93%E5%AE%B6%E5%86%99%E7%9A%84%E5%A6%82%E4%BD%95%E8%BF%9B%E5%85%A5%E9%98%BF%E9%87%8C">一个淘宝技术专家写的如何进入阿里</a></p>
+</li>
+<li>
+<p><a href="/Blog/%E9%9D%A2%E8%AF%95%E7%9F%A5%E8%AF%86%E7%82%B9/%E4%B8%80%E4%BA%9B%E6%80%BB%E7%BB%93">一些总结</a></p>
+</li>
+<li>
+<p><a href="/Blog/%E9%9D%A2%E8%AF%95%E7%9F%A5%E8%AF%86%E7%82%B9/%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87+%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE+%E9%97%AD%E5%8C%85">执行上下文+作用域链+闭包</a></p>
+</li>
+<li>
+<p><a href="/Blog/%E9%9D%A2%E8%AF%95%E7%9F%A5%E8%AF%86%E7%82%B9/%E6%9C%AC%E4%BA%BA%E9%9D%A2%E7%BB%8F">本人面经</a></p>
+</li>
+<li>
+<p><a href="/Blog/%E9%9D%A2%E8%AF%95%E7%9F%A5%E8%AF%86%E7%82%B9/%E9%9D%A2%E8%AF%95%E5%88%AB%E4%BA%BA%E7%9A%84%E9%97%AE%E9%A2%98">面试别人的问题</a></p>
+</li>
+</ul>
+<h1 style="color:#448d55;">项目复盘</h1> 
+<ul>
+<li>
+<p><a href="/Blog/%E9%A1%B9%E7%9B%AE%E5%A4%8D%E7%9B%98/%E6%B0%91%E7%94%9F%E6%98%9F%E6%8E%A2-%E7%A7%BB%E5%8A%A8%E7%AB%AF">民生星探-移动端</a></p>
+</li>
+<li>
+<p><a href="/Blog/%E9%A1%B9%E7%9B%AE%E5%A4%8D%E7%9B%98/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%8A%A5%E5%91%8A">自动化报告</a></p>
+</li>
+</ul>
+
+</div>
+
+
+<script src="/Blog/js/book-menu.js"></script>
+
+      </div>
+
+      <div class="sidebar-toggle" onclick="sidebar_toggle()" onmouseover="add_inner()" onmouseleave="remove_inner()">
+  <div class="sidebar-toggle-inner"></div>
+</div>
+
+<script>
+function add_inner() {
+  let inner = document.querySelector('.sidebar-toggle-inner')
+  inner.classList.add('show')  
+}
+
+function remove_inner() {
+  let inner = document.querySelector('.sidebar-toggle-inner')
+  inner.classList.remove('show')
+}
+
+function sidebar_toggle() {
+    let sidebar_toggle = document.querySelector('.sidebar-toggle')
+    let sidebar = document.querySelector('.book-sidebar')
+    let content = document.querySelector('.off-canvas-content')
+    if (sidebar_toggle.classList.contains('extend')) { // show
+        sidebar_toggle.classList.remove('extend')
+        sidebar.classList.remove('hide')
+        content.classList.remove('extend')
+    }
+    else { // hide
+        sidebar_toggle.classList.add('extend')
+        sidebar.classList.add('hide')
+        content.classList.add('extend')
+    }
+}
+</script>
+
+      <div class="off-canvas-content">
+        <div class="columns">
+          <div class="column col-10 col-lg-12">
+            <div class="book-navbar"><!-- For Responsive Layout -->
+
+<header class="navbar">
+  <section class="navbar-section">
+    <a onclick="open_sidebar()">
+      <i class="icon icon-menu"></i>
+    </a>
+  </section>
+</header>
+</div>
+            <div class="book-content"><div class="book-post">
+  <h1 id="我的面经">我的面经</h1>
+<h2 id="通联数据">通联数据</h2>
+<p>（公司主要做react）</p>
+<p>(一)技术</p>
+<ol>
+<li>自我介绍</li>
+<li>认为vue和react的区别</li>
+<li>vue3.0新特性有没有了解</li>
+<li>git merge 和git rebase 区别，项目开发流程</li>
+<li>promise 理解，解决了什么问题</li>
+<li>针对我写的脚本问了下怎么写的</li>
+<li>了解哪些数据库？有什么区别？</li>
+</ol>
+<p>(二)技术总监+技术架构两个人</p>
+<ol>
+<li>自我介绍下</li>
+<li>介绍其中一个项目业务流程</li>
+<li>0.1+0.2 不等于 0.3的处理方法</li>
+<li>数组常用的方法</li>
+<li>对webpack的理解</li>
+<li>怎么学前端的？看了什么书？</li>
+<li>说几种设计模式？</li>
+<li>深度遍历（我都没想起来是要我回答先中后序遍历）</li>
+<li>看到你有写了两个自己的小项目，介绍下</li>
+<li>链表和队列？广度优先遍历用的是队列还是链表？</li>
+<li>至今你认为自己有什么亮点没讲到么？</li>
+<li>我说我性格不错，另外因为做的外包，所以抗压能力比较强；</li>
+<li>他就问，你怎么证明你的抗压能力强呢？</li>
+<li>我说之前9117，压力巨大</li>
+<li>她就说，那你认为是你能力的问题导致的么？</li>
+<li>对金融有了解么？</li>
+<li>自己的规划？</li>
+</ol>
+<p>(三)CEO面</p>
+<ol>
+<li>为什么选择我们公司</li>
+<li>你认为我们是一个怎么样的公司</li>
+<li>你认为自己有什么优势</li>
+<li>为什么离职</li>
+<li>想要什么样工作环境</li>
+<li>怎么看待金融</li>
+<li>为什么来上海</li>
+<li>你有什么想问我的</li>
+</ol>
+<h2 id="观安">观安</h2>
+<p>（公司主要做vue）</p>
+<ol>
+<li>自我介绍</li>
+<li>生命周期有哪些？</li>
+<li>初始化数据</li>
+<li>不用vue-cli写vue, 花屏处理</li>
+<li>vue父子组件传值</li>
+<li>vue3.0新特性</li>
+<li>http2有没有了解</li>
+<li>jwt，登陆校验怎么做的</li>
+<li>反爬虫怎么做？</li>
+<li>网站安全有没有了解</li>
+<li>深浅拷贝出现原因和的处理方法</li>
+<li>key的作用</li>
+</ol>
+<h2 id="vue相关">vue相关</h2>
+<ol>
+<li><input type="checkbox" id="checkbox0"><label for="checkbox0"> 深度监听具体的解决办法，我看使用$set, 一定会定义一个函数，并不适用v-model 的情况；</label></li>
+<li><input type="checkbox" id="checkbox1" checked="true"><label for="checkbox1"> vue开发规范</label></li>
+</ol>
+<h2 id="算法相关">算法相关</h2>
+<ol>
+<li><input type="checkbox" id="checkbox2" checked="true"><label for="checkbox2"> 二叉树前、中、后序排序；</label></li>
+</ol>
+<h2 id="CSS相关">CSS相关</h2>
+<ol>
+<li><input type="checkbox" id="checkbox3" checked="true"><label for="checkbox3"> less大概看一下，心里有个数</label></li>
+<li><input type="checkbox" id="checkbox4" checked="true"><label for="checkbox4"> 实现居中的几种方法总结下</label></li>
+<li><input type="checkbox" id="checkbox5"><label for="checkbox5"> 包括flex的特性失效的情况</label></li>
+<li><input type="checkbox" id="checkbox6" checked="true"><label for="checkbox6"> 布局：</label>
+<ol>
+<li><input type="checkbox" id="checkbox7" checked="true"><label for="checkbox7"> 圣杯布局/双翼杯布局(中间先渲染，两侧固定宽度，中间自适应)</label></li>
+</ol>
+</li>
+</ol>
+<h2 id="总结">总结</h2>
+<p>CSS</p>
+<ol>
+<li><input type="checkbox" id="checkbox8" checked="true"><label for="checkbox8"> 移动端1px怎么处理？出现原因;</label></li>
+<li><input type="checkbox" id="checkbox9"><label for="checkbox9"> rem和em区别？</label></li>
+<li><input type="checkbox" id="checkbox10"><label for="checkbox10"> 处理过哪些css兼容性问题？</label></li>
+<li><input type="checkbox" id="checkbox11"><label for="checkbox11"> 用什么css预编译器(我说的scss)？你认为 scss 和css 的区别？</label></li>
+</ol>
+<p>Javascript</p>
+<ol>
+<li><input type="checkbox" id="checkbox12"><label for="checkbox12"> forEach 和 for循环区别？如何停止？(详见for和forEach区别)</label>
+<ol>
+<li>forEach</li>
+</ol>
+</li>
+<li>适用于不清楚循环次数或判断长度耗费性能；</li>
+<li>除了抛出异常，无法终止循环；<br>
+2. for</li>
+<li>循环可以使用continue，break 来控制循环和跳出循环；</li>
+<li></li>
+<li><input type="checkbox" id="checkbox13"><label for="checkbox13"> 常用的es6有哪些？</label></li>
+<li><input type="checkbox" id="checkbox14"><label for="checkbox14"> every和some区别？</label></li>
+<li><input type="checkbox" id="checkbox15" checked="true"><label for="checkbox15"> new Set([undefined,NaN,NaN,1,‘1’,{},{}])  的处理结果？</label>
+<ol>
+<li>结果： { undefined, NaN, 1, ‘1’, {}, {} }</li>
+<li>Set加入值的时候不会进行类型转换；</li>
+<li>Set比较值使用的 “Same-value-zero equality” 算法，该算法与 === 的区别在于，认为 NaN等于自身；</li>
+<li>(无论哪个算法) 对象永远是不相等的；</li>
+</ol>
+</li>
+<li><input type="checkbox" id="checkbox16"><label for="checkbox16"> ES6，你常用的特性有哪些？</label></li>
+</ol>
+<p>vue</p>
+<ol>
+<li><input type="checkbox" id="checkbox17"><label for="checkbox17"> key值相同会怎么样？为什么不能相同？</label></li>
+<li><input type="checkbox" id="checkbox18"><label for="checkbox18"> 你认为React和Vue优缺点？</label></li>
+</ol>
+<p>打包</p>
+<ol>
+<li><input type="checkbox" id="checkbox19"><label for="checkbox19"> 打包工具(我说的webpack, 但是看他不是很满意)</label></li>
+</ol>
+<p>其他</p>
+<ol>
+<li><input type="checkbox" id="checkbox20"><label for="checkbox20"> 项目中遇到的印象深刻的问题？</label></li>
+<li><input type="checkbox" id="checkbox21"><label for="checkbox21"> flutter晓得不?（想看我是否对新技术有了解）</label></li>
+<li><input type="checkbox" id="checkbox22"><label for="checkbox22"> 你认为前端要学什么？（说这个加分，看知识面）</label></li>
+<li><input type="checkbox" id="checkbox23"><label for="checkbox23"> 有哪些开发小程序？</label></li>
+<li><input type="checkbox" id="checkbox24"><label for="checkbox24"> 你有什么想问我的么？</label></li>
+<li><input type="checkbox" id="checkbox25"><label for="checkbox25"> H5项目，如何处理兼容性？</label></li>
+<li><input type="checkbox" id="checkbox26"><label for="checkbox26"> 对项目有什么技术推动？有团队内做过技术分享么？分享的什么？</label></li>
+<li><input type="checkbox" id="checkbox27"><label for="checkbox27"> 怎么学习前端的？(我说看书，看视频，看博客)看了哪些书？</label></li>
+</ol>
+
+</div>
+
+
+  <div class="book-comments">
+    
+
+
+
+
+  </div>
+
+
+
+<script src="/Blog/js/book-post.js"></script>
+</div>
+          </div>
+          <div class="column col-2 hide-lg">
+            <div class="book-post-info">
+  
+    <div class="book-post-meta">
+
+  <div class="author">
+
+    <!-- Author image -->
+    <div class="author-img">
+      
+        <figure
+          class="avatar avatar-lg"
+          data-initial="甜"
+          style="background-color: #3b4351;">
+        </figure>
+      
+    </div>
+
+    <!-- Author title -->
+    <div class="author-title">
+      <div>甜里甜气</div>
+      <div>2021-03-28</div>
+    </div>
+  </div>
+
+  
+
+  <div class="divider"></div>
+</div>
+  
+
+  <div class="book-tocbot"></div>
+<div class="book-tocbot-menu">
+  <a class="book-toc-expand" onclick="expand_toc()">Expand all</a>
+  <a onclick="go_top()">⬆ Top</a>
+  <a onclick="go_bottom()">⬇ Bottom</a>
+</div>
+
+
+<script src="/Blog/js/book-toc.js"></script>
+
+
+</div>
+          </div>
+        </div>
+      </div>
+
+      <a class="off-canvas-overlay" onclick="hide_canvas()"></a>
+    </div>
+  </body>
+</html>
+
+
+<script src="/Blog/js/book.js"></script>
+

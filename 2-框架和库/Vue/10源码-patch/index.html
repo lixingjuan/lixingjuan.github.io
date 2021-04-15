@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+
+    
+      <link rel="icon" href="/Blog/favicon.png" />
+    
+
+    <title>
+        
+          2-框架和库/Vue/10源码-patch - 李幸娟的前端博客
+        
+    </title>
+
+    <!-- Spectre.css framework -->
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">
+
+    <!-- theme css & js -->
+    
+<link rel="stylesheet" href="/Blog/css/book.css">
+
+    
+<script src="/Blog/js/book.js"></script>
+
+
+    <!-- tocbot -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+    
+    <!-- katex -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/zooming/2.1.1/zooming.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const zooming = new Zooming()
+    zooming.listen('.book-content img')
+})
+</script>
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+  <body>
+    <div class="book-container">
+      <div class="book-sidebar">
+        <div class="book-brand">
+  <a href="/Blog/">
+    <img src="/Blog/favicon.png">
+    <span>李幸娟的前端博客</span>
+  </a>
+</div> <div class="book-menu">
+  <ul>
+<li><a href="/Blog">Home</a></li>
+</ul>
+<h1 style="color:#448d55;">JavaScript</h1> 
+
+<h2 id="专题深入"><a href="#专题深入" class="headerlink" title="专题深入"></a>专题深入</h2><ul>
+<li><p><a href="/Blog/1-JavaScript/%E4%B8%93%E9%A2%98%E6%B7%B1%E5%85%A5/0.1+0.2">0.1+0.2</a> </p>
+</li>
+<li><p><a href="/Blog/1-JavaScript/%E4%B8%93%E9%A2%98%E6%B7%B1%E5%85%A5/Class%E7%9B%B8%E5%85%B3">Class相关</a> </p>
+</li>
+<li><p><a href="/Blog/1-JavaScript/%E4%B8%93%E9%A2%98%E6%B7%B1%E5%85%A5/EventLoop">EventLoop</a> </p>
+</li>
+<li><p><a href="/Blog/1-JavaScript/%E4%B8%93%E9%A2%98%E6%B7%B1%E5%85%A5/Promise">Promise</a> </p>
+</li>
+<li><p><a href="/Blog/1-JavaScript/%E4%B8%93%E9%A2%98%E6%B7%B1%E5%85%A5/call%E5%92%8Capply">call和apply</a> </p>
+</li>
+<li><p><a href="/Blog/1-JavaScript/%E4%B8%93%E9%A2%98%E6%B7%B1%E5%85%A5/flat%E5%AE%9E%E7%8E%B0">flat实现</a> </p>
+</li>
+<li><p><a href="/Blog/1-JavaScript/%E4%B8%93%E9%A2%98%E6%B7%B1%E5%85%A5/for%E5%92%8CforEach%E7%9A%84%E5%8C%BA%E5%88%AB">for和forEach的区别</a> </p>
+</li>
+<li><p><a href="/Blog/1-JavaScript/%E4%B8%93%E9%A2%98%E6%B7%B1%E5%85%A5/this%E7%9B%B8%E5%85%B3">this相关</a> </p>
+</li>
+<li><p><a href="/Blog/1-JavaScript/%E4%B8%93%E9%A2%98%E6%B7%B1%E5%85%A5/%E4%BA%8B%E4%BB%B6%E5%A7%94%E6%89%98">事件委托</a> </p>
+</li>
+<li><p><a href="/Blog/1-JavaScript/%E4%B8%93%E9%A2%98%E6%B7%B1%E5%85%A5/%E4%BD%9C%E7%94%A8%E5%9F%9F%E7%9B%B8%E5%85%B3">作用域相关</a> </p>
+</li>
+<li><p><a href="/Blog/1-JavaScript/%E4%B8%93%E9%A2%98%E6%B7%B1%E5%85%A5/%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE">作用域链</a> </p>
+</li>
+<li><p><a href="/Blog/1-JavaScript/%E4%B8%93%E9%A2%98%E6%B7%B1%E5%85%A5/%E5%87%BD%E6%95%B0%E6%9F%AF%E9%87%8C%E5%8C%96">函数柯里化</a> </p>
+</li>
+<li><p><a href="/Blog/1-JavaScript/%E4%B8%93%E9%A2%98%E6%B7%B1%E5%85%A5/%E5%87%BD%E6%95%B0%E7%9A%84%E5%86%85%E9%83%A8%E5%B1%9E%E6%80%A7">函数的内部属性</a> </p>
+</li>
+<li><p><a href="/Blog/1-JavaScript/%E4%B8%93%E9%A2%98%E6%B7%B1%E5%85%A5/%E5%87%BD%E6%95%B0%E7%9A%84%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F">函数的执行顺序</a> </p>
+</li>
+<li><p><a href="/Blog/1-JavaScript/%E4%B8%93%E9%A2%98%E6%B7%B1%E5%85%A5/%E5%89%8D%E7%AB%AF%E6%A8%A1%E5%9D%97%E5%8C%96%E8%A7%84%E8%8C%83">前端模块化规范</a> </p>
+</li>
+<li><p><a href="/Blog/1-JavaScript/%E4%B8%93%E9%A2%98%E6%B7%B1%E5%85%A5/%E5%8A%A0%E5%BF%AB%E9%A6%96%E5%B1%8F%E6%B8%B2%E6%9F%93">加快首屏渲染</a> </p>
+</li>
+<li><p><a href="/Blog/1-JavaScript/%E4%B8%93%E9%A2%98%E6%B7%B1%E5%85%A5/%E5%8E%9F%E5%9E%8B%E5%92%8C%E5%8E%9F%E5%9E%8B%E9%93%BE">原型和原型链</a> </p>
+</li>
+<li><p><a href="/Blog/1-JavaScript/%E4%B8%93%E9%A2%98%E6%B7%B1%E5%85%A5/%E5%BA%9F%E5%BC%83">废弃</a> </p>
+</li>
+<li><p><a href="/Blog/1-JavaScript/%E4%B8%93%E9%A2%98%E6%B7%B1%E5%85%A5/%E6%89%A9%E5%85%85%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%8A%9F%E8%83%BD">扩充类型的功能</a> </p>
+</li>
+<li><p><a href="/Blog/1-JavaScript/%E4%B8%93%E9%A2%98%E6%B7%B1%E5%85%A5/%E6%B5%8F%E8%A7%88%E5%99%A8">浏览器</a> </p>
+</li>
+<li><p><a href="/Blog/1-JavaScript/%E4%B8%93%E9%A2%98%E6%B7%B1%E5%85%A5/%E9%97%AD%E5%8C%85%E7%9B%B8%E5%85%B3">闭包相关</a> </p>
+</li>
+<li><p><a href="/Blog/1-JavaScript/%E4%B8%93%E9%A2%98%E6%B7%B1%E5%85%A5/%E9%98%B2%E6%8A%96%E5%92%8C%E8%8A%82%E6%B5%81">防抖和节流</a> </p>
+</li>
+</ul>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><ul>
+<li><a href="/Blog/1-JavaScript/%E5%85%B6%E4%BB%96/%E5%9B%BE%E7%89%87%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2">图片类型转换</a> </li>
+</ul>
+<h2 id="基础知识类"><a href="#基础知识类" class="headerlink" title="基础知识类"></a>基础知识类</h2><ul>
+<li><p><a href="/Blog/1-JavaScript/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%B1%BB/Generate">Generate</a> </p>
+</li>
+<li><p><a href="/Blog/1-JavaScript/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%B1%BB/Proxy">Proxy</a> </p>
+</li>
+<li><p><a href="/Blog/1-JavaScript/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%B1%BB/Reflect">Reflect</a> </p>
+</li>
+<li><p><a href="/Blog/1-JavaScript/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%B1%BB/Set+Map%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0">Set+Map学习笔记</a> </p>
+</li>
+<li><p><a href="/Blog/1-JavaScript/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%B1%BB/async">async</a> </p>
+</li>
+<li><p><a href="/Blog/1-JavaScript/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%B1%BB/bind">bind</a> </p>
+</li>
+<li><p><a href="/Blog/1-JavaScript/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%B1%BB/%E5%88%A4%E6%96%AD%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B">判断数据类型</a> </p>
+</li>
+<li><p><a href="/Blog/1-JavaScript/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%B1%BB/%E5%90%88%E5%B9%B6%E7%A9%BA%E5%80%BC">合并空值</a> </p>
+</li>
+<li><p><a href="/Blog/1-JavaScript/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%B1%BB/%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87">执行上下文</a> </p>
+</li>
+<li><p><a href="/Blog/1-JavaScript/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%B1%BB/%E6%95%B0%E7%BB%84">数组</a> </p>
+</li>
+<li><p><a href="/Blog/1-JavaScript/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%B1%BB/%E6%AD%A3%E5%88%99">正则</a> </p>
+</li>
+<li><p><a href="/Blog/1-JavaScript/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%B1%BB/%E7%AB%8B%E5%8D%B3%E6%89%A7%E8%A1%8C%E5%87%BD%E6%95%B0">立即执行函数</a> </p>
+</li>
+<li><p><a href="/Blog/1-JavaScript/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%B1%BB/%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0">箭头函数</a> </p>
+</li>
+<li><p><a href="/Blog/1-JavaScript/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%B1%BB/%E7%BB%A7%E6%89%BF%E7%9B%B8%E5%85%B3">继承相关</a> </p>
+</li>
+</ul>
+<h1 style="color:#448d55;">前端知识分类</h1> 
+
+<h1 style="color:#448d55;">框架和库</h1> 
+
+<h2 id="Deno"><a href="#Deno" class="headerlink" title="Deno"></a>Deno</h2><ul>
+<li><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/Deno/index">index</a> </li>
+</ul>
+<h2 id="React"><a href="#React" class="headerlink" title="React"></a>React</h2><ul>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/React/Fiber">Fiber</a> </p>
+</li>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/React/React-redux%E6%80%8E%E4%B9%88%E7%94%A8">React-redux怎么用</a> </p>
+</li>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/React/Redux%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB%E6%80%BB%E7%BB%93">Redux源码阅读总结</a> </p>
+</li>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/React/diff%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0crud">diff算法实现crud</a> </p>
+</li>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/React/react-dom">react-dom</a> </p>
+</li>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/React/react-redux%E6%BA%90%E7%A0%81">react-redux源码</a> </p>
+</li>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/React/react">react</a> </p>
+</li>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/React/react%E5%BC%80%E5%8F%91%E4%B8%AD%E4%BC%98%E5%8C%96%E7%82%B9">react开发中优化点</a> </p>
+</li>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/React/%E5%90%84%E4%B8%AA%E5%9C%B0%E6%96%B9%E7%9A%84%E6%89%93%E5%8D%B0">各个地方的打印</a> </p>
+</li>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/React/%E8%AF%BB%E6%BA%90%E7%A0%81%E7%9A%84%E7%90%86%E8%A7%A3">读源码的理解</a> </p>
+</li>
+</ul>
+<h2 id="Vue"><a href="#Vue" class="headerlink" title="Vue"></a>Vue</h2><ul>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/Vue/0%E6%BA%90%E7%A0%81-%E4%B8%BB%E7%BA%BF">0源码-主线</a> </p>
+</li>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/Vue/1%E6%BA%90%E7%A0%81-%E7%9B%AE%E5%BD%95">1源码-目录</a> </p>
+</li>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/Vue/2%E6%BA%90%E7%A0%81-%E6%9E%84%E5%BB%BA%E8%BF%87%E7%A8%8B">2源码-构建过程</a> </p>
+</li>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/Vue/3%E6%BA%90%E7%A0%81-%E6%95%B0%E6%8D%AE%E9%A9%B1%E5%8A%A8">3源码-数据驱动</a> </p>
+</li>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/Vue/4%E6%BA%90%E7%A0%81-newVue">4源码-newVue</a> </p>
+</li>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/Vue/5%E6%BA%90%E7%A0%81-Vue%E5%AE%9E%E4%BE%8B%E6%8C%82%E8%BD%BD%E7%9A%84%E5%AE%9E%E7%8E%B0">5源码-Vue实例挂载的实现</a> </p>
+</li>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/Vue/6%E6%BA%90%E7%A0%81-render">6源码-render</a> </p>
+</li>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/Vue/7%E6%BA%90%E7%A0%81-createElement">7源码-createElement</a> </p>
+</li>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/Vue/8%E6%BA%90%E7%A0%81-_update">8源码-_update</a> </p>
+</li>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/Vue/9%E6%BA%90%E7%A0%81-createComponent">9源码-createComponent</a> </p>
+</li>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/Vue/10%E6%BA%90%E7%A0%81-patch">10源码-patch</a> </p>
+</li>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/Vue/11%E6%BA%90%E7%A0%81-%E5%90%88%E5%B9%B6%E9%85%8D%E7%BD%AE">11源码-合并配置</a> </p>
+</li>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/Vue/12%E6%BA%90%E7%A0%81-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F">12源码-生命周期</a> </p>
+</li>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/Vue/12%E6%BA%90%E7%A0%81-%E7%BB%84%E4%BB%B6%E6%B3%A8%E5%86%8C">12源码-组件注册</a> </p>
+</li>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/Vue/13%E6%BA%90%E7%A0%81-nextTick">13源码-nextTick</a> </p>
+</li>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/Vue/13%E6%BA%90%E7%A0%81-%E5%BC%82%E6%AD%A5%E7%BB%84%E4%BB%B6">13源码-异步组件</a> </p>
+</li>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/Vue/14%E6%95%B0%E6%8D%AE%E5%8A%AB%E6%8C%81">14数据劫持</a> </p>
+</li>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/Vue/15%E6%BA%90%E7%A0%81-%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86">15源码-响应式原理</a> </p>
+</li>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/Vue/16%E5%AF%B9%E8%B1%A1%E5%92%8C%E6%95%B0%E7%BB%84%E7%9A%84%E5%A4%84%E7%90%86">16对象和数组的处理</a> </p>
+</li>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/Vue/17%E6%BA%90%E7%A0%81-%E4%BE%9D%E8%B5%96%E6%94%B6%E9%9B%86">17源码-依赖收集</a> </p>
+</li>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/Vue/18%E6%BA%90%E7%A0%81-%E6%B4%BE%E5%8F%91%E6%9B%B4%E6%96%B0">18源码-派发更新</a> </p>
+</li>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/Vue/README">README</a> </p>
+</li>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/Vue/key%E7%9A%84%E4%BD%9C%E7%94%A8">key的作用</a> </p>
+</li>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/Vue/vue">vue</a> </p>
+</li>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/Vue/%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83">开发规范</a> </p>
+</li>
+</ul>
+<h2 id="dva"><a href="#dva" class="headerlink" title="dva"></a>dva</h2><ul>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/dva/dva%E6%8A%BD%E7%A6%BB%E6%95%B0%E7%BB%84%E8%B7%AF%E7%94%B1+%E5%8A%A8%E6%80%81%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE%E6%96%B9%E6%B3%95">dva抽离数组路由+动态路由配置方法</a> </p>
+</li>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/dva/dva%E7%9A%84%E4%B8%80%E4%BA%9B%E7%82%B9">dva的一些点</a> </p>
+</li>
+</ul>
+<h2 id="lodash"><a href="#lodash" class="headerlink" title="lodash"></a>lodash</h2><ul>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/lodash/merge">merge</a> </p>
+</li>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/lodash/%E6%B7%B1%E6%8B%B7%E8%B4%9D">深拷贝</a> </p>
+</li>
+</ul>
+<h2 id="公共类"><a href="#公共类" class="headerlink" title="公共类"></a>公共类</h2><ul>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/%E5%85%AC%E5%85%B1%E7%B1%BB/vue%E5%92%8Creact%E5%AF%B9%E6%AF%94">vue和react对比</a> </p>
+</li>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/%E5%85%AC%E5%85%B1%E7%B1%BB/%E6%A1%86%E6%9E%B6%E9%80%9A%E8%AF%86">框架通识</a> </p>
+</li>
+</ul>
+<h1 style="color:#448d55;">CSS相关</h1> 
+
+<h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><ul>
+<li><p><a href="/Blog/3-CSS%E7%9B%B8%E5%85%B3/%E5%9F%BA%E7%A1%80/Grid%E9%80%9F%E6%88%90">Grid速成</a> </p>
+</li>
+<li><p><a href="/Blog/3-CSS%E7%9B%B8%E5%85%B3/%E5%9F%BA%E7%A1%80/bfc">bfc</a> </p>
+</li>
+<li><p><a href="/Blog/3-CSS%E7%9B%B8%E5%85%B3/%E5%9F%BA%E7%A1%80/blur%E5%92%8Cchange">blur和change</a> </p>
+</li>
+<li><p><a href="/Blog/3-CSS%E7%9B%B8%E5%85%B3/%E5%9F%BA%E7%A1%80/css3%E5%8A%A8%E7%94%BB%E5%B1%9E%E6%80%A7">css3动画属性</a> </p>
+</li>
+<li><p><a href="/Blog/3-CSS%E7%9B%B8%E5%85%B3/%E5%9F%BA%E7%A1%80/flex">flex</a> </p>
+</li>
+</ul>
+<h2 id="库-amp-方案"><a href="#库-amp-方案" class="headerlink" title="库&amp;方案"></a>库&amp;方案</h2><ul>
+<li><p><a href="/Blog/3-CSS%E7%9B%B8%E5%85%B3/%E5%BA%93&%E6%96%B9%E6%A1%88/1px">1px</a> </p>
+</li>
+<li><p><a href="/Blog/3-CSS%E7%9B%B8%E5%85%B3/%E5%BA%93&%E6%96%B9%E6%A1%88/less%E9%80%9F%E6%88%90">less速成</a> </p>
+</li>
+<li><p><a href="/Blog/3-CSS%E7%9B%B8%E5%85%B3/%E5%BA%93&%E6%96%B9%E6%A1%88/scss%E9%80%9F%E6%88%90">scss速成</a> </p>
+</li>
+<li><p><a href="/Blog/3-CSS%E7%9B%B8%E5%85%B3/%E5%BA%93&%E6%96%B9%E6%A1%88/%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%BF%E7%94%A8rem?">为什么使用rem?</a> </p>
+</li>
+<li><p><a href="/Blog/3-CSS%E7%9B%B8%E5%85%B3/%E5%BA%93&%E6%96%B9%E6%A1%88/%E5%AE%9E%E7%8E%B0%E5%B1%85%E4%B8%AD">实现居中</a> </p>
+</li>
+<li><p><a href="/Blog/3-CSS%E7%9B%B8%E5%85%B3/%E5%BA%93&%E6%96%B9%E6%A1%88/%E5%B8%B8%E8%A7%81%E5%B8%83%E5%B1%80">常见布局</a> </p>
+</li>
+<li><p><a href="/Blog/3-CSS%E7%9B%B8%E5%85%B3/%E5%BA%93&%E6%96%B9%E6%A1%88/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%80%82%E9%85%8D">移动端适配</a> </p>
+</li>
+</ul>
+<h1 style="color:#448d55;">其他</h1> 
+
+<h2 id="TypeScript"><a href="#TypeScript" class="headerlink" title="TypeScript"></a>TypeScript</h2><ul>
+<li><p><a href="/Blog/4-%E5%85%B6%E4%BB%96/TypeScript/%E6%B5%8B%E8%AF%95%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84">测试目录结构</a> </p>
+</li>
+<li><p><a href="/Blog/4-%E5%85%B6%E4%BB%96/TypeScript/%E7%94%BB%E7%93%A2">画瓢</a> </p>
+</li>
+</ul>
+<h2 id="基础算法"><a href="#基础算法" class="headerlink" title="基础算法"></a>基础算法</h2><ul>
+<li><p><a href="/Blog/4-%E5%85%B6%E4%BB%96/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/js%E4%B8%89%E7%A7%8D%E9%81%8D%E5%8E%86">js三种遍历</a> </p>
+</li>
+<li><p><a href="/Blog/4-%E5%85%B6%E4%BB%96/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/%E5%B8%B8%E8%A7%81%E6%8E%92%E5%BA%8F">常见排序</a> </p>
+</li>
+</ul>
+<h2 id="工具🔧"><a href="#工具🔧" class="headerlink" title="工具🔧"></a>工具🔧</h2><h3 id="git相关操作"><a href="#git相关操作" class="headerlink" title="git相关操作"></a>git相关操作</h3><ul>
+<li><p><a href="/Blog/4-%E5%85%B6%E4%BB%96/%E5%B7%A5%E5%85%B7%F0%9F%94%A7/git%E7%9B%B8%E5%85%B3%E6%93%8D%E4%BD%9C/git%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C%E2%9D%A4">git常用操作❤</a> </p>
+</li>
+<li><p><a href="/Blog/4-%E5%85%B6%E4%BB%96/%E5%B7%A5%E5%85%B7%F0%9F%94%A7/git%E7%9B%B8%E5%85%B3%E6%93%8D%E4%BD%9C/%E4%BB%A3%E7%A0%81%E6%8F%90%E4%BA%A4%E6%A0%A1%E9%AA%8C">代码提交校验</a> </p>
+</li>
+</ul>
+<h3 id="webpack"><a href="#webpack" class="headerlink" title="webpack"></a>webpack</h3><ul>
+<li><p><a href="/Blog/4-%E5%85%B6%E4%BB%96/%E5%B7%A5%E5%85%B7%F0%9F%94%A7/webpack/antd%E6%8C%89%E9%9C%80%E5%8A%A0%E8%BD%BD">antd按需加载</a> </p>
+</li>
+<li><p><a href="/Blog/4-%E5%85%B6%E4%BB%96/%E5%B7%A5%E5%85%B7%F0%9F%94%A7/webpack/eslint">eslint</a> </p>
+</li>
+<li><p><a href="/Blog/4-%E5%85%B6%E4%BB%96/%E5%B7%A5%E5%85%B7%F0%9F%94%A7/webpack/perttier">perttier</a> </p>
+</li>
+<li><p><a href="/Blog/4-%E5%85%B6%E4%BB%96/%E5%B7%A5%E5%85%B7%F0%9F%94%A7/webpack/webpack%E7%83%AD%E6%9B%B4%E6%96%B0%E5%8E%9F%E7%90%86">webpack热更新原理</a> </p>
+</li>
+</ul>
+<h3 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h3><ul>
+<li><p><a href="/Blog/4-%E5%85%B6%E4%BB%96/%E5%B7%A5%E5%85%B7%F0%9F%94%A7/%E6%8C%87%E4%BB%A4/MAC-shell">MAC-shell</a> </p>
+</li>
+<li><p><a href="/Blog/4-%E5%85%B6%E4%BB%96/%E5%B7%A5%E5%85%B7%F0%9F%94%A7/%E6%8C%87%E4%BB%A4/index">index</a> </p>
+</li>
+<li><p><a href="/Blog/4-%E5%85%B6%E4%BB%96/%E5%B7%A5%E5%85%B7%F0%9F%94%A7/%E6%8C%87%E4%BB%A4/tree">tree</a> </p>
+</li>
+</ul>
+<h3 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h3><ul>
+<li><p><a href="/Blog/4-%E5%85%B6%E4%BB%96/%E5%B7%A5%E5%85%B7%F0%9F%94%A7/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4">MySQL常用命令</a> </p>
+</li>
+<li><p><a href="/Blog/4-%E5%85%B6%E4%BB%96/%E5%B7%A5%E5%85%B7%F0%9F%94%A7/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%B8%B8%E7%94%A8SQL">常用SQL</a> </p>
+</li>
+</ul>
+<h3 id="无归类"><a href="#无归类" class="headerlink" title="无归类"></a>无归类</h3><ul>
+<li><p><a href="/Blog/4-%E5%85%B6%E4%BB%96/%E5%B7%A5%E5%85%B7%F0%9F%94%A7/%E6%97%A0%E5%BD%92%E7%B1%BB/chrome%E6%B5%8F%E8%A7%88%E5%99%A8%E8%B7%A8%E5%9F%9F%E8%AE%BE%E7%BD%AE">chrome浏览器跨域设置</a> </p>
+</li>
+<li><p><a href="/Blog/4-%E5%85%B6%E4%BB%96/%E5%B7%A5%E5%85%B7%F0%9F%94%A7/%E6%97%A0%E5%BD%92%E7%B1%BB/%E5%BF%AB%E6%8D%B7%E9%94%AE">快捷键</a> </p>
+</li>
+</ul>
+<h3 id="系统操作"><a href="#系统操作" class="headerlink" title="系统操作"></a>系统操作</h3><ul>
+<li><p><a href="/Blog/4-%E5%85%B6%E4%BB%96/%E5%B7%A5%E5%85%B7%F0%9F%94%A7/%E7%B3%BB%E7%BB%9F%E6%93%8D%E4%BD%9C/cross-env">cross-env</a> </p>
+</li>
+<li><p><a href="/Blog/4-%E5%85%B6%E4%BB%96/%E5%B7%A5%E5%85%B7%F0%9F%94%A7/%E7%B3%BB%E7%BB%9F%E6%93%8D%E4%BD%9C/%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA">安装虚拟机</a> </p>
+</li>
+<li><p><a href="/Blog/4-%E5%85%B6%E4%BB%96/%E5%B7%A5%E5%85%B7%F0%9F%94%A7/%E7%B3%BB%E7%BB%9F%E6%93%8D%E4%BD%9C/%E6%9F%A5%E7%9C%8B%E6%9C%AC%E5%9C%B0ip%E4%B9%8B%E7%B1%BB%E7%9A%84%E9%85%8D%E7%BD%AE(window)">查看本地ip之类的配置(window)</a> </p>
+</li>
+</ul>
+<h2 id="方案"><a href="#方案" class="headerlink" title="方案"></a>方案</h2><ul>
+<li><p><a href="/Blog/4-%E5%85%B6%E4%BB%96/%E6%96%B9%E6%A1%88/Node%E7%AB%AF%E9%80%9A%E8%BF%87html%E5%AF%BC%E5%87%BAword">Node端通过html导出word</a> </p>
+</li>
+<li><p><a href="/Blog/4-%E5%85%B6%E4%BB%96/%E6%96%B9%E6%A1%88/%E5%AF%BC%E5%87%BAword">导出word</a> </p>
+</li>
+</ul>
+<h2 id="网络和安全类"><a href="#网络和安全类" class="headerlink" title="网络和安全类"></a>网络和安全类</h2><ul>
+<li><p><a href="/Blog/4-%E5%85%B6%E4%BB%96/%E7%BD%91%E7%BB%9C%E5%92%8C%E5%AE%89%E5%85%A8%E7%B1%BB/CDN%E7%9A%84%E5%8E%9F%E7%90%86">CDN的原理</a> </p>
+</li>
+<li><p><a href="/Blog/4-%E5%85%B6%E4%BB%96/%E7%BD%91%E7%BB%9C%E5%92%8C%E5%AE%89%E5%85%A8%E7%B1%BB/HTTP2.0">HTTP2.0</a> </p>
+</li>
+<li><p><a href="/Blog/4-%E5%85%B6%E4%BB%96/%E7%BD%91%E7%BB%9C%E5%92%8C%E5%AE%89%E5%85%A8%E7%B1%BB/Nginx">Nginx</a> </p>
+</li>
+<li><p><a href="/Blog/4-%E5%85%B6%E4%BB%96/%E7%BD%91%E7%BB%9C%E5%92%8C%E5%AE%89%E5%85%A8%E7%B1%BB/cookie%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E5%AE%89%E5%85%A8">cookie为什么不安全</a> </p>
+</li>
+<li><p><a href="/Blog/4-%E5%85%B6%E4%BB%96/%E7%BD%91%E7%BB%9C%E5%92%8C%E5%AE%89%E5%85%A8%E7%B1%BB/get%E5%92%8Cpost%E5%8C%BA%E5%88%AB">get和post区别</a> </p>
+</li>
+<li><p><a href="/Blog/4-%E5%85%B6%E4%BB%96/%E7%BD%91%E7%BB%9C%E5%92%8C%E5%AE%89%E5%85%A8%E7%B1%BB/%E4%BA%86%E8%A7%A3%E7%B1%BB">了解类</a> </p>
+</li>
+<li><p><a href="/Blog/4-%E5%85%B6%E4%BB%96/%E7%BD%91%E7%BB%9C%E5%92%8C%E5%AE%89%E5%85%A8%E7%B1%BB/%E5%89%8D%E7%AB%AF%E9%89%B4%E6%9D%83">前端鉴权</a> </p>
+</li>
+<li><p><a href="/Blog/4-%E5%85%B6%E4%BB%96/%E7%BD%91%E7%BB%9C%E5%92%8C%E5%AE%89%E5%85%A8%E7%B1%BB/%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95">加密算法</a> </p>
+</li>
+<li><p><a href="/Blog/4-%E5%85%B6%E4%BB%96/%E7%BD%91%E7%BB%9C%E5%92%8C%E5%AE%89%E5%85%A8%E7%B1%BB/%E5%B8%B8%E8%A7%81%E7%9A%84%E7%BD%91%E7%BB%9C%E6%94%BB%E5%87%BB">常见的网络攻击</a> </p>
+</li>
+<li><p><a href="/Blog/4-%E5%85%B6%E4%BB%96/%E7%BD%91%E7%BB%9C%E5%92%8C%E5%AE%89%E5%85%A8%E7%B1%BB/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">数据结构</a> </p>
+</li>
+<li><p><a href="/Blog/4-%E5%85%B6%E4%BB%96/%E7%BD%91%E7%BB%9C%E5%92%8C%E5%AE%89%E5%85%A8%E7%B1%BB/%E7%BD%91%E7%BB%9C">网络</a> </p>
+</li>
+<li><p><a href="/Blog/4-%E5%85%B6%E4%BB%96/%E7%BD%91%E7%BB%9C%E5%92%8C%E5%AE%89%E5%85%A8%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C">计算机网络</a> </p>
+</li>
+<li><p><a href="/Blog/4-%E5%85%B6%E4%BB%96/%E7%BD%91%E7%BB%9C%E5%92%8C%E5%AE%89%E5%85%A8%E7%B1%BB/%E8%BE%93%E5%85%A5URL%E5%90%8E%E5%8F%91%E7%94%9F%E4%BA%86%E4%BB%80%E4%B9%88">输入URL后发生了什么</a> </p>
+</li>
+</ul>
+<h1 style="color:#448d55;">笔记和复盘</h1> 
+
+<h2 id="读书笔记"><a href="#读书笔记" class="headerlink" title="读书笔记"></a>读书笔记</h2><ul>
+<li><p><a href="/Blog/5-%E7%AC%94%E8%AE%B0%E5%92%8C%E5%A4%8D%E7%9B%98/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E3%80%8AJavascript%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B8%8E%E5%BC%80%E5%8F%91%E5%AE%9E%E8%B7%B5%E3%80%8B">《Javascript设计模式与开发实践》</a> </p>
+</li>
+<li><p><a href="/Blog/5-%E7%AC%94%E8%AE%B0%E5%92%8C%E5%A4%8D%E7%9B%98/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E3%80%8ALinux%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AE%9E%E7%94%A8%E6%95%99%E7%A8%8B%E3%80%8B">《Linux操作系统实用教程》</a> </p>
+</li>
+<li><p><a href="/Blog/5-%E7%AC%94%E8%AE%B0%E5%92%8C%E5%A4%8D%E7%9B%98/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E3%80%8AWeb%E5%89%8D%E7%AB%AF%E9%BB%91%E5%AE%A2%E6%8A%80%E6%9C%AF%E6%8F%AD%E7%A7%98%E3%80%8B">《Web前端黑客技术揭秘》</a> </p>
+</li>
+<li><p><a href="/Blog/5-%E7%AC%94%E8%AE%B0%E5%92%8C%E5%A4%8D%E7%9B%98/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E3%80%8A%E4%BD%A0%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84javascript%E3%80%8B">《你不知道的javascript》</a> </p>
+</li>
+<li><p><a href="/Blog/5-%E7%AC%94%E8%AE%B0%E5%92%8C%E5%A4%8D%E7%9B%98/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E6%85%95%E5%AE%A2%E8%AF%BE%E7%A8%8Breact+ts%E5%BC%80%E5%8F%91%E7%BB%84%E4%BB%B6">慕客课程react+ts开发组件</a> </p>
+</li>
+</ul>
+<h2 id="项目复盘"><a href="#项目复盘" class="headerlink" title="项目复盘"></a>项目复盘</h2><ul>
+<li><p><a href="/Blog/5-%E7%AC%94%E8%AE%B0%E5%92%8C%E5%A4%8D%E7%9B%98/%E9%A1%B9%E7%9B%AE%E5%A4%8D%E7%9B%98/%E5%B7%A5%E9%93%B6-%E8%87%AA%E5%8A%A8%E5%8C%96%E6%8A%A5%E5%91%8A">工银-自动化报告</a> </p>
+</li>
+<li><p><a href="/Blog/5-%E7%AC%94%E8%AE%B0%E5%92%8C%E5%A4%8D%E7%9B%98/%E9%A1%B9%E7%9B%AE%E5%A4%8D%E7%9B%98/%E5%BE%AE%E4%BF%A1%E5%92%8Capp%E5%AF%BC%E5%87%BA%E5%9B%BE%E7%89%87%E8%B8%A9%E5%9D%91%E7%BB%8F%E5%8E%86">微信和app导出图片踩坑经历</a> </p>
+</li>
+<li><p><a href="/Blog/5-%E7%AC%94%E8%AE%B0%E5%92%8C%E5%A4%8D%E7%9B%98/%E9%A1%B9%E7%9B%AE%E5%A4%8D%E7%9B%98/%E6%B0%91%E7%94%9F%E6%98%9F%E6%8E%A2-%E7%A7%BB%E5%8A%A8%E7%AB%AF">民生星探-移动端</a> </p>
+</li>
+<li><p><a href="/Blog/5-%E7%AC%94%E8%AE%B0%E5%92%8C%E5%A4%8D%E7%9B%98/%E9%A1%B9%E7%9B%AE%E5%A4%8D%E7%9B%98/%E8%85%BE%E5%AE%89%E5%9F%BA%E9%87%91">腾安基金</a> </p>
+</li>
+</ul>
+<h1 style="color:#448d55;">面试准备</h1> 
+
+<h2 id="Interview-others"><a href="#Interview-others" class="headerlink" title="Interview-others"></a>Interview-others</h2><ul>
+<li><p><a href="/Blog/6-%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/Interview-others/interview-other">interview-other</a> </p>
+</li>
+<li><p><a href="/Blog/6-%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/Interview-others/%E9%9D%A2%E8%AF%95%E5%88%AB%E4%BA%BA%E7%9A%84%E6%94%B6%E8%8E%B7">面试别人的收获</a> </p>
+</li>
+<li><p><a href="/Blog/6-%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/Interview-others/%E9%9D%A2%E8%AF%95%E5%88%AB%E4%BA%BA%E7%9A%84%E9%97%AE%E9%A2%98">面试别人的问题</a> </p>
+</li>
+</ul>
+<h2 id="be-interviewed"><a href="#be-interviewed" class="headerlink" title="be-interviewed"></a>be-interviewed</h2><ul>
+<li><p><a href="/Blog/6-%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/be-interviewed/mine">mine</a> </p>
+</li>
+<li><p><a href="/Blog/6-%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/be-interviewed/%E6%9C%AC%E4%BA%BA%E9%9D%A2%E7%BB%8F">本人面经</a> </p>
+</li>
+</ul>
+<h2 id="ready"><a href="#ready" class="headerlink" title="ready"></a>ready</h2><ul>
+<li><p><a href="/Blog/6-%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/ready/%E4%B8%80%E4%B8%AA%E6%B7%98%E5%AE%9D%E6%8A%80%E6%9C%AF%E4%B8%93%E5%AE%B6%E5%86%99%E7%9A%84%E5%A6%82%E4%BD%95%E8%BF%9B%E5%85%A5%E9%98%BF%E9%87%8C">一个淘宝技术专家写的如何进入阿里</a> </p>
+</li>
+<li><p><a href="/Blog/6-%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/ready/%E4%B8%80%E4%BA%9B%E4%B8%8D%E9%94%99%E7%9A%84%E9%9D%A2%E7%BB%8F">一些不错的面经</a> </p>
+</li>
+<li><p><a href="/Blog/6-%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/ready/%E4%B8%80%E4%BA%9B%E6%80%BB%E7%BB%93">一些总结</a> </p>
+</li>
+<li><p><a href="/Blog/6-%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/ready/%E5%A4%A7%E7%BA%B2">大纲</a> </p>
+</li>
+<li><p><a href="/Blog/6-%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/ready/%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87+%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE+%E9%97%AD%E5%8C%85">执行上下文+作用域链+闭包</a> </p>
+</li>
+<li><p><a href="/Blog/6-%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/ready/%E6%96%87%E7%AB%A0%E3%80%8A%E5%A6%82%E4%BD%95%E8%BF%9B%E9%98%BF%E9%87%8C%E3%80%8B">文章《如何进阿里》</a> </p>
+</li>
+</ul>
+<h1 style="color:#448d55;">日记</h1> 
+
+<h2 id="2020"><a href="#2020" class="headerlink" title="2020"></a>2020</h2><ul>
+<li><p><a href="/Blog/7-%E6%97%A5%E8%AE%B0/2020/20201225">20201225</a> </p>
+</li>
+<li><p><a href="/Blog/7-%E6%97%A5%E8%AE%B0/2020/20201231">20201231</a> </p>
+</li>
+</ul>
+<h2 id="2021"><a href="#2021" class="headerlink" title="2021"></a>2021</h2><ul>
+<li><p><a href="/Blog/7-%E6%97%A5%E8%AE%B0/2021/2021-0408">2021-0408</a> </p>
+</li>
+<li><p><a href="/Blog/7-%E6%97%A5%E8%AE%B0/2021/20200103">20200103</a> </p>
+</li>
+<li><p><a href="/Blog/7-%E6%97%A5%E8%AE%B0/2021/20200118">20200118</a> </p>
+</li>
+<li><p><a href="/Blog/7-%E6%97%A5%E8%AE%B0/2021/20200129">20200129</a> </p>
+</li>
+<li><p><a href="/Blog/7-%E6%97%A5%E8%AE%B0/2021/20210105">20210105</a> </p>
+</li>
+<li><p><a href="/Blog/7-%E6%97%A5%E8%AE%B0/2021/20210118">20210118</a> </p>
+</li>
+<li><p><a href="/Blog/7-%E6%97%A5%E8%AE%B0/2021/%E5%86%B7%E9%97%A8%E5%B1%9E%E6%80%A7">冷门属性</a> </p>
+</li>
+<li><p><a href="/Blog/7-%E6%97%A5%E8%AE%B0/2021/%E5%89%8D%E7%AB%AF%E5%9B%A2%E9%98%9F%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB%E4%B8%BB%E9%A2%98">前端团队技术分享主题</a> </p>
+</li>
+<li><p><a href="/Blog//README">README</a> </p>
+</li>
+<li><p><a href="/Blog//ToMyself">ToMyself</a> </p>
+</li>
+<li><p><a href="/Blog//like">like</a> </p>
+</li>
+<li><p><a href="/Blog//%E9%9D%A2%E7%BB%8F">面经</a> </p>
+</li>
+</ul>
+
+</div>
+
+
+<script src="/Blog/js/book-menu.js"></script>
+
+      </div>
+
+      <div class="sidebar-toggle" onclick="sidebar_toggle()" onmouseover="add_inner()" onmouseleave="remove_inner()">
+  <div class="sidebar-toggle-inner"></div>
+</div>
+
+<script>
+function add_inner() {
+  let inner = document.querySelector('.sidebar-toggle-inner')
+  inner.classList.add('show')  
+}
+
+function remove_inner() {
+  let inner = document.querySelector('.sidebar-toggle-inner')
+  inner.classList.remove('show')
+}
+
+function sidebar_toggle() {
+    let sidebar_toggle = document.querySelector('.sidebar-toggle')
+    let sidebar = document.querySelector('.book-sidebar')
+    let content = document.querySelector('.off-canvas-content')
+    if (sidebar_toggle.classList.contains('extend')) { // show
+        sidebar_toggle.classList.remove('extend')
+        sidebar.classList.remove('hide')
+        content.classList.remove('extend')
+    }
+    else { // hide
+        sidebar_toggle.classList.add('extend')
+        sidebar.classList.add('hide')
+        content.classList.add('extend')
+    }
+}
+</script>
+
+      <div class="off-canvas-content">
+        <div class="columns">
+          <div class="column col-10 col-lg-12">
+            <div class="book-navbar"><!-- For Responsive Layout -->
+
+<header class="navbar">
+  <section class="navbar-section">
+    <a onclick="open_sidebar()">
+      <i class="icon icon-menu"></i>
+    </a>
+  </section>
+</header>
+</div>
+            <div class="book-content"><div class="book-post">
+  <h1 id="patch"><a href="#patch" class="headerlink" title="patch"></a>patch</h1><p>VNode 是virtual DOM 的具体实现<br>patch过程是 ==把 <code>VNode</code> 转换成真正的DOM节点==，</p>
+<p>通过之前的分析可知，在通过<code>createComponet</code>创建了组件Vnode, 接下来会走到<code>vm._update</code>, 执行 <code>vm.__patch__</code> 去吧 <code>VNode</code> 转换成真正的DOM节点;<br>但是针对一个普通的<code>VNode</code>节点，<code>VNode</code>创建过程有所不同;</p>
+<p>整个patch过程实际上是一个深度遍历的过程，每次遍历都把激活的vm实例，赋值给 activeInstance , 在初始化子组件的时候，就将这个 activeInstance 作为参数传入，在 initLifecycle 的过程中，就可以拿到 当前的 vm 的实例， 然后将 之前保存的activeInstance作为当前的 vm 实例的父组件；initLifecycle中建立了父子关系；</p>
+<p>本节目标：</p>
+<ol>
+<li>了解组件 patch 整体流程；</li>
+<li>了解组件 patch 流程中的 <code>activeInstance</code>、 <code>vm.$vnode</code>(占位符vnode)、<code>vm._vnode</code>;</li>
+<li>嵌套组件的插入顺序；</li>
+</ol>
+<h2 id="回顾createElm"><a href="#回顾createElm" class="headerlink" title="回顾createElm"></a>回顾createElm</h2><p>patch 的过程会调用 <code>createElm</code> 创建元素节点<br>回顾下 <code>createElm</code> 的实现（定义在<code>src/core/vdom/patch.js</code>）</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createElm</span>(<span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">  vnode,</span></span></span><br><span class="line"><span class="function"><span class="params">  insertedVnodeQueue,</span></span></span><br><span class="line"><span class="function"><span class="params">  parentElm,</span></span></span><br><span class="line"><span class="function"><span class="params">  refElm,</span></span></span><br><span class="line"><span class="function"><span class="params">  nested,</span></span></span><br><span class="line"><span class="function"><span class="params">  ownerArray,</span></span></span><br><span class="line"><span class="function"><span class="params">  index</span></span></span><br><span class="line"><span class="function"><span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// ......</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>( createComponent(vnode, insertedVnodeQueue, parentElm, refElm))&#123;</span><br><span class="line">    <span class="keyword">return</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// ......</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>留下关键代码，可知判断了<code>createComponent(...)</code> 的返回值。如果为true, 则直接结束，再来看下 <code>createComponent</code>方法的实现：</p>
+<h2 id="createComponent"><a href="#createComponent" class="headerlink" title="createComponent"></a>createComponent</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createComponent</span>(<span class="params">vnode, insertedVnodeQueue, parentElm, refElm</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">let</span> i = vnode.data</span><br><span class="line">  <span class="keyword">if</span>( isDef(i) ) &#123;</span><br><span class="line">    <span class="keyword">const</span> isReactivated = isDef( vnode.componentInstance) &amp;&amp; i.keepAlive</span><br><span class="line">    <span class="keyword">if</span> ( isDef( i = i.hook ) &amp;&amp; isDef( i = i.init ))&#123;</span><br><span class="line">      i( vnode, <span class="literal">false</span> <span class="comment">/* hydrating */</span> )</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 在调用了 init hook 之后，如果该 vnode 是一个 child component, 他应该被创建一个 child instance并且 mounted </span></span><br><span class="line">    <span class="comment">// 这个child component 也应该被设置 vnode 元素作为占位符</span></span><br><span class="line">    <span class="comment">// 在这种情况下，我们只需返回元素并完成</span></span><br><span class="line">    <span class="keyword">if</span>( isDef( vnode.componentInstance) )&#123;</span><br><span class="line">      initComponent(vnode, insertedVnodeQueue)</span><br><span class="line">      insert(parentElm, vnode.elm, refElm) <span class="comment">// 组件的插入是在执行 insert 方法的时候</span></span><br><span class="line">      <span class="keyword">if</span>( isTrue(isReactivated) )&#123;</span><br><span class="line">        reactivatedComponent(vnode insertedVnodeQueue, parentElm, refElm)</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在 <code>createComponent</code> 中，首先对 <code>vnode.data</code> 做了一些判断， 如果 <code>vnode</code> 是一个组件 <code>VNode</code>, 那么条件就会满足，并且得到 <code>i</code> 就是 <code>init</code> 钩子函数;</p>
+<h2 id="回顾init"><a href="#回顾init" class="headerlink" title="回顾init"></a>回顾init</h2><p>回顾上节在创建组件 <code>VNode</code> 的时候合并钩子函数就包含 <code>init</code> 钩子函数， 定义在<code>src/core/vdom/create-component.js</code> 中:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">init</span>(<span class="params">vnode: VNodeWithData, hydrating: boolean </span>): ?<span class="title">boolean</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(</span><br><span class="line">    vnode.componentInstance &amp;&amp; </span><br><span class="line">    !vnode.componentInstance._isDestoty &amp;&amp; </span><br><span class="line">    vnode.data.keepAlive</span><br><span class="line">  )&#123;</span><br><span class="line">    <span class="comment">// kept-alive components, treat as a patch</span></span><br><span class="line">    <span class="comment">// keepAlive的情况是通过createComentInstanceForVnode 创建一个Vue 的实例，然后调用 $mount 方法挂载子组件 ？？ 这个确定是 keepAlive的情况？？</span></span><br><span class="line">    <span class="keyword">const</span> mountedNode: any = vnode <span class="comment">// work around flow</span></span><br><span class="line">    componentVNodeHooks.prepatch (mountedNode, mountedNode)</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> child = vnode.componentInstance = createComponentInstanceForVnode( vnode, activeInstance )</span><br><span class="line">    child.$mount(hydrating ? vnode.elm : <span class="literal">undefined</span>, hydrating)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>先来看一下 <code>createComponentInstanceForVnode</code> 的实现</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">createComponentInstanceForVnode</span>(<span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">  vnode: any, <span class="regexp">//</span> 我们知道他是MountedComponentVNode,但是 flow不知道</span></span></span><br><span class="line"><span class="function"><span class="params">  parent: any</span></span></span><br><span class="line"><span class="function"><span class="params"></span>): <span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> options: InternalComponentOptions = &#123;</span><br><span class="line">    _isComponent: <span class="literal">true</span>,</span><br><span class="line">    _parentVnode: vnode,</span><br><span class="line">    parent</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="comment">// 检查inlineTemplate渲染功能</span></span><br><span class="line">  <span class="keyword">const</span> inlineTemplate = vnode.data.inlineTemplate;</span><br><span class="line">  <span class="keyword">if</span> (isDef(inlineTemplate)) &#123;</span><br><span class="line">    options.render = inlineTemplate.render;</span><br><span class="line">    options.staticRenderFns = inlineTemplate.staticRenderFns;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> vnode.componentOptions.Ctor(options); <span class="comment">// 对应子组件的构造函数</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>createComponentInstanceForVnode</code> 函数构造的一个内部组件的参数，然后执行 <code>new vnode.componentOptions.Ctor(options)</code>,<br>这里的<code>vnode.componentOptions.Ctor(options)</code> 对应的就是子组件的构造函数，根据之前的分析可知， 它实际上是继承于 Vue 的一个构造器 <code>Sub</code>, 相当于 <code>new Sub(options)</code></p>
+<p>这里有几个关键参数要注意几个点：</p>
+<ol>
+<li><code>_isComponent</code> 为 true 表示他是一个组件；</li>
+<li><code>parent</code> 表示当前激活的组件实例(注意，这里比较有意思的是如何拿到组件实例，见后面章节)</li>
+</ol>
+<p>所以子组件的实例化实例上就是这个时机执行的，并且他会执行实例的 <code>_init</code> 方法，这个过程和之前不同的地方单独列出来说明（代码位于 <code>src/core/instance/init.js</code>）;</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Vue.prototype._init = <span class="function"><span class="keyword">function</span>(<span class="params">options?: Object</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> vm: Component = <span class="keyword">this</span>;</span><br><span class="line">  <span class="comment">// merge options</span></span><br><span class="line">  <span class="keyword">if</span> (options &amp;&amp; options._isComponent) &#123;</span><br><span class="line">    <span class="comment">// 优化内部组件实例化</span></span><br><span class="line">    <span class="comment">// 因为动态选项合并非常慢，而且没有</span></span><br><span class="line">    <span class="comment">// 内部组件选项需要特殊处理</span></span><br><span class="line">    initInternalComponent(vm, options);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    vm.$options = mergeOptions(resoleConstructorOptiosn(vm.comstructor), options || &#123;&#125;, vm);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// ......</span></span><br><span class="line">  <span class="keyword">if</span> (vm.$optiosn.el) &#123;</span><br><span class="line">    vm.$mount(vm.$options.el);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+<p>这里首先是合并 <code>options</code> 的过程有变化， <code>_isComponent</code> 为true , 所以走到了 <code>initComponent</code> 过程;</p>
+<p>如下是 <code>initInternalComponent</code> 过程：</p>
+<h2 id="initInternalComponent"><a href="#initInternalComponent" class="headerlink" title="initInternalComponent"></a>initInternalComponent</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">initInternalComponent</span> (<span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">  vm: Component, </span></span></span><br><span class="line"><span class="function"><span class="params">  options: InternalComponentOptions</span></span></span><br><span class="line"><span class="function"><span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> opts = vm.$options = <span class="built_in">Object</span>.create(vm.constructor.options)</span><br><span class="line">  <span class="comment">// doing this because it's faster than dynamic enumeration.</span></span><br><span class="line">  <span class="comment">// 这三行代码是把我们之前通过createComponentInstanceForVnode函数传入的几个参数合并到内部的选项 $options里</span></span><br><span class="line">  <span class="keyword">const</span> parentVnode = options._parentVnode</span><br><span class="line">  opts.parent = options.parent</span><br><span class="line">  opts._parentVnode = parentVnode</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> vnodeComponentOptions = parentVnode.componentOptions</span><br><span class="line">  opts.propsData = vnodeComponentOptions.propsData</span><br><span class="line">  opts._parentListeners = vnodeComponentOptions.listeners</span><br><span class="line">  opts._renderChildren = vnodeComponentOptions.children</span><br><span class="line">  opts._componentTag = vnodeComponentOptions.tag</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (options.render) &#123;</span><br><span class="line">    opts.render = options.render</span><br><span class="line">    opts.staticRenderFns = options.staticRenderFns</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+<p>再看下 <code>_init</code> 函数最后执行的代码</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(vm.$options.el)&#123;</span><br><span class="line">  vm.$moutn(vm.$options.el)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>由于组件初始化的时候是不传 <code>el</code> 的，因此组件是自己接管了 <code>$mount</code> 的过程(详见)</p>
+<p>回到组件 <code>init</code> 的过程， <code>componentVNodeHooks</code> 的 <code>init</code> 钩子函数，在完成实例化的 <code>_init</code> 后，接着会执行 <code>child.$mount(hydrating ? vnode.elm : undefined, hydrating)</code>;<br>这里的 hydrating为true 一般是服务器端渲染的情况;<br>目前只考虑客户端渲染，所以这里的$mount 相当于执行 child.$mount(undefined, false) 他最终会调用 mountComponet 方法，进而执行 vm._render() 方法：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">Vue.prototype._render = <span class="function"><span class="keyword">function</span> (<span class="params"></span>): <span class="title">VNode</span> </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> vm: Component = <span class="keyword">this</span></span><br><span class="line">  <span class="keyword">const</span> &#123; render, _parentVnode &#125; = vm.$options</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 设置父vnode, 这使得渲染功能可以访问到占位符节点上的数据。</span></span><br><span class="line">  vm.$vnode = _parentVnode</span><br><span class="line"></span><br><span class="line">  <span class="comment">// render self</span></span><br><span class="line">  <span class="keyword">let</span> vnode</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    vnode = render.call(vm._renderProxy, vm.$createElement)</span><br><span class="line">  &#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// set parent</span></span><br><span class="line">  vnode.parent = _parentVnode</span><br><span class="line">  <span class="keyword">return</span> vnode</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>此处 =&gt;</p>
+<ul>
+<li> <code>_parentVnode</code> 即当前节点的 父VNode；</li>
+<li> render函数生成 vnode 即当前组件渲染的vnode;</li>
+<li> vnode 的parent 指向了 <code>_parentVnode</code>，也就是 vm.$vnode, 他们是一种父子关系</li>
+</ul>
+<p>我们知道，执行完 <code>vm._render</code> 生成 VNode后，接下来就是要执行 <code>vm._update</code> 去渲染 VNode, 来看下组件渲染的过程中有哪些需要注意的 =&gt;</p>
+<h2 id="vm-update过程注意"><a href="#vm-update过程注意" class="headerlink" title="vm._update过程注意"></a>vm._update过程注意</h2><p>vm._update 定义在 <code>src/core/instance/lifecycle.js</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">let</span> activeInstance: any = <span class="literal">null</span></span><br><span class="line"></span><br><span class="line">Vue.prototype._update = <span class="function"><span class="keyword">function</span> (<span class="params">vnode: VNode, hydrating?: boolean</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> vm: Component = <span class="keyword">this</span></span><br><span class="line">  <span class="keyword">const</span> prevEl = vm.$el</span><br><span class="line">  <span class="keyword">const</span> prevVnode = vm._vnode</span><br><span class="line">  <span class="keyword">const</span> prevActiveInstance = activeInstance</span><br><span class="line">  activeInstance = vm</span><br><span class="line">  vm._vnode = vnode</span><br><span class="line">  </span><br><span class="line"> </span><br><span class="line">  <span class="comment">// 根据使用的渲染后端， 将Vue.prototype .__ patch__注入入口点</span></span><br><span class="line">  <span class="keyword">if</span> (!prevVnode) &#123;</span><br><span class="line">    <span class="comment">// initial render</span></span><br><span class="line">    vm.$el = vm.__patch__(vm.$el, vnode, hydrating, <span class="literal">false</span> <span class="comment">/* removeOnly */</span>)</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// updates</span></span><br><span class="line">    vm.$el = vm.__patch__(prevVnode, vnode)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  activeInstance = prevActiveInstance</span><br><span class="line"></span><br><span class="line">  <span class="comment">// update __vue__ reference</span></span><br><span class="line">  <span class="keyword">if</span> (prevEl) &#123;</span><br><span class="line">    prevEl.__vue__ = <span class="literal">null</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (vm.$el) &#123;</span><br><span class="line">    vm.$el.__vue__ = vm</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 如果父项是HOC，则也要更新其$ el</span></span><br><span class="line">  <span class="keyword">if</span> (vm.$vnode &amp;&amp; vm.$parent &amp;&amp; vm.$vnode === vm.$parent._vnode) &#123;</span><br><span class="line">    vm.$parent.$el = vm.$el</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 调度程序将调用更新的钩子，以确保子进程处于父母的更新钩子中更新。 </span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+<p><strong>_update过程几个关键的逻辑：</strong></p>
+<ol>
+<li>注意点1:  <code>vm._vnode = vnode:</code> 这个vnode是通过 <code>vm._render()</code> 返回的组件渲染VNode, <code>vm._vnode</code> 和 <code>vm.$vnode</code> 的关系就是一种父子关系，用代码表示即 <code>vm._vnode.parent === vm.$vnode</code></li>
+</ol>
+<ol start="2">
+<li>注意点2: 如下代码：</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">let</span> activeInstance: any = <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">Vue.prototype._update = <span class="function"><span class="keyword">function</span>(<span class="params">vnode: VNode, hydrating?: viikean</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// ......</span></span><br><span class="line">  <span class="keyword">const</span> pervActiveInstance = activeInstance;</span><br><span class="line">  activeInstance = vm;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (!prevVnode) &#123;</span><br><span class="line">    <span class="comment">// initial render</span></span><br><span class="line">    vm.$el = vm.__patch__(vm.$el, vnode, hydrating, <span class="literal">false</span> <span class="comment">/* removeOnly */</span>);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// updates</span></span><br><span class="line">    vm.$el = vm.__patch__(prevVnode, vnode);</span><br><span class="line">  &#125;</span><br><span class="line">  activeInstance = prevActiveInstance;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>上面代码中的<code>activeInstance</code>的作用就是保持当前上下文的 Vue 实例， 他是lifecyle模块的全局变量，定义在是<code>export let activeInstance: any = null</code>, 并且在之前我们调用 createComponentInstanceForVnode 方法的时候从<code>liftcycle</code> 模块获取， 并且作为参数传入；</p>
+<p>因为实际上 javascript 是一个单线程， Vue 整个初始化是一个深度遍历的过程，在实例化子组件的过程中，他需要知道当前上下文的Vue实例是什么，并把它作为子组件的父Vue实例；<br>之前我们提到，对子组件的实例化过程先会调用 <code>initInternalComponent(vm, options)</code> 合并 options, 把 parent存储在 vm.$options 中，在 $mount 之前会调用 initLifecycle(vm)方法</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* initLifecycle */</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">initLifecycle</span> (<span class="params">vm: Component</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> options = vm.$options</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 定位第一位非抽象父母</span></span><br><span class="line">  <span class="keyword">let</span> parent = options.parent</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">if</span> (parent &amp;&amp; !options.abstract) &#123;</span><br><span class="line">    <span class="keyword">while</span> (parent.$options.abstract &amp;&amp; parent.$parent) &#123;</span><br><span class="line">      parent = parent.$parent</span><br><span class="line">    &#125;</span><br><span class="line">    parent.$children.push(vm)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  vm.$parent = parent</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// ......</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>可以看到， vm.$parent就是用来保留当前 vm的父实例，并且通过parent.$children.push(vm)来把当前的vm存储到父实例的 <code>$children</code> 中，在vm._update的过程中，把当前的 vm 赋值给 activeInstance, 同时通过 <code>const prevActiveInstance = activeInstance</code> 用 <code>prevActiveInstance</code> 保留上一次的 <code>activeInstance</code>;<br>实际上，<code>prevActiveInstance</code> 和当前的 vm 是一个父子关系，当一个vm实例完成他的所有子树的patch或者update过程后，<code>activeInstance</code> 会回到他的父实例，这样就完美的保证了<code>createComponentInstanceForVnode</code>整个深度遍历过程中，我们在实例化子组件的时候能传入当前子组件的父Vue 实例，并在_init 的过程中，通过 vm.$parent把这个父子关系保留；</p>
+<p>回到 _update, 最后就是调用 <code>__patch__</code> 渲染 VNode 了</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">removeOnly *<span class="regexp">/)</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">function patch (oldVnode, vnode, hydrating, removeOnly) &#123;</span></span><br><span class="line"><span class="regexp">  /</span><span class="regexp">/ ...</span></span><br><span class="line"><span class="regexp">  let isInitialPatch = false</span></span><br><span class="line"><span class="regexp">  const insertedVnodeQueue = []</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">  if (isUndef(oldVnode)) &#123;</span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/ empty mount (likely as component), create new root element</span></span><br><span class="line"><span class="regexp">    isInitialPatch = true</span></span><br><span class="line"><span class="regexp">    createElm(vnode, insertedVnodeQueue)</span></span><br><span class="line"><span class="regexp">  &#125; else &#123;</span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/ ...</span></span><br><span class="line"><span class="regexp">  &#125;</span></span><br><span class="line"><span class="regexp">  /</span><span class="regexp">/ ...</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+
+
+<p>这里又回到了本节开始的过程， 之前分析过，负责渲染成DOM的函数是 <code>createElm</code>, 注意这里只传了两个参数，所以对应 parentElm 是 undefined, 再来看下他的定义：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createElm</span> (<span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">  vnode,</span></span></span><br><span class="line"><span class="function"><span class="params">  insertedVnodeQueue,</span></span></span><br><span class="line"><span class="function"><span class="params">  parentElm,</span></span></span><br><span class="line"><span class="function"><span class="params">  refElm,</span></span></span><br><span class="line"><span class="function"><span class="params">  nested,</span></span></span><br><span class="line"><span class="function"><span class="params">  ownerArray,</span></span></span><br><span class="line"><span class="function"><span class="params">  index</span></span></span><br><span class="line"><span class="function"><span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">  <span class="keyword">if</span> (createComponent(vnode, insertedVnodeQueue, parentElm, refElm)) &#123;</span><br><span class="line">    <span class="keyword">return</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> data = vnode.data</span><br><span class="line">  <span class="keyword">const</span> children = vnode.children</span><br><span class="line">  <span class="keyword">const</span> tag = vnode.tag</span><br><span class="line">  <span class="keyword">if</span> (isDef(tag)) &#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line">    vnode.elm = vnode.ns</span><br><span class="line">      ? nodeOps.createElementNS(vnode.ns, tag)</span><br><span class="line">      : nodeOps.createElement(tag, vnode)</span><br><span class="line">    setScope(vnode)</span><br><span class="line">  <span class="comment">/* istanbul ignore if */</span></span><br><span class="line">    <span class="keyword">if</span> (__WEEX__) &#123;</span><br><span class="line">      <span class="comment">// ...</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      createChildren(vnode, children, insertedVnodeQueue)</span><br><span class="line">      <span class="keyword">if</span> (isDef(data)) &#123;</span><br><span class="line">        invokeCreateHooks(vnode, insertedVnodeQueue)</span><br><span class="line">      &#125;</span><br><span class="line">      insert(parentElm, vnode.elm, refElm)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (isTrue(vnode.isComment)) &#123;</span><br><span class="line">    vnode.elm = nodeOps.createComment(vnode.text)</span><br><span class="line">    insert(parentElm, vnode.elm, refElm)</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    vnode.elm = nodeOps.createTextNode(vnode.text)</span><br><span class="line">    insert(parentElm, vnode.elm, refElm)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>注意，我们这了传入的 vnode 是组件渲染的 vnode ,也就是我们之前说的 vm._vnode, 如果组件的跟节点是个普通元素，那么 vm._vnode也是普通的 vnode, 这里 createComponent(vnode, instanceVnodeQueue, parentElm)的返回值是false;<br>接下来的过程就和上一章一样了（？？），先创建一个父节点占位符，然后再遍历所有子VNode 递归调用 createElm, 在遍历的过程中，如果遇到 VNode是一个组件的 VNode， 则重复本节开始的过程， 这样通过一个递归的方式就完整的构建了整个组件树；<br>由于我们这个时候传入的 parentElm 是空， 所以对组件的插入，在createComponent 有这么一段逻辑：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createComponent</span> (<span class="params">vnode, insertedVnodeQueue, parentElm, refElm</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> i = vnode.data</span><br><span class="line">  <span class="keyword">if</span> (isDef(i)) &#123;</span><br><span class="line">    <span class="comment">// ....</span></span><br><span class="line">    <span class="keyword">if</span> (isDef(i = i.hook) &amp;&amp; isDef(i = i.init)) &#123;</span><br><span class="line">      i(vnode, <span class="literal">false</span> <span class="comment">/* hydrating */</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">    <span class="keyword">if</span> (isDef(vnode.componentInstance)) &#123;</span><br><span class="line">      initComponent(vnode, insertedVnodeQueue)</span><br><span class="line">      insert(parentElm, vnode.elm, refElm)</span><br><span class="line">      <span class="keyword">if</span> (isTrue(isReactivated)) &#123;</span><br><span class="line">        reactivateComponent(vnode, insertedVnodeQueue, parentElm, refElm)</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在完成组件的整个patch过程后，最后执行insert(parentElm, vnode.elm, refElm) 完成组件的 DOM 插入，<br>如果组件 patch 过程中又创建了子组件，那么DOM 的插入顺序是先子后父；</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>到此，一个组件的VNode 如何创建、初始化、渲染的过程学习完毕；</p>
+<ol>
+<li>patch的整体流程：==createComponent== =&gt; 子组件初始化(init, createComponentInstanceForVnode, 整个子组件的init过程(合并options,lifecycle初始化等和vue一样的初始化过程)) =&gt; 子组件render(生成子组件的渲染vnode) =&gt; 子组件patch(渲染子组件的vnode，渲染的过程中如果还有子组件，就递归渲染) </li>
+<li>activeInstance: 当前激活的vm实例（作为parent实例传入）；vm.$vnode: 组件的占位vnode; vm._vnode: 组件的渲染vnode;</li>
+<li>嵌套组件的插入顺序是先子后父；</li>
+</ol>
+
+</div>
+
+
+  <div class="book-comments">
+    
+
+
+
+
+  </div>
+
+
+
+
+<script src="/Blog/js/book-post.js"></script>
+
+
+
+<script src="/Blog/js/mind.js"></script>
+</div>
+          </div>
+          <div class="column col-2 hide-lg">
+            <div class="book-post-info">
+  
+    <div class="book-post-meta">
+
+  <div class="author">
+
+    <!-- Author image -->
+    <div class="author-img">
+      
+        <figure
+          class="avatar avatar-lg"
+          data-initial="甜"
+          style="background-color: #3b4351;">
+        </figure>
+      
+    </div>
+
+    <!-- Author title -->
+    <div class="author-title">
+      <div>甜里甜气</div>
+      <div>2021-04-15</div>
+    </div>
+  </div>
+
+  
+
+  <div class="divider"></div>
+</div>
+  
+
+  <div class="book-tocbot"></div>
+<div class="book-tocbot-menu">
+  <a class="book-toc-expand" onclick="expand_toc()">Expand all</a>
+  <a onclick="go_top()">⬆ Top</a>
+  <a onclick="go_bottom()">⬇ Bottom</a>
+</div>
+
+
+<script src="/Blog/js/book-toc.js"></script>
+
+
+</div>
+          </div>
+        </div>
+      </div>
+
+      <a class="off-canvas-overlay" onclick="hide_canvas()"></a>
+    </div>
+  </body>
+</html>
+
+
+<script src="/Blog/js/book.js"></script>
+

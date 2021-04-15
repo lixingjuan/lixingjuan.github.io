@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+
+    
+      <link rel="icon" href="/Blog/favicon.png" />
+    
+
+    <title>
+        
+          1-JavaScript/专题深入/废弃 - 李幸娟的前端博客
+        
+    </title>
+
+    <!-- Spectre.css framework -->
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">
+
+    <!-- theme css & js -->
+    
+<link rel="stylesheet" href="/Blog/css/book.css">
+
+    
+<script src="/Blog/js/book.js"></script>
+
+
+    <!-- tocbot -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+    
+    <!-- katex -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/zooming/2.1.1/zooming.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const zooming = new Zooming()
+    zooming.listen('.book-content img')
+})
+</script>
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+  <body>
+    <div class="book-container">
+      <div class="book-sidebar">
+        <div class="book-brand">
+  <a href="/Blog/">
+    <img src="/Blog/favicon.png">
+    <span>李幸娟的前端博客</span>
+  </a>
+</div> <div class="book-menu">
+  <ul>
+<li><a href="/Blog">Home</a></li>
+</ul>
+<h1 style="color:#448d55;">JavaScript</h1> 
+
+<h2 id="专题深入"><a href="#专题深入" class="headerlink" title="专题深入"></a>专题深入</h2><ul>
+<li><p><a href="/Blog/1-JavaScript/%E4%B8%93%E9%A2%98%E6%B7%B1%E5%85%A5/0.1+0.2">0.1+0.2</a> </p>
+</li>
+<li><p><a href="/Blog/1-JavaScript/%E4%B8%93%E9%A2%98%E6%B7%B1%E5%85%A5/Class%E7%9B%B8%E5%85%B3">Class相关</a> </p>
+</li>
+<li><p><a href="/Blog/1-JavaScript/%E4%B8%93%E9%A2%98%E6%B7%B1%E5%85%A5/EventLoop">EventLoop</a> </p>
+</li>
+<li><p><a href="/Blog/1-JavaScript/%E4%B8%93%E9%A2%98%E6%B7%B1%E5%85%A5/Promise">Promise</a> </p>
+</li>
+<li><p><a href="/Blog/1-JavaScript/%E4%B8%93%E9%A2%98%E6%B7%B1%E5%85%A5/call%E5%92%8Capply">call和apply</a> </p>
+</li>
+<li><p><a href="/Blog/1-JavaScript/%E4%B8%93%E9%A2%98%E6%B7%B1%E5%85%A5/flat%E5%AE%9E%E7%8E%B0">flat实现</a> </p>
+</li>
+<li><p><a href="/Blog/1-JavaScript/%E4%B8%93%E9%A2%98%E6%B7%B1%E5%85%A5/for%E5%92%8CforEach%E7%9A%84%E5%8C%BA%E5%88%AB">for和forEach的区别</a> </p>
+</li>
+<li><p><a href="/Blog/1-JavaScript/%E4%B8%93%E9%A2%98%E6%B7%B1%E5%85%A5/this%E7%9B%B8%E5%85%B3">this相关</a> </p>
+</li>
+<li><p><a href="/Blog/1-JavaScript/%E4%B8%93%E9%A2%98%E6%B7%B1%E5%85%A5/%E4%BA%8B%E4%BB%B6%E5%A7%94%E6%89%98">事件委托</a> </p>
+</li>
+<li><p><a href="/Blog/1-JavaScript/%E4%B8%93%E9%A2%98%E6%B7%B1%E5%85%A5/%E4%BD%9C%E7%94%A8%E5%9F%9F%E7%9B%B8%E5%85%B3">作用域相关</a> </p>
+</li>
+<li><p><a href="/Blog/1-JavaScript/%E4%B8%93%E9%A2%98%E6%B7%B1%E5%85%A5/%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE">作用域链</a> </p>
+</li>
+<li><p><a href="/Blog/1-JavaScript/%E4%B8%93%E9%A2%98%E6%B7%B1%E5%85%A5/%E5%87%BD%E6%95%B0%E6%9F%AF%E9%87%8C%E5%8C%96">函数柯里化</a> </p>
+</li>
+<li><p><a href="/Blog/1-JavaScript/%E4%B8%93%E9%A2%98%E6%B7%B1%E5%85%A5/%E5%87%BD%E6%95%B0%E7%9A%84%E5%86%85%E9%83%A8%E5%B1%9E%E6%80%A7">函数的内部属性</a> </p>
+</li>
+<li><p><a href="/Blog/1-JavaScript/%E4%B8%93%E9%A2%98%E6%B7%B1%E5%85%A5/%E5%87%BD%E6%95%B0%E7%9A%84%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F">函数的执行顺序</a> </p>
+</li>
+<li><p><a href="/Blog/1-JavaScript/%E4%B8%93%E9%A2%98%E6%B7%B1%E5%85%A5/%E5%89%8D%E7%AB%AF%E6%A8%A1%E5%9D%97%E5%8C%96%E8%A7%84%E8%8C%83">前端模块化规范</a> </p>
+</li>
+<li><p><a href="/Blog/1-JavaScript/%E4%B8%93%E9%A2%98%E6%B7%B1%E5%85%A5/%E5%8A%A0%E5%BF%AB%E9%A6%96%E5%B1%8F%E6%B8%B2%E6%9F%93">加快首屏渲染</a> </p>
+</li>
+<li><p><a href="/Blog/1-JavaScript/%E4%B8%93%E9%A2%98%E6%B7%B1%E5%85%A5/%E5%8E%9F%E5%9E%8B%E5%92%8C%E5%8E%9F%E5%9E%8B%E9%93%BE">原型和原型链</a> </p>
+</li>
+<li><p><a href="/Blog/1-JavaScript/%E4%B8%93%E9%A2%98%E6%B7%B1%E5%85%A5/%E5%BA%9F%E5%BC%83">废弃</a> </p>
+</li>
+<li><p><a href="/Blog/1-JavaScript/%E4%B8%93%E9%A2%98%E6%B7%B1%E5%85%A5/%E6%89%A9%E5%85%85%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%8A%9F%E8%83%BD">扩充类型的功能</a> </p>
+</li>
+<li><p><a href="/Blog/1-JavaScript/%E4%B8%93%E9%A2%98%E6%B7%B1%E5%85%A5/%E6%B5%8F%E8%A7%88%E5%99%A8">浏览器</a> </p>
+</li>
+<li><p><a href="/Blog/1-JavaScript/%E4%B8%93%E9%A2%98%E6%B7%B1%E5%85%A5/%E9%97%AD%E5%8C%85%E7%9B%B8%E5%85%B3">闭包相关</a> </p>
+</li>
+<li><p><a href="/Blog/1-JavaScript/%E4%B8%93%E9%A2%98%E6%B7%B1%E5%85%A5/%E9%98%B2%E6%8A%96%E5%92%8C%E8%8A%82%E6%B5%81">防抖和节流</a> </p>
+</li>
+</ul>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><ul>
+<li><a href="/Blog/1-JavaScript/%E5%85%B6%E4%BB%96/%E5%9B%BE%E7%89%87%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2">图片类型转换</a> </li>
+</ul>
+<h2 id="基础知识类"><a href="#基础知识类" class="headerlink" title="基础知识类"></a>基础知识类</h2><ul>
+<li><p><a href="/Blog/1-JavaScript/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%B1%BB/Generate">Generate</a> </p>
+</li>
+<li><p><a href="/Blog/1-JavaScript/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%B1%BB/Proxy">Proxy</a> </p>
+</li>
+<li><p><a href="/Blog/1-JavaScript/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%B1%BB/Reflect">Reflect</a> </p>
+</li>
+<li><p><a href="/Blog/1-JavaScript/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%B1%BB/Set+Map%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0">Set+Map学习笔记</a> </p>
+</li>
+<li><p><a href="/Blog/1-JavaScript/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%B1%BB/async">async</a> </p>
+</li>
+<li><p><a href="/Blog/1-JavaScript/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%B1%BB/bind">bind</a> </p>
+</li>
+<li><p><a href="/Blog/1-JavaScript/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%B1%BB/%E5%88%A4%E6%96%AD%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B">判断数据类型</a> </p>
+</li>
+<li><p><a href="/Blog/1-JavaScript/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%B1%BB/%E5%90%88%E5%B9%B6%E7%A9%BA%E5%80%BC">合并空值</a> </p>
+</li>
+<li><p><a href="/Blog/1-JavaScript/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%B1%BB/%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87">执行上下文</a> </p>
+</li>
+<li><p><a href="/Blog/1-JavaScript/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%B1%BB/%E6%95%B0%E7%BB%84">数组</a> </p>
+</li>
+<li><p><a href="/Blog/1-JavaScript/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%B1%BB/%E6%AD%A3%E5%88%99">正则</a> </p>
+</li>
+<li><p><a href="/Blog/1-JavaScript/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%B1%BB/%E7%AB%8B%E5%8D%B3%E6%89%A7%E8%A1%8C%E5%87%BD%E6%95%B0">立即执行函数</a> </p>
+</li>
+<li><p><a href="/Blog/1-JavaScript/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%B1%BB/%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0">箭头函数</a> </p>
+</li>
+<li><p><a href="/Blog/1-JavaScript/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%B1%BB/%E7%BB%A7%E6%89%BF%E7%9B%B8%E5%85%B3">继承相关</a> </p>
+</li>
+</ul>
+<h1 style="color:#448d55;">前端知识分类</h1> 
+
+<h1 style="color:#448d55;">框架和库</h1> 
+
+<h2 id="Deno"><a href="#Deno" class="headerlink" title="Deno"></a>Deno</h2><ul>
+<li><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/Deno/index">index</a> </li>
+</ul>
+<h2 id="React"><a href="#React" class="headerlink" title="React"></a>React</h2><ul>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/React/Fiber">Fiber</a> </p>
+</li>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/React/React-redux%E6%80%8E%E4%B9%88%E7%94%A8">React-redux怎么用</a> </p>
+</li>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/React/Redux%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB%E6%80%BB%E7%BB%93">Redux源码阅读总结</a> </p>
+</li>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/React/diff%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0crud">diff算法实现crud</a> </p>
+</li>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/React/react-dom">react-dom</a> </p>
+</li>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/React/react-redux%E6%BA%90%E7%A0%81">react-redux源码</a> </p>
+</li>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/React/react">react</a> </p>
+</li>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/React/react%E5%BC%80%E5%8F%91%E4%B8%AD%E4%BC%98%E5%8C%96%E7%82%B9">react开发中优化点</a> </p>
+</li>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/React/%E5%90%84%E4%B8%AA%E5%9C%B0%E6%96%B9%E7%9A%84%E6%89%93%E5%8D%B0">各个地方的打印</a> </p>
+</li>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/React/%E8%AF%BB%E6%BA%90%E7%A0%81%E7%9A%84%E7%90%86%E8%A7%A3">读源码的理解</a> </p>
+</li>
+</ul>
+<h2 id="Vue"><a href="#Vue" class="headerlink" title="Vue"></a>Vue</h2><ul>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/Vue/0%E6%BA%90%E7%A0%81-%E4%B8%BB%E7%BA%BF">0源码-主线</a> </p>
+</li>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/Vue/1%E6%BA%90%E7%A0%81-%E7%9B%AE%E5%BD%95">1源码-目录</a> </p>
+</li>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/Vue/2%E6%BA%90%E7%A0%81-%E6%9E%84%E5%BB%BA%E8%BF%87%E7%A8%8B">2源码-构建过程</a> </p>
+</li>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/Vue/3%E6%BA%90%E7%A0%81-%E6%95%B0%E6%8D%AE%E9%A9%B1%E5%8A%A8">3源码-数据驱动</a> </p>
+</li>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/Vue/4%E6%BA%90%E7%A0%81-newVue">4源码-newVue</a> </p>
+</li>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/Vue/5%E6%BA%90%E7%A0%81-Vue%E5%AE%9E%E4%BE%8B%E6%8C%82%E8%BD%BD%E7%9A%84%E5%AE%9E%E7%8E%B0">5源码-Vue实例挂载的实现</a> </p>
+</li>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/Vue/6%E6%BA%90%E7%A0%81-render">6源码-render</a> </p>
+</li>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/Vue/7%E6%BA%90%E7%A0%81-createElement">7源码-createElement</a> </p>
+</li>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/Vue/8%E6%BA%90%E7%A0%81-_update">8源码-_update</a> </p>
+</li>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/Vue/9%E6%BA%90%E7%A0%81-createComponent">9源码-createComponent</a> </p>
+</li>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/Vue/10%E6%BA%90%E7%A0%81-patch">10源码-patch</a> </p>
+</li>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/Vue/11%E6%BA%90%E7%A0%81-%E5%90%88%E5%B9%B6%E9%85%8D%E7%BD%AE">11源码-合并配置</a> </p>
+</li>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/Vue/12%E6%BA%90%E7%A0%81-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F">12源码-生命周期</a> </p>
+</li>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/Vue/12%E6%BA%90%E7%A0%81-%E7%BB%84%E4%BB%B6%E6%B3%A8%E5%86%8C">12源码-组件注册</a> </p>
+</li>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/Vue/13%E6%BA%90%E7%A0%81-nextTick">13源码-nextTick</a> </p>
+</li>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/Vue/13%E6%BA%90%E7%A0%81-%E5%BC%82%E6%AD%A5%E7%BB%84%E4%BB%B6">13源码-异步组件</a> </p>
+</li>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/Vue/14%E6%95%B0%E6%8D%AE%E5%8A%AB%E6%8C%81">14数据劫持</a> </p>
+</li>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/Vue/15%E6%BA%90%E7%A0%81-%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86">15源码-响应式原理</a> </p>
+</li>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/Vue/16%E5%AF%B9%E8%B1%A1%E5%92%8C%E6%95%B0%E7%BB%84%E7%9A%84%E5%A4%84%E7%90%86">16对象和数组的处理</a> </p>
+</li>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/Vue/17%E6%BA%90%E7%A0%81-%E4%BE%9D%E8%B5%96%E6%94%B6%E9%9B%86">17源码-依赖收集</a> </p>
+</li>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/Vue/18%E6%BA%90%E7%A0%81-%E6%B4%BE%E5%8F%91%E6%9B%B4%E6%96%B0">18源码-派发更新</a> </p>
+</li>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/Vue/README">README</a> </p>
+</li>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/Vue/key%E7%9A%84%E4%BD%9C%E7%94%A8">key的作用</a> </p>
+</li>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/Vue/vue">vue</a> </p>
+</li>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/Vue/%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83">开发规范</a> </p>
+</li>
+</ul>
+<h2 id="dva"><a href="#dva" class="headerlink" title="dva"></a>dva</h2><ul>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/dva/dva%E6%8A%BD%E7%A6%BB%E6%95%B0%E7%BB%84%E8%B7%AF%E7%94%B1+%E5%8A%A8%E6%80%81%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE%E6%96%B9%E6%B3%95">dva抽离数组路由+动态路由配置方法</a> </p>
+</li>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/dva/dva%E7%9A%84%E4%B8%80%E4%BA%9B%E7%82%B9">dva的一些点</a> </p>
+</li>
+</ul>
+<h2 id="lodash"><a href="#lodash" class="headerlink" title="lodash"></a>lodash</h2><ul>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/lodash/merge">merge</a> </p>
+</li>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/lodash/%E6%B7%B1%E6%8B%B7%E8%B4%9D">深拷贝</a> </p>
+</li>
+</ul>
+<h2 id="公共类"><a href="#公共类" class="headerlink" title="公共类"></a>公共类</h2><ul>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/%E5%85%AC%E5%85%B1%E7%B1%BB/vue%E5%92%8Creact%E5%AF%B9%E6%AF%94">vue和react对比</a> </p>
+</li>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/%E5%85%AC%E5%85%B1%E7%B1%BB/%E6%A1%86%E6%9E%B6%E9%80%9A%E8%AF%86">框架通识</a> </p>
+</li>
+</ul>
+<h1 style="color:#448d55;">CSS相关</h1> 
+
+<h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><ul>
+<li><p><a href="/Blog/3-CSS%E7%9B%B8%E5%85%B3/%E5%9F%BA%E7%A1%80/Grid%E9%80%9F%E6%88%90">Grid速成</a> </p>
+</li>
+<li><p><a href="/Blog/3-CSS%E7%9B%B8%E5%85%B3/%E5%9F%BA%E7%A1%80/bfc">bfc</a> </p>
+</li>
+<li><p><a href="/Blog/3-CSS%E7%9B%B8%E5%85%B3/%E5%9F%BA%E7%A1%80/blur%E5%92%8Cchange">blur和change</a> </p>
+</li>
+<li><p><a href="/Blog/3-CSS%E7%9B%B8%E5%85%B3/%E5%9F%BA%E7%A1%80/css3%E5%8A%A8%E7%94%BB%E5%B1%9E%E6%80%A7">css3动画属性</a> </p>
+</li>
+<li><p><a href="/Blog/3-CSS%E7%9B%B8%E5%85%B3/%E5%9F%BA%E7%A1%80/flex">flex</a> </p>
+</li>
+</ul>
+<h2 id="库-amp-方案"><a href="#库-amp-方案" class="headerlink" title="库&amp;方案"></a>库&amp;方案</h2><ul>
+<li><p><a href="/Blog/3-CSS%E7%9B%B8%E5%85%B3/%E5%BA%93&%E6%96%B9%E6%A1%88/1px">1px</a> </p>
+</li>
+<li><p><a href="/Blog/3-CSS%E7%9B%B8%E5%85%B3/%E5%BA%93&%E6%96%B9%E6%A1%88/less%E9%80%9F%E6%88%90">less速成</a> </p>
+</li>
+<li><p><a href="/Blog/3-CSS%E7%9B%B8%E5%85%B3/%E5%BA%93&%E6%96%B9%E6%A1%88/scss%E9%80%9F%E6%88%90">scss速成</a> </p>
+</li>
+<li><p><a href="/Blog/3-CSS%E7%9B%B8%E5%85%B3/%E5%BA%93&%E6%96%B9%E6%A1%88/%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%BF%E7%94%A8rem?">为什么使用rem?</a> </p>
+</li>
+<li><p><a href="/Blog/3-CSS%E7%9B%B8%E5%85%B3/%E5%BA%93&%E6%96%B9%E6%A1%88/%E5%AE%9E%E7%8E%B0%E5%B1%85%E4%B8%AD">实现居中</a> </p>
+</li>
+<li><p><a href="/Blog/3-CSS%E7%9B%B8%E5%85%B3/%E5%BA%93&%E6%96%B9%E6%A1%88/%E5%B8%B8%E8%A7%81%E5%B8%83%E5%B1%80">常见布局</a> </p>
+</li>
+<li><p><a href="/Blog/3-CSS%E7%9B%B8%E5%85%B3/%E5%BA%93&%E6%96%B9%E6%A1%88/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%80%82%E9%85%8D">移动端适配</a> </p>
+</li>
+</ul>
+<h1 style="color:#448d55;">其他</h1> 
+
+<h2 id="TypeScript"><a href="#TypeScript" class="headerlink" title="TypeScript"></a>TypeScript</h2><ul>
+<li><p><a href="/Blog/4-%E5%85%B6%E4%BB%96/TypeScript/%E6%B5%8B%E8%AF%95%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84">测试目录结构</a> </p>
+</li>
+<li><p><a href="/Blog/4-%E5%85%B6%E4%BB%96/TypeScript/%E7%94%BB%E7%93%A2">画瓢</a> </p>
+</li>
+</ul>
+<h2 id="基础算法"><a href="#基础算法" class="headerlink" title="基础算法"></a>基础算法</h2><ul>
+<li><p><a href="/Blog/4-%E5%85%B6%E4%BB%96/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/js%E4%B8%89%E7%A7%8D%E9%81%8D%E5%8E%86">js三种遍历</a> </p>
+</li>
+<li><p><a href="/Blog/4-%E5%85%B6%E4%BB%96/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/%E5%B8%B8%E8%A7%81%E6%8E%92%E5%BA%8F">常见排序</a> </p>
+</li>
+</ul>
+<h2 id="工具🔧"><a href="#工具🔧" class="headerlink" title="工具🔧"></a>工具🔧</h2><h3 id="git相关操作"><a href="#git相关操作" class="headerlink" title="git相关操作"></a>git相关操作</h3><ul>
+<li><p><a href="/Blog/4-%E5%85%B6%E4%BB%96/%E5%B7%A5%E5%85%B7%F0%9F%94%A7/git%E7%9B%B8%E5%85%B3%E6%93%8D%E4%BD%9C/git%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C%E2%9D%A4">git常用操作❤</a> </p>
+</li>
+<li><p><a href="/Blog/4-%E5%85%B6%E4%BB%96/%E5%B7%A5%E5%85%B7%F0%9F%94%A7/git%E7%9B%B8%E5%85%B3%E6%93%8D%E4%BD%9C/%E4%BB%A3%E7%A0%81%E6%8F%90%E4%BA%A4%E6%A0%A1%E9%AA%8C">代码提交校验</a> </p>
+</li>
+</ul>
+<h3 id="webpack"><a href="#webpack" class="headerlink" title="webpack"></a>webpack</h3><ul>
+<li><p><a href="/Blog/4-%E5%85%B6%E4%BB%96/%E5%B7%A5%E5%85%B7%F0%9F%94%A7/webpack/antd%E6%8C%89%E9%9C%80%E5%8A%A0%E8%BD%BD">antd按需加载</a> </p>
+</li>
+<li><p><a href="/Blog/4-%E5%85%B6%E4%BB%96/%E5%B7%A5%E5%85%B7%F0%9F%94%A7/webpack/eslint">eslint</a> </p>
+</li>
+<li><p><a href="/Blog/4-%E5%85%B6%E4%BB%96/%E5%B7%A5%E5%85%B7%F0%9F%94%A7/webpack/perttier">perttier</a> </p>
+</li>
+<li><p><a href="/Blog/4-%E5%85%B6%E4%BB%96/%E5%B7%A5%E5%85%B7%F0%9F%94%A7/webpack/webpack%E7%83%AD%E6%9B%B4%E6%96%B0%E5%8E%9F%E7%90%86">webpack热更新原理</a> </p>
+</li>
+</ul>
+<h3 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h3><ul>
+<li><p><a href="/Blog/4-%E5%85%B6%E4%BB%96/%E5%B7%A5%E5%85%B7%F0%9F%94%A7/%E6%8C%87%E4%BB%A4/MAC-shell">MAC-shell</a> </p>
+</li>
+<li><p><a href="/Blog/4-%E5%85%B6%E4%BB%96/%E5%B7%A5%E5%85%B7%F0%9F%94%A7/%E6%8C%87%E4%BB%A4/index">index</a> </p>
+</li>
+<li><p><a href="/Blog/4-%E5%85%B6%E4%BB%96/%E5%B7%A5%E5%85%B7%F0%9F%94%A7/%E6%8C%87%E4%BB%A4/tree">tree</a> </p>
+</li>
+</ul>
+<h3 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h3><ul>
+<li><p><a href="/Blog/4-%E5%85%B6%E4%BB%96/%E5%B7%A5%E5%85%B7%F0%9F%94%A7/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4">MySQL常用命令</a> </p>
+</li>
+<li><p><a href="/Blog/4-%E5%85%B6%E4%BB%96/%E5%B7%A5%E5%85%B7%F0%9F%94%A7/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%B8%B8%E7%94%A8SQL">常用SQL</a> </p>
+</li>
+</ul>
+<h3 id="无归类"><a href="#无归类" class="headerlink" title="无归类"></a>无归类</h3><ul>
+<li><p><a href="/Blog/4-%E5%85%B6%E4%BB%96/%E5%B7%A5%E5%85%B7%F0%9F%94%A7/%E6%97%A0%E5%BD%92%E7%B1%BB/chrome%E6%B5%8F%E8%A7%88%E5%99%A8%E8%B7%A8%E5%9F%9F%E8%AE%BE%E7%BD%AE">chrome浏览器跨域设置</a> </p>
+</li>
+<li><p><a href="/Blog/4-%E5%85%B6%E4%BB%96/%E5%B7%A5%E5%85%B7%F0%9F%94%A7/%E6%97%A0%E5%BD%92%E7%B1%BB/%E5%BF%AB%E6%8D%B7%E9%94%AE">快捷键</a> </p>
+</li>
+</ul>
+<h3 id="系统操作"><a href="#系统操作" class="headerlink" title="系统操作"></a>系统操作</h3><ul>
+<li><p><a href="/Blog/4-%E5%85%B6%E4%BB%96/%E5%B7%A5%E5%85%B7%F0%9F%94%A7/%E7%B3%BB%E7%BB%9F%E6%93%8D%E4%BD%9C/cross-env">cross-env</a> </p>
+</li>
+<li><p><a href="/Blog/4-%E5%85%B6%E4%BB%96/%E5%B7%A5%E5%85%B7%F0%9F%94%A7/%E7%B3%BB%E7%BB%9F%E6%93%8D%E4%BD%9C/%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA">安装虚拟机</a> </p>
+</li>
+<li><p><a href="/Blog/4-%E5%85%B6%E4%BB%96/%E5%B7%A5%E5%85%B7%F0%9F%94%A7/%E7%B3%BB%E7%BB%9F%E6%93%8D%E4%BD%9C/%E6%9F%A5%E7%9C%8B%E6%9C%AC%E5%9C%B0ip%E4%B9%8B%E7%B1%BB%E7%9A%84%E9%85%8D%E7%BD%AE(window)">查看本地ip之类的配置(window)</a> </p>
+</li>
+</ul>
+<h2 id="方案"><a href="#方案" class="headerlink" title="方案"></a>方案</h2><ul>
+<li><p><a href="/Blog/4-%E5%85%B6%E4%BB%96/%E6%96%B9%E6%A1%88/Node%E7%AB%AF%E9%80%9A%E8%BF%87html%E5%AF%BC%E5%87%BAword">Node端通过html导出word</a> </p>
+</li>
+<li><p><a href="/Blog/4-%E5%85%B6%E4%BB%96/%E6%96%B9%E6%A1%88/%E5%AF%BC%E5%87%BAword">导出word</a> </p>
+</li>
+</ul>
+<h2 id="网络和安全类"><a href="#网络和安全类" class="headerlink" title="网络和安全类"></a>网络和安全类</h2><ul>
+<li><p><a href="/Blog/4-%E5%85%B6%E4%BB%96/%E7%BD%91%E7%BB%9C%E5%92%8C%E5%AE%89%E5%85%A8%E7%B1%BB/CDN%E7%9A%84%E5%8E%9F%E7%90%86">CDN的原理</a> </p>
+</li>
+<li><p><a href="/Blog/4-%E5%85%B6%E4%BB%96/%E7%BD%91%E7%BB%9C%E5%92%8C%E5%AE%89%E5%85%A8%E7%B1%BB/HTTP2.0">HTTP2.0</a> </p>
+</li>
+<li><p><a href="/Blog/4-%E5%85%B6%E4%BB%96/%E7%BD%91%E7%BB%9C%E5%92%8C%E5%AE%89%E5%85%A8%E7%B1%BB/Nginx">Nginx</a> </p>
+</li>
+<li><p><a href="/Blog/4-%E5%85%B6%E4%BB%96/%E7%BD%91%E7%BB%9C%E5%92%8C%E5%AE%89%E5%85%A8%E7%B1%BB/cookie%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E5%AE%89%E5%85%A8">cookie为什么不安全</a> </p>
+</li>
+<li><p><a href="/Blog/4-%E5%85%B6%E4%BB%96/%E7%BD%91%E7%BB%9C%E5%92%8C%E5%AE%89%E5%85%A8%E7%B1%BB/get%E5%92%8Cpost%E5%8C%BA%E5%88%AB">get和post区别</a> </p>
+</li>
+<li><p><a href="/Blog/4-%E5%85%B6%E4%BB%96/%E7%BD%91%E7%BB%9C%E5%92%8C%E5%AE%89%E5%85%A8%E7%B1%BB/%E4%BA%86%E8%A7%A3%E7%B1%BB">了解类</a> </p>
+</li>
+<li><p><a href="/Blog/4-%E5%85%B6%E4%BB%96/%E7%BD%91%E7%BB%9C%E5%92%8C%E5%AE%89%E5%85%A8%E7%B1%BB/%E5%89%8D%E7%AB%AF%E9%89%B4%E6%9D%83">前端鉴权</a> </p>
+</li>
+<li><p><a href="/Blog/4-%E5%85%B6%E4%BB%96/%E7%BD%91%E7%BB%9C%E5%92%8C%E5%AE%89%E5%85%A8%E7%B1%BB/%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95">加密算法</a> </p>
+</li>
+<li><p><a href="/Blog/4-%E5%85%B6%E4%BB%96/%E7%BD%91%E7%BB%9C%E5%92%8C%E5%AE%89%E5%85%A8%E7%B1%BB/%E5%B8%B8%E8%A7%81%E7%9A%84%E7%BD%91%E7%BB%9C%E6%94%BB%E5%87%BB">常见的网络攻击</a> </p>
+</li>
+<li><p><a href="/Blog/4-%E5%85%B6%E4%BB%96/%E7%BD%91%E7%BB%9C%E5%92%8C%E5%AE%89%E5%85%A8%E7%B1%BB/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">数据结构</a> </p>
+</li>
+<li><p><a href="/Blog/4-%E5%85%B6%E4%BB%96/%E7%BD%91%E7%BB%9C%E5%92%8C%E5%AE%89%E5%85%A8%E7%B1%BB/%E7%BD%91%E7%BB%9C">网络</a> </p>
+</li>
+<li><p><a href="/Blog/4-%E5%85%B6%E4%BB%96/%E7%BD%91%E7%BB%9C%E5%92%8C%E5%AE%89%E5%85%A8%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C">计算机网络</a> </p>
+</li>
+<li><p><a href="/Blog/4-%E5%85%B6%E4%BB%96/%E7%BD%91%E7%BB%9C%E5%92%8C%E5%AE%89%E5%85%A8%E7%B1%BB/%E8%BE%93%E5%85%A5URL%E5%90%8E%E5%8F%91%E7%94%9F%E4%BA%86%E4%BB%80%E4%B9%88">输入URL后发生了什么</a> </p>
+</li>
+</ul>
+<h1 style="color:#448d55;">笔记和复盘</h1> 
+
+<h2 id="读书笔记"><a href="#读书笔记" class="headerlink" title="读书笔记"></a>读书笔记</h2><ul>
+<li><p><a href="/Blog/5-%E7%AC%94%E8%AE%B0%E5%92%8C%E5%A4%8D%E7%9B%98/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E3%80%8AJavascript%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B8%8E%E5%BC%80%E5%8F%91%E5%AE%9E%E8%B7%B5%E3%80%8B">《Javascript设计模式与开发实践》</a> </p>
+</li>
+<li><p><a href="/Blog/5-%E7%AC%94%E8%AE%B0%E5%92%8C%E5%A4%8D%E7%9B%98/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E3%80%8ALinux%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AE%9E%E7%94%A8%E6%95%99%E7%A8%8B%E3%80%8B">《Linux操作系统实用教程》</a> </p>
+</li>
+<li><p><a href="/Blog/5-%E7%AC%94%E8%AE%B0%E5%92%8C%E5%A4%8D%E7%9B%98/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E3%80%8AWeb%E5%89%8D%E7%AB%AF%E9%BB%91%E5%AE%A2%E6%8A%80%E6%9C%AF%E6%8F%AD%E7%A7%98%E3%80%8B">《Web前端黑客技术揭秘》</a> </p>
+</li>
+<li><p><a href="/Blog/5-%E7%AC%94%E8%AE%B0%E5%92%8C%E5%A4%8D%E7%9B%98/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E3%80%8A%E4%BD%A0%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84javascript%E3%80%8B">《你不知道的javascript》</a> </p>
+</li>
+<li><p><a href="/Blog/5-%E7%AC%94%E8%AE%B0%E5%92%8C%E5%A4%8D%E7%9B%98/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E6%85%95%E5%AE%A2%E8%AF%BE%E7%A8%8Breact+ts%E5%BC%80%E5%8F%91%E7%BB%84%E4%BB%B6">慕客课程react+ts开发组件</a> </p>
+</li>
+</ul>
+<h2 id="项目复盘"><a href="#项目复盘" class="headerlink" title="项目复盘"></a>项目复盘</h2><ul>
+<li><p><a href="/Blog/5-%E7%AC%94%E8%AE%B0%E5%92%8C%E5%A4%8D%E7%9B%98/%E9%A1%B9%E7%9B%AE%E5%A4%8D%E7%9B%98/%E5%B7%A5%E9%93%B6-%E8%87%AA%E5%8A%A8%E5%8C%96%E6%8A%A5%E5%91%8A">工银-自动化报告</a> </p>
+</li>
+<li><p><a href="/Blog/5-%E7%AC%94%E8%AE%B0%E5%92%8C%E5%A4%8D%E7%9B%98/%E9%A1%B9%E7%9B%AE%E5%A4%8D%E7%9B%98/%E5%BE%AE%E4%BF%A1%E5%92%8Capp%E5%AF%BC%E5%87%BA%E5%9B%BE%E7%89%87%E8%B8%A9%E5%9D%91%E7%BB%8F%E5%8E%86">微信和app导出图片踩坑经历</a> </p>
+</li>
+<li><p><a href="/Blog/5-%E7%AC%94%E8%AE%B0%E5%92%8C%E5%A4%8D%E7%9B%98/%E9%A1%B9%E7%9B%AE%E5%A4%8D%E7%9B%98/%E6%B0%91%E7%94%9F%E6%98%9F%E6%8E%A2-%E7%A7%BB%E5%8A%A8%E7%AB%AF">民生星探-移动端</a> </p>
+</li>
+<li><p><a href="/Blog/5-%E7%AC%94%E8%AE%B0%E5%92%8C%E5%A4%8D%E7%9B%98/%E9%A1%B9%E7%9B%AE%E5%A4%8D%E7%9B%98/%E8%85%BE%E5%AE%89%E5%9F%BA%E9%87%91">腾安基金</a> </p>
+</li>
+</ul>
+<h1 style="color:#448d55;">面试准备</h1> 
+
+<h2 id="Interview-others"><a href="#Interview-others" class="headerlink" title="Interview-others"></a>Interview-others</h2><ul>
+<li><p><a href="/Blog/6-%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/Interview-others/interview-other">interview-other</a> </p>
+</li>
+<li><p><a href="/Blog/6-%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/Interview-others/%E9%9D%A2%E8%AF%95%E5%88%AB%E4%BA%BA%E7%9A%84%E6%94%B6%E8%8E%B7">面试别人的收获</a> </p>
+</li>
+<li><p><a href="/Blog/6-%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/Interview-others/%E9%9D%A2%E8%AF%95%E5%88%AB%E4%BA%BA%E7%9A%84%E9%97%AE%E9%A2%98">面试别人的问题</a> </p>
+</li>
+</ul>
+<h2 id="be-interviewed"><a href="#be-interviewed" class="headerlink" title="be-interviewed"></a>be-interviewed</h2><ul>
+<li><p><a href="/Blog/6-%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/be-interviewed/mine">mine</a> </p>
+</li>
+<li><p><a href="/Blog/6-%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/be-interviewed/%E6%9C%AC%E4%BA%BA%E9%9D%A2%E7%BB%8F">本人面经</a> </p>
+</li>
+</ul>
+<h2 id="ready"><a href="#ready" class="headerlink" title="ready"></a>ready</h2><ul>
+<li><p><a href="/Blog/6-%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/ready/%E4%B8%80%E4%B8%AA%E6%B7%98%E5%AE%9D%E6%8A%80%E6%9C%AF%E4%B8%93%E5%AE%B6%E5%86%99%E7%9A%84%E5%A6%82%E4%BD%95%E8%BF%9B%E5%85%A5%E9%98%BF%E9%87%8C">一个淘宝技术专家写的如何进入阿里</a> </p>
+</li>
+<li><p><a href="/Blog/6-%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/ready/%E4%B8%80%E4%BA%9B%E4%B8%8D%E9%94%99%E7%9A%84%E9%9D%A2%E7%BB%8F">一些不错的面经</a> </p>
+</li>
+<li><p><a href="/Blog/6-%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/ready/%E4%B8%80%E4%BA%9B%E6%80%BB%E7%BB%93">一些总结</a> </p>
+</li>
+<li><p><a href="/Blog/6-%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/ready/%E5%A4%A7%E7%BA%B2">大纲</a> </p>
+</li>
+<li><p><a href="/Blog/6-%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/ready/%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87+%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE+%E9%97%AD%E5%8C%85">执行上下文+作用域链+闭包</a> </p>
+</li>
+<li><p><a href="/Blog/6-%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/ready/%E6%96%87%E7%AB%A0%E3%80%8A%E5%A6%82%E4%BD%95%E8%BF%9B%E9%98%BF%E9%87%8C%E3%80%8B">文章《如何进阿里》</a> </p>
+</li>
+</ul>
+<h1 style="color:#448d55;">日记</h1> 
+
+<h2 id="2020"><a href="#2020" class="headerlink" title="2020"></a>2020</h2><ul>
+<li><p><a href="/Blog/7-%E6%97%A5%E8%AE%B0/2020/20201225">20201225</a> </p>
+</li>
+<li><p><a href="/Blog/7-%E6%97%A5%E8%AE%B0/2020/20201231">20201231</a> </p>
+</li>
+</ul>
+<h2 id="2021"><a href="#2021" class="headerlink" title="2021"></a>2021</h2><ul>
+<li><p><a href="/Blog/7-%E6%97%A5%E8%AE%B0/2021/2021-0408">2021-0408</a> </p>
+</li>
+<li><p><a href="/Blog/7-%E6%97%A5%E8%AE%B0/2021/20200103">20200103</a> </p>
+</li>
+<li><p><a href="/Blog/7-%E6%97%A5%E8%AE%B0/2021/20200118">20200118</a> </p>
+</li>
+<li><p><a href="/Blog/7-%E6%97%A5%E8%AE%B0/2021/20200129">20200129</a> </p>
+</li>
+<li><p><a href="/Blog/7-%E6%97%A5%E8%AE%B0/2021/20210105">20210105</a> </p>
+</li>
+<li><p><a href="/Blog/7-%E6%97%A5%E8%AE%B0/2021/20210118">20210118</a> </p>
+</li>
+<li><p><a href="/Blog/7-%E6%97%A5%E8%AE%B0/2021/%E5%86%B7%E9%97%A8%E5%B1%9E%E6%80%A7">冷门属性</a> </p>
+</li>
+<li><p><a href="/Blog/7-%E6%97%A5%E8%AE%B0/2021/%E5%89%8D%E7%AB%AF%E5%9B%A2%E9%98%9F%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB%E4%B8%BB%E9%A2%98">前端团队技术分享主题</a> </p>
+</li>
+<li><p><a href="/Blog//README">README</a> </p>
+</li>
+<li><p><a href="/Blog//ToMyself">ToMyself</a> </p>
+</li>
+<li><p><a href="/Blog//like">like</a> </p>
+</li>
+<li><p><a href="/Blog//%E9%9D%A2%E7%BB%8F">面经</a> </p>
+</li>
+</ul>
+
+</div>
+
+
+<script src="/Blog/js/book-menu.js"></script>
+
+      </div>
+
+      <div class="sidebar-toggle" onclick="sidebar_toggle()" onmouseover="add_inner()" onmouseleave="remove_inner()">
+  <div class="sidebar-toggle-inner"></div>
+</div>
+
+<script>
+function add_inner() {
+  let inner = document.querySelector('.sidebar-toggle-inner')
+  inner.classList.add('show')  
+}
+
+function remove_inner() {
+  let inner = document.querySelector('.sidebar-toggle-inner')
+  inner.classList.remove('show')
+}
+
+function sidebar_toggle() {
+    let sidebar_toggle = document.querySelector('.sidebar-toggle')
+    let sidebar = document.querySelector('.book-sidebar')
+    let content = document.querySelector('.off-canvas-content')
+    if (sidebar_toggle.classList.contains('extend')) { // show
+        sidebar_toggle.classList.remove('extend')
+        sidebar.classList.remove('hide')
+        content.classList.remove('extend')
+    }
+    else { // hide
+        sidebar_toggle.classList.add('extend')
+        sidebar.classList.add('hide')
+        content.classList.add('extend')
+    }
+}
+</script>
+
+      <div class="off-canvas-content">
+        <div class="columns">
+          <div class="column col-10 col-lg-12">
+            <div class="book-navbar"><!-- For Responsive Layout -->
+
+<header class="navbar">
+  <section class="navbar-section">
+    <a onclick="open_sidebar()">
+      <i class="icon icon-menu"></i>
+    </a>
+  </section>
+</header>
+</div>
+            <div class="book-content"><div class="book-post">
+  <h1 id="js背景"><a href="#js背景" class="headerlink" title="js背景"></a>js背景</h1><ol>
+<li>Javascript语言的执行环境是”单线程”, 也就是说，一次只能执行一件事情，其他的事情必须要排队，前一个任务完成，再执行后一个任务。</li>
+<li>优点：实现起来比较简单，执行环境相对单纯；</li>
+<li>坏处：只要有一个任务耗时很长，后面的任务都必须排队等着，会拖延整个程序的执行。常见的浏览器无响应，往往就是因为某一段Javascript代码长时间运行（比如死循环），导致整个页面卡在这个地方，其他任务无法执行；</li>
+</ol>
+<p>于是提出了异步函数<br>（但是在js中，异步函数也是由同步模拟的）</p>
+<h2 id="回调函数"><a href="#回调函数" class="headerlink" title="回调函数"></a>回调函数</h2><p><strong>什么是回调函数？</strong></p>
+<ol>
+<li>一个函数的执行总是依赖另一个函数的执行结果，函数层层嵌套;</li>
+<li>回调 是编写和处理 JavaScript 程序异步逻辑的最常用方式</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ajax(..)是某个库中提供的某个Ajax函数</span></span><br><span class="line"><span class="keyword">var</span> data = axios.get( <span class="string">"http://some.url.1"</span> );</span><br><span class="line"><span class="comment">// 啊哦！data通常不会包含Ajax结果</span></span><br><span class="line"><span class="built_in">console</span>.log( data );</span><br><span class="line"></span><br><span class="line"><span class="comment">// 回调函数的写法</span></span><br><span class="line">axios.get( <span class="string">"http://some.url.1"</span> ,(res)=&gt;&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(res)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p><strong>举例</strong></p>
+<ul>
+<li>回调函数与同步、异步没有关系，回调函数只是一种实现方式，既可以有同步回调，也可以有异步回调，也可以有延迟函数回调</li>
+<li>缺点：不利于代码的阅读和维护，各个部分之间高度耦合</li>
+<li>把一段代码包装成一个函数，并指定它在响应某个事件（定时器、鼠标点击、Ajax 响应等）时执行</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// click事件的回调函数</span></span><br><span class="line">$(<span class="string">'div'</span>).click(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">    alert(<span class="number">1</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// ajax的回调函数</span></span><br><span class="line">$.<span class="keyword">get</span>('/del.html',function(data)&#123;</span><br><span class="line">    $(<span class="string">'.new'</span>).html(data);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 回调地狱</span></span><br><span class="line">fs.readdir(source, <span class="function"><span class="keyword">function</span> (<span class="params">err, files</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (err) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(err)</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    files.forEach(<span class="function"><span class="keyword">function</span> (<span class="params">filename, fileIndex</span>) </span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(filename)</span><br><span class="line">      gm(source + filename).size(<span class="function"><span class="keyword">function</span> (<span class="params">err, values</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (err) &#123;</span><br><span class="line">          <span class="built_in">console</span>.log(err)</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          <span class="built_in">console</span>.log(filename + <span class="string">' : '</span> + values)</span><br><span class="line">          aspect = (values.width / values.height)</span><br><span class="line">          widths.forEach(<span class="function"><span class="keyword">function</span> (<span class="params">width, widthIndex</span>) </span>&#123;</span><br><span class="line">            height = <span class="built_in">Math</span>.round(width / aspect)</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">'resizing '</span> + filename + <span class="string">'to '</span> + height + <span class="string">'x'</span> + height)</span><br><span class="line">            <span class="keyword">this</span>.resize(width, height).write(dest + <span class="string">'w'</span> + width + <span class="string">'_'</span> + filename, <span class="function"><span class="keyword">function</span>(<span class="params">err</span>) </span>&#123;</span><br><span class="line">              <span class="keyword">if</span> (err) <span class="built_in">console</span>.log(<span class="string">'Error writing file: '</span> + err)</span><br><span class="line">            &#125;)</span><br><span class="line">          &#125;.bind(<span class="keyword">this</span>))</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h1 id="Promise"><a href="#Promise" class="headerlink" title="Promise"></a>Promise</h1><p>见 =&gt; Promise.md</p>
+<h1 id="异步函数"><a href="#异步函数" class="headerlink" title="异步函数"></a>异步函数</h1><p>异步函数是什么？无需等待被调用函数的返回值就继续向下执行的函数；</p>
+<h1 id="浏览器相关"><a href="#浏览器相关" class="headerlink" title="浏览器相关"></a>浏览器相关</h1><ul>
+<li><a href="https://imweb.io/topic/58e3bfa845e5c13468f567d5" target="_blank" rel="noopener">浏览器进程？线程？傻傻分不清楚！</a></li>
+</ul>
+
+</div>
+
+
+  <div class="book-comments">
+    
+
+
+
+
+  </div>
+
+
+
+
+<script src="/Blog/js/book-post.js"></script>
+
+
+
+<script src="/Blog/js/mind.js"></script>
+</div>
+          </div>
+          <div class="column col-2 hide-lg">
+            <div class="book-post-info">
+  
+    <div class="book-post-meta">
+
+  <div class="author">
+
+    <!-- Author image -->
+    <div class="author-img">
+      
+        <figure
+          class="avatar avatar-lg"
+          data-initial="甜"
+          style="background-color: #3b4351;">
+        </figure>
+      
+    </div>
+
+    <!-- Author title -->
+    <div class="author-title">
+      <div>甜里甜气</div>
+      <div>2021-04-15</div>
+    </div>
+  </div>
+
+  
+
+  <div class="divider"></div>
+</div>
+  
+
+  <div class="book-tocbot"></div>
+<div class="book-tocbot-menu">
+  <a class="book-toc-expand" onclick="expand_toc()">Expand all</a>
+  <a onclick="go_top()">⬆ Top</a>
+  <a onclick="go_bottom()">⬇ Bottom</a>
+</div>
+
+
+<script src="/Blog/js/book-toc.js"></script>
+
+
+</div>
+          </div>
+        </div>
+      </div>
+
+      <a class="off-canvas-overlay" onclick="hide_canvas()"></a>
+    </div>
+  </body>
+</html>
+
+
+<script src="/Blog/js/book.js"></script>
+

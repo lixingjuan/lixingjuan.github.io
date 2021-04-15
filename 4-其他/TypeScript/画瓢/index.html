@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+
+    
+      <link rel="icon" href="/Blog/favicon.png" />
+    
+
+    <title>
+        
+          4-其他/TypeScript/画瓢 - 李幸娟的前端博客
+        
+    </title>
+
+    <!-- Spectre.css framework -->
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">
+
+    <!-- theme css & js -->
+    
+<link rel="stylesheet" href="/Blog/css/book.css">
+
+    
+<script src="/Blog/js/book.js"></script>
+
+
+    <!-- tocbot -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+    
+    <!-- katex -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/zooming/2.1.1/zooming.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const zooming = new Zooming()
+    zooming.listen('.book-content img')
+})
+</script>
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+  <body>
+    <div class="book-container">
+      <div class="book-sidebar">
+        <div class="book-brand">
+  <a href="/Blog/">
+    <img src="/Blog/favicon.png">
+    <span>李幸娟的前端博客</span>
+  </a>
+</div> <div class="book-menu">
+  <ul>
+<li><a href="/Blog">Home</a></li>
+</ul>
+<h1 style="color:#448d55;">JavaScript</h1> 
+
+<h2 id="专题深入"><a href="#专题深入" class="headerlink" title="专题深入"></a>专题深入</h2><ul>
+<li><p><a href="/Blog/1-JavaScript/%E4%B8%93%E9%A2%98%E6%B7%B1%E5%85%A5/0.1+0.2">0.1+0.2</a> </p>
+</li>
+<li><p><a href="/Blog/1-JavaScript/%E4%B8%93%E9%A2%98%E6%B7%B1%E5%85%A5/Class%E7%9B%B8%E5%85%B3">Class相关</a> </p>
+</li>
+<li><p><a href="/Blog/1-JavaScript/%E4%B8%93%E9%A2%98%E6%B7%B1%E5%85%A5/EventLoop">EventLoop</a> </p>
+</li>
+<li><p><a href="/Blog/1-JavaScript/%E4%B8%93%E9%A2%98%E6%B7%B1%E5%85%A5/Promise">Promise</a> </p>
+</li>
+<li><p><a href="/Blog/1-JavaScript/%E4%B8%93%E9%A2%98%E6%B7%B1%E5%85%A5/call%E5%92%8Capply">call和apply</a> </p>
+</li>
+<li><p><a href="/Blog/1-JavaScript/%E4%B8%93%E9%A2%98%E6%B7%B1%E5%85%A5/flat%E5%AE%9E%E7%8E%B0">flat实现</a> </p>
+</li>
+<li><p><a href="/Blog/1-JavaScript/%E4%B8%93%E9%A2%98%E6%B7%B1%E5%85%A5/for%E5%92%8CforEach%E7%9A%84%E5%8C%BA%E5%88%AB">for和forEach的区别</a> </p>
+</li>
+<li><p><a href="/Blog/1-JavaScript/%E4%B8%93%E9%A2%98%E6%B7%B1%E5%85%A5/this%E7%9B%B8%E5%85%B3">this相关</a> </p>
+</li>
+<li><p><a href="/Blog/1-JavaScript/%E4%B8%93%E9%A2%98%E6%B7%B1%E5%85%A5/%E4%BA%8B%E4%BB%B6%E5%A7%94%E6%89%98">事件委托</a> </p>
+</li>
+<li><p><a href="/Blog/1-JavaScript/%E4%B8%93%E9%A2%98%E6%B7%B1%E5%85%A5/%E4%BD%9C%E7%94%A8%E5%9F%9F%E7%9B%B8%E5%85%B3">作用域相关</a> </p>
+</li>
+<li><p><a href="/Blog/1-JavaScript/%E4%B8%93%E9%A2%98%E6%B7%B1%E5%85%A5/%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE">作用域链</a> </p>
+</li>
+<li><p><a href="/Blog/1-JavaScript/%E4%B8%93%E9%A2%98%E6%B7%B1%E5%85%A5/%E5%87%BD%E6%95%B0%E6%9F%AF%E9%87%8C%E5%8C%96">函数柯里化</a> </p>
+</li>
+<li><p><a href="/Blog/1-JavaScript/%E4%B8%93%E9%A2%98%E6%B7%B1%E5%85%A5/%E5%87%BD%E6%95%B0%E7%9A%84%E5%86%85%E9%83%A8%E5%B1%9E%E6%80%A7">函数的内部属性</a> </p>
+</li>
+<li><p><a href="/Blog/1-JavaScript/%E4%B8%93%E9%A2%98%E6%B7%B1%E5%85%A5/%E5%87%BD%E6%95%B0%E7%9A%84%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F">函数的执行顺序</a> </p>
+</li>
+<li><p><a href="/Blog/1-JavaScript/%E4%B8%93%E9%A2%98%E6%B7%B1%E5%85%A5/%E5%89%8D%E7%AB%AF%E6%A8%A1%E5%9D%97%E5%8C%96%E8%A7%84%E8%8C%83">前端模块化规范</a> </p>
+</li>
+<li><p><a href="/Blog/1-JavaScript/%E4%B8%93%E9%A2%98%E6%B7%B1%E5%85%A5/%E5%8A%A0%E5%BF%AB%E9%A6%96%E5%B1%8F%E6%B8%B2%E6%9F%93">加快首屏渲染</a> </p>
+</li>
+<li><p><a href="/Blog/1-JavaScript/%E4%B8%93%E9%A2%98%E6%B7%B1%E5%85%A5/%E5%8E%9F%E5%9E%8B%E5%92%8C%E5%8E%9F%E5%9E%8B%E9%93%BE">原型和原型链</a> </p>
+</li>
+<li><p><a href="/Blog/1-JavaScript/%E4%B8%93%E9%A2%98%E6%B7%B1%E5%85%A5/%E5%BA%9F%E5%BC%83">废弃</a> </p>
+</li>
+<li><p><a href="/Blog/1-JavaScript/%E4%B8%93%E9%A2%98%E6%B7%B1%E5%85%A5/%E6%89%A9%E5%85%85%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%8A%9F%E8%83%BD">扩充类型的功能</a> </p>
+</li>
+<li><p><a href="/Blog/1-JavaScript/%E4%B8%93%E9%A2%98%E6%B7%B1%E5%85%A5/%E6%B5%8F%E8%A7%88%E5%99%A8">浏览器</a> </p>
+</li>
+<li><p><a href="/Blog/1-JavaScript/%E4%B8%93%E9%A2%98%E6%B7%B1%E5%85%A5/%E9%97%AD%E5%8C%85%E7%9B%B8%E5%85%B3">闭包相关</a> </p>
+</li>
+<li><p><a href="/Blog/1-JavaScript/%E4%B8%93%E9%A2%98%E6%B7%B1%E5%85%A5/%E9%98%B2%E6%8A%96%E5%92%8C%E8%8A%82%E6%B5%81">防抖和节流</a> </p>
+</li>
+</ul>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><ul>
+<li><a href="/Blog/1-JavaScript/%E5%85%B6%E4%BB%96/%E5%9B%BE%E7%89%87%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2">图片类型转换</a> </li>
+</ul>
+<h2 id="基础知识类"><a href="#基础知识类" class="headerlink" title="基础知识类"></a>基础知识类</h2><ul>
+<li><p><a href="/Blog/1-JavaScript/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%B1%BB/Generate">Generate</a> </p>
+</li>
+<li><p><a href="/Blog/1-JavaScript/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%B1%BB/Proxy">Proxy</a> </p>
+</li>
+<li><p><a href="/Blog/1-JavaScript/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%B1%BB/Reflect">Reflect</a> </p>
+</li>
+<li><p><a href="/Blog/1-JavaScript/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%B1%BB/Set+Map%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0">Set+Map学习笔记</a> </p>
+</li>
+<li><p><a href="/Blog/1-JavaScript/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%B1%BB/async">async</a> </p>
+</li>
+<li><p><a href="/Blog/1-JavaScript/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%B1%BB/bind">bind</a> </p>
+</li>
+<li><p><a href="/Blog/1-JavaScript/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%B1%BB/%E5%88%A4%E6%96%AD%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B">判断数据类型</a> </p>
+</li>
+<li><p><a href="/Blog/1-JavaScript/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%B1%BB/%E5%90%88%E5%B9%B6%E7%A9%BA%E5%80%BC">合并空值</a> </p>
+</li>
+<li><p><a href="/Blog/1-JavaScript/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%B1%BB/%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87">执行上下文</a> </p>
+</li>
+<li><p><a href="/Blog/1-JavaScript/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%B1%BB/%E6%95%B0%E7%BB%84">数组</a> </p>
+</li>
+<li><p><a href="/Blog/1-JavaScript/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%B1%BB/%E6%AD%A3%E5%88%99">正则</a> </p>
+</li>
+<li><p><a href="/Blog/1-JavaScript/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%B1%BB/%E7%AB%8B%E5%8D%B3%E6%89%A7%E8%A1%8C%E5%87%BD%E6%95%B0">立即执行函数</a> </p>
+</li>
+<li><p><a href="/Blog/1-JavaScript/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%B1%BB/%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0">箭头函数</a> </p>
+</li>
+<li><p><a href="/Blog/1-JavaScript/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%B1%BB/%E7%BB%A7%E6%89%BF%E7%9B%B8%E5%85%B3">继承相关</a> </p>
+</li>
+</ul>
+<h1 style="color:#448d55;">前端知识分类</h1> 
+
+<h1 style="color:#448d55;">框架和库</h1> 
+
+<h2 id="Deno"><a href="#Deno" class="headerlink" title="Deno"></a>Deno</h2><ul>
+<li><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/Deno/index">index</a> </li>
+</ul>
+<h2 id="React"><a href="#React" class="headerlink" title="React"></a>React</h2><ul>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/React/Fiber">Fiber</a> </p>
+</li>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/React/React-redux%E6%80%8E%E4%B9%88%E7%94%A8">React-redux怎么用</a> </p>
+</li>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/React/Redux%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB%E6%80%BB%E7%BB%93">Redux源码阅读总结</a> </p>
+</li>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/React/diff%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0crud">diff算法实现crud</a> </p>
+</li>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/React/react-dom">react-dom</a> </p>
+</li>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/React/react-redux%E6%BA%90%E7%A0%81">react-redux源码</a> </p>
+</li>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/React/react">react</a> </p>
+</li>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/React/react%E5%BC%80%E5%8F%91%E4%B8%AD%E4%BC%98%E5%8C%96%E7%82%B9">react开发中优化点</a> </p>
+</li>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/React/%E5%90%84%E4%B8%AA%E5%9C%B0%E6%96%B9%E7%9A%84%E6%89%93%E5%8D%B0">各个地方的打印</a> </p>
+</li>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/React/%E8%AF%BB%E6%BA%90%E7%A0%81%E7%9A%84%E7%90%86%E8%A7%A3">读源码的理解</a> </p>
+</li>
+</ul>
+<h2 id="Vue"><a href="#Vue" class="headerlink" title="Vue"></a>Vue</h2><ul>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/Vue/0%E6%BA%90%E7%A0%81-%E4%B8%BB%E7%BA%BF">0源码-主线</a> </p>
+</li>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/Vue/1%E6%BA%90%E7%A0%81-%E7%9B%AE%E5%BD%95">1源码-目录</a> </p>
+</li>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/Vue/2%E6%BA%90%E7%A0%81-%E6%9E%84%E5%BB%BA%E8%BF%87%E7%A8%8B">2源码-构建过程</a> </p>
+</li>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/Vue/3%E6%BA%90%E7%A0%81-%E6%95%B0%E6%8D%AE%E9%A9%B1%E5%8A%A8">3源码-数据驱动</a> </p>
+</li>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/Vue/4%E6%BA%90%E7%A0%81-newVue">4源码-newVue</a> </p>
+</li>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/Vue/5%E6%BA%90%E7%A0%81-Vue%E5%AE%9E%E4%BE%8B%E6%8C%82%E8%BD%BD%E7%9A%84%E5%AE%9E%E7%8E%B0">5源码-Vue实例挂载的实现</a> </p>
+</li>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/Vue/6%E6%BA%90%E7%A0%81-render">6源码-render</a> </p>
+</li>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/Vue/7%E6%BA%90%E7%A0%81-createElement">7源码-createElement</a> </p>
+</li>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/Vue/8%E6%BA%90%E7%A0%81-_update">8源码-_update</a> </p>
+</li>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/Vue/9%E6%BA%90%E7%A0%81-createComponent">9源码-createComponent</a> </p>
+</li>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/Vue/10%E6%BA%90%E7%A0%81-patch">10源码-patch</a> </p>
+</li>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/Vue/11%E6%BA%90%E7%A0%81-%E5%90%88%E5%B9%B6%E9%85%8D%E7%BD%AE">11源码-合并配置</a> </p>
+</li>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/Vue/12%E6%BA%90%E7%A0%81-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F">12源码-生命周期</a> </p>
+</li>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/Vue/12%E6%BA%90%E7%A0%81-%E7%BB%84%E4%BB%B6%E6%B3%A8%E5%86%8C">12源码-组件注册</a> </p>
+</li>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/Vue/13%E6%BA%90%E7%A0%81-nextTick">13源码-nextTick</a> </p>
+</li>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/Vue/13%E6%BA%90%E7%A0%81-%E5%BC%82%E6%AD%A5%E7%BB%84%E4%BB%B6">13源码-异步组件</a> </p>
+</li>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/Vue/14%E6%95%B0%E6%8D%AE%E5%8A%AB%E6%8C%81">14数据劫持</a> </p>
+</li>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/Vue/15%E6%BA%90%E7%A0%81-%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86">15源码-响应式原理</a> </p>
+</li>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/Vue/16%E5%AF%B9%E8%B1%A1%E5%92%8C%E6%95%B0%E7%BB%84%E7%9A%84%E5%A4%84%E7%90%86">16对象和数组的处理</a> </p>
+</li>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/Vue/17%E6%BA%90%E7%A0%81-%E4%BE%9D%E8%B5%96%E6%94%B6%E9%9B%86">17源码-依赖收集</a> </p>
+</li>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/Vue/18%E6%BA%90%E7%A0%81-%E6%B4%BE%E5%8F%91%E6%9B%B4%E6%96%B0">18源码-派发更新</a> </p>
+</li>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/Vue/README">README</a> </p>
+</li>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/Vue/key%E7%9A%84%E4%BD%9C%E7%94%A8">key的作用</a> </p>
+</li>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/Vue/vue">vue</a> </p>
+</li>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/Vue/%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83">开发规范</a> </p>
+</li>
+</ul>
+<h2 id="dva"><a href="#dva" class="headerlink" title="dva"></a>dva</h2><ul>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/dva/dva%E6%8A%BD%E7%A6%BB%E6%95%B0%E7%BB%84%E8%B7%AF%E7%94%B1+%E5%8A%A8%E6%80%81%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE%E6%96%B9%E6%B3%95">dva抽离数组路由+动态路由配置方法</a> </p>
+</li>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/dva/dva%E7%9A%84%E4%B8%80%E4%BA%9B%E7%82%B9">dva的一些点</a> </p>
+</li>
+</ul>
+<h2 id="lodash"><a href="#lodash" class="headerlink" title="lodash"></a>lodash</h2><ul>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/lodash/merge">merge</a> </p>
+</li>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/lodash/%E6%B7%B1%E6%8B%B7%E8%B4%9D">深拷贝</a> </p>
+</li>
+</ul>
+<h2 id="公共类"><a href="#公共类" class="headerlink" title="公共类"></a>公共类</h2><ul>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/%E5%85%AC%E5%85%B1%E7%B1%BB/vue%E5%92%8Creact%E5%AF%B9%E6%AF%94">vue和react对比</a> </p>
+</li>
+<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/%E5%85%AC%E5%85%B1%E7%B1%BB/%E6%A1%86%E6%9E%B6%E9%80%9A%E8%AF%86">框架通识</a> </p>
+</li>
+</ul>
+<h1 style="color:#448d55;">CSS相关</h1> 
+
+<h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><ul>
+<li><p><a href="/Blog/3-CSS%E7%9B%B8%E5%85%B3/%E5%9F%BA%E7%A1%80/Grid%E9%80%9F%E6%88%90">Grid速成</a> </p>
+</li>
+<li><p><a href="/Blog/3-CSS%E7%9B%B8%E5%85%B3/%E5%9F%BA%E7%A1%80/bfc">bfc</a> </p>
+</li>
+<li><p><a href="/Blog/3-CSS%E7%9B%B8%E5%85%B3/%E5%9F%BA%E7%A1%80/blur%E5%92%8Cchange">blur和change</a> </p>
+</li>
+<li><p><a href="/Blog/3-CSS%E7%9B%B8%E5%85%B3/%E5%9F%BA%E7%A1%80/css3%E5%8A%A8%E7%94%BB%E5%B1%9E%E6%80%A7">css3动画属性</a> </p>
+</li>
+<li><p><a href="/Blog/3-CSS%E7%9B%B8%E5%85%B3/%E5%9F%BA%E7%A1%80/flex">flex</a> </p>
+</li>
+</ul>
+<h2 id="库-amp-方案"><a href="#库-amp-方案" class="headerlink" title="库&amp;方案"></a>库&amp;方案</h2><ul>
+<li><p><a href="/Blog/3-CSS%E7%9B%B8%E5%85%B3/%E5%BA%93&%E6%96%B9%E6%A1%88/1px">1px</a> </p>
+</li>
+<li><p><a href="/Blog/3-CSS%E7%9B%B8%E5%85%B3/%E5%BA%93&%E6%96%B9%E6%A1%88/less%E9%80%9F%E6%88%90">less速成</a> </p>
+</li>
+<li><p><a href="/Blog/3-CSS%E7%9B%B8%E5%85%B3/%E5%BA%93&%E6%96%B9%E6%A1%88/scss%E9%80%9F%E6%88%90">scss速成</a> </p>
+</li>
+<li><p><a href="/Blog/3-CSS%E7%9B%B8%E5%85%B3/%E5%BA%93&%E6%96%B9%E6%A1%88/%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%BF%E7%94%A8rem?">为什么使用rem?</a> </p>
+</li>
+<li><p><a href="/Blog/3-CSS%E7%9B%B8%E5%85%B3/%E5%BA%93&%E6%96%B9%E6%A1%88/%E5%AE%9E%E7%8E%B0%E5%B1%85%E4%B8%AD">实现居中</a> </p>
+</li>
+<li><p><a href="/Blog/3-CSS%E7%9B%B8%E5%85%B3/%E5%BA%93&%E6%96%B9%E6%A1%88/%E5%B8%B8%E8%A7%81%E5%B8%83%E5%B1%80">常见布局</a> </p>
+</li>
+<li><p><a href="/Blog/3-CSS%E7%9B%B8%E5%85%B3/%E5%BA%93&%E6%96%B9%E6%A1%88/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%80%82%E9%85%8D">移动端适配</a> </p>
+</li>
+</ul>
+<h1 style="color:#448d55;">其他</h1> 
+
+<h2 id="TypeScript"><a href="#TypeScript" class="headerlink" title="TypeScript"></a>TypeScript</h2><ul>
+<li><p><a href="/Blog/4-%E5%85%B6%E4%BB%96/TypeScript/%E6%B5%8B%E8%AF%95%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84">测试目录结构</a> </p>
+</li>
+<li><p><a href="/Blog/4-%E5%85%B6%E4%BB%96/TypeScript/%E7%94%BB%E7%93%A2">画瓢</a> </p>
+</li>
+</ul>
+<h2 id="基础算法"><a href="#基础算法" class="headerlink" title="基础算法"></a>基础算法</h2><ul>
+<li><p><a href="/Blog/4-%E5%85%B6%E4%BB%96/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/js%E4%B8%89%E7%A7%8D%E9%81%8D%E5%8E%86">js三种遍历</a> </p>
+</li>
+<li><p><a href="/Blog/4-%E5%85%B6%E4%BB%96/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/%E5%B8%B8%E8%A7%81%E6%8E%92%E5%BA%8F">常见排序</a> </p>
+</li>
+</ul>
+<h2 id="工具🔧"><a href="#工具🔧" class="headerlink" title="工具🔧"></a>工具🔧</h2><h3 id="git相关操作"><a href="#git相关操作" class="headerlink" title="git相关操作"></a>git相关操作</h3><ul>
+<li><p><a href="/Blog/4-%E5%85%B6%E4%BB%96/%E5%B7%A5%E5%85%B7%F0%9F%94%A7/git%E7%9B%B8%E5%85%B3%E6%93%8D%E4%BD%9C/git%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C%E2%9D%A4">git常用操作❤</a> </p>
+</li>
+<li><p><a href="/Blog/4-%E5%85%B6%E4%BB%96/%E5%B7%A5%E5%85%B7%F0%9F%94%A7/git%E7%9B%B8%E5%85%B3%E6%93%8D%E4%BD%9C/%E4%BB%A3%E7%A0%81%E6%8F%90%E4%BA%A4%E6%A0%A1%E9%AA%8C">代码提交校验</a> </p>
+</li>
+</ul>
+<h3 id="webpack"><a href="#webpack" class="headerlink" title="webpack"></a>webpack</h3><ul>
+<li><p><a href="/Blog/4-%E5%85%B6%E4%BB%96/%E5%B7%A5%E5%85%B7%F0%9F%94%A7/webpack/antd%E6%8C%89%E9%9C%80%E5%8A%A0%E8%BD%BD">antd按需加载</a> </p>
+</li>
+<li><p><a href="/Blog/4-%E5%85%B6%E4%BB%96/%E5%B7%A5%E5%85%B7%F0%9F%94%A7/webpack/eslint">eslint</a> </p>
+</li>
+<li><p><a href="/Blog/4-%E5%85%B6%E4%BB%96/%E5%B7%A5%E5%85%B7%F0%9F%94%A7/webpack/perttier">perttier</a> </p>
+</li>
+<li><p><a href="/Blog/4-%E5%85%B6%E4%BB%96/%E5%B7%A5%E5%85%B7%F0%9F%94%A7/webpack/webpack%E7%83%AD%E6%9B%B4%E6%96%B0%E5%8E%9F%E7%90%86">webpack热更新原理</a> </p>
+</li>
+</ul>
+<h3 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h3><ul>
+<li><p><a href="/Blog/4-%E5%85%B6%E4%BB%96/%E5%B7%A5%E5%85%B7%F0%9F%94%A7/%E6%8C%87%E4%BB%A4/MAC-shell">MAC-shell</a> </p>
+</li>
+<li><p><a href="/Blog/4-%E5%85%B6%E4%BB%96/%E5%B7%A5%E5%85%B7%F0%9F%94%A7/%E6%8C%87%E4%BB%A4/index">index</a> </p>
+</li>
+<li><p><a href="/Blog/4-%E5%85%B6%E4%BB%96/%E5%B7%A5%E5%85%B7%F0%9F%94%A7/%E6%8C%87%E4%BB%A4/tree">tree</a> </p>
+</li>
+</ul>
+<h3 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h3><ul>
+<li><p><a href="/Blog/4-%E5%85%B6%E4%BB%96/%E5%B7%A5%E5%85%B7%F0%9F%94%A7/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4">MySQL常用命令</a> </p>
+</li>
+<li><p><a href="/Blog/4-%E5%85%B6%E4%BB%96/%E5%B7%A5%E5%85%B7%F0%9F%94%A7/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%B8%B8%E7%94%A8SQL">常用SQL</a> </p>
+</li>
+</ul>
+<h3 id="无归类"><a href="#无归类" class="headerlink" title="无归类"></a>无归类</h3><ul>
+<li><p><a href="/Blog/4-%E5%85%B6%E4%BB%96/%E5%B7%A5%E5%85%B7%F0%9F%94%A7/%E6%97%A0%E5%BD%92%E7%B1%BB/chrome%E6%B5%8F%E8%A7%88%E5%99%A8%E8%B7%A8%E5%9F%9F%E8%AE%BE%E7%BD%AE">chrome浏览器跨域设置</a> </p>
+</li>
+<li><p><a href="/Blog/4-%E5%85%B6%E4%BB%96/%E5%B7%A5%E5%85%B7%F0%9F%94%A7/%E6%97%A0%E5%BD%92%E7%B1%BB/%E5%BF%AB%E6%8D%B7%E9%94%AE">快捷键</a> </p>
+</li>
+</ul>
+<h3 id="系统操作"><a href="#系统操作" class="headerlink" title="系统操作"></a>系统操作</h3><ul>
+<li><p><a href="/Blog/4-%E5%85%B6%E4%BB%96/%E5%B7%A5%E5%85%B7%F0%9F%94%A7/%E7%B3%BB%E7%BB%9F%E6%93%8D%E4%BD%9C/cross-env">cross-env</a> </p>
+</li>
+<li><p><a href="/Blog/4-%E5%85%B6%E4%BB%96/%E5%B7%A5%E5%85%B7%F0%9F%94%A7/%E7%B3%BB%E7%BB%9F%E6%93%8D%E4%BD%9C/%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA">安装虚拟机</a> </p>
+</li>
+<li><p><a href="/Blog/4-%E5%85%B6%E4%BB%96/%E5%B7%A5%E5%85%B7%F0%9F%94%A7/%E7%B3%BB%E7%BB%9F%E6%93%8D%E4%BD%9C/%E6%9F%A5%E7%9C%8B%E6%9C%AC%E5%9C%B0ip%E4%B9%8B%E7%B1%BB%E7%9A%84%E9%85%8D%E7%BD%AE(window)">查看本地ip之类的配置(window)</a> </p>
+</li>
+</ul>
+<h2 id="方案"><a href="#方案" class="headerlink" title="方案"></a>方案</h2><ul>
+<li><p><a href="/Blog/4-%E5%85%B6%E4%BB%96/%E6%96%B9%E6%A1%88/Node%E7%AB%AF%E9%80%9A%E8%BF%87html%E5%AF%BC%E5%87%BAword">Node端通过html导出word</a> </p>
+</li>
+<li><p><a href="/Blog/4-%E5%85%B6%E4%BB%96/%E6%96%B9%E6%A1%88/%E5%AF%BC%E5%87%BAword">导出word</a> </p>
+</li>
+</ul>
+<h2 id="网络和安全类"><a href="#网络和安全类" class="headerlink" title="网络和安全类"></a>网络和安全类</h2><ul>
+<li><p><a href="/Blog/4-%E5%85%B6%E4%BB%96/%E7%BD%91%E7%BB%9C%E5%92%8C%E5%AE%89%E5%85%A8%E7%B1%BB/CDN%E7%9A%84%E5%8E%9F%E7%90%86">CDN的原理</a> </p>
+</li>
+<li><p><a href="/Blog/4-%E5%85%B6%E4%BB%96/%E7%BD%91%E7%BB%9C%E5%92%8C%E5%AE%89%E5%85%A8%E7%B1%BB/HTTP2.0">HTTP2.0</a> </p>
+</li>
+<li><p><a href="/Blog/4-%E5%85%B6%E4%BB%96/%E7%BD%91%E7%BB%9C%E5%92%8C%E5%AE%89%E5%85%A8%E7%B1%BB/Nginx">Nginx</a> </p>
+</li>
+<li><p><a href="/Blog/4-%E5%85%B6%E4%BB%96/%E7%BD%91%E7%BB%9C%E5%92%8C%E5%AE%89%E5%85%A8%E7%B1%BB/cookie%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E5%AE%89%E5%85%A8">cookie为什么不安全</a> </p>
+</li>
+<li><p><a href="/Blog/4-%E5%85%B6%E4%BB%96/%E7%BD%91%E7%BB%9C%E5%92%8C%E5%AE%89%E5%85%A8%E7%B1%BB/get%E5%92%8Cpost%E5%8C%BA%E5%88%AB">get和post区别</a> </p>
+</li>
+<li><p><a href="/Blog/4-%E5%85%B6%E4%BB%96/%E7%BD%91%E7%BB%9C%E5%92%8C%E5%AE%89%E5%85%A8%E7%B1%BB/%E4%BA%86%E8%A7%A3%E7%B1%BB">了解类</a> </p>
+</li>
+<li><p><a href="/Blog/4-%E5%85%B6%E4%BB%96/%E7%BD%91%E7%BB%9C%E5%92%8C%E5%AE%89%E5%85%A8%E7%B1%BB/%E5%89%8D%E7%AB%AF%E9%89%B4%E6%9D%83">前端鉴权</a> </p>
+</li>
+<li><p><a href="/Blog/4-%E5%85%B6%E4%BB%96/%E7%BD%91%E7%BB%9C%E5%92%8C%E5%AE%89%E5%85%A8%E7%B1%BB/%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95">加密算法</a> </p>
+</li>
+<li><p><a href="/Blog/4-%E5%85%B6%E4%BB%96/%E7%BD%91%E7%BB%9C%E5%92%8C%E5%AE%89%E5%85%A8%E7%B1%BB/%E5%B8%B8%E8%A7%81%E7%9A%84%E7%BD%91%E7%BB%9C%E6%94%BB%E5%87%BB">常见的网络攻击</a> </p>
+</li>
+<li><p><a href="/Blog/4-%E5%85%B6%E4%BB%96/%E7%BD%91%E7%BB%9C%E5%92%8C%E5%AE%89%E5%85%A8%E7%B1%BB/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">数据结构</a> </p>
+</li>
+<li><p><a href="/Blog/4-%E5%85%B6%E4%BB%96/%E7%BD%91%E7%BB%9C%E5%92%8C%E5%AE%89%E5%85%A8%E7%B1%BB/%E7%BD%91%E7%BB%9C">网络</a> </p>
+</li>
+<li><p><a href="/Blog/4-%E5%85%B6%E4%BB%96/%E7%BD%91%E7%BB%9C%E5%92%8C%E5%AE%89%E5%85%A8%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C">计算机网络</a> </p>
+</li>
+<li><p><a href="/Blog/4-%E5%85%B6%E4%BB%96/%E7%BD%91%E7%BB%9C%E5%92%8C%E5%AE%89%E5%85%A8%E7%B1%BB/%E8%BE%93%E5%85%A5URL%E5%90%8E%E5%8F%91%E7%94%9F%E4%BA%86%E4%BB%80%E4%B9%88">输入URL后发生了什么</a> </p>
+</li>
+</ul>
+<h1 style="color:#448d55;">笔记和复盘</h1> 
+
+<h2 id="读书笔记"><a href="#读书笔记" class="headerlink" title="读书笔记"></a>读书笔记</h2><ul>
+<li><p><a href="/Blog/5-%E7%AC%94%E8%AE%B0%E5%92%8C%E5%A4%8D%E7%9B%98/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E3%80%8AJavascript%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B8%8E%E5%BC%80%E5%8F%91%E5%AE%9E%E8%B7%B5%E3%80%8B">《Javascript设计模式与开发实践》</a> </p>
+</li>
+<li><p><a href="/Blog/5-%E7%AC%94%E8%AE%B0%E5%92%8C%E5%A4%8D%E7%9B%98/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E3%80%8ALinux%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AE%9E%E7%94%A8%E6%95%99%E7%A8%8B%E3%80%8B">《Linux操作系统实用教程》</a> </p>
+</li>
+<li><p><a href="/Blog/5-%E7%AC%94%E8%AE%B0%E5%92%8C%E5%A4%8D%E7%9B%98/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E3%80%8AWeb%E5%89%8D%E7%AB%AF%E9%BB%91%E5%AE%A2%E6%8A%80%E6%9C%AF%E6%8F%AD%E7%A7%98%E3%80%8B">《Web前端黑客技术揭秘》</a> </p>
+</li>
+<li><p><a href="/Blog/5-%E7%AC%94%E8%AE%B0%E5%92%8C%E5%A4%8D%E7%9B%98/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E3%80%8A%E4%BD%A0%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84javascript%E3%80%8B">《你不知道的javascript》</a> </p>
+</li>
+<li><p><a href="/Blog/5-%E7%AC%94%E8%AE%B0%E5%92%8C%E5%A4%8D%E7%9B%98/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E6%85%95%E5%AE%A2%E8%AF%BE%E7%A8%8Breact+ts%E5%BC%80%E5%8F%91%E7%BB%84%E4%BB%B6">慕客课程react+ts开发组件</a> </p>
+</li>
+</ul>
+<h2 id="项目复盘"><a href="#项目复盘" class="headerlink" title="项目复盘"></a>项目复盘</h2><ul>
+<li><p><a href="/Blog/5-%E7%AC%94%E8%AE%B0%E5%92%8C%E5%A4%8D%E7%9B%98/%E9%A1%B9%E7%9B%AE%E5%A4%8D%E7%9B%98/%E5%B7%A5%E9%93%B6-%E8%87%AA%E5%8A%A8%E5%8C%96%E6%8A%A5%E5%91%8A">工银-自动化报告</a> </p>
+</li>
+<li><p><a href="/Blog/5-%E7%AC%94%E8%AE%B0%E5%92%8C%E5%A4%8D%E7%9B%98/%E9%A1%B9%E7%9B%AE%E5%A4%8D%E7%9B%98/%E5%BE%AE%E4%BF%A1%E5%92%8Capp%E5%AF%BC%E5%87%BA%E5%9B%BE%E7%89%87%E8%B8%A9%E5%9D%91%E7%BB%8F%E5%8E%86">微信和app导出图片踩坑经历</a> </p>
+</li>
+<li><p><a href="/Blog/5-%E7%AC%94%E8%AE%B0%E5%92%8C%E5%A4%8D%E7%9B%98/%E9%A1%B9%E7%9B%AE%E5%A4%8D%E7%9B%98/%E6%B0%91%E7%94%9F%E6%98%9F%E6%8E%A2-%E7%A7%BB%E5%8A%A8%E7%AB%AF">民生星探-移动端</a> </p>
+</li>
+<li><p><a href="/Blog/5-%E7%AC%94%E8%AE%B0%E5%92%8C%E5%A4%8D%E7%9B%98/%E9%A1%B9%E7%9B%AE%E5%A4%8D%E7%9B%98/%E8%85%BE%E5%AE%89%E5%9F%BA%E9%87%91">腾安基金</a> </p>
+</li>
+</ul>
+<h1 style="color:#448d55;">面试准备</h1> 
+
+<h2 id="Interview-others"><a href="#Interview-others" class="headerlink" title="Interview-others"></a>Interview-others</h2><ul>
+<li><p><a href="/Blog/6-%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/Interview-others/interview-other">interview-other</a> </p>
+</li>
+<li><p><a href="/Blog/6-%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/Interview-others/%E9%9D%A2%E8%AF%95%E5%88%AB%E4%BA%BA%E7%9A%84%E6%94%B6%E8%8E%B7">面试别人的收获</a> </p>
+</li>
+<li><p><a href="/Blog/6-%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/Interview-others/%E9%9D%A2%E8%AF%95%E5%88%AB%E4%BA%BA%E7%9A%84%E9%97%AE%E9%A2%98">面试别人的问题</a> </p>
+</li>
+</ul>
+<h2 id="be-interviewed"><a href="#be-interviewed" class="headerlink" title="be-interviewed"></a>be-interviewed</h2><ul>
+<li><p><a href="/Blog/6-%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/be-interviewed/mine">mine</a> </p>
+</li>
+<li><p><a href="/Blog/6-%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/be-interviewed/%E6%9C%AC%E4%BA%BA%E9%9D%A2%E7%BB%8F">本人面经</a> </p>
+</li>
+</ul>
+<h2 id="ready"><a href="#ready" class="headerlink" title="ready"></a>ready</h2><ul>
+<li><p><a href="/Blog/6-%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/ready/%E4%B8%80%E4%B8%AA%E6%B7%98%E5%AE%9D%E6%8A%80%E6%9C%AF%E4%B8%93%E5%AE%B6%E5%86%99%E7%9A%84%E5%A6%82%E4%BD%95%E8%BF%9B%E5%85%A5%E9%98%BF%E9%87%8C">一个淘宝技术专家写的如何进入阿里</a> </p>
+</li>
+<li><p><a href="/Blog/6-%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/ready/%E4%B8%80%E4%BA%9B%E4%B8%8D%E9%94%99%E7%9A%84%E9%9D%A2%E7%BB%8F">一些不错的面经</a> </p>
+</li>
+<li><p><a href="/Blog/6-%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/ready/%E4%B8%80%E4%BA%9B%E6%80%BB%E7%BB%93">一些总结</a> </p>
+</li>
+<li><p><a href="/Blog/6-%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/ready/%E5%A4%A7%E7%BA%B2">大纲</a> </p>
+</li>
+<li><p><a href="/Blog/6-%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/ready/%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87+%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE+%E9%97%AD%E5%8C%85">执行上下文+作用域链+闭包</a> </p>
+</li>
+<li><p><a href="/Blog/6-%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/ready/%E6%96%87%E7%AB%A0%E3%80%8A%E5%A6%82%E4%BD%95%E8%BF%9B%E9%98%BF%E9%87%8C%E3%80%8B">文章《如何进阿里》</a> </p>
+</li>
+</ul>
+<h1 style="color:#448d55;">日记</h1> 
+
+<h2 id="2020"><a href="#2020" class="headerlink" title="2020"></a>2020</h2><ul>
+<li><p><a href="/Blog/7-%E6%97%A5%E8%AE%B0/2020/20201225">20201225</a> </p>
+</li>
+<li><p><a href="/Blog/7-%E6%97%A5%E8%AE%B0/2020/20201231">20201231</a> </p>
+</li>
+</ul>
+<h2 id="2021"><a href="#2021" class="headerlink" title="2021"></a>2021</h2><ul>
+<li><p><a href="/Blog/7-%E6%97%A5%E8%AE%B0/2021/2021-0408">2021-0408</a> </p>
+</li>
+<li><p><a href="/Blog/7-%E6%97%A5%E8%AE%B0/2021/20200103">20200103</a> </p>
+</li>
+<li><p><a href="/Blog/7-%E6%97%A5%E8%AE%B0/2021/20200118">20200118</a> </p>
+</li>
+<li><p><a href="/Blog/7-%E6%97%A5%E8%AE%B0/2021/20200129">20200129</a> </p>
+</li>
+<li><p><a href="/Blog/7-%E6%97%A5%E8%AE%B0/2021/20210105">20210105</a> </p>
+</li>
+<li><p><a href="/Blog/7-%E6%97%A5%E8%AE%B0/2021/20210118">20210118</a> </p>
+</li>
+<li><p><a href="/Blog/7-%E6%97%A5%E8%AE%B0/2021/%E5%86%B7%E9%97%A8%E5%B1%9E%E6%80%A7">冷门属性</a> </p>
+</li>
+<li><p><a href="/Blog/7-%E6%97%A5%E8%AE%B0/2021/%E5%89%8D%E7%AB%AF%E5%9B%A2%E9%98%9F%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB%E4%B8%BB%E9%A2%98">前端团队技术分享主题</a> </p>
+</li>
+<li><p><a href="/Blog//README">README</a> </p>
+</li>
+<li><p><a href="/Blog//ToMyself">ToMyself</a> </p>
+</li>
+<li><p><a href="/Blog//like">like</a> </p>
+</li>
+<li><p><a href="/Blog//%E9%9D%A2%E7%BB%8F">面经</a> </p>
+</li>
+</ul>
+
+</div>
+
+
+<script src="/Blog/js/book-menu.js"></script>
+
+      </div>
+
+      <div class="sidebar-toggle" onclick="sidebar_toggle()" onmouseover="add_inner()" onmouseleave="remove_inner()">
+  <div class="sidebar-toggle-inner"></div>
+</div>
+
+<script>
+function add_inner() {
+  let inner = document.querySelector('.sidebar-toggle-inner')
+  inner.classList.add('show')  
+}
+
+function remove_inner() {
+  let inner = document.querySelector('.sidebar-toggle-inner')
+  inner.classList.remove('show')
+}
+
+function sidebar_toggle() {
+    let sidebar_toggle = document.querySelector('.sidebar-toggle')
+    let sidebar = document.querySelector('.book-sidebar')
+    let content = document.querySelector('.off-canvas-content')
+    if (sidebar_toggle.classList.contains('extend')) { // show
+        sidebar_toggle.classList.remove('extend')
+        sidebar.classList.remove('hide')
+        content.classList.remove('extend')
+    }
+    else { // hide
+        sidebar_toggle.classList.add('extend')
+        sidebar.classList.add('hide')
+        content.classList.add('extend')
+    }
+}
+</script>
+
+      <div class="off-canvas-content">
+        <div class="columns">
+          <div class="column col-10 col-lg-12">
+            <div class="book-navbar"><!-- For Responsive Layout -->
+
+<header class="navbar">
+  <section class="navbar-section">
+    <a onclick="open_sidebar()">
+      <i class="icon icon-menu"></i>
+    </a>
+  </section>
+</header>
+</div>
+            <div class="book-content"><div class="book-post">
+  <h1 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><pre><code>软件工程中，我们不仅要创建一致的定义良好的API，同时也要考虑可重用性。
+组件不仅能够支持当前的数据类型，同时也能支持未来的数据类型，这在创建大型系统时为你提供了十分灵活的功能。
+
+
+在像C#和Java这样的语言中，可以使用`泛型`来创建可重用的组件，一个组件可以支持多种类型的数据。
+这样用户就可以以自己的数据类型来使用组件。
+</code></pre>
+<h2 id="泛型之-Hello-World"><a href="#泛型之-Hello-World" class="headerlink" title="泛型之 Hello World"></a>泛型之 Hello World</h2><p>下面来创建第一个使用泛型的例子：identity 函数。<br>这个函数会返回任何传入它的值。 你可以把这个函数当成是<code>echo</code>命令。</p>
+<p>不用泛型的话，这个函数可能是下面这样：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">identity</span>(<span class="params">arg: number</span>): <span class="title">number</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> arg;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>或者，我们使用<code>any</code>类型来定义函数：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">identity</span>(<span class="params">arg: any</span>): <span class="title">any</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> arg;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>使用<code>any</code>类型会导致这个函数可以接收任何类型的<code>arg</code>参数，这样就丢失了一些信息：传入的类型与返回的类型应该是相同的。<br>如果我们传入一个数字，我们只知道任何类型的值都有可能被返回。</p>
+<p>因此，我们需要一种方法使返回值的类型与传入参数的类型是相同的。<br>这里，我们使用了<em>类型变量</em>，它是一种特殊的变量，只用于表示类型而不是值。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">identity</span>&lt;<span class="title">T</span>&gt;(<span class="params">arg: T</span>): <span class="title">T</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> arg;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>我们给 identity 添加了类型变量<code>T</code>。<br>`T&lt;/code</p>
+<blockquote>
+<p>帮助我们捕获用户传入的类型（比如：<code>number</code>），之后我们就可以使用这个类型。<br>之后我们再次使用了<code>T</code>当做返回值类型。现在我们可以知道参数类型与返回值类型是相同的了。<br>这允许我们跟踪函数里使用的类型的信息。</p>
+</blockquote>
+<p>我们把这个版本的<code>identity</code>函数叫做泛型，因为它可以适用于多个类型。<br>不同于使用<code>any</code>，它不会丢失信息，像第一个例子那像保持准确性，传入数值类型并返回数值类型。</p>
+<p>我们定义了泛型函数后，可以用两种方法使用。<br>第一种是，传入所有的参数，包含类型参数：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> output = identity &lt; string &gt; <span class="string">"myString"</span>; <span class="comment">// type of output will be 'string'</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>这里我们明确的指定了`T`是`string`类型，并做为一个参数传给函数，使用了`&amp;lt;&amp;gt;`括起来而不是`()`。
+
+
+第二种方法更普遍。利用了&lt;em&gt;类型推论&lt;/em&gt; --
+即编译器会根据传入的参数自动地帮助我们确定T的类型：
+</code></pre>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> output = identity(<span class="string">"myString"</span>); <span class="comment">// type of output will be 'string'</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>注意我们没必要使用尖括号（`&amp;lt;&amp;gt;`）来明确地传入类型；编译器可以查看`myString`的值，然后把`T`设置为它的类型。
+类型推论帮助我们保持代码精简和高可读性。如果编译器不能够自动地推断出类型的话，只能像上面那样明确的传入T的类型，在一些复杂的情况下，这是可能出现的。
+</code></pre>
+<h2 id="使用泛型变量"><a href="#使用泛型变量" class="headerlink" title="使用泛型变量"></a>使用泛型变量</h2><pre><code>使用泛型创建像`identity`这样的泛型函数时，编译器要求你在函数体必须正确的使用这个通用的类型。
+换句话说，你必须把这些参数当做是任意或所有类型。
+</code></pre>
+<p>看下之前<code>identity</code>例子：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">identity</span>&lt;<span class="title">T</span>&gt;(<span class="params">arg: T</span>): <span class="title">T</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> arg;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果我们想同时打印出<code>arg</code>的长度。 我们很可能会这样做：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">loggingIdentity</span>&lt;<span class="title">T</span>&gt;(<span class="params">arg: T</span>): <span class="title">T</span> </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(arg.length); <span class="comment">// Error: T doesn't have .length</span></span><br><span class="line">  <span class="keyword">return</span> arg;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<pre><code>如果这么做，编译器会报错说我们使用了`arg`的`.length`属性，但是没有地方指明`arg`具有这个属性。
+记住，这些类型变量代表的是任意类型，所以使用这个函数的人可能传入的是个数字，而数字是没有`.length`属性的。
+
+
+现在假设我们想操作`T`类型的数组而不直接是`T`。由于我们操作的是数组，所以`.length`属性是应该存在的。
+我们可以像创建其它数组一样创建这个数组：
+</code></pre>
+  <pre><code class="lang-ts">function loggingIdentity&lt;T&gt;(arg: T[]): T[] {
+    console.log(arg.length);  // Array has a .length, so no more error
+    return arg;
+}
+`</pre>
+
+<pre><code>你可以这样理解`loggingIdentity`的类型：泛型函数`loggingIdentity`，接收类型参数`T`和参数`arg`，它是个元素类型是`T`的数组，并返回元素类型是`T`的数组。
+如果我们传入数字数组，将返回一个数字数组，因为此时`T`的的类型为`number`。
+这可以让我们把泛型变量T当做类型的一部分使用，而不是整个类型，增加了灵活性。
+</code></pre>
+<p>我们也可以这样实现上面的例子：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">loggingIdentity</span>&lt;<span class="title">T</span>&gt;(<span class="params">arg: Array&lt;T&gt;</span>): <span class="title">Array</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(arg.length);  <span class="comment">// Array has a .length, so no more error</span></span><br><span class="line">    <span class="keyword">return</span> arg;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>使用过其它语言的话，你可能对这种语法已经很熟悉了。 在下一节，会介绍如何创建自定义泛型像<code>Array&lt;T&gt;</code>一样</p>
+<h2 id="泛型类型"><a href="#泛型类型" class="headerlink" title="泛型类型"></a>泛型类型</h2><p>上一节，我们创建了identity通用函数，可以适用于不同的类型。<br>在这节，我们研究一下函数本身的类型，以及如何创建泛型接口。</p>
+<p>泛型函数的类型与非泛型函数的类型没什么不同，只是有一个类型参数在最前面，像函数声明一样：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">identity</span>&lt;<span class="title">T</span>&gt;(<span class="params">arg: T</span>): <span class="title">T</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> arg;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> myIdentity: <span class="xml"><span class="tag">&lt;<span class="name">T</span>&gt;</span>(arg: T) =&gt; T = identity;</span></span><br></pre></td></tr></table></figure>
+
+<p>我们也可以使用不同的泛型参数名，只要在数量上和使用方式上能对应上就可以。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">identity</span>&lt;<span class="title">T</span>&gt;(<span class="params">arg: T</span>): <span class="title">T</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> arg;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> myIdentity: <span class="xml"><span class="tag">&lt;<span class="name">U</span>&gt;</span>(arg: U) =&gt; U = identity;</span></span><br></pre></td></tr></table></figure>
+
+<p>我们还可以使用带有调用签名的对象字面量来定义泛型函数：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">identity</span>&lt;<span class="title">T</span>&gt;(<span class="params">arg: T</span>): <span class="title">T</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> arg;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> myIdentity: &#123;&lt;T&gt;(arg: T): T&#125; = identity;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>这引导我们去写第一个泛型接口了。<br>我们把上面例子里的对象字面量拿出来做为一个接口：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">interface GenericIdentityFn &#123;</span><br><span class="line">    &lt;T&gt;(arg: T): T;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">identity</span>&lt;<span class="title">T</span>&gt;(<span class="params">arg: T</span>): <span class="title">T</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> arg;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> myIdentity: GenericIdentityFn = identity;</span><br></pre></td></tr></table></figure>
+
+<pre><code>一个相似的例子，我们可能想把泛型参数当作整个接口的一个参数。
+这样我们就能清楚的知道使用的具体是哪个泛型类型（比如：`Dictionary&amp;lt;string&amp;gt;而不只是Dictionary`）。
+这样接口里的其它成员也能知道这个参数的类型了。
+</code></pre>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">interface GenericIdentityFn&lt;T&gt; &#123;</span><br><span class="line">    (arg: T): T;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">identity</span>&lt;<span class="title">T</span>&gt;(<span class="params">arg: T</span>): <span class="title">T</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> arg;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> myIdentity: GenericIdentityFn&lt;number&gt; = identity;</span><br></pre></td></tr></table></figure>
+
+
+<p>注意，我们的示例做了少许改动。<br>不再描述泛型函数，而是把非泛型函数签名作为泛型类型一部分。<br>当我们使用<code>GenericIdentityFn</code>的时候，还得传入一个类型参数来指定泛型类型（这里是：<code>number</code>），锁定了之后代码里使用的类型。<br>对于描述哪部分类型属于泛型部分来说，理解何时把参数放在调用签名里和何时放在接口上是很有帮助的。</p>
+<p>除了泛型接口，我们还可以创建泛型类。 注意，无法创建泛型枚举和泛型命名空间。</p>
+<h2 id="泛型类"><a href="#泛型类" class="headerlink" title="泛型类"></a>泛型类</h2><pre><code>泛型类看上去与泛型接口差不多。
+泛型类使用（`&amp;lt;&amp;gt;`）括起泛型类型，跟在类名后面。
+</code></pre>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">GenericNumber</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">    zeroValue: T;</span><br><span class="line">    add: <span class="function">(<span class="params">x: T, y: T</span>) =&gt;</span> T;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> myGenericNumber = <span class="keyword">new</span> GenericNumber&lt;number&gt;();</span><br><span class="line">myGenericNumber.zeroValue = <span class="number">0</span>;</span><br><span class="line">myGenericNumber.add = <span class="function"><span class="keyword">function</span>(<span class="params">x, y</span>) </span>&#123; <span class="keyword">return</span> x + y; &#125;;</span><br></pre></td></tr></table></figure>
+
+<pre><code>`GenericNumber` 类的使用是十分直观的，并且你可能已经注意到了，没有什么去限制它只能使用`number`类型。
+也可以使用字符串或其它更复杂的类型。
+</code></pre>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> stringNumeric = <span class="keyword">new</span> GenericNumber&lt;string&gt;();</span><br><span class="line">stringNumeric.zeroValue = <span class="string">""</span>;</span><br><span class="line">stringNumeric.add = <span class="function"><span class="keyword">function</span>(<span class="params">x, y</span>) </span>&#123; <span class="keyword">return</span> x + y; &#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(stringNumeric.add(stringNumeric.zeroValue, <span class="string">"test"</span>));</span><br></pre></td></tr></table></figure>
+
+<pre><code>与接口一样，直接把泛型类型放在类后面，可以帮助我们确认类的所有属性都在使用相同的类型。
+
+
+我们在&lt;a href=&quot;https://zhongsp.gitbooks.io/typescript-handbook/content/doc/handbook/Classes.html&quot;&gt;类&lt;/a&gt;
+那节说过，类有两部分：静态部分和实例部分。
+泛型类指的是实例部分的类型，所以类的静态属性不能使用这个泛型类型。
+</code></pre>
+<h2 id="泛型约束"><a href="#泛型约束" class="headerlink" title="泛型约束"></a>泛型约束</h2><pre><code>你应该会记得之前的一个例子，我们有时候想操作某类型的一组值，并且我们知道这组值具有什么样的属性。
+在`loggingIdentity`例子中，我们想访问`arg`的`length`属性，但是编译器并不能证明每种类型都有`length`属性，所以就报错了。
+</code></pre>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">loggingIdentity</span>&lt;<span class="title">T</span>&gt;(<span class="params">arg: T</span>): <span class="title">T</span> </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(arg.length);  <span class="comment">// Error: T doesn't have .length</span></span><br><span class="line">    <span class="keyword">return</span> arg;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<pre><code>相比于操作any所有类型，我们想要限制函数去处理任意带有`.length`属性的所有类型。
+只要传入的类型有这个属性，我们就允许，就是说至少包含这一属性。
+为此，我们需要列出对于T的约束要求。
+
+
+为此，我们定义一个接口来描述约束条件。
+创建一个包含`.length`属性的接口，使用这个接口和`extends`关键字来实现约束：
+</code></pre>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">interface Lengthwise &#123;</span><br><span class="line">    length: number;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">loggingIdentity</span>&lt;<span class="title">T</span> <span class="title">extends</span> <span class="title">Lengthwise</span>&gt;(<span class="params">arg: T</span>): <span class="title">T</span> </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(arg.length);  <span class="comment">// Now we know it has a .length property, so no more error</span></span><br><span class="line">    <span class="keyword">return</span> arg;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>现在这个泛型函数被定义了约束，因此它不再是适用于任意类型：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">loggingIdentity(<span class="number">3</span>);  <span class="comment">// Error, number doesn't have a .length property</span></span><br></pre></td></tr></table></figure>
+
+<p>我们需要传入符合约束类型的值，必须包含必须的属性：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">loggingIdentity(&#123;<span class="attr">length</span>: <span class="number">10</span>, <span class="attr">value</span>: <span class="number">3</span>&#125;);</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+<h2 id="在泛型约束中使用类型参数"><a href="#在泛型约束中使用类型参数" class="headerlink" title="在泛型约束中使用类型参数"></a>在泛型约束中使用类型参数</h2><pre><code>你可以声明一个类型参数，且它被另一个类型参数所约束。
+比如，现在我们想要用属性名从对象里获取这个属性。
+并且我们想要确保这个属性存在于对象`obj`上，因此我们需要在这两个类型之间使用约束。
+</code></pre>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getProperty</span>&lt;<span class="title">T</span>, <span class="title">K</span> <span class="title">extends</span> <span class="title">keyof</span> <span class="title">T</span>&gt;(<span class="params">obj: T, key: K</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> obj[key];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> x = &#123; <span class="attr">a</span>: <span class="number">1</span>, <span class="attr">b</span>: <span class="number">2</span>, <span class="attr">c</span>: <span class="number">3</span>, <span class="attr">d</span>: <span class="number">4</span> &#125;;</span><br><span class="line"></span><br><span class="line">getProperty(x, <span class="string">"a"</span>); <span class="comment">// okay</span></span><br><span class="line">getProperty(x, <span class="string">"m"</span>); <span class="comment">// error: Argument of type 'm' isn't assignable to 'a' | 'b' | 'c' | 'd'.</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<h2 id="在泛型里使用类类型"><a href="#在泛型里使用类类型" class="headerlink" title="在泛型里使用类类型"></a>在泛型里使用类类型</h2><p>在 TypeScript 使用泛型创建工厂函数时，需要引用构造函数的类类型。比如，</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">create</span>&lt;<span class="title">T</span>&gt;(<span class="params">c: &#123; new(</span>): <span class="title">T</span> &#125;): <span class="title">T</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> c();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>一个更高级的例子，使用原型属性推断并约束构造函数与类实例的关系。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BeeKeeper</span> </span>&#123;</span><br><span class="line">    hasMask: boolean;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ZooKeeper</span> </span>&#123;</span><br><span class="line">    nametag: string;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line">    numLegs: number;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Bee</span> <span class="keyword">extends</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line">    keeper: BeeKeeper;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Lion</span> <span class="keyword">extends</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line">    keeper: ZooKeeper;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createInstance</span>&lt;<span class="title">A</span> <span class="title">extends</span> <span class="title">Animal</span>&gt;(<span class="params">c: new (</span>) =&gt; <span class="title">A</span>): <span class="title">A</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> c();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">createInstance(Lion).keeper.nametag;  <span class="comment">// typechecks!</span></span><br><span class="line">createInstance(Bee).keeper.hasMask;   <span class="comment">// typechecks!```</span></span><br></pre></td></tr></table></figure>
+
+
+
+</div>
+
+
+  <div class="book-comments">
+    
+
+
+
+
+  </div>
+
+
+
+
+<script src="/Blog/js/book-post.js"></script>
+
+
+
+<script src="/Blog/js/mind.js"></script>
+</div>
+          </div>
+          <div class="column col-2 hide-lg">
+            <div class="book-post-info">
+  
+    <div class="book-post-meta">
+
+  <div class="author">
+
+    <!-- Author image -->
+    <div class="author-img">
+      
+        <figure
+          class="avatar avatar-lg"
+          data-initial="甜"
+          style="background-color: #3b4351;">
+        </figure>
+      
+    </div>
+
+    <!-- Author title -->
+    <div class="author-title">
+      <div>甜里甜气</div>
+      <div>2021-04-15</div>
+    </div>
+  </div>
+
+  
+
+  <div class="divider"></div>
+</div>
+  
+
+  <div class="book-tocbot"></div>
+<div class="book-tocbot-menu">
+  <a class="book-toc-expand" onclick="expand_toc()">Expand all</a>
+  <a onclick="go_top()">⬆ Top</a>
+  <a onclick="go_bottom()">⬇ Bottom</a>
+</div>
+
+
+<script src="/Blog/js/book-toc.js"></script>
+
+
+</div>
+          </div>
+        </div>
+      </div>
+
+      <a class="off-canvas-overlay" onclick="hide_canvas()"></a>
+    </div>
+  </body>
+</html>
+
+
+<script src="/Blog/js/book.js"></script>
+

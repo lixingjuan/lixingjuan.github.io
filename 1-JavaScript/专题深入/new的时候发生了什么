@@ -10,7 +10,7 @@
 
     <title>
         
-          like - 李幸娟的前端博客
+          1-JavaScript/专题深入/new的时候发生了什么? - 李幸娟的前端博客
         
     </title>
 
@@ -512,64 +512,13 @@ function sidebar_toggle() {
 </header>
 </div>
             <div class="book-content"><div class="book-post">
-  <h2>我赞过的文章<h2>
-<ul class="news-view view">
-
-<li class="item">
-  <a href="https://juejin.im/post/6844903985338400782" target="_blank" rel="noopener">
-    React Hooks 详解 【近 1W 字】+ 项目实战
-   </a>
-</li>
-
-<li class="item">
-  <a href="">
-    通过 41 个 问答方式快速了解学习 Git
-   </a>
-</li>
-
-<li class="item">
-  <a href="https://juejin.im/post/6844903582102192141" target="_blank" rel="noopener">
-    使用node中fs模块创建和删除文件夹
-   </a>
-</li>
-
-<li class="item">
-  <a href="https://juejin.im/post/6844903968749912077" target="_blank" rel="noopener">
-    如何通过前端面试
-   </a>
-</li>
-
-<li class="item">
-  <a href="https://juejin.im/post/6844903682631270407" target="_blank" rel="noopener">
-    技术胖TypeScript图文视频教程  最污的技术课
-   </a>
-</li>
-
-<li class="item">
-  <a href="https://juejin.im/post/6844903967055413256" target="_blank" rel="noopener">
-    JavaScript中级指南-03 面向对象编程
-   </a>
-</li>
-
-<li class="item">
-  <a href="">
-    7 个沙雕又带有陷阱的 JS 面试题
-   </a>
-</li>
-
-<li class="item">
-  <a href="https://juejin.im/post/6844903493925371917" target="_blank" rel="noopener">
-    js 深拷贝 vs 浅拷贝
-   </a>
-</li>
-
-<li class="item">
-  <a href="">
-    JavaScript 工具函数大全（新）
-   </a>
-</li>
-
-</ul>
+  <h1 id="new的原理"><a href="#new的原理" class="headerlink" title="new的原理"></a>new的原理</h1><p>new的过程发生了什么？</p>
+<ol>
+<li>创建（或者说构造）一个全新的对象；</li>
+<li>这个新对象会被执行 [[原型]] 连接</li>
+<li>这个新对象会被绑定到函数调用的this；</li>
+<li>若函数未返回其他对象，那么new表达式中的函数调用会自动返回这个新对象；</li>
+</ol>
 
 </div>
 
@@ -613,7 +562,7 @@ function sidebar_toggle() {
     <!-- Author title -->
     <div class="author-title">
       <div>甜里甜气</div>
-      <div>2021-03-24</div>
+      <div>2021-04-18</div>
     </div>
   </div>
 

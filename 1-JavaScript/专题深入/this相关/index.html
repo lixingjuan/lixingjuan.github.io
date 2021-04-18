@@ -75,6 +75,8 @@ document.addEventListener('DOMContentLoaded', function () {
 </li>
 <li><p><a href="/Blog/1-JavaScript/%E4%B8%93%E9%A2%98%E6%B7%B1%E5%85%A5/for%E5%92%8CforEach%E7%9A%84%E5%8C%BA%E5%88%AB">for和forEach的区别</a> </p>
 </li>
+<li><p><a href="/Blog/1-JavaScript/%E4%B8%93%E9%A2%98%E6%B7%B1%E5%85%A5/new%E7%9A%84%E6%97%B6%E5%80%99%E5%8F%91%E7%94%9F%E4%BA%86%E4%BB%80%E4%B9%88?">new的时候发生了什么?</a> </p>
+</li>
 <li><p><a href="/Blog/1-JavaScript/%E4%B8%93%E9%A2%98%E6%B7%B1%E5%85%A5/this%E7%9B%B8%E5%85%B3">this相关</a> </p>
 </li>
 <li><p><a href="/Blog/1-JavaScript/%E4%B8%93%E9%A2%98%E6%B7%B1%E5%85%A5/%E4%BA%8B%E4%BB%B6%E5%A7%94%E6%89%98">事件委托</a> </p>
@@ -286,6 +288,8 @@ document.addEventListener('DOMContentLoaded', function () {
 <li><p><a href="/Blog/4-%E5%85%B6%E4%BB%96/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/js%E4%B8%89%E7%A7%8D%E9%81%8D%E5%8E%86">js三种遍历</a> </p>
 </li>
 <li><p><a href="/Blog/4-%E5%85%B6%E4%BB%96/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/%E5%B8%B8%E8%A7%81%E6%8E%92%E5%BA%8F">常见排序</a> </p>
+</li>
+<li><p><a href="/Blog/4-%E5%85%B6%E4%BB%96/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/%E6%B1%89%E8%AF%BA%E5%A1%94">汉诺塔</a> </p>
 </li>
 </ul>
 <h2 id="方案"><a href="#方案" class="headerlink" title="方案"></a>方案</h2><ul>
@@ -515,14 +519,36 @@ function sidebar_toggle() {
 <h1 id="this是什么？"><a href="#this是什么？" class="headerlink" title="this是什么？"></a>this是什么？</h1><p>之前我们说过 this 是在运行时进行绑定的，并不是在编写时绑定，它的上下文取决于函数调 用时的各种条件。this 的绑定和函数声明的位置没有任何关系，只取决于函数的调用方式。</p>
 <p>当一个函数被调用时，会创建一个活动记录（有时候也称为执行上下文）。<br>这个活动记录会包含函数调用的一些信息，包含，==函数的调用位置==，==调用方式==， ==传入的参数== 等信息，this就是其中的一个属性。<br>this其实是 ==函数被调用时== 发生的绑定，并不是在编写的时候绑定的，他的上下文取决于函数调用时的各种条件，this的绑定和函数声明的位置没有任何关系，只取决于函数的调用方式</p>
 <p>学习 this 的第一步是明白 this 既不指向函数自身也不指向函数的词法作用域，你也许被 这样的解释误导过，但其实它们都是错误的。this 实际上是在函数被调用时发生的绑定，==它指向什么完全取决于函数在哪里被调用==。</p>
-<h1 id="this绑定四种规则"><a href="#this绑定四种规则" class="headerlink" title="this绑定四种规则"></a>this绑定四种规则</h1><p>先找到函数的调用位置，然后判断需要应用下面四条规则中的那一条<br>this有四种绑定规则, 优先级依次</p>
-<ol>
-<li>new绑定：指向实例</li>
-<li>显式绑定：call和apply显式绑定，bind硬绑定</li>
-<li>默认绑定：调用位置是否有上下文对象（看是否被某个对象拥有或者包含），this即指向这个包含他的对象</li>
-<li>隐式绑定：看是否被某个对象拥有或者包含</li>
-</ol>
-<h2 id="new绑定"><a href="#new绑定" class="headerlink" title="new绑定"></a>new绑定</h2><p>使用new来调用函数 (或者说发生构造函数调用时)，会自动执行下面的操作</p>
+<p>this 是在运行时进行绑定的，并不是在编写时绑定，调用一个函数将暂停当前函数的执行，传递控制权和参数给新函数。<br>除了声明时定义的形式参数，每个函数接收两个附加的参数: this和arguments。参数this 在面向对象编程中非常重要，它的值取决于调用的模式。</p>
+<h1 id="this四种指向"><a href="#this四种指向" class="headerlink" title="this四种指向"></a>this四种指向</h1><p>在JavaScript中一共有四种调用模式: <strong>方法调用模式</strong>、<strong>函数调用模式</strong>、<strong>构造器调用模式</strong> 、 <strong>apply调用模式</strong>。这些模式在如何初始化关键参数this 上存在差异。</p>
+<h2 id="方法调用模式"><a href="#方法调用模式" class="headerlink" title="方法调用模式"></a>方法调用模式</h2><p>this指向所属对象</p>
+<p>当一个的数被保存为对象的一个属性时，我们称它为一个方法。当这个方法被调用时，this被绑定到该对象。<br>如果一个调用表达式包含一个属性存取表达式(即一个:点表达式或[subscript]下标表达式)，那么它被当作一一个方法来调用。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建myObject。 它有一个value属性和一个increment 方法。</span></span><br><span class="line"><span class="comment">// increment 方法接受一个可选的参数。如果参数不是数字，那么默认使用数字1。</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> myObject =</span><br><span class="line">  value: <span class="number">0</span></span><br><span class="line">  increment: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.value += <span class="keyword">typeof</span> inc===<span class="string">' number'</span> ? inc : <span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;.</span><br><span class="line"></span><br><span class="line">my0bject.increment();</span><br><span class="line"><span class="built_in">document</span>.writeln(myObject. value); <span class="comment">// 1</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//1</span></span><br><span class="line">myObject.increment(<span class="number">2</span>) ;</span><br><span class="line"><span class="built_in">document</span>.writeln (myObject. value); <span class="comment">// 3</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>方法可以使用this去访问对象，所以它能从对象中取值或修改该对象。<br>this到对象的绑定发生在调用的时候，这个迟绑定使得函数可以对this高度复用，通过this可取得它们所属对象的上下文的方法称为公共方法。</p>
+<p>this的绑定发生在函数调用时：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.a);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">  a: <span class="number">2</span>,</span><br><span class="line">  foo: foo</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">obj.foo();  <span class="comment">// 2</span></span><br></pre></td></tr></table></figure>
+
+
+<p>说函数被调用时，obj对象’拥有‘或者‘包含’它，当函数引用有上下文对象时，隐式绑定规则会把函数调用中的this绑定到这个上下文对象</p>
+<p>对象属性引用链中只有最顶层或者最后一层会影响调用位置：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.a);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">  a: <span class="number">2</span>,</span><br><span class="line">  foo: foo</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> obj2 = &#123;</span><br><span class="line">  a: <span class="number">3</span>,</span><br><span class="line">  obj: obj</span><br><span class="line">&#125;;</span><br><span class="line">obj2.obj.foo(); <span class="comment">// 2</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<h2 id="函数调用模式"><a href="#函数调用模式" class="headerlink" title="函数调用模式"></a>函数调用模式</h2><p>当一个函数并非一个对象的属性时，那么它被当作个的数来调用:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> sum = add(<span class="number">3</span>，<span class="number">4</span>) ;<span class="comment">// sum的值为7</span></span><br></pre></td></tr></table></figure>
+
+<p>当函数以此模式调用时，this被绑定到全局对象。这是语言设计上的一个错误, 若设计正确，当内部函数被调用时，this应该仍然绑定到外部函数的this变量。这个设计错误的后果是不能利用内部函数来帮助他工作，因为内部函数的this是绑定在全局的。</p>
+<p>通常有两种方法解决该问题</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 1. 声明变量，将外部函数的this的变量赋值给该变量 */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 给myObject增加一一个double方法。</span></span><br><span class="line"></span><br><span class="line">myObject. double = <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> that = <span class="keyword">this</span>;  <span class="comment">//解决方法</span></span><br><span class="line">  <span class="keyword">const</span> helper = <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">    that.value = add(that.value, that.value);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 以函数的形式调用helper。</span></span><br><span class="line">  helper() ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 以方法的形式调用double</span></span><br><span class="line">my0bject.double() ;</span><br><span class="line"><span class="built_in">document</span>. writeln (myObject. getValue() ) ; <span class="comment">// 6</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/* 2. 利用箭头函数没有this的特点 */</span></span><br><span class="line"></span><br><span class="line">myObject. double = <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">const</span> helper = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    that.value = add(<span class="keyword">this</span>.value, <span class="keyword">this</span>.value);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 以函数的形式调用helper。</span></span><br><span class="line">  helper() ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 以方法的形式调用double</span></span><br><span class="line">my0bject.double() ;</span><br><span class="line"><span class="built_in">document</span>. writeln(myObject. getValue() ) ; <span class="comment">// 6</span></span><br></pre></td></tr></table></figure>
+
+
+<h2 id="构造器调用模式"><a href="#构造器调用模式" class="headerlink" title="构造器调用模式"></a>构造器调用模式</h2><p>指向实例</p>
+<p>使用new来调用函数 (或者说发生构造函数调用时)，会自动执行下面的操作</p>
 <ol>
 <li>创建（或者说构造）一个全新的对象</li>
 <li>这个新对象会被执行 [[原型]] 连接</li>
@@ -536,11 +562,33 @@ function sidebar_toggle() {
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Vue</span> (<span class="params">options</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (process.env.NODE_ENV !== <span class="string">'production'</span> &amp;&amp;</span><br><span class="line">    !(<span class="keyword">this</span> <span class="keyword">instanceof</span> Vue)</span><br><span class="line">  ) &#123;</span><br><span class="line">    warn(<span class="string">'Vue is a constructor and should be called with the `new` keyword'</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">this</span>._init(options)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><code>this instanceof Vue</code> 就是判断用户是否是采用 <code>new</code> 操作符调用 <code>Vue</code> 的，<br>如果采用 <code>new</code> 操作符调用，则 <code>this</code> 指向  <code>Vue</code> 的实例，<br>如果直接调用， <code>this</code> 指向  Vue 本身</p>
-<h2 id="显式绑定"><a href="#显式绑定" class="headerlink" title="显式绑定"></a>显式绑定</h2><ul>
+<h2 id="apply-call调用模式"><a href="#apply-call调用模式" class="headerlink" title="apply,call调用模式"></a>apply,call调用模式</h2><ul>
 <li>call、apply显式绑定</li>
 <li>bind, 显示绑定的变种，硬绑定</li>
 </ul>
-<h2 id="默认绑定"><a href="#默认绑定" class="headerlink" title="默认绑定"></a>默认绑定</h2><p>非严格模式下，this 默认绑定到全局对象</p>
+<p>因为JavaScript是一门函数式的面向对象编程语言，所以函数可以拥有方法。apply方法让我们构建-个参数数组并用其去调用函数。它也允许我们选择this的值。apply方法接收两个参数。第一个是将被绑定给this的值。第二个就是 一个参数数组。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Quo = <span class="function"><span class="keyword">function</span>(<span class="params">string</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.status = string;</span><br><span class="line">&#125;</span><br><span class="line">Quo.prototype.getStatus = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.status;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 构造一一个包含两个数字的数组，并将它们相加。</span></span><br><span class="line"><span class="keyword">const</span> array= [<span class="number">3</span>, <span class="number">4</span>];</span><br><span class="line"><span class="keyword">const</span> sum = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">add.apply(<span class="literal">null</span>, array);  <span class="comment">// sum值为 7</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//构造一个包含status成员的对象。</span></span><br><span class="line"><span class="keyword">const</span> statusObject = &#123;</span><br><span class="line">  status: <span class="string">'A-OK'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// statusObject并没有继承自Quo.prototype,但我们可以在 statusObject  调用get_ status方法，尽管statusObject 并没有一个名为getStatus的方法</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> status = Quo.prototype.getStatus.apply(statusObject);</span><br><span class="line"><span class="built_in">console</span>.log(status);  <span class="comment">// 'A-OK'</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h1 id="我的疑问"><a href="#我的疑问" class="headerlink" title="我的疑问"></a>我的疑问</h1><h2 id="默认绑定"><a href="#默认绑定" class="headerlink" title="默认绑定"></a>默认绑定</h2><p>非严格模式下，this 默认绑定到全局对象</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 浏览器环境下 */</span></span><br><span class="line"><span class="keyword">var</span> a = <span class="string">"2"</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.a);</span><br><span class="line">&#125;</span><br><span class="line">foo();  <span class="comment">// “2”</span></span><br></pre></td></tr></table></figure>
 
 <p>可以看到当调用 foo() 时，this.a 被解析成了全局变量 a。为什么？ 因为在本 例中，函数调用时应用了 this 的默认绑定，因此 this 指向全局对象。</p>
@@ -560,45 +608,21 @@ function sidebar_toggle() {
 
 
 
-<h2 id="隐式绑定"><a href="#隐式绑定" class="headerlink" title="隐式绑定"></a>隐式绑定</h2><p>调用位置是否有上下文对象，或者说是否被某个对象拥有或者包含</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.a);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">  a: <span class="number">2</span>,</span><br><span class="line">  foo: foo</span><br><span class="line">&#125;;</span><br><span class="line">obj.foo();</span><br></pre></td></tr></table></figure>
-
-<p>无论是直接在obj中定义还是先定义在添加为引用属性，这个函数严格来说都不属于obj对象<br>然后调用位置会使obj上下文来引用函数，因此可以说函数被调用时，obj对象’拥有‘或者‘包含’它<br>当函数引用有上下文对象时，隐式绑定规则会把函数调用中的this绑定到这个上下文对象</p>
-<p>对象属性引用链中只有最顶层或者最后一层会影响调用位置</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.a);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">  a: <span class="number">2</span>,</span><br><span class="line">  foo: foo</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> obj2 = &#123;</span><br><span class="line">  a: <span class="number">3</span>,</span><br><span class="line">  obj: obj</span><br><span class="line">&#125;;</span><br><span class="line">obj2.obj.foo(); <span class="comment">// 2</span></span><br></pre></td></tr></table></figure>
 
 
 
-
-
-<h2 id="优先级"><a href="#优先级" class="headerlink" title="优先级"></a>优先级</h2><p>根据优先级来判断函数在某个调用位置应用的是那条规则，按照下面的顺序来进行判断</p>
-<ol>
-<li>函数是否在new中调用（new 绑定）？如果是的话this绑定的是新创建的对象 <code>var bar = new Foo()</code></li>
-<li>函数是否通过call、apply(显示绑定) 或者硬绑定调用？ 如果是的话，this绑定的是指定的对象 <code>var bar = foo.call(obj2)</code></li>
-<li>对象是否在某个上下文对象中调用（隐式绑定）？如果是的话，this绑定的是那个上下文对象 <code>var bar = obj1.foo()</code></li>
-<li>如果都不是的话，使用默认绑定。如果在严格模式下，就绑定到undefined, 否则绑定到全局对象 <code>var bar = foo()</code></li>
-</ol>
-<h2 id="this绑定的例外规则"><a href="#this绑定的例外规则" class="headerlink" title="this绑定的例外规则"></a>this绑定的例外规则</h2><h3 id="被忽略的this"><a href="#被忽略的this" class="headerlink" title="被忽略的this"></a>被忽略的this</h3><ul>
-<li>如果把null或者undefined作为this的绑定对象传入call、apply或者bind, 这些值在调用时会被忽略，实际上应用的是 <strong>默认绑定规则</strong></li>
-<li>安全的做法，在忽略this绑定时创建一个空对象，作为占位符，对于this的引用都会被限制在这个空对象中，不会对全局产生任何影响</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> ø = <span class="built_in">Object</span>.create(<span class="literal">null</span>)</span><br><span class="line">foo.apply(ø, [<span class="number">2</span>,<span class="number">3</span>])</span><br></pre></td></tr></table></figure>
-
-
-<h2 id="this和箭头函数"><a href="#this和箭头函数" class="headerlink" title="this和箭头函数"></a>this和箭头函数</h2><p><strong>！！见箭头函数篇</strong></p>
-<h2 id="我的疑问"><a href="#我的疑问" class="headerlink" title="我的疑问"></a>我的疑问</h2><p>按理说this是函数调用时候发生的一次绑定，和函数被调用环境有关，但是在扩充类型的功能《javascript语言精粹-第四章》的时候，也就是给函数原型添加了方法，在函数实例调用该方法时候，这里的this打印出来是 <code>[Number: 3.3333333333333335]</code></p>
+<p>按理说this是函数调用时候发生的一次绑定，和函数被调用环境有关，但是在扩充类型的功能《javascript语言精粹-第四章》的时候，也就是给函数原型添加了方法，在函数实例调用该方法时候，这里的this打印出来是 <code>[Number: 3.3333333333333335]</code></p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Number</span>.prototype.integer = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>); <span class="comment">// [Number: 3.3333333333333335]</span></span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">Math</span>[<span class="keyword">this</span> &lt; <span class="number">0</span> ? <span class="string">"ceil"</span> : <span class="string">"floor"</span>](<span class="keyword">this</span>);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">console</span>.log((<span class="number">10</span> / <span class="number">3</span>).integer());</span><br></pre></td></tr></table></figure>
 
 
 
 
-<h1 id="new的原理"><a href="#new的原理" class="headerlink" title="new的原理"></a>new的原理</h1><p>new的过程发生了什么？</p>
-<ol>
-<li>创建（或者说构造）一个全新的对象；</li>
-<li>这个新对象会被执行 [[原型]] 连接</li>
-<li>这个新对象会被绑定到函数调用的this；</li>
-<li>若函数未返回其他对象，那么new表达式中的函数调用会自动返回这个新对象；</li>
-</ol>
+
+
+
+
+
+
 <h1 id="考察题目"><a href="#考察题目" class="headerlink" title="考察题目"></a>考察题目</h1><h2 id="题一"><a href="#题一" class="headerlink" title="题一"></a>题一</h2><ol>
 <li>四种具体情况<ol>
 <li>函数是否在new中调用（new 绑定）？如果是的话this绑定的是新创建的对象 <code>var bar = new Foo()</code></li>
@@ -620,6 +644,7 @@ function sidebar_toggle() {
 <h2 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h2><ul>
 <li>[《你不知道的Javascript(上)第二部分》]</li>
 <li>[《JavaScript高级程序设计》]</li>
+<li>[《JavaScript语言精粹》]</li>
 </ul>
 
 </div>

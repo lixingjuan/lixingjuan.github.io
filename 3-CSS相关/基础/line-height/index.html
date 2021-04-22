@@ -10,7 +10,7 @@
 
     <title>
         
-          6-面试准备/ready/大纲 - 李幸娟的前端博客
+          3-CSS相关/基础/line-height - 李幸娟的前端博客
         
     </title>
 
@@ -259,6 +259,8 @@ document.addEventListener('DOMContentLoaded', function () {
 </li>
 <li><p><a href="/Blog/3-CSS%E7%9B%B8%E5%85%B3/%E5%9F%BA%E7%A1%80/flex">flex</a> </p>
 </li>
+<li><p><a href="/Blog/3-CSS%E7%9B%B8%E5%85%B3/%E5%9F%BA%E7%A1%80/line-height">line-height</a> </p>
+</li>
 </ul>
 <h2 id="库-amp-方案"><a href="#库-amp-方案" class="headerlink" title="库&amp;方案"></a>库&amp;方案</h2><ul>
 <li><p><a href="/Blog/3-CSS%E7%9B%B8%E5%85%B3/%E5%BA%93&%E6%96%B9%E6%A1%88/1px">1px</a> </p>
@@ -370,8 +372,6 @@ document.addEventListener('DOMContentLoaded', function () {
 <li><p><a href="/Blog/6-%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/ready/%E4%B8%80%E4%BA%9B%E4%B8%8D%E9%94%99%E7%9A%84%E9%9D%A2%E7%BB%8F">一些不错的面经</a> </p>
 </li>
 <li><p><a href="/Blog/6-%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/ready/%E4%B8%80%E4%BA%9B%E6%80%BB%E7%BB%93">一些总结</a> </p>
-</li>
-<li><p><a href="/Blog/6-%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/ready/%E5%A4%A7%E7%BA%B2">大纲</a> </p>
 </li>
 <li><p><a href="/Blog/6-%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/ready/%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87+%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE+%E9%97%AD%E5%8C%85">执行上下文+作用域链+闭包</a> </p>
 </li>
@@ -512,8 +512,38 @@ function sidebar_toggle() {
 </header>
 </div>
             <div class="book-content"><div class="book-post">
-  <blockquote class="pullquote mindmap"><p>#前端<br>#浏览器渲染<br>##浏览器渲染<br>###①关于JS部分<br> 加载<br> defer：异步加载、延迟执行，在所有元素解析后、DomcontentLoaded之前<br> DOMContentLoaded是指dom元素都生成好了，但是可能图片等没好<br> load事件是指图片、影响资源加载好了<br> async：异步加载、异步执行<br> 正常：同步加载、同步执行<br> js和css、html解析<br> js能操作dom，所以js开始执行的时候，html解析停止<br> 不完整的css无法使用，所以要等cssom执行完才会执行js</p>
+  <h2 id="内容总结"><a href="#内容总结" class="headerlink" title="内容总结"></a>内容总结</h2><p>具体来说是指两行文字间基线之间的距离<br>英文单词，即四线格的倒数第二条线，<br>中文由于没有基线的概念，所以可以理解为文字底部(不同浏览器的实现不同)</p>
+<p>撑起无高度div的是 <strong>行高</strong>，而非 <strong>文字大小</strong></p>
+<div style="margin: 100px auto;">
+
+<style>
+    .test1{ font-size:20px; line-height:0; border:1px solid #cccccc; background:#eeeeee;}
+    .test2{ font-size:0; line-height:20px; border:1px solid #cccccc; background:#eeeeee;}
+</style>
+
+<div class="test1">测试1</div>
+<div class="test2">测试2</div>
+</div>
+
+<h3 id="行高还有一个特性，叫做垂直居中性"><a href="#行高还有一个特性，叫做垂直居中性" class="headerlink" title="行高还有一个特性，叫做垂直居中性"></a>行高还有一个特性，叫做垂直居中性</h3><p>line-height的最终表现是通过line boxes实现的，而无论line boxes所占据的高度是多少（无论比文字大还是比文字小），<br>其占据的空间都是与文字内容公用水平中垂线的。</p>
+<p>由于 ⬆️ 测试一的表现 =&gt; <strong>字体大小正常，而line-height为0时，文字文字的水平中垂线对称分布的</strong><br>可以利用该特性，实现文字或图片的垂直居中对齐；</p>
+<blockquote>
+<p>TODO: ios, 安卓，由于对中文字体的baseline的实现不同，导致无论是使用 <code>display: flex; align-items: center;</code> 还是使用 <code>line-height: 容器高度</code>，两者表现都不一致，我最终怎么解决的来着？</p>
 </blockquote>
+<h3 id="在单行或多行或图片垂直居中实现上的应用"><a href="#在单行或多行或图片垂直居中实现上的应用" class="headerlink" title="在单行或多行或图片垂直居中实现上的应用"></a>在单行或多行或图片垂直居中实现上的应用</h3><ol>
+<li><p>单行文字的垂直居中对齐<br>将 line-height 设置为所需的容器高度即可，并不需要同步设置容器高度</p>
+</li>
+<li><p>多行文字的垂直居中</p>
+<ol>
+<li>高度不固定：利用padding;</li>
+<li>容器高度固定, 里面文字单行或多行显示，字体大小有大有小: 设置容器的line-height属性为所需容器高度值；</li>
+</ol>
+</li>
+</ol>
+<h3 id="行高在文章显示中的应用"><a href="#行高在文章显示中的应用" class="headerlink" title="行高在文章显示中的应用"></a>行高在文章显示中的应用</h3><p>首先要知道行高的几种表示方法：px/em，或normal，或百分值，或数值，或inherit继承</p>
+<p>在显示文章的box里，px的表示方法首先是要被淘汰的。因为文章里面的文字是有大有小的，使用px定值，由于继承性，无法实现根据文字大小自动调整间距，会出现大号文字重叠的现象。normal也是不行的，一般文章显示最好是650像素的宽度，1.5倍的行距较好。一般浏览器的normal值在1~1.2之间，使用normal必然文字间距过小，阅读吃力。</p>
+<h2 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h2><p><a href="https://www.zhangxinxu.com/wordpress/2009/11/css%E8%A1%8C%E9%AB%98line-height%E7%9A%84%E4%B8%80%E4%BA%9B%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E5%8F%8A%E5%BA%94%E7%94%A8/" target="_blank" rel="noopener">css行高line-height的一些深入理解及应用</a></p>
+
 </div>
 
 
@@ -556,7 +586,7 @@ function sidebar_toggle() {
     <!-- Author title -->
     <div class="author-title">
       <div>甜里甜气</div>
-      <div>2021-04-15</div>
+      <div>2021-04-22</div>
     </div>
   </div>
 

@@ -76,9 +76,11 @@ img {
       padding-bottom: 0.4rem;
       border-bottom: 1px solid #e7e7e7; }
     .off-canvas-content .book-content .book-post h1 {
-      font-size: 1.4rem; }
+      font-size: 1.4rem;
+      color: #e0731a; }
     .off-canvas-content .book-content .book-post h2 {
-      font-size: 1rem; }
+      font-size: 1.2rem;
+      color: #e0d421; }
     .off-canvas-content .book-content .book-post h3 {
       font-size: 0.85rem; }
     .off-canvas-content .book-content .book-post h4 {
@@ -89,7 +91,9 @@ img {
       font-size: 0.6rem;
       color: grey; }
     .off-canvas-content .book-content .book-post p {
-      margin-bottom: 1.8rem; }
+      margin-bottom: 1.8rem;
+      font-size: 0.9rem;
+      line-height: 1.8; }
       .off-canvas-content .book-content .book-post p b.indent {
         display: inline-block;
         width: 1.56rem; }

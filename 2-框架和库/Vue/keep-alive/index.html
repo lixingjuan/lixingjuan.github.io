@@ -265,6 +265,8 @@ document.addEventListener('DOMContentLoaded', function () {
 </li>
 <li><p><a href="/Blog/3-CSS%E7%9B%B8%E5%85%B3/%E5%9F%BA%E7%A1%80/line-height">line-height</a> </p>
 </li>
+<li><p><a href="/Blog/3-CSS%E7%9B%B8%E5%85%B3/%E5%9F%BA%E7%A1%80/todo-css%E6%A0%B7%E5%BC%8F%E7%9A%84%E7%99%BE%E5%88%86%E6%AF%94%E7%9B%B8%E5%AF%B9%E8%B0%81">todo-css样式的百分比相对谁</a> </p>
+</li>
 </ul>
 <h2 id="库-amp-方案"><a href="#库-amp-方案" class="headerlink" title="库&amp;方案"></a>库&amp;方案</h2><ul>
 <li><p><a href="/Blog/3-CSS%E7%9B%B8%E5%85%B3/%E5%BA%93&%E6%96%B9%E6%A1%88/1px">1px</a> </p>
@@ -276,6 +278,8 @@ document.addEventListener('DOMContentLoaded', function () {
 <li><p><a href="/Blog/3-CSS%E7%9B%B8%E5%85%B3/%E5%BA%93&%E6%96%B9%E6%A1%88/%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%BF%E7%94%A8rem?">为什么使用rem?</a> </p>
 </li>
 <li><p><a href="/Blog/3-CSS%E7%9B%B8%E5%85%B3/%E5%BA%93&%E6%96%B9%E6%A1%88/%E5%AE%9E%E7%8E%B0%E5%B1%85%E4%B8%AD">实现居中</a> </p>
+</li>
+<li><p><a href="/Blog/3-CSS%E7%9B%B8%E5%85%B3/%E5%BA%93&%E6%96%B9%E6%A1%88/%E5%AE%B9%E5%99%A8%E8%AE%BE%E7%BD%AEflex%E9%AB%98%E5%BA%A6%E4%BB%8D%E8%A2%AB%E6%92%91%E5%BC%80">容器设置flex高度仍被撑开</a> </p>
 </li>
 <li><p><a href="/Blog/3-CSS%E7%9B%B8%E5%85%B3/%E5%BA%93&%E6%96%B9%E6%A1%88/%E5%B8%B8%E8%A7%81%E5%B8%83%E5%B1%80">常见布局</a> </p>
 </li>
@@ -381,6 +385,8 @@ document.addEventListener('DOMContentLoaded', function () {
 <li><p><a href="/Blog/6-%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/ready/%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87+%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE+%E9%97%AD%E5%8C%85">执行上下文+作用域链+闭包</a> </p>
 </li>
 <li><p><a href="/Blog/6-%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/ready/%E6%96%87%E7%AB%A0%E3%80%8A%E5%A6%82%E4%BD%95%E8%BF%9B%E9%98%BF%E9%87%8C%E3%80%8B">文章《如何进阿里》</a> </p>
+</li>
+<li><p><a href="/Blog/6-%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/ready/%E9%9D%A2%E7%BB%8F-%E4%BF%8A%E5%8A%AB-%E6%9C%89%E8%B5%9E">面经-俊劫-有赞</a> </p>
 </li>
 </ul>
 <h1 style="color:#448d55;">日记</h1> 
@@ -520,6 +526,13 @@ function sidebar_toggle() {
   <iframe src="https://w7wyz.csb.app/" style="margin: 30px 0;border: none;"></iframe>
 
 <p><a href="https://codesandbox.io/s/trusting-river-w7wyz?file=/index.html" target="_blank" rel="noopener">测试代码地址</a></p>
+<blockquote class="pullquote mindmap"><p>#keep-alive<br>##实现<br>###四种绑定规则<br>####new<br>####显示绑定<br>####默认绑定<br>####隐式绑定<br>##渲染<br>###首次渲染<br>###更新渲染</p>
+</blockquote>
+
+
+
+
+
 <p><code>&lt;keep-alive&gt;</code> 本质上是 <code>vue</code> 框架实现的组件，通过自定义 render 函数并且利用了插槽;<br><code>&lt;keep-alive&gt;</code> 在 created 钩子里定义了 this.cache 和 this.keys，本质上它就是去缓存已经创建过的 vnode;<br>获取到 this.$slot.default (即放在<code>&lt;keep-alive&gt;</code>获取到的是此处的vnode<code>&lt;/keep-alive&gt;</code>)<br>判断 this.keys 中是否已经缓存过该组件<br>this.$slot.default 和 prop.children 感觉是担任相同的责任，都是一个对象(即虚拟 dom 的具体体现), 只不过在属性的定义上不同；</p>
 <h2 id="1-实现"><a href="#1-实现" class="headerlink" title="1. 实现"></a>1. 实现</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  name: <span class="string">'keep-alive'</span>,</span><br><span class="line">  abstract: <span class="literal">true</span>,</span><br><span class="line"></span><br><span class="line">  props: &#123;</span><br><span class="line">    include: patternTypes,</span><br><span class="line">    exclude: patternTypes,</span><br><span class="line">    max: [<span class="built_in">String</span>, <span class="built_in">Number</span>]</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  created () &#123;</span><br><span class="line">    <span class="keyword">this</span>.cache = <span class="built_in">Object</span>.create(<span class="literal">null</span>)</span><br><span class="line">    <span class="keyword">this</span>.keys = []</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  destroyed () &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">const</span> key <span class="keyword">in</span> <span class="keyword">this</span>.cache) &#123;</span><br><span class="line">      pruneCacheEntry(<span class="keyword">this</span>.cache, key, <span class="keyword">this</span>.keys)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  mounted () &#123;</span><br><span class="line">    <span class="comment">// 监听 include 和 exclude的变化，及时对cache 进行处理</span></span><br><span class="line">    <span class="keyword">this</span>.$watch(<span class="string">'include'</span>, val =&gt; &#123;</span><br><span class="line">      pruneCache(<span class="keyword">this</span>, name =&gt; matches(val, name))</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="keyword">this</span>.$watch(<span class="string">'exclude'</span>, val =&gt; &#123;</span><br><span class="line">      pruneCache(<span class="keyword">this</span>, name =&gt; !matches(val, name))</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="comment">// 1. 获取vnode, keep-alive 只处理第一个子元素</span></span><br><span class="line">    <span class="keyword">const</span> slot = <span class="keyword">this</span>.$slots.default</span><br><span class="line">    <span class="keyword">const</span> vnode: VNode = getFirstComponentChild(slot)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 2. 先判断是否不需要缓存 根据 includes / excludes 字段</span></span><br><span class="line">    <span class="keyword">if</span>(不需要缓存) &#123;</span><br><span class="line">        <span class="keyword">return</span> vnode</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 3. 根据key, 判断当前 vnode 是否缓存过，做不同的处理</span></span><br><span class="line">    <span class="keyword">const</span> &#123; cache, keys &#125; = <span class="keyword">this</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(已经缓存过)&#123;</span><br><span class="line">        <span class="number">1.</span> 返回缓存中的vnode</span><br><span class="line">        <span class="number">2.</span> 将该key从缓存数组中移除</span><br><span class="line">        <span class="number">3.</span> 将该key对应的vnode 放在数组最后位置</span><br><span class="line">    &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="number">1.</span> 将该vnode 放进缓存数组</span><br><span class="line">        <span class="number">2.</span> <span class="keyword">return</span> 该 vnode</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(超过设置的max缓存数量)&#123;</span><br><span class="line">        移除缓存数组最后几个</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -619,7 +632,7 @@ function sidebar_toggle() {
     <!-- Author title -->
     <div class="author-title">
       <div>甜里甜气</div>
-      <div>2021-04-27</div>
+      <div>2021-05-09</div>
     </div>
   </div>
 

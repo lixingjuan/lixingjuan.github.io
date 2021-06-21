@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </li>
 <li><p><a href="/Blog/1-JavaScript/%E4%B8%93%E9%A2%98/for%E5%92%8CforEach%E7%9A%84%E5%8C%BA%E5%88%AB">for和forEach的区别</a> </p>
 </li>
-<li><p><a href="/Blog/1-JavaScript/%E4%B8%93%E9%A2%98/new%E7%9A%84%E6%97%B6%E5%80%99%E5%8F%91%E7%94%9F%E4%BA%86%E4%BB%80%E4%B9%88?">new的时候发生了什么?</a> </p>
+<li><p><a href="/Blog/1-JavaScript/%E4%B8%93%E9%A2%98/new%E7%9A%84%E6%97%B6%E5%80%99%E5%8F%91%E7%94%9F%E4%BA%86%E4%BB%80%E4%B9%88">new的时候发生了什么</a> </p>
 </li>
 <li><p><a href="/Blog/1-JavaScript/%E4%B8%93%E9%A2%98/this%E7%9B%B8%E5%85%B3">this相关</a> </p>
 </li>
@@ -124,6 +124,8 @@ document.addEventListener('DOMContentLoaded', function () {
 <h2 id="基础知识类"><a href="#基础知识类" class="headerlink" title="基础知识类"></a>基础知识类</h2><ul>
 <li><p><a href="/Blog/1-JavaScript/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%B1%BB/Generate">Generate</a> </p>
 </li>
+<li><p><a href="/Blog/1-JavaScript/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%B1%BB/Map%E5%92%8CObject">Map和Object</a> </p>
+</li>
 <li><p><a href="/Blog/1-JavaScript/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%B1%BB/Proxy">Proxy</a> </p>
 </li>
 <li><p><a href="/Blog/1-JavaScript/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%B1%BB/Reflect">Reflect</a> </p>
@@ -134,6 +136,8 @@ document.addEventListener('DOMContentLoaded', function () {
 </li>
 <li><p><a href="/Blog/1-JavaScript/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%B1%BB/bind">bind</a> </p>
 </li>
+<li><p><a href="/Blog/1-JavaScript/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%B1%BB/%E4%BD%8D%E6%8E%A9%E7%A0%81">位掩码</a> </p>
+</li>
 <li><p><a href="/Blog/1-JavaScript/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%B1%BB/%E5%88%A4%E6%96%AD%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B">判断数据类型</a> </p>
 </li>
 <li><p><a href="/Blog/1-JavaScript/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%B1%BB/%E5%90%88%E5%B9%B6%E7%A9%BA%E5%80%BC">合并空值</a> </p>
@@ -143,6 +147,8 @@ document.addEventListener('DOMContentLoaded', function () {
 <li><p><a href="/Blog/1-JavaScript/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%B1%BB/%E6%95%B0%E7%BB%84">数组</a> </p>
 </li>
 <li><p><a href="/Blog/1-JavaScript/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%B1%BB/%E6%AD%A3%E5%88%99">正则</a> </p>
+</li>
+<li><p><a href="/Blog/1-JavaScript/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%B1%BB/%E6%AF%94%E8%BE%83%E5%80%BC%E7%9B%B8%E7%AD%89">比较值相等</a> </p>
 </li>
 <li><p><a href="/Blog/1-JavaScript/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%B1%BB/%E7%AB%8B%E5%8D%B3%E6%89%A7%E8%A1%8C%E5%87%BD%E6%95%B0">立即执行函数</a> </p>
 </li>
@@ -219,8 +225,6 @@ document.addEventListener('DOMContentLoaded', function () {
 </li>
 <li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/Vue/18%E6%BA%90%E7%A0%81-%E6%B4%BE%E5%8F%91%E6%9B%B4%E6%96%B0">18源码-派发更新</a> </p>
 </li>
-<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/Vue/README">README</a> </p>
-</li>
 <li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/Vue/keep-alive">keep-alive</a> </p>
 </li>
 <li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/Vue/vue">vue</a> </p>
@@ -228,12 +232,6 @@ document.addEventListener('DOMContentLoaded', function () {
 <li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/Vue/vue%E7%9A%84data%E4%B8%BA%E4%BB%80%E4%B9%88%E6%98%AF%E5%87%BD%E6%95%B0">vue的data为什么是函数</a> </p>
 </li>
 <li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/Vue/%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83">开发规范</a> </p>
-</li>
-</ul>
-<h2 id="dva"><a href="#dva" class="headerlink" title="dva"></a>dva</h2><ul>
-<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/dva/dva%E6%8A%BD%E7%A6%BB%E6%95%B0%E7%BB%84%E8%B7%AF%E7%94%B1+%E5%8A%A8%E6%80%81%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE%E6%96%B9%E6%B3%95">dva抽离数组路由+动态路由配置方法</a> </p>
-</li>
-<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/dva/dva%E7%9A%84%E4%B8%80%E4%BA%9B%E7%82%B9">dva的一些点</a> </p>
 </li>
 </ul>
 <h2 id="lodash"><a href="#lodash" class="headerlink" title="lodash"></a>lodash</h2><ul>
@@ -265,6 +263,8 @@ document.addEventListener('DOMContentLoaded', function () {
 </li>
 <li><p><a href="/Blog/3-CSS%E7%9B%B8%E5%85%B3/%E5%9F%BA%E7%A1%80/line-height">line-height</a> </p>
 </li>
+<li><p><a href="/Blog/3-CSS%E7%9B%B8%E5%85%B3/%E5%9F%BA%E7%A1%80/margin%E5%A1%8C%E9%99%B7">margin塌陷</a> </p>
+</li>
 <li><p><a href="/Blog/3-CSS%E7%9B%B8%E5%85%B3/%E5%9F%BA%E7%A1%80/todo-css%E6%A0%B7%E5%BC%8F%E7%9A%84%E7%99%BE%E5%88%86%E6%AF%94%E7%9B%B8%E5%AF%B9%E8%B0%81">todo-css样式的百分比相对谁</a> </p>
 </li>
 </ul>
@@ -277,7 +277,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </li>
 <li><p><a href="/Blog/3-CSS%E7%9B%B8%E5%85%B3/%E5%BA%93&%E6%96%B9%E6%A1%88/%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%BF%E7%94%A8rem?">为什么使用rem?</a> </p>
 </li>
-<li><p><a href="/Blog/3-CSS%E7%9B%B8%E5%85%B3/%E5%BA%93&%E6%96%B9%E6%A1%88/%E5%AE%9E%E7%8E%B0%E5%B1%85%E4%B8%AD">实现居中</a> </p>
+<li><p><a href="/Blog/3-CSS%E7%9B%B8%E5%85%B3/%E5%BA%93&%E6%96%B9%E6%A1%88/%E5%AE%9E%E7%8E%B0%E5%B1%85%E4%B8%AD%E7%9A%84%E5%A4%9A%E7%A7%8D%E6%96%B9%E6%A1%88">实现居中的多种方案</a> </p>
 </li>
 <li><p><a href="/Blog/3-CSS%E7%9B%B8%E5%85%B3/%E5%BA%93&%E6%96%B9%E6%A1%88/%E5%AE%B9%E5%99%A8%E8%AE%BE%E7%BD%AEflex%E9%AB%98%E5%BA%A6%E4%BB%8D%E8%A2%AB%E6%92%91%E5%BC%80">容器设置flex高度仍被撑开</a> </p>
 </li>
@@ -298,6 +298,8 @@ document.addEventListener('DOMContentLoaded', function () {
 </ul>
 <h2 id="基础算法"><a href="#基础算法" class="headerlink" title="基础算法"></a>基础算法</h2><ul>
 <li><p><a href="/Blog/4-%E7%BD%91%E7%BB%9C%E5%92%8C%E7%AE%97%E6%B3%95%E5%92%8Cts/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/js%E4%B8%89%E7%A7%8D%E9%81%8D%E5%8E%86">js三种遍历</a> </p>
+</li>
+<li><p><a href="/Blog/4-%E7%BD%91%E7%BB%9C%E5%92%8C%E7%AE%97%E6%B3%95%E5%92%8Cts/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C">两数之和</a> </p>
 </li>
 <li><p><a href="/Blog/4-%E7%BD%91%E7%BB%9C%E5%92%8C%E7%AE%97%E6%B3%95%E5%92%8Cts/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/%E5%A4%A7%E6%95%B0%E7%9B%B8%E5%8A%A0">大数相加</a> </p>
 </li>
@@ -324,6 +326,8 @@ document.addEventListener('DOMContentLoaded', function () {
 <li><p><a href="/Blog/4-%E7%BD%91%E7%BB%9C%E5%92%8C%E7%AE%97%E6%B3%95%E5%92%8Cts/%E7%BD%91%E7%BB%9C%E5%92%8C%E5%AE%89%E5%85%A8%E7%B1%BB/get%E5%92%8Cpost%E5%8C%BA%E5%88%AB">get和post区别</a> </p>
 </li>
 <li><p><a href="/Blog/4-%E7%BD%91%E7%BB%9C%E5%92%8C%E7%AE%97%E6%B3%95%E5%92%8Cts/%E7%BD%91%E7%BB%9C%E5%92%8C%E5%AE%89%E5%85%A8%E7%B1%BB/http%E5%92%8Chttps%E7%9A%84%E5%8C%BA%E5%88%AB">http和https的区别</a> </p>
+</li>
+<li><p>[一个 tcp 连接能发几个 http 请求](/Blog/4-网络和算法和ts/网络和安全类/一个 tcp 连接能发几个 http 请求) </p>
 </li>
 <li><p><a href="/Blog/4-%E7%BD%91%E7%BB%9C%E5%92%8C%E7%AE%97%E6%B3%95%E5%92%8Cts/%E7%BD%91%E7%BB%9C%E5%92%8C%E5%AE%89%E5%85%A8%E7%B1%BB/%E4%BA%86%E8%A7%A3%E7%B1%BB">了解类</a> </p>
 </li>
@@ -353,6 +357,8 @@ document.addEventListener('DOMContentLoaded', function () {
 </li>
 <li><p><a href="/Blog/5-%E7%AC%94%E8%AE%B0%E5%92%8C%E5%A4%8D%E7%9B%98/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E3%80%8A%E4%BD%A0%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84javascript%E3%80%8B">《你不知道的javascript》</a> </p>
 </li>
+<li><p><a href="/Blog/5-%E7%AC%94%E8%AE%B0%E5%92%8C%E5%A4%8D%E7%9B%98/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E5%8F%91%E5%B8%83-%E8%AE%A2%E9%98%85%E6%A8%A1%E5%BC%8F">发布-订阅模式</a> </p>
+</li>
 <li><p><a href="/Blog/5-%E7%AC%94%E8%AE%B0%E5%92%8C%E5%A4%8D%E7%9B%98/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E6%85%95%E5%AE%A2%E8%AF%BE%E7%A8%8Breact+ts%E5%BC%80%E5%8F%91%E7%BB%84%E4%BB%B6">慕客课程react+ts开发组件</a> </p>
 </li>
 </ul>
@@ -378,32 +384,25 @@ document.addEventListener('DOMContentLoaded', function () {
 <li><a href="/Blog/6-%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/be-interviewed/mine">mine</a> </li>
 </ul>
 <h2 id="ready"><a href="#ready" class="headerlink" title="ready"></a>ready</h2><ul>
+<li><p><a href="/Blog/6-%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/ready/algorithm-list">algorithm-list</a> </p>
+</li>
 <li><p><a href="/Blog/6-%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/ready/list">list</a> </p>
 </li>
 <li><p><a href="/Blog/6-%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/ready/todo-%E6%8E%98%E9%87%91-%E4%BF%8A%E5%8A%AB-%E6%9C%89%E8%B5%9E">todo-掘金-俊劫-有赞</a> </p>
 </li>
 <li><p><a href="/Blog/6-%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/ready/todo-%E6%8E%98%E9%87%91-%E6%85%95%E6%99%A8%E5%90%8C%E5%AD%A6-%E8%85%BE%E8%AE%AF">todo-掘金-慕晨同学-腾讯</a> </p>
 </li>
-<li><p><a href="/Blog/6-%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/ready/%E4%B8%80%E4%B8%AA%E6%B7%98%E5%AE%9D%E6%8A%80%E6%9C%AF%E4%B8%93%E5%AE%B6%E5%86%99%E7%9A%84%E5%A6%82%E4%BD%95%E8%BF%9B%E5%85%A5%E9%98%BF%E9%87%8C">一个淘宝技术专家写的如何进入阿里</a> </p>
-</li>
-<li><p><a href="/Blog/6-%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/ready/%E4%B8%80%E4%BA%9B%E4%B8%8D%E9%94%99%E7%9A%84%E9%9D%A2%E7%BB%8F">一些不错的面经</a> </p>
-</li>
-<li><p><a href="/Blog/6-%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/ready/%E4%B8%80%E4%BA%9B%E6%80%BB%E7%BB%93">一些总结</a> </p>
-</li>
 <li><p><a href="/Blog/6-%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/ready/%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87+%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE+%E9%97%AD%E5%8C%85">执行上下文+作用域链+闭包</a> </p>
 </li>
 <li><p><a href="/Blog/6-%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/ready/%E6%96%87%E7%AB%A0%E3%80%8A%E5%A6%82%E4%BD%95%E8%BF%9B%E9%98%BF%E9%87%8C%E3%80%8B">文章《如何进阿里》</a> </p>
 </li>
-<li><p><a href="/Blog/6-%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/ready/%E9%9D%A2%E7%BB%8F-%E4%BF%8A%E5%8A%AB-%E6%9C%89%E8%B5%9E">面经-俊劫-有赞</a> </p>
+<li><p><a href="/Blog/6-%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/ready/%E9%9D%A2%E7%BB%8Flist">面经list</a> </p>
 </li>
 </ul>
 <h1 style="color:#448d55;">日记</h1> 
 
 <h2 id="2020"><a href="#2020" class="headerlink" title="2020"></a>2020</h2><ul>
-<li><p><a href="/Blog/7-%E6%97%A5%E8%AE%B0/2020/20201225">20201225</a> </p>
-</li>
-<li><p><a href="/Blog/7-%E6%97%A5%E8%AE%B0/2020/20201231">20201231</a> </p>
-</li>
+<li><a href="/Blog/7-%E6%97%A5%E8%AE%B0/2020/20201231">20201231</a> </li>
 </ul>
 <h2 id="2021"><a href="#2021" class="headerlink" title="2021"></a>2021</h2><ul>
 <li><p><a href="/Blog/7-%E6%97%A5%E8%AE%B0/2021/2021-0408">2021-0408</a> </p>
@@ -425,6 +424,14 @@ document.addEventListener('DOMContentLoaded', function () {
 </ul>
 <h1 style="color:#448d55;">乱七八糟工具</h1> 
 
+<h2 id="MAC指令"><a href="#MAC指令" class="headerlink" title="MAC指令"></a>MAC指令</h2><ul>
+<li><p><a href="/Blog/8-%E4%B9%B1%E4%B8%83%E5%85%AB%E7%B3%9F%E5%B7%A5%E5%85%B7/MAC%E6%8C%87%E4%BB%A4/MAC-shell">MAC-shell</a> </p>
+</li>
+<li><p><a href="/Blog/8-%E4%B9%B1%E4%B8%83%E5%85%AB%E7%B3%9F%E5%B7%A5%E5%85%B7/MAC%E6%8C%87%E4%BB%A4/index">index</a> </p>
+</li>
+<li><p><a href="/Blog/8-%E4%B9%B1%E4%B8%83%E5%85%AB%E7%B3%9F%E5%B7%A5%E5%85%B7/MAC%E6%8C%87%E4%BB%A4/tree">tree</a> </p>
+</li>
+</ul>
 <h2 id="git相关操作"><a href="#git相关操作" class="headerlink" title="git相关操作"></a>git相关操作</h2><ul>
 <li><p><a href="/Blog/8-%E4%B9%B1%E4%B8%83%E5%85%AB%E7%B3%9F%E5%B7%A5%E5%85%B7/git%E7%9B%B8%E5%85%B3%E6%93%8D%E4%BD%9C/git%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C%E2%9D%A4">git常用操作❤</a> </p>
 </li>
@@ -441,19 +448,8 @@ document.addEventListener('DOMContentLoaded', function () {
 <li><p><a href="/Blog/8-%E4%B9%B1%E4%B8%83%E5%85%AB%E7%B3%9F%E5%B7%A5%E5%85%B7/webpack/webpack%E7%83%AD%E6%9B%B4%E6%96%B0%E5%8E%9F%E7%90%86">webpack热更新原理</a> </p>
 </li>
 </ul>
-<h2 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h2><ul>
-<li><p><a href="/Blog/8-%E4%B9%B1%E4%B8%83%E5%85%AB%E7%B3%9F%E5%B7%A5%E5%85%B7/%E6%8C%87%E4%BB%A4/MAC-shell">MAC-shell</a> </p>
-</li>
-<li><p><a href="/Blog/8-%E4%B9%B1%E4%B8%83%E5%85%AB%E7%B3%9F%E5%B7%A5%E5%85%B7/%E6%8C%87%E4%BB%A4/index">index</a> </p>
-</li>
-<li><p><a href="/Blog/8-%E4%B9%B1%E4%B8%83%E5%85%AB%E7%B3%9F%E5%B7%A5%E5%85%B7/%E6%8C%87%E4%BB%A4/tree">tree</a> </p>
-</li>
-</ul>
 <h2 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h2><ul>
-<li><p><a href="/Blog/8-%E4%B9%B1%E4%B8%83%E5%85%AB%E7%B3%9F%E5%B7%A5%E5%85%B7/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4">MySQL常用命令</a> </p>
-</li>
-<li><p><a href="/Blog/8-%E4%B9%B1%E4%B8%83%E5%85%AB%E7%B3%9F%E5%B7%A5%E5%85%B7/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%B8%B8%E7%94%A8SQL">常用SQL</a> </p>
-</li>
+<li><a href="/Blog/8-%E4%B9%B1%E4%B8%83%E5%85%AB%E7%B3%9F%E5%B7%A5%E5%85%B7/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4">MySQL常用命令</a> </li>
 </ul>
 <h2 id="无归类"><a href="#无归类" class="headerlink" title="无归类"></a>无归类</h2><ul>
 <li><p><a href="/Blog/8-%E4%B9%B1%E4%B8%83%E5%85%AB%E7%B3%9F%E5%B7%A5%E5%85%B7/%E6%97%A0%E5%BD%92%E7%B1%BB/chrome%E6%B5%8F%E8%A7%88%E5%99%A8%E8%B7%A8%E5%9F%9F%E8%AE%BE%E7%BD%AE">chrome浏览器跨域设置</a> </p>
@@ -467,12 +463,6 @@ document.addEventListener('DOMContentLoaded', function () {
 <li><p><a href="/Blog/8-%E4%B9%B1%E4%B8%83%E5%85%AB%E7%B3%9F%E5%B7%A5%E5%85%B7/%E7%B3%BB%E7%BB%9F%E6%93%8D%E4%BD%9C/%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA">安装虚拟机</a> </p>
 </li>
 <li><p><a href="/Blog/8-%E4%B9%B1%E4%B8%83%E5%85%AB%E7%B3%9F%E5%B7%A5%E5%85%B7/%E7%B3%BB%E7%BB%9F%E6%93%8D%E4%BD%9C/%E6%9F%A5%E7%9C%8B%E6%9C%AC%E5%9C%B0ip%E4%B9%8B%E7%B1%BB%E7%9A%84%E9%85%8D%E7%BD%AE(window)">查看本地ip之类的配置(window)</a> </p>
-</li>
-<li><p><a href="/Blog//README">README</a> </p>
-</li>
-<li><p><a href="/Blog//ToMyself">ToMyself</a> </p>
-</li>
-<li><p><a href="/Blog//like">like</a> </p>
 </li>
 </ul>
 
@@ -530,10 +520,7 @@ function sidebar_toggle() {
 </div>
             <div class="book-content"><div class="book-post">
   <h1 id="函数柯里化"><a href="#函数柯里化" class="headerlink" title="函数柯里化"></a>函数柯里化</h1><blockquote>
-<p>柯里化，也常译为“局部套用”，是把多参数函数转换为一系列单参数函数并进行调用的技术。这项技术以科学家Haskell Curry的名字命名。<br>   《javascript语言精粹》</p>
-</blockquote>
-<blockquote>
-<p>curry 方法通过创建一个保存着原始函数和要被调用的参数的闭包来工作，他返回另一个参数，该函数被调用时，会返回调用原始函数的结果，并传递调用curry时的参数加上当前调用时的参数</p>
+<p>柯里化，也常译为“局部套用”，是把多参数函数转换为一系列单参数函数并进行调用的技术。这项技术以科学家Haskell Curry的名字命名。<br>   《javascript语言精粹》<br>curry 方法通过创建一个保存着原始函数和要被调用的参数的闭包来工作，他返回另一个参数，该函数被调用时，会返回调用原始函数的结果，并传递调用curry时的参数加上当前调用时的参数<br>!!能够固化一部分参数</p>
 </blockquote>
 <h2 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h2><p>如果一个商店每天折扣不同，那么通常写一个函数是这样的，但是这样每次都要输入折扣和价格</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">discount</span>(<span class="params">dis, price</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> dis * <span class="number">0.01</span> * price;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">discount(<span class="number">2</span>, <span class="number">200</span>)</span><br><span class="line">discount(<span class="number">4</span>, <span class="number">200</span>)</span><br></pre></td></tr></table></figure>
@@ -549,7 +536,7 @@ function sidebar_toggle() {
 
 <h2 id="写法1-基础实现"><a href="#写法1-基础实现" class="headerlink" title="写法1: 基础实现"></a>写法1: 基础实现</h2><p><strong>函数柯里化</strong> 它用于创建已经设置好了一个或多个参数的函数。<br>函数柯里化的基本方法和函数绑定是一样的：使用一个闭包返回一个函数，两者的区别在于，当函数被调用时，返回的函数还需要设置一些传入的参数（如上面折扣的例子，fiveDiscount()调用时还需要参数price）</p>
 <p>函数柯里化通常与以下步骤动态 <strong>创建</strong>：调用另一个函数并为他传入要<code>柯里化的函数</code>和<code>必要参数</code></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 该例来自《javascript高级程序设计》 */</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@des </span>: 函数柯里化</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;Function&#125;</span> </span>[fn] 要进行柯里化的函数</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;*&#125;</span> </span>其他参数</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;*&#125;</span> </span>将参数通过函数fn处理之后的结果</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">curry</span>(<span class="params">fn</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// curry 第一个参数是要进行柯里化的函数，其他参数是要传入的值</span></span><br><span class="line">  <span class="comment">// 获取第一个参数外的其他参数</span></span><br><span class="line">  <span class="keyword">var</span> args = <span class="built_in">Array</span>.prototype.slice.call(<span class="built_in">arguments</span>, <span class="number">1</span>); <span class="comment">// args,包含了来自外部函数</span></span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> innerArgs = <span class="built_in">Array</span>.prototype.slice.call(<span class="built_in">arguments</span>); <span class="comment">// innerArgs，用来存放内部函数的所有参数</span></span><br><span class="line">    <span class="keyword">var</span> finalArgs = args.concat(innerArgs); <span class="comment">// finalArgs，内部外部所有的参数</span></span><br><span class="line">    <span class="keyword">return</span> fn.apply(<span class="literal">null</span>, finalArgs); <span class="comment">// 使用apply将结果传递给函数 fn</span></span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">num1, num2</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> num1 + num2;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> curriedAdd = curry(add, <span class="number">5</span>);</span><br><span class="line">curriedAdd(<span class="number">3</span>);  <span class="comment">// 8</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 该例来自《javascript高级程序设计》，使用es6 做了修改 */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">curry</span>(<span class="params">fn</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 获取第一次传入的参数，固化的部分</span></span><br><span class="line">    <span class="keyword">const</span> [,...args] = <span class="built_in">arguments</span>; <span class="comment">// args,包含了来自外部函数</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">const</span> innerArgs = <span class="built_in">Array</span>.prototype.slice.call(<span class="built_in">arguments</span>); <span class="comment">// innerArgs，用来存放内部函数的所有参数</span></span><br><span class="line">        <span class="keyword">const</span> finalArgs = [...args, ...innerArgs];</span><br><span class="line">        <span class="keyword">return</span> fn.apply(<span class="literal">null</span>, finalArgs); <span class="comment">// 使用apply将结果传递给函数 fn</span></span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">num1, num2</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> num1 + num2;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> curriedAdd = curry(add, <span class="number">5</span>);</span><br><span class="line">curriedAdd(<span class="number">3</span>);  <span class="comment">// 8</span></span><br></pre></td></tr></table></figure>
 
 
 <p>也可以像这样一次性给出所有参数</p>
@@ -563,7 +550,6 @@ function sidebar_toggle() {
 
 
 
-
 <h2 id="写法3-健壮版"><a href="#写法3-健壮版" class="headerlink" title="写法3: 健壮版"></a>写法3: 健壮版</h2><p>🐞BUT ,以上写法存在问题，我们只能传递两次参数，要么第一次给一部分，第二次给一部分，要么一次性给出所有参数，然后在调用函数，但是如果我们不确定每次传递参数的 <strong>个数</strong> 和 <strong>次数</strong>，则以上写法则不可行：</p>
 <p>如果传入的fn是</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> add = <span class="function"><span class="keyword">function</span>(<span class="params">val1, val2, val3, val4, val5</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> val1 + val2 + val3 + val4 + val5;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
@@ -571,23 +557,25 @@ function sidebar_toggle() {
 
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* ✅仅该种情况下可行，即一次性传入所有参数 */</span></span><br><span class="line">curry(add, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>)(); <span class="comment">// 15</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* ✅仅该种情况下可行，即分两次传入所有参数 */</span></span><br><span class="line"><span class="keyword">let</span> res = curry(add, <span class="number">1</span>)(<span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>); <span class="comment">// 15</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/* ❌调用次数大于两次则不可行 */</span></span><br><span class="line">curry(add, <span class="number">1</span>)(<span class="number">2</span>, <span class="number">3</span>)(<span class="number">4</span>)(<span class="number">5</span>) <span class="comment">// curry(...)(...) is not a function</span></span><br><span class="line">curry(add, <span class="number">1</span>)(<span class="number">2</span>)(<span class="number">3</span>)(<span class="number">4</span>)(<span class="number">5</span>) <span class="comment">// curry(...)(...) is not a function</span></span><br></pre></td></tr></table></figure>
 
-<p>为了使curry更加健壮，我们需要判断用于是否已经输入了所有的参数（fn.length），<br>若参数还未输入完毕，则返回一个函数使用户可以继续输入；<br>若已经输入完毕，则返回参数根据函数<code>fn</code>的规则计算的结果，代码如下</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">a, b, c, d, e</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> a + b + c + d + e;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">curry</span>(<span class="params">fn, ...args</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> length = fn.length;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">..._args</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> finalArgs = [...args, ..._args];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (finalArgs.length &lt; length) &#123;</span><br><span class="line">      <span class="keyword">return</span> curry.call(<span class="keyword">this</span>, fn, ...finalArgs);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> fn.apply(<span class="keyword">this</span>, finalArgs);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>调用一下试试看,  都可以得到正确的结果</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(curry(add, <span class="number">1</span>)(<span class="number">2</span>, <span class="number">3</span>)(<span class="number">4</span>)(<span class="number">5</span>)); <span class="comment">// 15</span></span><br><span class="line"><span class="built_in">console</span>.log(curry(add)(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>)); <span class="comment">// 15</span></span><br><span class="line"><span class="built_in">console</span>.log(curry(add)(<span class="number">1</span>, <span class="number">2</span>)(<span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>)); <span class="comment">// 15</span></span><br></pre></td></tr></table></figure>
+<p>为了使curry更加健壮，通过<code>fn.length</code>与当前参数的列表的长度，判断用户是否已经完全输入，<br>若已经输入完毕，则返回参数根据函数<code>fn</code>的规则计算的结果，代码如下<br>若参数还未输入完毕，则返回一个函数使用户可以继续输入；</p>
+<p>得到如下代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">curry</span>(<span class="params">fn, ...args</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> length = fn.length;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">..._args</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> finalArgs = [...args, ..._args];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (finalArgs.length &lt; length) &#123;</span><br><span class="line">      <span class="keyword">return</span> curry.apply(<span class="keyword">this</span>, [fn, ...finalArgs]);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> fn.apply(<span class="keyword">this</span>, finalArgs);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-
-<h2 id="写法4-小李简化版本"><a href="#写法4-小李简化版本" class="headerlink" title="写法4: 小李简化版本"></a>写法4: 小李简化版本</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> add = <span class="function"><span class="keyword">function</span>(<span class="params">val1, val2, val3, val4, val5</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> val1 + val2 + val3 + val4 + val5;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">curry</span>(<span class="params">fn, ...args</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (fn.length &gt; args.length) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function">(<span class="params">...innerArgs</span>) =&gt;</span> curry.call(<span class="keyword">this</span>, fn, ...args, ...innerArgs);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> fn.apply(<span class="keyword">this</span>, args);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> res = curry(add, <span class="number">1</span>)(<span class="number">2</span>, <span class="number">3</span>)(<span class="number">4</span>)(<span class="number">5</span>);</span><br><span class="line"><span class="built_in">console</span>.log(res); <span class="comment">// 15</span></span><br></pre></td></tr></table></figure>
-
+<p>测试使用</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">a, b, c, d, e</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> a + b + c + d + e;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(curry(add, <span class="number">1</span>)(<span class="number">2</span>, <span class="number">3</span>)(<span class="number">4</span>)(<span class="number">5</span>)); <span class="comment">// 15</span></span><br><span class="line"><span class="built_in">console</span>.log(curry(add)(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>)); <span class="comment">// 15</span></span><br><span class="line"><span class="built_in">console</span>.log(curry(add)(<span class="number">1</span>, <span class="number">2</span>)(<span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>)); <span class="comment">// 15</span></span><br></pre></td></tr></table></figure>
 
 
+<h2 id="写法4-对写法3进行简化"><a href="#写法4-对写法3进行简化" class="headerlink" title="写法4: 对写法3进行简化"></a>写法4: 对写法3进行简化</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">curry</span>(<span class="params">fn, ...args</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 如果参数没有传完</span></span><br><span class="line">  <span class="keyword">if</span> (fn.length &gt; args.length) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function">(<span class="params">...innerArgs</span>) =&gt;</span> curry.apply(<span class="keyword">this</span>, [fn, ...args, ...innerArgs]);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> fn.apply(<span class="keyword">this</span>, args);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h2><p>实际开发重的应用场景</p>
+
+
+
+<h2 id="函数柯里化的应用"><a href="#函数柯里化的应用" class="headerlink" title="函数柯里化的应用"></a>函数柯里化的应用</h2><p>实际开发重的应用场景</p>
 <p>vue源码中的<code>patch</code>函数(<code>_update</code>的核心)</p>
 <p>不同平台的<code>patch</code>方法的主要逻辑是相同的，所以这部分公共的部分就托管在core这个大的目录下，差异化部分只需要通过参数来区别，<br>这里使用函数柯里化的技巧，通过 <code>createPatchFUnction</code> 把差异化参数提前固化，这样不用每次调用patch的时候都传递 <code>nodeOps</code> 和 <code>modules</code>（省去了每次使用都去判断当前平台，然后再做操作）</p>
-<h1 id="我的疑问？"><a href="#我的疑问？" class="headerlink" title="我的疑问？"></a>我的疑问？</h1><p>正常来想，3 * 0.1 * 300 = 90，但是结果并不是？？为什么？</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 为什么不是 90</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">discount2</span>(<span class="params">dis</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">price</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> dis * <span class="number">0.1</span> * price;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 五折</span></span><br><span class="line"><span class="keyword">const</span> threeDiscount = discount2(<span class="number">3</span>);</span><br><span class="line">threeDiscount(<span class="number">300</span>);  <span class="comment">// 90.00000000000001</span></span><br></pre></td></tr></table></figure>
+<h1 id="疑问"><a href="#疑问" class="headerlink" title="疑问"></a>疑问</h1><p>正常来想，3 * 0.1 = 90，但是结果并不是？？为什么？</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">3</span> * <span class="number">0.1</span> = <span class="number">0.30000000000000004</span> ？</span><br></pre></td></tr></table></figure>
 
 
 <h2 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h2><ol>
@@ -640,7 +628,7 @@ function sidebar_toggle() {
     <!-- Author title -->
     <div class="author-title">
       <div>甜里甜气</div>
-      <div>2021-05-09</div>
+      <div>2021-06-12</div>
     </div>
   </div>
 

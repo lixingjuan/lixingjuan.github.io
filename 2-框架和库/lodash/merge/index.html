@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </li>
 <li><p><a href="/Blog/1-JavaScript/%E4%B8%93%E9%A2%98/for%E5%92%8CforEach%E7%9A%84%E5%8C%BA%E5%88%AB">for和forEach的区别</a> </p>
 </li>
-<li><p><a href="/Blog/1-JavaScript/%E4%B8%93%E9%A2%98/new%E7%9A%84%E6%97%B6%E5%80%99%E5%8F%91%E7%94%9F%E4%BA%86%E4%BB%80%E4%B9%88?">new的时候发生了什么?</a> </p>
+<li><p><a href="/Blog/1-JavaScript/%E4%B8%93%E9%A2%98/new%E7%9A%84%E6%97%B6%E5%80%99%E5%8F%91%E7%94%9F%E4%BA%86%E4%BB%80%E4%B9%88">new的时候发生了什么</a> </p>
 </li>
 <li><p><a href="/Blog/1-JavaScript/%E4%B8%93%E9%A2%98/this%E7%9B%B8%E5%85%B3">this相关</a> </p>
 </li>
@@ -124,6 +124,8 @@ document.addEventListener('DOMContentLoaded', function () {
 <h2 id="基础知识类"><a href="#基础知识类" class="headerlink" title="基础知识类"></a>基础知识类</h2><ul>
 <li><p><a href="/Blog/1-JavaScript/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%B1%BB/Generate">Generate</a> </p>
 </li>
+<li><p><a href="/Blog/1-JavaScript/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%B1%BB/Map%E5%92%8CObject">Map和Object</a> </p>
+</li>
 <li><p><a href="/Blog/1-JavaScript/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%B1%BB/Proxy">Proxy</a> </p>
 </li>
 <li><p><a href="/Blog/1-JavaScript/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%B1%BB/Reflect">Reflect</a> </p>
@@ -134,6 +136,8 @@ document.addEventListener('DOMContentLoaded', function () {
 </li>
 <li><p><a href="/Blog/1-JavaScript/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%B1%BB/bind">bind</a> </p>
 </li>
+<li><p><a href="/Blog/1-JavaScript/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%B1%BB/%E4%BD%8D%E6%8E%A9%E7%A0%81">位掩码</a> </p>
+</li>
 <li><p><a href="/Blog/1-JavaScript/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%B1%BB/%E5%88%A4%E6%96%AD%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B">判断数据类型</a> </p>
 </li>
 <li><p><a href="/Blog/1-JavaScript/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%B1%BB/%E5%90%88%E5%B9%B6%E7%A9%BA%E5%80%BC">合并空值</a> </p>
@@ -143,6 +147,8 @@ document.addEventListener('DOMContentLoaded', function () {
 <li><p><a href="/Blog/1-JavaScript/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%B1%BB/%E6%95%B0%E7%BB%84">数组</a> </p>
 </li>
 <li><p><a href="/Blog/1-JavaScript/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%B1%BB/%E6%AD%A3%E5%88%99">正则</a> </p>
+</li>
+<li><p><a href="/Blog/1-JavaScript/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%B1%BB/%E6%AF%94%E8%BE%83%E5%80%BC%E7%9B%B8%E7%AD%89">比较值相等</a> </p>
 </li>
 <li><p><a href="/Blog/1-JavaScript/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%B1%BB/%E7%AB%8B%E5%8D%B3%E6%89%A7%E8%A1%8C%E5%87%BD%E6%95%B0">立即执行函数</a> </p>
 </li>
@@ -219,8 +225,6 @@ document.addEventListener('DOMContentLoaded', function () {
 </li>
 <li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/Vue/18%E6%BA%90%E7%A0%81-%E6%B4%BE%E5%8F%91%E6%9B%B4%E6%96%B0">18源码-派发更新</a> </p>
 </li>
-<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/Vue/README">README</a> </p>
-</li>
 <li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/Vue/keep-alive">keep-alive</a> </p>
 </li>
 <li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/Vue/vue">vue</a> </p>
@@ -228,12 +232,6 @@ document.addEventListener('DOMContentLoaded', function () {
 <li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/Vue/vue%E7%9A%84data%E4%B8%BA%E4%BB%80%E4%B9%88%E6%98%AF%E5%87%BD%E6%95%B0">vue的data为什么是函数</a> </p>
 </li>
 <li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/Vue/%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83">开发规范</a> </p>
-</li>
-</ul>
-<h2 id="dva"><a href="#dva" class="headerlink" title="dva"></a>dva</h2><ul>
-<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/dva/dva%E6%8A%BD%E7%A6%BB%E6%95%B0%E7%BB%84%E8%B7%AF%E7%94%B1+%E5%8A%A8%E6%80%81%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE%E6%96%B9%E6%B3%95">dva抽离数组路由+动态路由配置方法</a> </p>
-</li>
-<li><p><a href="/Blog/2-%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/dva/dva%E7%9A%84%E4%B8%80%E4%BA%9B%E7%82%B9">dva的一些点</a> </p>
 </li>
 </ul>
 <h2 id="lodash"><a href="#lodash" class="headerlink" title="lodash"></a>lodash</h2><ul>
@@ -265,6 +263,8 @@ document.addEventListener('DOMContentLoaded', function () {
 </li>
 <li><p><a href="/Blog/3-CSS%E7%9B%B8%E5%85%B3/%E5%9F%BA%E7%A1%80/line-height">line-height</a> </p>
 </li>
+<li><p><a href="/Blog/3-CSS%E7%9B%B8%E5%85%B3/%E5%9F%BA%E7%A1%80/margin%E5%A1%8C%E9%99%B7">margin塌陷</a> </p>
+</li>
 <li><p><a href="/Blog/3-CSS%E7%9B%B8%E5%85%B3/%E5%9F%BA%E7%A1%80/todo-css%E6%A0%B7%E5%BC%8F%E7%9A%84%E7%99%BE%E5%88%86%E6%AF%94%E7%9B%B8%E5%AF%B9%E8%B0%81">todo-css样式的百分比相对谁</a> </p>
 </li>
 </ul>
@@ -277,7 +277,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </li>
 <li><p><a href="/Blog/3-CSS%E7%9B%B8%E5%85%B3/%E5%BA%93&%E6%96%B9%E6%A1%88/%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%BF%E7%94%A8rem?">为什么使用rem?</a> </p>
 </li>
-<li><p><a href="/Blog/3-CSS%E7%9B%B8%E5%85%B3/%E5%BA%93&%E6%96%B9%E6%A1%88/%E5%AE%9E%E7%8E%B0%E5%B1%85%E4%B8%AD">实现居中</a> </p>
+<li><p><a href="/Blog/3-CSS%E7%9B%B8%E5%85%B3/%E5%BA%93&%E6%96%B9%E6%A1%88/%E5%AE%9E%E7%8E%B0%E5%B1%85%E4%B8%AD%E7%9A%84%E5%A4%9A%E7%A7%8D%E6%96%B9%E6%A1%88">实现居中的多种方案</a> </p>
 </li>
 <li><p><a href="/Blog/3-CSS%E7%9B%B8%E5%85%B3/%E5%BA%93&%E6%96%B9%E6%A1%88/%E5%AE%B9%E5%99%A8%E8%AE%BE%E7%BD%AEflex%E9%AB%98%E5%BA%A6%E4%BB%8D%E8%A2%AB%E6%92%91%E5%BC%80">容器设置flex高度仍被撑开</a> </p>
 </li>
@@ -298,6 +298,8 @@ document.addEventListener('DOMContentLoaded', function () {
 </ul>
 <h2 id="基础算法"><a href="#基础算法" class="headerlink" title="基础算法"></a>基础算法</h2><ul>
 <li><p><a href="/Blog/4-%E7%BD%91%E7%BB%9C%E5%92%8C%E7%AE%97%E6%B3%95%E5%92%8Cts/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/js%E4%B8%89%E7%A7%8D%E9%81%8D%E5%8E%86">js三种遍历</a> </p>
+</li>
+<li><p><a href="/Blog/4-%E7%BD%91%E7%BB%9C%E5%92%8C%E7%AE%97%E6%B3%95%E5%92%8Cts/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C">两数之和</a> </p>
 </li>
 <li><p><a href="/Blog/4-%E7%BD%91%E7%BB%9C%E5%92%8C%E7%AE%97%E6%B3%95%E5%92%8Cts/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/%E5%A4%A7%E6%95%B0%E7%9B%B8%E5%8A%A0">大数相加</a> </p>
 </li>
@@ -324,6 +326,8 @@ document.addEventListener('DOMContentLoaded', function () {
 <li><p><a href="/Blog/4-%E7%BD%91%E7%BB%9C%E5%92%8C%E7%AE%97%E6%B3%95%E5%92%8Cts/%E7%BD%91%E7%BB%9C%E5%92%8C%E5%AE%89%E5%85%A8%E7%B1%BB/get%E5%92%8Cpost%E5%8C%BA%E5%88%AB">get和post区别</a> </p>
 </li>
 <li><p><a href="/Blog/4-%E7%BD%91%E7%BB%9C%E5%92%8C%E7%AE%97%E6%B3%95%E5%92%8Cts/%E7%BD%91%E7%BB%9C%E5%92%8C%E5%AE%89%E5%85%A8%E7%B1%BB/http%E5%92%8Chttps%E7%9A%84%E5%8C%BA%E5%88%AB">http和https的区别</a> </p>
+</li>
+<li><p>[一个 tcp 连接能发几个 http 请求](/Blog/4-网络和算法和ts/网络和安全类/一个 tcp 连接能发几个 http 请求) </p>
 </li>
 <li><p><a href="/Blog/4-%E7%BD%91%E7%BB%9C%E5%92%8C%E7%AE%97%E6%B3%95%E5%92%8Cts/%E7%BD%91%E7%BB%9C%E5%92%8C%E5%AE%89%E5%85%A8%E7%B1%BB/%E4%BA%86%E8%A7%A3%E7%B1%BB">了解类</a> </p>
 </li>
@@ -353,6 +357,8 @@ document.addEventListener('DOMContentLoaded', function () {
 </li>
 <li><p><a href="/Blog/5-%E7%AC%94%E8%AE%B0%E5%92%8C%E5%A4%8D%E7%9B%98/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E3%80%8A%E4%BD%A0%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84javascript%E3%80%8B">《你不知道的javascript》</a> </p>
 </li>
+<li><p><a href="/Blog/5-%E7%AC%94%E8%AE%B0%E5%92%8C%E5%A4%8D%E7%9B%98/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E5%8F%91%E5%B8%83-%E8%AE%A2%E9%98%85%E6%A8%A1%E5%BC%8F">发布-订阅模式</a> </p>
+</li>
 <li><p><a href="/Blog/5-%E7%AC%94%E8%AE%B0%E5%92%8C%E5%A4%8D%E7%9B%98/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E6%85%95%E5%AE%A2%E8%AF%BE%E7%A8%8Breact+ts%E5%BC%80%E5%8F%91%E7%BB%84%E4%BB%B6">慕客课程react+ts开发组件</a> </p>
 </li>
 </ul>
@@ -378,32 +384,25 @@ document.addEventListener('DOMContentLoaded', function () {
 <li><a href="/Blog/6-%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/be-interviewed/mine">mine</a> </li>
 </ul>
 <h2 id="ready"><a href="#ready" class="headerlink" title="ready"></a>ready</h2><ul>
+<li><p><a href="/Blog/6-%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/ready/algorithm-list">algorithm-list</a> </p>
+</li>
 <li><p><a href="/Blog/6-%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/ready/list">list</a> </p>
 </li>
 <li><p><a href="/Blog/6-%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/ready/todo-%E6%8E%98%E9%87%91-%E4%BF%8A%E5%8A%AB-%E6%9C%89%E8%B5%9E">todo-掘金-俊劫-有赞</a> </p>
 </li>
 <li><p><a href="/Blog/6-%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/ready/todo-%E6%8E%98%E9%87%91-%E6%85%95%E6%99%A8%E5%90%8C%E5%AD%A6-%E8%85%BE%E8%AE%AF">todo-掘金-慕晨同学-腾讯</a> </p>
 </li>
-<li><p><a href="/Blog/6-%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/ready/%E4%B8%80%E4%B8%AA%E6%B7%98%E5%AE%9D%E6%8A%80%E6%9C%AF%E4%B8%93%E5%AE%B6%E5%86%99%E7%9A%84%E5%A6%82%E4%BD%95%E8%BF%9B%E5%85%A5%E9%98%BF%E9%87%8C">一个淘宝技术专家写的如何进入阿里</a> </p>
-</li>
-<li><p><a href="/Blog/6-%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/ready/%E4%B8%80%E4%BA%9B%E4%B8%8D%E9%94%99%E7%9A%84%E9%9D%A2%E7%BB%8F">一些不错的面经</a> </p>
-</li>
-<li><p><a href="/Blog/6-%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/ready/%E4%B8%80%E4%BA%9B%E6%80%BB%E7%BB%93">一些总结</a> </p>
-</li>
 <li><p><a href="/Blog/6-%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/ready/%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87+%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE+%E9%97%AD%E5%8C%85">执行上下文+作用域链+闭包</a> </p>
 </li>
 <li><p><a href="/Blog/6-%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/ready/%E6%96%87%E7%AB%A0%E3%80%8A%E5%A6%82%E4%BD%95%E8%BF%9B%E9%98%BF%E9%87%8C%E3%80%8B">文章《如何进阿里》</a> </p>
 </li>
-<li><p><a href="/Blog/6-%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/ready/%E9%9D%A2%E7%BB%8F-%E4%BF%8A%E5%8A%AB-%E6%9C%89%E8%B5%9E">面经-俊劫-有赞</a> </p>
+<li><p><a href="/Blog/6-%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/ready/%E9%9D%A2%E7%BB%8Flist">面经list</a> </p>
 </li>
 </ul>
 <h1 style="color:#448d55;">日记</h1> 
 
 <h2 id="2020"><a href="#2020" class="headerlink" title="2020"></a>2020</h2><ul>
-<li><p><a href="/Blog/7-%E6%97%A5%E8%AE%B0/2020/20201225">20201225</a> </p>
-</li>
-<li><p><a href="/Blog/7-%E6%97%A5%E8%AE%B0/2020/20201231">20201231</a> </p>
-</li>
+<li><a href="/Blog/7-%E6%97%A5%E8%AE%B0/2020/20201231">20201231</a> </li>
 </ul>
 <h2 id="2021"><a href="#2021" class="headerlink" title="2021"></a>2021</h2><ul>
 <li><p><a href="/Blog/7-%E6%97%A5%E8%AE%B0/2021/2021-0408">2021-0408</a> </p>
@@ -425,6 +424,14 @@ document.addEventListener('DOMContentLoaded', function () {
 </ul>
 <h1 style="color:#448d55;">乱七八糟工具</h1> 
 
+<h2 id="MAC指令"><a href="#MAC指令" class="headerlink" title="MAC指令"></a>MAC指令</h2><ul>
+<li><p><a href="/Blog/8-%E4%B9%B1%E4%B8%83%E5%85%AB%E7%B3%9F%E5%B7%A5%E5%85%B7/MAC%E6%8C%87%E4%BB%A4/MAC-shell">MAC-shell</a> </p>
+</li>
+<li><p><a href="/Blog/8-%E4%B9%B1%E4%B8%83%E5%85%AB%E7%B3%9F%E5%B7%A5%E5%85%B7/MAC%E6%8C%87%E4%BB%A4/index">index</a> </p>
+</li>
+<li><p><a href="/Blog/8-%E4%B9%B1%E4%B8%83%E5%85%AB%E7%B3%9F%E5%B7%A5%E5%85%B7/MAC%E6%8C%87%E4%BB%A4/tree">tree</a> </p>
+</li>
+</ul>
 <h2 id="git相关操作"><a href="#git相关操作" class="headerlink" title="git相关操作"></a>git相关操作</h2><ul>
 <li><p><a href="/Blog/8-%E4%B9%B1%E4%B8%83%E5%85%AB%E7%B3%9F%E5%B7%A5%E5%85%B7/git%E7%9B%B8%E5%85%B3%E6%93%8D%E4%BD%9C/git%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C%E2%9D%A4">git常用操作❤</a> </p>
 </li>
@@ -441,19 +448,8 @@ document.addEventListener('DOMContentLoaded', function () {
 <li><p><a href="/Blog/8-%E4%B9%B1%E4%B8%83%E5%85%AB%E7%B3%9F%E5%B7%A5%E5%85%B7/webpack/webpack%E7%83%AD%E6%9B%B4%E6%96%B0%E5%8E%9F%E7%90%86">webpack热更新原理</a> </p>
 </li>
 </ul>
-<h2 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h2><ul>
-<li><p><a href="/Blog/8-%E4%B9%B1%E4%B8%83%E5%85%AB%E7%B3%9F%E5%B7%A5%E5%85%B7/%E6%8C%87%E4%BB%A4/MAC-shell">MAC-shell</a> </p>
-</li>
-<li><p><a href="/Blog/8-%E4%B9%B1%E4%B8%83%E5%85%AB%E7%B3%9F%E5%B7%A5%E5%85%B7/%E6%8C%87%E4%BB%A4/index">index</a> </p>
-</li>
-<li><p><a href="/Blog/8-%E4%B9%B1%E4%B8%83%E5%85%AB%E7%B3%9F%E5%B7%A5%E5%85%B7/%E6%8C%87%E4%BB%A4/tree">tree</a> </p>
-</li>
-</ul>
 <h2 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h2><ul>
-<li><p><a href="/Blog/8-%E4%B9%B1%E4%B8%83%E5%85%AB%E7%B3%9F%E5%B7%A5%E5%85%B7/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4">MySQL常用命令</a> </p>
-</li>
-<li><p><a href="/Blog/8-%E4%B9%B1%E4%B8%83%E5%85%AB%E7%B3%9F%E5%B7%A5%E5%85%B7/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%B8%B8%E7%94%A8SQL">常用SQL</a> </p>
-</li>
+<li><a href="/Blog/8-%E4%B9%B1%E4%B8%83%E5%85%AB%E7%B3%9F%E5%B7%A5%E5%85%B7/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4">MySQL常用命令</a> </li>
 </ul>
 <h2 id="无归类"><a href="#无归类" class="headerlink" title="无归类"></a>无归类</h2><ul>
 <li><p><a href="/Blog/8-%E4%B9%B1%E4%B8%83%E5%85%AB%E7%B3%9F%E5%B7%A5%E5%85%B7/%E6%97%A0%E5%BD%92%E7%B1%BB/chrome%E6%B5%8F%E8%A7%88%E5%99%A8%E8%B7%A8%E5%9F%9F%E8%AE%BE%E7%BD%AE">chrome浏览器跨域设置</a> </p>
@@ -467,12 +463,6 @@ document.addEventListener('DOMContentLoaded', function () {
 <li><p><a href="/Blog/8-%E4%B9%B1%E4%B8%83%E5%85%AB%E7%B3%9F%E5%B7%A5%E5%85%B7/%E7%B3%BB%E7%BB%9F%E6%93%8D%E4%BD%9C/%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA">安装虚拟机</a> </p>
 </li>
 <li><p><a href="/Blog/8-%E4%B9%B1%E4%B8%83%E5%85%AB%E7%B3%9F%E5%B7%A5%E5%85%B7/%E7%B3%BB%E7%BB%9F%E6%93%8D%E4%BD%9C/%E6%9F%A5%E7%9C%8B%E6%9C%AC%E5%9C%B0ip%E4%B9%8B%E7%B1%BB%E7%9A%84%E9%85%8D%E7%BD%AE(window)">查看本地ip之类的配置(window)</a> </p>
-</li>
-<li><p><a href="/Blog//README">README</a> </p>
-</li>
-<li><p><a href="/Blog//ToMyself">ToMyself</a> </p>
-</li>
-<li><p><a href="/Blog//like">like</a> </p>
 </li>
 </ul>
 
@@ -529,7 +519,7 @@ function sidebar_toggle() {
 </header>
 </div>
             <div class="book-content"><div class="book-post">
-  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> merge = createAssigner(<span class="function"><span class="keyword">function</span>(<span class="params">object, source, srcIndex</span>) </span>&#123;</span><br><span class="line">  baseMerge(object, source, srcIndex);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> users = &#123;</span><br><span class="line">    <span class="string">'data'</span>: [&#123; <span class="string">'user'</span>: <span class="string">'barney'</span> &#125;, &#123; <span class="string">'user'</span>: <span class="string">'fred'</span> &#125;]</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> ages = &#123;</span><br><span class="line">    <span class="string">'data'</span>: [&#123; <span class="string">'age'</span>: <span class="number">36</span> &#125;, &#123; <span class="string">'age'</span>: <span class="number">40</span> &#125;]</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> res = merge(users, ages)</span><br><span class="line"><span class="built_in">console</span>.log(res === users)</span><br><span class="line"><span class="built_in">console</span>.log(res === ages)</span><br></pre></td></tr></table></figure>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> merge = createAssigner(<span class="function"><span class="keyword">function</span>(<span class="params">object, source, srcIndex</span>) </span>&#123;</span><br><span class="line">  baseMerge(object, source, srcIndex);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> users = &#123;</span><br><span class="line">    <span class="string">'data'</span>: [&#123; <span class="string">'user'</span>: <span class="string">'barney'</span> &#125;, &#123; <span class="string">'user'</span>: <span class="string">'fred'</span> &#125;]</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> ages = &#123;</span><br><span class="line">    <span class="string">'data'</span>: [&#123; <span class="string">'age'</span>: <span class="number">36</span> &#125;, &#123; <span class="string">'age'</span>: <span class="number">40</span> &#125;]</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> res = merge(users, ages)</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(res === users)</span><br><span class="line"><span class="built_in">console</span>.log(res === ages)</span><br></pre></td></tr></table></figure>
 </div>
 
 
@@ -572,7 +562,7 @@ function sidebar_toggle() {
     <!-- Author title -->
     <div class="author-title">
       <div>甜里甜气</div>
-      <div>2021-04-15</div>
+      <div>2021-06-12</div>
     </div>
   </div>
 

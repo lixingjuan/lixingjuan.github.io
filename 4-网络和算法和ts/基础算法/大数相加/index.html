@@ -519,45 +519,7 @@ function sidebar_toggle() {
 </header>
 </div>
             <div class="book-content"><div class="book-post">
-  /**
- * js的数字的安全范围
- * Number.MAX_SAFE_INTEGER
- * Number.MIN_SAFE_INTEGER
- */
-let valA = "2";
-let valB = "134";
-
-function add(valA, valB) {
-    // 取两个数字的最大长度
-    let maxLength = Math.max(valA.length, valB.length);
-
-    // 用0去补齐长度
-    valA = valA.padStart(maxLength, 0); // "0009007199254740991"
-    valB = valB.padStart(maxLength, 0); // "1234567899999999999"
-
-    // 定义加法过程中需要用到的变量
-    let t = 0;
-    let f = 0; // "进位"
-    let sum = "";
-
-    for (let i = maxLength - 1; i >= 0; i--) {
-        t = parseInt(valA[i]) + parseInt(valB[i]) + f;
-        console.log('t',t);
-
-        f = Math.floor(t / 10);
-        console.log('f',f);
-
-        sum = (t % 10) + sum;
-        console.log('sum',sum);
-    }
-
-    if (f == 1) {
-        sum = "1" + sum;
-    }
-    return sum;
-}
-
-console.log(add(valA, valB));
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * js的数字的安全范围</span></span><br><span class="line"><span class="comment"> * 原理和竖式计算一样，有进位就加一</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">valA, valB</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 取两个数字的最大长度</span></span><br><span class="line">    <span class="keyword">let</span> maxLength = <span class="built_in">Math</span>.max(valA.length, valB.length);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 用0去补齐长度</span></span><br><span class="line">    valA = valA.padStart(maxLength, <span class="number">0</span>); <span class="comment">// "0009007199254740991"</span></span><br><span class="line">    valB = valB.padStart(maxLength, <span class="number">0</span>); <span class="comment">// "1234567899999999999"</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 定义加法过程中需要用到的变量</span></span><br><span class="line">    <span class="keyword">let</span> t = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">let</span> f = <span class="number">0</span>; <span class="comment">// "进位"</span></span><br><span class="line">    <span class="keyword">let</span> sum = <span class="string">""</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = maxLength - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">        t = <span class="built_in">parseInt</span>(valA[i]) + <span class="built_in">parseInt</span>(valB[i]) + f;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'t'</span>,t);</span><br><span class="line"></span><br><span class="line">        f = <span class="built_in">Math</span>.floor(t / <span class="number">10</span>);</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'f'</span>,f);</span><br><span class="line"></span><br><span class="line">        sum = (t % <span class="number">10</span>) + sum;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'sum'</span>,sum);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (f == <span class="number">1</span>) &#123;</span><br><span class="line">        sum = <span class="string">"1"</span> + sum;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> sum;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 </div>
 

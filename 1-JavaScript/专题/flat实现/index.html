@@ -519,26 +519,45 @@ function sidebar_toggle() {
 </header>
 </div>
             <div class="book-content"><div class="book-post">
-  <h1 id="flat"><a href="#flat" class="headerlink" title="flat"></a>flat</h1><p>实现flat三种方案</p>
-<ol>
-<li>ES6的flat</li>
-<li>使用ES5实现一个flat</li>
-<li>调用toString()方法</li>
-</ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> initArr = [</span><br><span class="line">  [</span><br><span class="line">    [<span class="string">'1-7'</span>, <span class="string">'2-6'</span>],</span><br><span class="line">    <span class="string">'4-6'</span>,</span><br><span class="line">    [</span><br><span class="line">      [<span class="string">'2-0'</span>, <span class="string">'1-4'</span>],</span><br><span class="line">      [<span class="string">'3-9'</span>],</span><br><span class="line">      <span class="string">'4-5'</span>,</span><br><span class="line">    ],</span><br><span class="line">  ]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-
-<h2 id="方案1-递归"><a href="#方案1-递归" class="headerlink" title="方案1: 递归"></a>方案1: 递归</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 写法一</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;type&#125;</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;type&#125;</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">flat</span>(<span class="params">arg</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (!<span class="built_in">Array</span>.isArray(arg)) &#123;</span><br><span class="line">    <span class="keyword">return</span> arg;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">let</span> res = [];</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> index = <span class="number">0</span>; index &lt; arg.length; index++) &#123;</span><br><span class="line">    <span class="keyword">const</span> item = arg[index];</span><br><span class="line">    res = res.concat(flat(item));</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+  // for (let i = 0;i < 10;i++) {
+//   setTimeout(function () {
+//     console.log(i)// 10个10
+//   }, 1000)
+// }
 
 
 
-<h2 id="方案2-数组的reduce"><a href="#方案2-数组的reduce" class="headerlink" title="方案2: 数组的reduce"></a>方案2: 数组的reduce</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 写法二</span></span><br><span class="line"><span class="comment"> * 1. 判断是否是数组</span></span><br><span class="line"><span class="comment"> * 2. 如果是，则调用reduce, 迭代合并函数</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;Array&#125;</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">const</span> flat = <span class="function">(<span class="params">arr</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (!<span class="built_in">Array</span>.isArray(arr)) &#123;</span><br><span class="line">    <span class="keyword">return</span> arr</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> arr.reduce(<span class="function">(<span class="params">tol, cur</span>) =&gt;</span> tol.concat(flat(cur)), [])</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(flat(initArr))</span><br><span class="line"><span class="comment">// ['1-7', '2-6','4-6', '2-0','1-4', '3-9','4-5']</span></span><br></pre></td></tr></table></figure>
 
+const source = [[1, 2, 2], [3, 4, 5, 5], [6, 7, 8, 9, [11, 12, [12, 13, [14]]]], 10];
+const res = []
+const demo = function (array) {
+  for (let index = 0;index < array.length;index++) {
+    const element = array[index];
+    if (Array.isArray(element)) {
+      demo(element)
+    } else {
+      if (!res.includes(element)) {
+        res.push(element)
+      }
+    }
+  }
+}
 
+// demo(source)
+// res.sort((a, b) => a - b)
 
-<h2 id="方案3-数组转为字符串"><a href="#方案3-数组转为字符串" class="headerlink" title="方案3: 数组转为字符串"></a>方案3: 数组转为字符串</h2><p>缺点： 这个方法会将所有元素变为字符串</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 写法三</span></span><br><span class="line"><span class="comment"> * 调用数组的toString() 方法</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;Array&#125;</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">initArr.toString().split(<span class="string">","</span>)</span><br></pre></td></tr></table></figure>
+// console.log(res)
 
+/* 方法一 */
+const flat = (arr) => {
+  if (!Array.isArray(arr)) {
+    return arr
+  }
 
+  return arr.reduce((tol, cur) => tol.concat(flat(cur)), [])
+}
+
+console.log(Array.from(new Set(flat(source))))
 </div>
 
 

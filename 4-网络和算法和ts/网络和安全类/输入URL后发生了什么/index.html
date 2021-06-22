@@ -565,9 +565,9 @@ function sidebar_toggle() {
 <h1 id="四次挥手"><a href="#四次挥手" class="headerlink" title="四次挥手"></a>四次挥手</h1><p>由于TCP连接是==全双工==的，因此每个方向都必须单独进行关闭。<br>原则是当一方完成它的数据发送任务后就能发送一个FIN来终止这个方向的连接。收到一个 FIN只意味着这一方向上没有数据流动，一个TCP连接在收到一个FIN后仍能发送数据。首先进行关闭的一方将执行主动关闭，而另一方执行被动关闭。</p>
 <p>（1） TCP客户端发送一个FIN，用来关闭客户到服务器的数据传送。<br>（2） 服务器收到这个FIN，它发回一个ACK，确认序号为收到的序号加1。<br>（3） 服务器关闭客户端的连接，发送一个FIN给客户端。<br>（4） 客户端发回ACK报文确认，并将确认序号设置为收到序号加1</p>
 <h2 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a>计算机网络</h2><p>网络的传输</p>
-<p><img src="/Blog/source/images/%E8%BE%93%E5%85%A5URL%E5%90%8E%E5%8F%91%E7%94%9F%E4%BA%86%E4%BB%80%E4%B9%88-21-06-23-05-59-51.png"></p>
+<p><img src="/Blog/images/%E8%BE%93%E5%85%A5URL%E5%90%8E%E5%8F%91%E7%94%9F%E4%BA%86%E4%BB%80%E4%B9%88-21-06-23-05-59-51.png"></p>
 <p>TCP/IP协议族，各层的作用</p>
-<p><img src="/Blog/source/images/%E8%BE%93%E5%85%A5URL%E5%90%8E%E5%8F%91%E7%94%9F%E4%BA%86%E4%BB%80%E4%B9%88-21-06-23-06-01-41.png"></p>
+<p><img src="/Blog/images/%E8%BE%93%E5%85%A5URL%E5%90%8E%E5%8F%91%E7%94%9F%E4%BA%86%E4%BB%80%E4%B9%88-21-06-23-06-01-41.png"></p>
 
 </div>
 

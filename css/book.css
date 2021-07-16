@@ -54,6 +54,8 @@ img {
     @media all and (max-width: 1280px) {
       .off-canvas-content .book-content {
         padding: 0 1.25rem; } }
+    .off-canvas-content .book-content .book-post img {
+      width: 60%; }
     .off-canvas-content .book-content .book-post b, .off-canvas-content .book-content .book-post strong {
       background-color: rgba(193, 148, 223, 0.5);
       border-radius: 8px;

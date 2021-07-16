@@ -665,6 +665,10 @@ document.addEventListener('DOMContentLoaded', function () {
 <p><a href="/8-%E4%B9%B1%E4%B8%83%E5%85%AB%E7%B3%9F%E5%B7%A5%E5%85%B7/%E7%B3%BB%E7%BB%9F%E6%93%8D%E4%BD%9C/%E6%9F%A5%E7%9C%8B%E6%9C%AC%E5%9C%B0ip%E4%B9%8B%E7%B1%BB%E7%9A%84%E9%85%8D%E7%BD%AE(window)">查看本地ip之类的配置(window)</a></p>
 </li>
 </ul>
+<h1 style="color:#448d55;">非技术类</h1> 
+<ul>
+<li><a href="/%E9%9D%9E%E6%8A%80%E6%9C%AF%E7%B1%BB/%E5%9B%BA%E5%AE%9A%E6%80%A7%E6%80%9D%E7%BB%B4%E5%92%8C%E6%88%90%E9%95%BF%E6%80%A7%E6%80%9D%E7%BB%B4">固定性思维和成长性思维</a></li>
+</ul>
 
 </div>
 
@@ -719,43 +723,21 @@ function sidebar_toggle() {
 </header>
 </div>
             <div class="book-content"><div class="book-post">
-  // const bills = [
-//   {type: 'shop', value: 233},
-//   {type: 'shop', value: 678},
-//   {type: 'shop', value: 145},
-//   {type: 'transfer', value: 123},
-// ]
+  <h2 id="reduce-实现map">reduce 实现map</h2>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// reduce 实现map</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">Array</span>.prototype.reduceMap = <span class="function"><span class="keyword">function</span>(<span class="params">callback</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">this</span>.reduce(<span class="function">(<span class="params">tol,cur,index</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">const</span> newRecord = callback(cur, index)</span><br><span class="line">    tol.push(newRecord)</span><br><span class="line">    <span class="keyword">return</span> tol</span><br><span class="line">  &#125;,[])</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> res = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>].reduceMap(<span class="function">(<span class="params">item,index</span>)=&gt;</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> item + index</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(res)</span><br></pre></td></tr></table></figure>
+<h2 id="reduce-实现-forEach">reduce 实现 forEach</h2>
+<p>forEach接收一个函数，该函数有三个参数， 当前值，当前索引，当前正在被处理的数组</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Array</span>.prototype.reduceForEach = <span class="function"><span class="keyword">function</span>(<span class="params">callback</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">this</span>.reduce(<span class="function">(<span class="params">tol,cur,index</span>)=&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// const newRecord =</span></span><br><span class="line">    callback(cur, index, <span class="keyword">this</span>)</span><br><span class="line">    <span class="comment">// tol.push(newRecord)</span></span><br><span class="line">    <span class="comment">// return tol</span></span><br><span class="line">  &#125;,[])</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="reduce-实现-filter">reduce 实现 filter</h2>
+<p>filter接收一个回调函数，该回调函数接收三个参数，element, index, Array</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Array</span>.prototype.reduceFilter = <span class="function"><span class="keyword">function</span>(<span class="params">callback</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">this</span>.reduce(<span class="function">(<span class="params">tol,cur,index</span>)=&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span>(callback(cur, index, <span class="keyword">this</span>))&#123;</span><br><span class="line">      <span class="keyword">return</span> cur</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,[])</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>].reduceFilter(<span class="function">(<span class="params">item,index, arr</span>)=&gt;</span> item &gt; <span class="number">2</span>))</span><br></pre></td></tr></table></figure>
+<h2 id="redece-判断元素出现次数">redece 判断元素出现次数</h2>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> arrDemo = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">3</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">4</span>,<span class="number">4</span>,<span class="number">4</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> res = arrDemo.reduce(<span class="function">(<span class="params">tol,cur</span>)=&gt;</span>&#123;</span><br><span class="line">  <span class="built_in">Object</span>.assign(tol,</span><br><span class="line">    &#123;[cur]: (tol[cur]|| <span class="number">0</span>) + <span class="number">1</span> &#125;</span><br><span class="line">  )</span><br><span class="line">  <span class="keyword">return</span> tol</span><br><span class="line">&#125;,&#123;&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// &#123; '1': 1, '2': 2, '3': 3, '4': 4 &#125;</span></span><br></pre></td></tr></table></figure>
+<h2 id="按照属性给数组分类">按照属性给数组分类</h2>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> bills = [</span><br><span class="line">  &#123; <span class="attr">type</span>: <span class="string">'shop'</span>, <span class="attr">momey</span>: <span class="number">223</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">type</span>: <span class="string">'shop'</span>, <span class="attr">momey</span>: <span class="number">821</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">type</span>: <span class="string">'study'</span>, <span class="attr">momey</span>: <span class="number">341</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">type</span>: <span class="string">'transfer'</span>, <span class="attr">momey</span>: <span class="number">821</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">type</span>: <span class="string">'study'</span>, <span class="attr">momey</span>: <span class="number">821</span> &#125;</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> res = bills.reduce(<span class="function">(<span class="params">tol, cur</span>)=&gt;</span>&#123;</span><br><span class="line">  tol[cur.type] = tol[cur.type] || []</span><br><span class="line">  tol[cur.type].push(cur)</span><br><span class="line">  <span class="keyword">return</span> tol</span><br><span class="line">&#125;,&#123;&#125;)</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(res)</span><br><span class="line"></span><br><span class="line"><span class="comment">// &#123;</span></span><br><span class="line"><span class="comment">//  shop: [ &#123; type: 'shop', momey: 223 &#125;, &#123; type: 'shop', momey: 821 &#125; ],</span></span><br><span class="line"><span class="comment">//  study: [ &#123; type: 'study', momey: 341 &#125;, &#123; type: 'study', momey: 821 &#125; ],</span></span><br><span class="line"><span class="comment">//  transfer: [ &#123; type: 'transfer', momey: 821 &#125; ]</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br></pre></td></tr></table></figure>
+<h2 id="数组去重">数组去重</h2>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> res = arr.reduce(<span class="function">(<span class="params">tol,cur</span>)=&gt;</span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(!tol.includes(cur))&#123;</span><br><span class="line">    tol.push(cur)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> tol</span><br><span class="line">&#125;,[])</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(res)</span><br></pre></td></tr></table></figure>
 
-// bills.reduce()
-
-
-// const bills = [
-//   { type: 'shop', momey: 223 },
-//   { type: 'shop', momey: 821 },
-//   { type: 'study', momey: 341 },
-//   { type: 'transfer', momey: 821 },
-//   { type: 'study', momey: 821 }
-// ];
-
-
-// const res = bills.reduce((tol, cur)=>{
-//   tol[cur.type] = tol[cur.type] || []
-//   tol[cur.type].push(cur)
-//   return tol
-// },{})
-
-// console.log(res)
-
-const arr = [1,2,3,1,2,3]
-
-const res = arr.reduce((tol,cur)=>{
-  if(!tol.includes(cur)){
-    tol.push(cur)
-  }
-  return tol
-},[])
-
-console.log(res)
 </div>
 
 

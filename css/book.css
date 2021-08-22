@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .book-container {
   width: 100%;
   height: 100%; }
@@ -47,7 +48,7 @@ img {
 
 .off-canvas-content {
   height: 100%;
-  font-family: Georgia, serif;
+  font-family: "Chinese Quote", "Segoe UI", Roboto, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif;
   transition: margin 200ms; }
   .off-canvas-content .book-content {
     padding: 0 4rem; }
@@ -98,6 +99,8 @@ img {
       .off-canvas-content .book-content .book-post p b.indent {
         display: inline-block;
         width: 1.56rem; }
+    .off-canvas-content .book-content .book-post > p {
+      text-indent: 1.56rem; }
     .off-canvas-content .book-content .book-post hr {
       border: 1px solid #e7e7e7;
       background-color: #e7e7e7;
@@ -487,7 +490,7 @@ img {
       margin: 1.25rem 0 0.625rem 0;
       font-size: 0.7rem; }
     .book-sidebar .book-menu h1 {
-      font-size: 0.9rem; }
+      font-size: 1rem; }
     .book-sidebar .book-menu ul,
     .book-sidebar .book-menu ol,
     .book-sidebar .book-menu li {
@@ -501,12 +504,14 @@ img {
       border-top: 1px solid #e7e7e7; }
     .book-sidebar .book-menu .accordion {
       padding: 0.625rem 0.6rem 0.625rem 1.25rem;
-      border-top: 1px solid #e7e7e7; }
+      border-top: 1px solid #e7e7e7;
+      color: #448d55; }
       .book-sidebar .book-menu .accordion label {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 0; }
+        padding: 0;
+        font-size: 0.85rem; }
       .book-sidebar .book-menu .accordion .accordion-body {
         margin: 0;
         overflow: scroll; }
@@ -655,3 +660,9 @@ img {
 
 .km-image-viewer .km-image-viewer-close {
   background-position: 0 -44px; }
+
+/* 重置不晓得哪个css文件的样式 */
+fieldset {
+  border: revert;
+  margin: revert;
+  padding: revert; }

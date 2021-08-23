@@ -10,7 +10,7 @@
 
     <title>
         
-          2-CSS相关/移动端适配 - 李幸娟的前端博客
+          1-JavaScript基础/flat实现三种方案 - 李幸娟的前端博客
         
     </title>
 
@@ -495,31 +495,21 @@ function sidebar_toggle() {
 </header>
 </div>
             <div class="book-content"><div class="book-post">
-  <p>移动端适配方案</p>
+  <h1 id="flat">flat</h1>
+<p>实现flat三种方案</p>
 <ol>
-<li>什么抛弃rem? – 因为不想要13, 15等非点阵字体
-<ol>
-<li><input type="checkbox" id="checkbox0"><label for="checkbox0">使用vw写法的弊端？ ———— 比较长，需要自己计算；且并没有解决“抛弃rem的原因”</label></li>
-<li><input type="checkbox" id="checkbox1"><label for="checkbox1">使用postcss-px-to-viewport 改进vw写法的弊端？————</label>
-<ol>
-<li><input type="checkbox" id="checkbox2"><label for="checkbox2">多了loader, 我们目前的css 是css in js, loader 要指定文件类型</label></li>
+<li>ES6的flat</li>
+<li>使用ES5实现一个flat</li>
+<li>调用toString()方法</li>
 </ol>
-</li>
-<li><input type="checkbox" id="checkbox3"><label for="checkbox3">初步解决方案（不像抛弃惯用的styled-components）</label>
-<ol>
-<li><input type="checkbox" id="checkbox4"><label for="checkbox4">布局仍采用 自己写vw;</label></li>
-<li><input type="checkbox" id="checkbox5"><label for="checkbox5">使用facebook 提出的原子化css, 像一些非常常用的变量，如 </label><code>line-height: 24px;</code> <code>font-size: 16px;</code>等变量，写在全局css文件中，</li>
-</ol>
-</li>
-<li><input type="checkbox" id="checkbox6"><label for="checkbox6"> 最终解决方案</label></li>
-</ol>
-</li>
-</ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">transform</span>(<span class="params">px: number | string, unit = <span class="string">'vw'</span></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">Number</span>(px)</span><br><span class="line">    ? <span class="string">`<span class="subst">$&#123;<span class="built_in">Math</span>.round((<span class="built_in">Number</span>(px) <span class="regexp">/ (BASE_SCREEN_WIDTH /</span> <span class="number">100</span>)) * <span class="number">100000</span>) <span class="regexp">/ 100000&#125;$&#123;unit&#125;`</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="regexp">    : 0;</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="regexp">&#125;</span></span></span></span><br></pre></td></tr></table></figure>
-<p>发生问题？<br>
-pw(50)  =&gt;   49.9844px ??? 和设计稿不符合</p>
-<p>解决方法</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">`<span class="subst">$&#123;<span class="built_in">Math</span>.round((<span class="built_in">Number</span>(px) <span class="regexp">/ (BASE_SCREEN_WIDTH /</span> <span class="number">100</span>)) * <span class="number">10</span> ** <span class="number">15</span>) <span class="regexp">/ 10 ** 15&#125;$&#123;unit&#125;`</span></span></span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> initArr = [</span><br><span class="line">  [</span><br><span class="line">    [<span class="string">'1-7'</span>, <span class="string">'2-6'</span>],</span><br><span class="line">    <span class="string">'4-6'</span>,</span><br><span class="line">    [</span><br><span class="line">      [<span class="string">'2-0'</span>, <span class="string">'1-4'</span>],</span><br><span class="line">      [<span class="string">'3-9'</span>],</span><br><span class="line">      <span class="string">'4-5'</span>,</span><br><span class="line">    ],</span><br><span class="line">  ]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<h2 id="方案1-递归">方案1: 递归</h2>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 写法一</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;type&#125;</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;type&#125;</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">flat</span>(<span class="params">arg</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (!<span class="built_in">Array</span>.isArray(arg)) &#123;</span><br><span class="line">    <span class="keyword">return</span> arg;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">let</span> res = [];</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> index = <span class="number">0</span>; index &lt; arg.length; index++) &#123;</span><br><span class="line">    <span class="keyword">const</span> item = arg[index];</span><br><span class="line">    res = res.concat(flat(item));</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="方案2-数组的reduce">方案2: 数组的reduce</h2>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 写法二</span></span><br><span class="line"><span class="comment"> * 1. 判断是否是数组</span></span><br><span class="line"><span class="comment"> * 2. 如果是，则调用reduce, 迭代合并函数</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;Array&#125;</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">const</span> flat = <span class="function">(<span class="params">arr</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (!<span class="built_in">Array</span>.isArray(arr)) &#123;</span><br><span class="line">    <span class="keyword">return</span> arr</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> arr.reduce(<span class="function">(<span class="params">tol, cur</span>) =&gt;</span> tol.concat(flat(cur)), [])</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(flat(initArr))</span><br><span class="line"><span class="comment">// ['1-7', '2-6','4-6', '2-0','1-4', '3-9','4-5']</span></span><br></pre></td></tr></table></figure>
+<h2 id="方案3-数组转为字符串">方案3: 数组转为字符串</h2>
+<p>缺点： 这个方法会将所有元素变为字符串</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 写法三</span></span><br><span class="line"><span class="comment"> * 调用数组的toString() 方法</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;Array&#125;</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">initArr.toString().split(<span class="string">","</span>)</span><br></pre></td></tr></table></figure>
 
 </div>
 

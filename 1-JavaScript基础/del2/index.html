@@ -367,7 +367,21 @@ function sidebar_toggle() {
 </header>
 </div>
             <div class="book-content"><div class="book-post">
-  // Promise.all();
+  async function a() {
+  console.log(await Promise.resolve(1));
+}
+
+async function b() {
+  console.log(await 2);
+}
+
+async function c() {
+  console.log(3);
+}
+
+a();
+b();
+c();
 
 </div>
 

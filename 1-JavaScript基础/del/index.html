@@ -409,6 +409,7 @@ class MyPromise {
     console.log("我是then方法");
     if (this.state === FULLFILLED) {
       onFullfilled(this.value);
+      return MyPromise(() => {});
     }
     if (this.state === REJECTED) {
       onRejected(this.value);

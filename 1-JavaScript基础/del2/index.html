@@ -365,26 +365,7 @@ function sidebar_toggle() {
 </header>
 </div>
             <div class="book-content"><div class="book-post">
-  function addTwo(x) {
-  return x + 2;
-}
-function addThree(x) {
-  return x + 3;
-}
-function addFive(x) {
-  return x + 5;
-}
-
-function componse(...fn) {
-  return (x) =>
-    fn.reduce((tolPromise, fn) => tolPromise.then(fn), Promise.resolve(x));
-}
-
-const addTen = componse(addTwo, addThree, addFive);
-
-addTen(8).then((res) => {
-  console.log(res);
-});
+  // Promise.all();
 
 </div>
 

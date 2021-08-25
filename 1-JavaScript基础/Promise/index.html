@@ -534,8 +534,14 @@ function sidebar_toggle() {
 <li>如果有期约拒绝，则第一个拒绝的期约的会将自己的理由作为合成期约的理由，之后再拒绝的期约，不会影响最终期约的拒绝理由。</li>
 </ol>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Promise</span>.all([</span><br><span class="line">   <span class="built_in">Promise</span>.resolve(<span class="string">'我是老大'</span>),</span><br><span class="line">   <span class="built_in">Promise</span>.reject(<span class="string">'我是老二'</span>),</span><br><span class="line">   <span class="built_in">Promise</span>.resolve(<span class="string">'我是老三'</span>),</span><br><span class="line">])</span><br><span class="line"><span class="comment">//  Promise &#123;&lt;rejected&gt;: "我是老二"&#125;</span></span><br></pre></td></tr></table></figure>
+</details>
 
 
+
+
+
+<details>
+<summary>怎么实现一个Promise.all()?</summary>
 
 </details>
 

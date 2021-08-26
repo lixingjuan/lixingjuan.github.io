@@ -10,7 +10,7 @@
 
     <title>
         
-          7-日记/2021/20200103 - 李幸娟的前端博客
+          3-Vue源码学习/v-model - 李幸娟的前端博客
         
     </title>
 
@@ -203,6 +203,8 @@ document.addEventListener('DOMContentLoaded', function () {
 </li>
 <li><p><a href="/3-Vue%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0/miniVue">miniVue</a> </p>
 </li>
+<li><p><a href="/3-Vue%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0/v-model">v-model</a> </p>
+</li>
 <li><p><a href="/3-Vue%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0/vue">vue</a> </p>
 </li>
 <li><p><a href="/3-Vue%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0/vue%E7%9A%84data%E4%B8%BA%E4%BB%80%E4%B9%88%E6%98%AF%E5%87%BD%E6%95%B0">vue的data为什么是函数</a> </p>
@@ -256,27 +258,6 @@ document.addEventListener('DOMContentLoaded', function () {
 <li><p><a href="/5-%E9%A1%B9%E7%9B%AE%E5%A4%8D%E7%9B%98/%E8%85%BE%E5%AE%89%E5%9F%BA%E9%87%91">腾安基金</a> </p>
 </li>
 </ul>
-<h1 style="color: #ba2f7b">日记</h1> 
-
-<h2 id="2020"><a href="#2020" class="headerlink" title="2020"></a>2020</h2><ul>
-<li><a href="/7-%E6%97%A5%E8%AE%B0/2020/20201231">20201231</a> </li>
-</ul>
-<h2 id="2021"><a href="#2021" class="headerlink" title="2021"></a>2021</h2><ul>
-<li><p><a href="/7-%E6%97%A5%E8%AE%B0/2021/2021-0408">2021-0408</a> </p>
-</li>
-<li><p><a href="/7-%E6%97%A5%E8%AE%B0/2021/20200103">20200103</a> </p>
-</li>
-<li><p><a href="/7-%E6%97%A5%E8%AE%B0/2021/20200118">20200118</a> </p>
-</li>
-<li><p><a href="/7-%E6%97%A5%E8%AE%B0/2021/20200129">20200129</a> </p>
-</li>
-<li><p><a href="/7-%E6%97%A5%E8%AE%B0/2021/20210105">20210105</a> </p>
-</li>
-<li><p><a href="/7-%E6%97%A5%E8%AE%B0/2021/%E5%86%B7%E9%97%A8%E5%B1%9E%E6%80%A7">冷门属性</a> </p>
-</li>
-<li><p><a href="/7-%E6%97%A5%E8%AE%B0/2021/%E5%89%8D%E7%AB%AF%E5%9B%A2%E9%98%9F%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB%E4%B8%BB%E9%A2%98">前端团队技术分享主题</a> </p>
-</li>
-</ul>
 <h1 style="color: #ba2f7b">TypeScript</h1> 
 
 <ul>
@@ -302,6 +283,11 @@ document.addEventListener('DOMContentLoaded', function () {
 </li>
 <li><p><a href="/9-%E7%AE%97%E6%B3%95/%E6%B1%89%E8%AF%BA%E5%A1%94">汉诺塔</a> </p>
 </li>
+</ul>
+<h1 style="color: #ba2f7b">前端other</h1> 
+
+<ul>
+<li><a href="/%E5%89%8D%E7%AB%AFother/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96">性能优化</a> </li>
 </ul>
 <h1 style="color: #ba2f7b">非技术类</h1> 
 
@@ -367,31 +353,19 @@ function sidebar_toggle() {
 </header>
 </div>
             <div class="book-content"><div class="book-post">
-  <p>(代码demo地址)[<a href="https://stackblitz.com/edit/react-d5ylj7?file=index.js%5D" target="_blank" rel="noopener">https://stackblitz.com/edit/react-d5ylj7?file=index.js]</a></p>
-<p>首先需要熟悉一个属性</p>
+  <h1 id="怎么实现一个-v-model"><a href="#怎么实现一个-v-model" class="headerlink" title="怎么实现一个 v-model?"></a>怎么实现一个 v-model?</h1><p>(其实听到这个，我的第一反应满脑子都是源码😭)</p>
+<h2 id="基本思路"><a href="#基本思路" class="headerlink" title="基本思路"></a>基本思路</h2><p>其实vue中的v-model 自定义实现，我认为和 react 中开发受控组件有一点像，基本的实现思路都是将该 props 变量及 一个回调函数传递给子组件, props变量表示最新的值，回调函数用来提供给子组件，当数据更新的时候，通知到父组件;<br>只不过在vue中自定义了选项 model, 允许我们将两个东西合并为一个</p>
+<h2 id="具体代码实现"><a href="#具体代码实现" class="headerlink" title="具体代码实现"></a>具体代码实现</h2><h3 id="Vue"><a href="#Vue" class="headerlink" title="Vue"></a>Vue</h3><p>测试地址: <a href="https://codesandbox.io/s/crazy-currying-dz83k?file=/src/App.vue" target="_blank" rel="noopener">https://codesandbox.io/s/crazy-currying-dz83k?file=/src/App.vue</a></p>
 <ol>
-<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/background-clip" target="_blank" rel="noopener">background-clip</a>, 设置元素的背景（背景图片或颜色）是否延伸程度，text, content, border ,padding；</li>
+<li>父组件代码</li>
 </ol>
-<h2 id="button-边框渐变"><a href="#button-边框渐变" class="headerlink" title="button 边框渐变"></a>button 边框渐变</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;h6&gt;（原理即适用padding模拟border，PC, 移动端可利用缩放实现）&lt;<span class="regexp">/h6&gt;</span></span><br><span class="line"><span class="regexp">&lt;button type="button" class="buttonB"&gt;</span></span><br><span class="line"><span class="regexp"> 1px渐变边框</span></span><br><span class="line"><span class="regexp">&lt;/</span>button&gt;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.buttonB</span> &#123;</span><br><span class="line">  <span class="attribute">background-clip</span>: content-box, padding-box;</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">1px</span>;</span><br><span class="line">  <span class="attribute">background-image</span>: linear-gradient(white, white),</span><br><span class="line">    linear-gradient(<span class="number">180deg</span>, <span class="number">#7f74f8</span> <span class="number">0%</span>, <span class="number">#7ac2fa</span> <span class="number">100%</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div id&#x3D;&quot;app&quot;&gt;</span><br><span class="line">    点击这个组件，msg的值会 + 1</span><br><span class="line">    &lt;HelloWorld v-model&#x3D;&quot;msg&quot;&gt;&lt;&#x2F;HelloWorld&gt;</span><br><span class="line">  &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">import HelloWorld from &quot;.&#x2F;components&#x2F;HelloWorld&quot;;</span><br><span class="line"></span><br><span class="line">export default &#123;</span><br><span class="line">  name: &quot;App&quot;,</span><br><span class="line">  components: &#123;</span><br><span class="line">    HelloWorld,</span><br><span class="line">  &#125;,</span><br><span class="line">  data() &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      msg: &quot;Hello Vue in CodeSandbox!&quot;,</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
 
 
-<h2 id="button-边框渐变-文字渐变"><a href="#button-边框渐变-文字渐变" class="headerlink" title="button 边框渐变 + 文字渐变"></a>button 边框渐变 + 文字渐变</h2><p>方案一： background-clip: text</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;button type=<span class="string">"button"</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">"buttonD"</span> desc=<span class="string">"边框+文字渐变"</span>&gt;</span><br><span class="line">  边框+文字渐变</span><br><span class="line">&lt;<span class="regexp">/button&gt;</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.buttonD</span> &#123;</span><br><span class="line">  <span class="attribute">background-clip</span>: content-box, padding-box;</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">1px</span>;</span><br><span class="line">  <span class="attribute">background-image</span>: <span class="built_in">linear-gradient</span>(white, white),</span><br><span class="line">    <span class="built_in">linear-gradient</span>(<span class="number">180deg</span>, #<span class="number">7</span>f74f8 <span class="number">0%</span>, #<span class="number">7</span>ac2fa <span class="number">100%</span>);</span><br><span class="line">  <span class="attribute">position</span>: relative;</span><br><span class="line"></span><br><span class="line">  &amp;::after &#123;</span><br><span class="line">    <span class="selector-tag">content</span>: <span class="selector-tag">attr</span>(<span class="selector-tag">desc</span>);</span><br><span class="line">    <span class="selector-tag">position</span>: <span class="selector-tag">absolute</span>;</span><br><span class="line">    <span class="selector-tag">top</span>: 0<span class="selector-tag">px</span>;</span><br><span class="line">    <span class="selector-tag">left</span>: 0<span class="selector-tag">px</span>;</span><br><span class="line">    <span class="selector-tag">width</span>: 100%;</span><br><span class="line">    <span class="selector-tag">height</span>: 100%;</span><br><span class="line">    <span class="selector-tag">display</span>: <span class="selector-tag">flex</span>;</span><br><span class="line">    <span class="selector-tag">align-items</span>: <span class="selector-tag">center</span>;</span><br><span class="line">    <span class="selector-tag">justify-content</span>: <span class="selector-tag">center</span>;</span><br><span class="line">    <span class="selector-tag">-webkit-background-clip</span>: <span class="selector-tag">text</span>; <span class="comment">/* 属性值，text兼容性差 */</span></span><br><span class="line">    <span class="selector-tag">color</span>: <span class="selector-tag">transparent</span>;</span><br><span class="line">    <span class="selector-tag">background-image</span>: <span class="selector-tag">linear-gradient</span>(180<span class="selector-tag">deg</span>, <span class="selector-id">#7f74f8</span> 0%, <span class="selector-id">#7ac2fa</span> 100%);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-
-<p>方案二： 内部的渐变字体使用svg绘制</p>
-<p>html</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;button type=<span class="string">"button"</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">"buttonC"</span> desc=<span class="string">"边框+文字渐变"</span>&gt;</span><br><span class="line"> &lt;svg&gt;</span><br><span class="line">   &lt;defs&gt;</span><br><span class="line">     &lt;linearGradient id=<span class="string">"cool"</span> x1=<span class="string">"0%"</span> y1=<span class="string">"0%"</span> x2=<span class="string">"0%"</span> y2=<span class="string">"100%"</span>&gt;</span><br><span class="line">       &lt;stop offset=<span class="string">"0%"</span> stopColor=<span class="string">"#7F76F8 "</span> stopOpacity=<span class="string">"1"</span> /&gt;</span><br><span class="line">       &lt;stop offset=<span class="string">"100%"</span> stopColor=<span class="string">"#7EC4FA"</span> stopOpacity=<span class="string">"1"</span> /&gt;</span><br><span class="line">     &lt;<span class="regexp">/linearGradient&gt;</span></span><br><span class="line"><span class="regexp">   &lt;/</span>defs&gt;</span><br><span class="line"></span><br><span class="line">   &lt;text</span><br><span class="line">     x=<span class="string">"50%"</span></span><br><span class="line">     y=<span class="string">"50%"</span></span><br><span class="line">     dy=<span class="string">"2"</span></span><br><span class="line">     fill=&#123;<span class="string">`url(#cool)`</span>&#125;</span><br><span class="line">     style=&#123;&#123;</span><br><span class="line">       fontSize: <span class="string">"18px"</span>,</span><br><span class="line">       alignmentBaseline: <span class="string">"middle"</span>,</span><br><span class="line">       textAnchor: <span class="string">"middle"</span></span><br><span class="line">     &#125;&#125;</span><br><span class="line">   &gt;</span><br><span class="line">     边框+文字渐变</span><br><span class="line">   &lt;<span class="regexp">/text&gt;</span></span><br><span class="line"><span class="regexp"> &lt;/</span>svg&gt;</span><br><span class="line">&lt;<span class="regexp">/button&gt;</span></span><br></pre></td></tr></table></figure>
-
-
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.buttonC</span> &#123;</span><br><span class="line">  <span class="attribute">background-clip</span>: content-box, padding-box;</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">1px</span>;</span><br><span class="line">  <span class="attribute">background-image</span>: <span class="built_in">linear-gradient</span>(white, white),</span><br><span class="line">    <span class="built_in">linear-gradient</span>(<span class="number">180deg</span>, #<span class="number">7</span>f74f8 <span class="number">0%</span>, #<span class="number">7</span>ac2fa <span class="number">100%</span>);</span><br><span class="line">  <span class="attribute">position</span>: relative;</span><br><span class="line"></span><br><span class="line">  svg &#123;</span><br><span class="line">    <span class="selector-tag">width</span>: 100%;</span><br><span class="line">    <span class="selector-tag">height</span>: 100%;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<ol start="2">
+<li>子组件代码</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div class&#x3D;&quot;hello&quot; @click&#x3D;&quot;$emit(&#39;click&#39;, &#96;$&#123;msg + 1&#125;&#96;)&quot;&gt;&#123;&#123; msg &#125;&#125;&lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">  model: &#123;</span><br><span class="line">    prop: &quot;msg&quot;,</span><br><span class="line">    event: &quot;click&quot;,</span><br><span class="line">  &#125;,</span><br><span class="line">  name: &quot;HelloWorld&quot;,</span><br><span class="line">  props: &#123;</span><br><span class="line">    msg: String,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
 
 </div>
 
@@ -435,7 +409,7 @@ function sidebar_toggle() {
     <!-- Author title -->
     <div class="author-title">
       <div>平凡生活的英雄梦想</div>
-      <div>2021-08-22</div>
+      <div>2021-08-27</div>
     </div>
   </div>
 

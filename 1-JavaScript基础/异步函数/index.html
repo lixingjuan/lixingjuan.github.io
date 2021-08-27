@@ -287,7 +287,10 @@ document.addEventListener('DOMContentLoaded', function () {
 <h1 style="color: #ba2f7b">前端other</h1> 
 
 <ul>
-<li><a href="/%E5%89%8D%E7%AB%AFother/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96">性能优化</a> </li>
+<li><p><a href="/%E5%89%8D%E7%AB%AFother/code-review">code-review</a> </p>
+</li>
+<li><p><a href="/%E5%89%8D%E7%AB%AFother/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96">性能优化</a> </p>
+</li>
 </ul>
 <h1 style="color: #ba2f7b">非技术类</h1> 
 
@@ -367,31 +370,61 @@ function sidebar_toggle() {
 <p>await 关键字的原理: await 关键字会暂停执行异步函数后面的代码，让出javascript 的执行线程。这个行为与生成器函数中的 yield 关键字是一样的。await 关键字同样是尝试解包对象的值，然后将这个值传给表达式， 再异步恢复异步函数的执行。</p>
 </blockquote>
 <h2 id="await与异步函数的返回"><a href="#await与异步函数的返回" class="headerlink" title="await与异步函数的返回"></a>await与异步函数的返回</h2><p>await 期待(实际上并不要求)一个实现thenable接口的对象，但常规的值也可以。如果是一个实现thenable接口的对象，则这个对象会被await 默认解包; 如果不是，则这个值会被当作已经解决的期约。</p>
-<p>等待一个原始值</p>
+<ol>
+<li>等待一个原始值</li>
+</ol>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> foo = <span class="keyword">async</span> () =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> a = <span class="keyword">await</span> <span class="string">"foa"</span>;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"a"</span>, a);</span><br><span class="line">&#125;;</span><br><span class="line">foo();</span><br><span class="line"><span class="comment">// a foa</span></span><br></pre></td></tr></table></figure>
 
 
-<p><strong>等待一个实现了thenable接口的对象</strong></p>
+<ol start="2">
+<li><strong>等待一个实现了thenable接口的对象</strong></li>
+</ol>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> foo1 = <span class="keyword">async</span> () =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> thenable = &#123;</span><br><span class="line">    then(callback) &#123;</span><br><span class="line">      callback(<span class="string">"baz"</span>);</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="keyword">const</span> a = <span class="keyword">await</span> thenable;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"a"</span>, a);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">foo1();</span><br><span class="line"><span class="comment">// a baz</span></span><br></pre></td></tr></table></figure>
 
 
-<p>等待一个期约</p>
+<ol start="3">
+<li>等待一个期约</li>
+</ol>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> foo = <span class="keyword">async</span> () =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> a = <span class="keyword">await</span> <span class="built_in">Promise</span>.resolve(<span class="string">"hello"</span>);</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"a"</span>, a);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">foo();</span><br><span class="line"><span class="comment">// a hello</span></span><br></pre></td></tr></table></figure>
 
 
 
-<p>等待会抛出错误的同步操作，会返回拒绝的期约, 抛出未捕获错误</p>
+<ol start="4">
+<li>等待会抛出错误的同步操作，会返回拒绝的期约, 抛出未捕获错误</li>
+</ol>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> foo = <span class="keyword">async</span> () =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">1</span>);</span><br><span class="line">  <span class="keyword">await</span> (<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="string">"3"</span>;</span><br><span class="line">  &#125;)();</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">foo()</span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">2</span>);</span><br><span class="line"><span class="comment">// 1</span></span><br><span class="line"><span class="comment">// 2</span></span><br><span class="line"><span class="comment">// (node:8597) UnhandledPromiseRejectionWarning: 3</span></span><br></pre></td></tr></table></figure>
 
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> foo = <span class="keyword">async</span> () =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">1</span>);</span><br><span class="line">  <span class="keyword">await</span> (<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="string">"3"</span>;</span><br><span class="line">  &#125;)();</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">foo().catch(<span class="built_in">console</span>.log);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">2</span>);</span><br><span class="line"><span class="comment">// 1</span></span><br><span class="line"><span class="comment">// 2</span></span><br><span class="line"><span class="comment">// 3</span></span><br></pre></td></tr></table></figure>
 
 
-<p>reject 后面的代码不会执行</p>
+<ol start="5">
+<li>reject 后面的代码不会执行</li>
+</ol>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> foo = <span class="keyword">async</span> () =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">1</span>);</span><br><span class="line">  <span class="keyword">await</span> <span class="built_in">Promise</span>.reject(<span class="number">3</span>);</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">4</span>) <span class="comment">// 这里不会执行</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">foo().catch(<span class="built_in">console</span>.log);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">2</span>);</span><br></pre></td></tr></table></figure>
 
 
+<h2 id="await理解"><a href="#await理解" class="headerlink" title="await理解"></a>await理解</h2><blockquote>
+<p>要完全理解await 关键字，要知道它并非仅仅是等待一个值那么简单，javascript 在碰到 await关键字时，会记录在哪里暂停执行，等到await 右侧的值可用了，javascript运行时会向消息队列推送一个任务，这个任务会恢复异步任务的执行。<br>因此，即使await 后面跟着一个立即可用的值，函数的其余部分也会异步求值。</p>
+</blockquote>
+<p>看以下例子</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">b</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">1</span>);</span><br><span class="line">  <span class="keyword">await</span> <span class="literal">null</span>;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">2</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">b();</span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">3</span>);</span><br><span class="line"><span class="comment">// 1</span></span><br><span class="line"><span class="comment">// 3</span></span><br><span class="line"><span class="comment">// 2</span></span><br></pre></td></tr></table></figure>
 
 
+<p>如果await等待的是一个契约</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">b</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">1</span>);</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">await</span> <span class="number">2</span>);</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">3</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">b();</span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">4</span>);</span><br><span class="line"><span class="comment">// 1</span></span><br><span class="line"><span class="comment">// 4</span></span><br><span class="line"><span class="comment">// 2</span></span><br><span class="line"><span class="comment">// 3</span></span><br></pre></td></tr></table></figure>
+
+<p>下面的打印结果同上</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">b</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">1</span>);</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">await</span> <span class="built_in">Promise</span>.resolve(<span class="number">2</span>));</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">3</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">b();</span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">4</span>);</span><br><span class="line"><span class="comment">// 1</span></span><br><span class="line"><span class="comment">// 4</span></span><br><span class="line"><span class="comment">// 2</span></span><br><span class="line"><span class="comment">// 3</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="异步函数策略"><a href="#异步函数策略" class="headerlink" title="异步函数策略"></a>异步函数策略</h2><h3 id="实现sleep"><a href="#实现sleep" class="headerlink" title="实现sleep"></a>实现sleep</h3><p>实现非阻塞的暂停</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sleep</span>(<span class="params">delay</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve</span>) =&gt;</span> setTimeout(resolve, delay));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> t0 = <span class="built_in">Date</span>.now();</span><br><span class="line">  <span class="keyword">await</span> sleep(<span class="number">1500</span>);</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="built_in">Date</span>.now() - t0);</span><br><span class="line">&#125;</span><br><span class="line">foo();</span><br><span class="line"><span class="comment">// 1501</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<!-- ### 实现串行 -->
 <h2 id="练习题"><a href="#练习题" class="headerlink" title="练习题"></a>练习题</h2><p>以下代码的执行顺序是什么？</p>
 <ol>
 <li>考察是否知道await后代码的执行顺序</li>

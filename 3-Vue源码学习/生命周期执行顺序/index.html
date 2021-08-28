@@ -10,7 +10,7 @@
 
     <title>
         
-          4-网络/http和https的区别 - 李幸娟的前端博客
+          3-Vue源码学习/生命周期执行顺序 - 李幸娟的前端博客
         
     </title>
 
@@ -353,60 +353,18 @@ function sidebar_toggle() {
 </header>
 </div>
             <div class="book-content"><div class="book-post">
-  <h2 id="1-Http和https区别？"><a href="#1-Http和https区别？" class="headerlink" title="1.Http和https区别？"></a>1.Http和https区别？</h2><table>
-<thead>
-<tr>
-<th></th>
-<th>HTTP</th>
-<th>HTTPs</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>证书</td>
-<td>不需要</td>
-<td>ca</td>
-</tr>
-<tr>
-<td>建立连接的过程</td>
-<td>客户端和服务器端三次握手建立链接</td>
-<td>见下描述</td>
-</tr>
-<tr>
-<td>端口</td>
-<td>建立在TCP</td>
-<td>443</td>
-</tr>
-<tr>
-<td>简介</td>
-<td>建立在TCP协议上</td>
-<td>HTTPS 经由 HTTP 进行通信，但利用 SSL/TLS 来加密数据包</td>
-</tr>
-<tr>
-<td>速度</td>
-<td>快一点，三次握手，9个包</td>
-<td>慢一点，除了TCP的三个包，还有SSL产生的9个包，共12个包</td>
-</tr>
-<tr>
-<td>报文</td>
-<td>明文</td>
-<td>使用随机key加密后传输</td>
-</tr>
-</tbody></table>
-<p>HTTPs的加密过程</p>
-<ol>
-<li>客户端向服务器发起请求，然后连接到server的 <strong>443端口</strong>；</li>
-<li>服务器生成 <strong>私钥和公钥</strong>，将 <strong>公钥</strong> 发送到客户端；</li>
-<li>客户端收到公钥，生成 <strong>随机key</strong>, 使用公钥对随机key进行加密后，传送到服务器；</li>
-<li>服务器收到后，使用 <strong>私钥</strong>，解密数据包后，得到随机key;</li>
-<li>然后双方开始进行传输数据，服务器会使用 <strong>key对数据进行加密</strong> 后发送给客户端，客户端也使用 <strong>随机key</strong>, 对数据进行解密；</li>
-</ol>
-<h2 id="2-介绍下OAuth"><a href="#2-介绍下OAuth" class="headerlink" title="2.介绍下OAuth"></a>2.介绍下OAuth</h2><ol>
-<li>客户端向用户申请给予授权，</li>
-<li>用户同意给予授权；</li>
-<li>客户端使用该授权，向认证服务器申请令牌；</li>
-<li>认证服务器对客户端进行认证以后，确认无误，同意发放令牌；</li>
-<li>客户端使用令牌向资源服务器发起资源请求；</li>
-<li>资源服务器校验令牌无误，返回资源；</li>
+  <h1 id="父子组件生命周期执行顺序"><a href="#父子组件生命周期执行顺序" class="headerlink" title="父子组件生命周期执行顺序"></a>父子组件生命周期执行顺序</h1><h2 id="组件挂载"><a href="#组件挂载" class="headerlink" title="组件挂载"></a>组件挂载</h2><p>组件挂载的时候的执行顺序是: 父组件先挂载，执行到beforeMount, 然后从父到叶子组件依次都执行到beforeMount; 然后从最叶子的节点，自低而上依次完成mounted, 父组件最后执行mounted, 毕竟整颗树完全完成挂载才算是 mounted;</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">index beforeCreate</span><br><span class="line">index created</span><br><span class="line">index beforeMount</span><br><span class="line"></span><br><span class="line">son beforeCreate</span><br><span class="line">son created</span><br><span class="line">son beforeMount</span><br><span class="line"></span><br><span class="line">grand-son beforeCreate</span><br><span class="line">grand-son created</span><br><span class="line">grand-son beforeMount</span><br><span class="line"></span><br><span class="line">grand-son mounted</span><br><span class="line">son mounted</span><br><span class="line">index mounted</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="组件卸载"><a href="#组件卸载" class="headerlink" title="组件卸载"></a>组件卸载</h2><p>组件卸载的时候，首先也是所有的父组件先感知到需要卸载，自顶而上走到beforeDestroy, 真正的卸载过程也是自底而上依次卸载</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">index beforeDestroy</span><br><span class="line">son beforeDestroy</span><br><span class="line">grand-son beforeDestroy</span><br><span class="line"></span><br><span class="line">grand-son destroyed</span><br><span class="line">son destroyed</span><br><span class="line">index destroyed</span><br><span class="line"></span><br><span class="line">grand-son mounted</span><br><span class="line">son mounted</span><br><span class="line">index mounted</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ol>
+<li>在created 钩子函数可以访问到数据，在mounted钩子函数可以访问到DOM，在destory 钩子函数可以做一些定时器销毁工作；</li>
+<li>vue.js的生命周期函数就是在初始化以及数据更新过程各个阶段执行不同的钩子函数;</li>
+<li>我记得从源码的角度，vue可以执行生命周期，是借助一个三方库(todo: 忘记名字)在不同的时机抛出了不同的钩子;</li>
 </ol>
 
 </div>
@@ -451,7 +409,7 @@ function sidebar_toggle() {
     <!-- Author title -->
     <div class="author-title">
       <div>平凡生活的英雄梦想</div>
-      <div>2021-08-24</div>
+      <div>2021-08-28</div>
     </div>
   </div>
 

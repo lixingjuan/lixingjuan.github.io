@@ -10,7 +10,7 @@
 
     <title>
         
-          2-CSS相关/css3动画属性 - 李幸娟的前端博客
+          6-React/fiber是什么 - 李幸娟的前端博客
         
     </title>
 
@@ -339,24 +339,10 @@ function sidebar_toggle() {
 </header>
 </div>
             <div class="book-content"><div class="book-post">
-  <p>CSS3中transition和animation的属性分别有哪些</p>
-<p>transition 过渡动画：</p>
-<ol>
-<li>transition-property：属性名称</li>
-<li>transition-duration: 间隔时间</li>
-<li>transition-timing-function: 动画曲线</li>
-<li>transition-delay: 延迟</li>
-</ol>
-<p>animation 关键帧动画：</p>
-<ol>
-<li> animation-name：动画名称</li>
-<li> animation-duration: 间隔时间</li>
-<li> animation-timing-function: 动画曲线</li>
-<li> animation-delay: 延迟</li>
-<li> animation-iteration-count：动画次数</li>
-<li> animation-direction: 方向</li>
-<li> animation-fill-mode: 禁止模式</li>
-</ol>
+  <p>注：以下是我看了几篇文章后自己的理解</p>
+<h2 id="1-react-fiber什么时候出的？"><a href="#1-react-fiber什么时候出的？" class="headerlink" title="1. react-fiber什么时候出的？"></a>1. react-fiber什么时候出的？</h2><p>v16</p>
+<h2 id="为了解决什么问题？"><a href="#为了解决什么问题？" class="headerlink" title="为了解决什么问题？"></a>为了解决什么问题？</h2><p>之前的任务是同步进行的，如果组件嵌套特别深，或者某个任务耗时特别长，那浏览器主线程就会一直被占用，如果有一些高优先级的任务进来，比如用户的输入，就无法立即得到响应，所以react提出了react-fiber, 顾名思义，就是（比浏览器最小的任务单位线程还要）更小的粒度。</p>
+<p>react-fiber更像是一种数据结构，将所有的任务拆分为小切片，虽然所有小切片加起来的时间仍然很长，但是由于每执行完一个任务，浏览器就会把控制权交给react进行调度，如果这时候有了更高优先级的任务，react就能更快的响应。任务切片，使得react拥有了更多的时机去改变当前执行任务。</p>
 
 </div>
 
@@ -400,7 +386,7 @@ function sidebar_toggle() {
     <!-- Author title -->
     <div class="author-title">
       <div>平凡生活的英雄梦想</div>
-      <div>2021-08-24</div>
+      <div>2021-08-31</div>
     </div>
   </div>
 

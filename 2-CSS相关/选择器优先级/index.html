@@ -127,8 +127,6 @@ document.addEventListener('DOMContentLoaded', function () {
 </li>
 <li><p><a href="/2-CSS%E7%9B%B8%E5%85%B3/blur%E5%92%8Cchange">blur和change</a> </p>
 </li>
-<li><p><a href="/2-CSS%E7%9B%B8%E5%85%B3/css3%E5%8A%A8%E7%94%BB%E5%B1%9E%E6%80%A7">css3动画属性</a> </p>
-</li>
 <li><p><a href="/2-CSS%E7%9B%B8%E5%85%B3/flex">flex</a> </p>
 </li>
 <li><p><a href="/2-CSS%E7%9B%B8%E5%85%B3/line-height">line-height</a> </p>
@@ -356,7 +354,7 @@ function sidebar_toggle() {
 </tr>
 </thead>
 <tbody><tr>
-<td></td>
+<td>元素行内样式</td>
 <td>ID选择器</td>
 <td>类名选择器</td>
 <td>标签选择器</td>
@@ -367,7 +365,7 @@ function sidebar_toggle() {
 <p>注意: 0-2-0 是大于 0-1-12 的, 仍然是0-2-0的特指度更高</p>
 </blockquote>
 <p>来看看如下示例的ICE</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">p&#123;&#125;                       // 001</span><br><span class="line">p.name &#123;color: red; &#125;     // 010</span><br><span class="line">p.name#red &#123;color: red; &#125; // 110</span><br></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">p&#123;&#125;                       // 0001</span><br><span class="line">p.name &#123;color: red; &#125;     // 0010</span><br><span class="line">p.name#red &#123;color: red; &#125; // 0110</span><br></pre></td></tr></table></figure>
 
 
 

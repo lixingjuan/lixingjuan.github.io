@@ -131,11 +131,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </li>
 <li><p><a href="/2-CSS%E7%9B%B8%E5%85%B3/flex">flex</a> </p>
 </li>
-<li><p><a href="/2-CSS%E7%9B%B8%E5%85%B3/less%E9%80%9F%E6%88%90">less速成</a> </p>
-</li>
 <li><p><a href="/2-CSS%E7%9B%B8%E5%85%B3/line-height">line-height</a> </p>
-</li>
-<li><p><a href="/2-CSS%E7%9B%B8%E5%85%B3/scss%E9%80%9F%E6%88%90">scss速成</a> </p>
 </li>
 <li><p><a href="/2-CSS%E7%9B%B8%E5%85%B3/%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%BF%E7%94%A8rem?">为什么使用rem?</a> </p>
 </li>
@@ -144,6 +140,10 @@ document.addEventListener('DOMContentLoaded', function () {
 <li><p><a href="/2-CSS%E7%9B%B8%E5%85%B3/%E5%AE%9E%E7%8E%B0%E5%B1%85%E4%B8%AD%E7%9A%84%E5%9B%9B%E7%A7%8D%E6%96%B9%E6%A1%88">实现居中的四种方案</a> </p>
 </li>
 <li><p><a href="/2-CSS%E7%9B%B8%E5%85%B3/%E5%B8%B8%E8%A7%81%E5%B8%83%E5%B1%80">常见布局</a> </p>
+</li>
+<li><p><a href="/2-CSS%E7%9B%B8%E5%85%B3/%E5%BA%93-less%E9%80%9F%E6%88%90">库-less速成</a> </p>
+</li>
+<li><p><a href="/2-CSS%E7%9B%B8%E5%85%B3/%E5%BA%93-scss%E9%80%9F%E6%88%90">库-scss速成</a> </p>
 </li>
 <li><p><a href="/2-CSS%E7%9B%B8%E5%85%B3/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%80%82%E9%85%8D">移动端适配</a> </p>
 </li>
@@ -341,36 +341,65 @@ function sidebar_toggle() {
 </header>
 </div>
             <div class="book-content"><div class="book-post">
-  <script async defer src="https://buttons.github.io/buttons.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+<script async defer src="https://buttons.github.io/buttons.js"></script>
 
+<style>
+#h1 {
+  margin-top: 0;
+}
+.des {
+  margin-top: 3rem;
+}
+#banner {
+  margin-top: 2rem;
+}
+#banner img {
+  width: 80%;
+}
+.slogan {
+  margin-top: 100px;
+  font-size: 1.5rem;
+  font-weight: 500;
+  text-align: center;
+}
+</style>
 
+<h1 id="h1">
+  <span>HELLO</span>
+  <p
+    style="display: inline-block; margin-bottom: 0"
+    class="animate__animated animate__bounceInDown"
+  >
+    <img src="images/hello-face.png" />
+  </p>
+</h1>
 
+<div class="des">
+  这里是李幸娟博客的首页！！！
+  该博客仅用于日常学习的记录，如有错误或问题请联系我
+  (邮箱：18236129679@163.com)
+</div>
 
+<div id="banner">
+  <img
+    src="/images/home-banner.svg"
+    class="animate__animated animate__bounceInDown animate__delay-1s"
+  />
+</div>
 
-<h1 id="HELLO"><a href="#HELLO" class="headerlink" title="HELLO  "></a>HELLO  <p style="display: inline-block; margin-bottom: 0;"><img src="/images/hello-face.png"></p></h1><p>这里是李幸娟博客的首页！！！</p>
-<p>该博客仅用于日常学习的记录，如有错误或问题请联系我 (邮箱：<a href="mailto:&#49;&#x38;&#x32;&#x33;&#x36;&#x31;&#x32;&#x39;&#x36;&#x37;&#x39;&#x40;&#x31;&#54;&#x33;&#x2e;&#99;&#111;&#109;">&#49;&#x38;&#x32;&#x33;&#x36;&#x31;&#x32;&#x39;&#x36;&#x37;&#x39;&#x40;&#x31;&#54;&#x33;&#x2e;&#99;&#111;&#109;</a>)</p>
-<img src='/images/home-banner.svg'/>
+<div class="slogan animate__animated animate__bounceInDown animate__delay-3s">
+  平凡生活中的英雄梦想。
+</div>
 
-
-
-<div style="margin: 300px;font-size: 28px; text-align: center;">平凡生活中的英雄梦想。</div>
 
 
 <!--
 ![](x-mind/李幸娟-前端汇总.png)
 
 
-
-
 <!-- # 前端团队技术分享主题 -->
-<!--  -->
-<!--  -->
-<!--  -->
-<!-- # TODO -->
-<!--  -->
-<!-- 1.  [ ]  js精度问题, 为什么产生？解决方法？ -->
-<!-- 2.  [ ]  为什么0.1+0.2 === 0.30000000000000004 -->
-<!-- 3.  [ ]  2.3*100 === 229.99999999999997 -->
+
 
 <!-- <blockquote class="pullquote mindmap"><p> –&gt;</p>
 <!-- #主题 -->
@@ -426,7 +455,7 @@ function sidebar_toggle() {
     <!-- Author title -->
     <div class="author-title">
       <div>平凡生活的英雄梦想</div>
-      <div>2021-08-24</div>
+      <div>2021-09-02</div>
     </div>
   </div>
 

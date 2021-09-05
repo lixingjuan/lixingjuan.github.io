@@ -56,7 +56,10 @@ document.addEventListener('DOMContentLoaded', function () {
   </a>
 </div> <div class="book-menu">
   <ul>
-<li><a href="/">Home</a></li>
+<li><p><a href="/">Home</a></p>
+</li>
+<li><p><a href="/0-nice">0-nice</a> </p>
+</li>
 </ul>
 <h1 style="color: #ba2f7b">JavaScript基础</h1> 
 
@@ -68,6 +71,8 @@ document.addEventListener('DOMContentLoaded', function () {
 <li><p><a href="/1-JavaScript%E5%9F%BA%E7%A1%80/Promise">Promise</a> </p>
 </li>
 <li><p><a href="/1-JavaScript%E5%9F%BA%E7%A1%80/Promise%E7%82%B9all">Promise点all</a> </p>
+</li>
+<li><p><a href="/1-JavaScript%E5%9F%BA%E7%A1%80/bind">bind</a> </p>
 </li>
 <li><p><a href="/1-JavaScript%E5%9F%BA%E7%A1%80/call%E5%92%8Capply">call和apply</a> </p>
 </li>
@@ -86,6 +91,8 @@ document.addEventListener('DOMContentLoaded', function () {
 <li><p><a href="/1-JavaScript%E5%9F%BA%E7%A1%80/%E4%BD%9C%E7%94%A8%E5%9F%9F%E7%9B%B8%E5%85%B3">作用域相关</a> </p>
 </li>
 <li><p><a href="/1-JavaScript%E5%9F%BA%E7%A1%80/%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE">作用域链</a> </p>
+</li>
+<li><p><a href="/1-JavaScript%E5%9F%BA%E7%A1%80/%E4%BD%BF%E7%94%A8promise%E5%AE%9E%E7%8E%B0%E5%B9%B6%E5%8F%91">使用promise实现并发</a> </p>
 </li>
 <li><p><a href="/1-JavaScript%E5%9F%BA%E7%A1%80/%E5%87%BD%E6%95%B0%E6%9F%AF%E9%87%8C%E5%8C%96">函数柯里化</a> </p>
 </li>
@@ -252,20 +259,42 @@ document.addEventListener('DOMContentLoaded', function () {
 <li><p><a href="/5-%E9%A1%B9%E7%9B%AE%E5%A4%8D%E7%9B%98/%E8%85%BE%E5%AE%89%E5%9F%BA%E9%87%91">腾安基金</a> </p>
 </li>
 </ul>
-<h1 style="color: #ba2f7b">React</h1> 
+<h1 style="color: #ba2f7b">算法</h1> 
 
 <ul>
-<li><a href="/6-React/fiber%E6%98%AF%E4%BB%80%E4%B9%88">fiber是什么</a> </li>
+<li><p><a href="/6-%E7%AE%97%E6%B3%95/5%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E5%AD%97%E7%AC%A6%E4%B8%B2">5最长回文字符串</a> </p>
+</li>
+<li><p><a href="/6-%E7%AE%97%E6%B3%95/js%E4%B8%89%E7%A7%8D%E9%81%8D%E5%8E%86">js三种遍历</a> </p>
+</li>
+<li><p><a href="/6-%E7%AE%97%E6%B3%95/%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C">两数之和</a> </p>
+</li>
+<li><p><a href="/6-%E7%AE%97%E6%B3%95/%E5%A4%A7%E6%95%B0%E7%9B%B8%E5%8A%A0">大数相加</a> </p>
+</li>
+<li><p><a href="/6-%E7%AE%97%E6%B3%95/%E5%B8%B8%E8%A7%81%E6%8E%92%E5%BA%8F">常见排序</a> </p>
+</li>
+<li><p><a href="/6-%E7%AE%97%E6%B3%95/%E6%B1%89%E8%AF%BA%E5%A1%94">汉诺塔</a> </p>
+</li>
 </ul>
 <h1 style="color: #ba2f7b">TypeScript</h1> 
 
 <ul>
+<li><p><a href="/8-TypeScript/4.3%E6%96%B0%E5%A2%9E%E6%96%B9%E6%B3%95">4.3新增方法</a> </p>
+</li>
 <li><p><a href="/8-TypeScript/enum">enum</a> </p>
+</li>
+<li><p><a href="/8-TypeScript/interface-vs-type">interface-vs-type</a> </p>
+</li>
+<li><p><a href="/8-TypeScript/%E4%B8%80%E4%BA%9B%E8%AE%B0%E5%BD%95">一些记录</a> </p>
 </li>
 <li><p><a href="/8-TypeScript/%E6%B5%8B%E8%AF%95%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84">测试目录结构</a> </p>
 </li>
 <li><p><a href="/8-TypeScript/%E7%94%BB%E7%93%A2">画瓢</a> </p>
 </li>
+</ul>
+<h1 style="color: #ba2f7b">React</h1> 
+
+<ul>
+<li><a href="/React/%E5%AF%B9hooks%E7%90%86%E8%A7%A3">对hooks理解</a> </li>
 </ul>
 <h1 style="color: #ba2f7b">前端other</h1> 
 
@@ -348,8 +377,7 @@ function sidebar_toggle() {
 <li><input disabled="" type="checkbox"> 美团点评（大众点评，长宁北新泾，生活服务平台，10-9-5，年底一般3.5个月，其中0.5个月上半年绩效工资+0.5个月下半年绩效工资+2.5个月年终奖工资）；</li>
 <li><input disabled="" type="checkbox"> 拼多多（总部，长宁娄山关路，综合电商，11-11-6，周末给加班费<!-- ，猝死1例 -->；年底一般4个月，其中固定年终奖 2 个月，在春节前发放；绩效年终奖则根据 “ 271 ” 的绩效考核评定后发放，70% 的员工能拿 2 个月）。</li>
 </ol>
-<p>第二梯队——背靠巨头 or 小巨头</p>
-<ol>
+<h2 id="第二梯队——背靠巨头-or-小巨头"><a href="#第二梯队——背靠巨头-or-小巨头" class="headerlink" title="第二梯队——背靠巨头 or 小巨头"></a>第二梯队——背靠巨头 or 小巨头</h2><ol>
 <li><input disabled="" type="checkbox"> 哔哩哔哩（总部，杨浦五角场，视频平台，10-8-5，年奖一般2到3个月）</li>
 <li><input disabled="" type="checkbox"> 滴滴出行（上海分公司，静安区共和新路，出行平台，10-10-5，年奖一般3个月）</li>
 <li><input disabled="" type="checkbox"> 携程（总部，长宁大虹桥，OTA巨头，少数低加班频次，10-7-5，年奖一般3个月）</li>
@@ -361,9 +389,8 @@ function sidebar_toggle() {
 <li><input disabled="" type="checkbox"> 百度（上海分公司，浦东中科路，研发/电销团队，9-9-5，年奖一般3个月）</li>
 <li><input disabled="" type="checkbox"> 京东（上海分公司，宝山呼兰路，综合电商，9-9-5，年奖一般2个月）</li>
 <li><input disabled="" type="checkbox"> 网易（上海分公司，徐汇漕河泾，10-8-5，年奖一般3个月）</li>
-<li><input disabled="" type="checkbox"> 第三梯队——独角兽or垂直领域or互联网+（排名不分先后，上榜即可）</li>
 </ol>
-<h2 id="电商类"><a href="#电商类" class="headerlink" title="电商类"></a>电商类</h2><ol>
+<h2 id="第三梯队——独角兽or垂直领域or互联网-（排名不分先后，上榜即可）"><a href="#第三梯队——独角兽or垂直领域or互联网-（排名不分先后，上榜即可）" class="headerlink" title="第三梯队——独角兽or垂直领域or互联网+（排名不分先后，上榜即可）"></a>第三梯队——独角兽or垂直领域or互联网+（排名不分先后，上榜即可）</h2><h3 id="电商类"><a href="#电商类" class="headerlink" title="电商类"></a>电商类</h3><ol>
 <li><input disabled="" type="checkbox"> 得物App（总部，杨浦黄兴路，炒鞋电商，9-9-5，大小周，周末给加班费，年底1个月➕四个季度各0.75个月）</li>
 <li><input disabled="" type="checkbox"> 唯品会（上海分公司，闵行申长路，品牌特卖，9-9-5，部分大小周）</li>
 <li><input disabled="" type="checkbox"> 叮咚买菜（总部，浦东广兰路，生鲜电商，9-9-5，大小周）</li>
@@ -375,7 +402,7 @@ function sidebar_toggle() {
 <li> [ ] 宝尊电商（总部，静安万荣路，toB，淘宝代运营，9-8-5，周末给加班费，年底1个月）</li>
 <li><input disabled="" type="checkbox"> 找钢网（总部，嘉定区新培路，钢铁产业链电商平台，9-9-6，年底一般0.5个月）</li>
 </ol>
-<h2 id="资讯类"><a href="#资讯类" class="headerlink" title="资讯类"></a>资讯类</h2><ol>
+<h3 id="资讯类"><a href="#资讯类" class="headerlink" title="资讯类"></a>资讯类</h3><ol>
 <li><input disabled="" type="checkbox"> 虎扑（总部，虹口足球场，篮球等门户网，9-6-5，部分部门大小周）</li>
 <li><input disabled="" type="checkbox"> 爱奇艺（上海分公司，长宁临虹路，百度，9-7-5，加班有加班费）</li>
 <li><input disabled="" type="checkbox"> 即刻（总部，杨浦淞沪路，互联网资讯，加班不明）</li>
@@ -385,12 +412,12 @@ function sidebar_toggle() {
 <li><input disabled="" type="checkbox"> 樊登读书（总部，长宁遵义路，音频读书类，部分9-9-5，部分9-6-5）</li>
 <li><input disabled="" type="checkbox"> 咪咕（上海分公司，浦东金桥，移动下属视频/音乐类，加班不明）</li>
 </ol>
-<h2 id="旅游类"><a href="#旅游类" class="headerlink" title="旅游类"></a>旅游类</h2><ol>
+<h3 id="旅游类"><a href="#旅游类" class="headerlink" title="旅游类"></a>旅游类</h3><ol>
 <li><input disabled="" type="checkbox"> 同程艺龙（上海研发中心，长宁中山公园，旅游一线，加班不明）</li>
 <li><input disabled="" type="checkbox"> 驴妈妈（总部，嘉定景域大道，旅游二线，9-8-5，近年有年奖拖欠情况）</li>
 <li><input disabled="" type="checkbox"> 途牛（上海分公司，松江嘉松南路，旅游二线，加班不明）</li>
 </ol>
-<h2 id="人工智能-amp-商业智能"><a href="#人工智能-amp-商业智能" class="headerlink" title="人工智能&amp;商业智能"></a>人工智能&amp;商业智能</h2><ol>
+<h3 id="人工智能-amp-商业智能"><a href="#人工智能-amp-商业智能" class="headerlink" title="人工智能&amp;商业智能"></a>人工智能&amp;商业智能</h3><ol>
 <li><input disabled="" type="checkbox"> 触宝（总部，闵行新龙路，触宝输入法、触宝电话等海外市场为主，10-9-5）</li>
 <li><input disabled="" type="checkbox"> 商汤（总部，徐汇漕河泾，人工智能领域，9-8-5，<!-- 猝死1例 -->，年奖一般3个月）</li>
 <li><input disabled="" type="checkbox"> 旷视（上海分公司，徐汇虹漕路，人工智能领域，年奖一般2个月）</li>
@@ -401,7 +428,7 @@ function sidebar_toggle() {
 <li><input disabled="" type="checkbox"> 声网（总部，杨浦五角场，音视频PaaS服务商）</li>
 <li><input disabled="" type="checkbox"> 七牛云（总部，浦东亮秀路，PaaS服务商，云计算及数据服务）</li>
 </ol>
-<h2 id="工具类"><a href="#工具类" class="headerlink" title="工具类"></a>工具类</h2><ol>
+<h3 id="工具类"><a href="#工具类" class="headerlink" title="工具类"></a>工具类</h3><ol>
 <li><input disabled="" type="checkbox"> WiFi万能钥匙（总部，浦东张衡路，连尚科技，wifi工具类）</li>
 <li><input disabled="" type="checkbox"> 商米科技（总部，杨浦淞沪路，IoT硬件解决方案，小米）</li>
 <li><input disabled="" type="checkbox"> 收钱吧（总部，虹口区中山北一路，收银硬件服务商，9-6-5）</li>
@@ -409,7 +436,7 @@ function sidebar_toggle() {
 <li><input disabled="" type="checkbox"> 格瓦拉（总部，浦东陆家嘴，电影话剧等票务）</li>
 <li><input disabled="" type="checkbox"> 世纪佳缘（总部，徐汇漕溪北路，相亲交友网站）</li>
 </ol>
-<h2 id="游戏类"><a href="#游戏类" class="headerlink" title="游戏类"></a>游戏类</h2><ol>
+<h3 id="游戏类"><a href="#游戏类" class="headerlink" title="游戏类"></a>游戏类</h3><ol>
 <li><input disabled="" type="checkbox"> 米哈游（总部，徐汇宜山路，游戏，代表作崩坏、原神系列，10-10-5）</li>
 <li><input disabled="" type="checkbox"> 莉莉丝游戏（总部，闵行宜山路，游戏，代表作万国觉醒等）</li>
 <li><input disabled="" type="checkbox"> 游族网络（总部，徐汇宜山路，游戏）</li>
@@ -420,25 +447,25 @@ function sidebar_toggle() {
 <li><input disabled="" type="checkbox"> TapTap（总部，静安万荣路，游戏）</li>
 <li><input disabled="" type="checkbox"> 小牛互娱（总部，浦东张江高科，游戏&amp;应用软件，9-12-6，指纹打卡，工时排行）</li>
 </ol>
-<h2 id="房产汽车类"><a href="#房产汽车类" class="headerlink" title="房产汽车类"></a>房产汽车类</h2><ol>
+<h3 id="房产汽车类"><a href="#房产汽车类" class="headerlink" title="房产汽车类"></a>房产汽车类</h3><ol>
 <li><input disabled="" type="checkbox"> 58（58上海分公司+安居客总部，浦东陆家嘴软件园，年底9-9-6，平时9-8-5）</li>
 <li><input disabled="" type="checkbox"> 链家/贝壳（上海分公司，黄浦黄陂南路，互联网房产，10-9-5）</li>
 <li><input disabled="" type="checkbox"> 途虎养车（总部，闵行虹中路，互联网汽车b2c）</li>
 <li><input disabled="" type="checkbox"> 百姓网（总部，徐汇浩然大楼，分类信息检索，9-7-5）</li>
 </ol>
-<h2 id="金融类"><a href="#金融类" class="headerlink" title="金融类"></a>金融类</h2><ol>
+<h3 id="金融类"><a href="#金融类" class="headerlink" title="金融类"></a>金融类</h3><ol>
 <li><input disabled="" type="checkbox"> 陆金所（总部，浦东陆家嘴，互联网金融，加班不明）</li>
 <li><input disabled="" type="checkbox"> 平安系列（上海分公司，办公地点遍布上海，平安好医生在浦东中科路，9-6-5）</li>
 <li><input disabled="" type="checkbox"> 东方财富（总部，徐汇宛平南路，互联网金融，加班不明）</li>
 <li><input disabled="" type="checkbox"> 众安在线（总部，黄浦圆明园路，互联网保险，加班不明）</li>
 <li><input disabled="" type="checkbox"> 360数科（总部，浦东陆家嘴，360旗下信贷平台，加班不明）</li>
 </ol>
-<h2 id="在线教育"><a href="#在线教育" class="headerlink" title="在线教育"></a>在线教育</h2><ol>
+<h3 id="在线教育"><a href="#在线教育" class="headerlink" title="在线教育"></a>在线教育</h3><ol>
 <li><input disabled="" type="checkbox"> 沪江英语（总部，浦东张江高科，互联网在线教育，加班不明）</li>
 <li><input disabled="" type="checkbox"> 英语流利说（总部，杨浦长阳创谷，互联网英语教育，加班不明）</li>
 <li><input disabled="" type="checkbox"> 掌门1对1（总部，虹口四平路，互联网在线教育，大小周，指纹打卡，有工时排名）</li>
 </ol>
-<h2 id="物流运输"><a href="#物流运输" class="headerlink" title="物流运输"></a>物流运输</h2><ol>
+<h3 id="物流运输"><a href="#物流运输" class="headerlink" title="物流运输"></a>物流运输</h3><ol>
 <li><input disabled="" type="checkbox"> 满帮（上海分公司，长宁天山路，运满满，互联网物流）</li>
 </ol>
 
@@ -484,7 +511,7 @@ function sidebar_toggle() {
     <!-- Author title -->
     <div class="author-title">
       <div>平凡生活的英雄梦想</div>
-      <div>2021-09-02</div>
+      <div>2021-09-05</div>
     </div>
   </div>
 

@@ -10,7 +10,7 @@
 
     <title>
         
-          1-JavaScript基础/del - 李幸娟的前端博客
+          1-JavaScript基础/bind - 李幸娟的前端博客
         
     </title>
 
@@ -56,7 +56,10 @@ document.addEventListener('DOMContentLoaded', function () {
   </a>
 </div> <div class="book-menu">
   <ul>
-<li><a href="/">Home</a></li>
+<li><p><a href="/">Home</a></p>
+</li>
+<li><p><a href="/0-nice">0-nice</a> </p>
+</li>
 </ul>
 <h1 style="color: #ba2f7b">JavaScript基础</h1> 
 
@@ -68,6 +71,8 @@ document.addEventListener('DOMContentLoaded', function () {
 <li><p><a href="/1-JavaScript%E5%9F%BA%E7%A1%80/Promise">Promise</a> </p>
 </li>
 <li><p><a href="/1-JavaScript%E5%9F%BA%E7%A1%80/Promise%E7%82%B9all">Promise点all</a> </p>
+</li>
+<li><p><a href="/1-JavaScript%E5%9F%BA%E7%A1%80/bind">bind</a> </p>
 </li>
 <li><p><a href="/1-JavaScript%E5%9F%BA%E7%A1%80/call%E5%92%8Capply">call和apply</a> </p>
 </li>
@@ -86,6 +91,8 @@ document.addEventListener('DOMContentLoaded', function () {
 <li><p><a href="/1-JavaScript%E5%9F%BA%E7%A1%80/%E4%BD%9C%E7%94%A8%E5%9F%9F%E7%9B%B8%E5%85%B3">作用域相关</a> </p>
 </li>
 <li><p><a href="/1-JavaScript%E5%9F%BA%E7%A1%80/%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE">作用域链</a> </p>
+</li>
+<li><p><a href="/1-JavaScript%E5%9F%BA%E7%A1%80/%E4%BD%BF%E7%94%A8promise%E5%AE%9E%E7%8E%B0%E5%B9%B6%E5%8F%91">使用promise实现并发</a> </p>
 </li>
 <li><p><a href="/1-JavaScript%E5%9F%BA%E7%A1%80/%E5%87%BD%E6%95%B0%E6%9F%AF%E9%87%8C%E5%8C%96">函数柯里化</a> </p>
 </li>
@@ -252,20 +259,42 @@ document.addEventListener('DOMContentLoaded', function () {
 <li><p><a href="/5-%E9%A1%B9%E7%9B%AE%E5%A4%8D%E7%9B%98/%E8%85%BE%E5%AE%89%E5%9F%BA%E9%87%91">腾安基金</a> </p>
 </li>
 </ul>
-<h1 style="color: #ba2f7b">React</h1> 
+<h1 style="color: #ba2f7b">算法</h1> 
 
 <ul>
-<li><a href="/6-React/fiber%E6%98%AF%E4%BB%80%E4%B9%88">fiber是什么</a> </li>
+<li><p><a href="/6-%E7%AE%97%E6%B3%95/5%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E5%AD%97%E7%AC%A6%E4%B8%B2">5最长回文字符串</a> </p>
+</li>
+<li><p><a href="/6-%E7%AE%97%E6%B3%95/js%E4%B8%89%E7%A7%8D%E9%81%8D%E5%8E%86">js三种遍历</a> </p>
+</li>
+<li><p><a href="/6-%E7%AE%97%E6%B3%95/%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C">两数之和</a> </p>
+</li>
+<li><p><a href="/6-%E7%AE%97%E6%B3%95/%E5%A4%A7%E6%95%B0%E7%9B%B8%E5%8A%A0">大数相加</a> </p>
+</li>
+<li><p><a href="/6-%E7%AE%97%E6%B3%95/%E5%B8%B8%E8%A7%81%E6%8E%92%E5%BA%8F">常见排序</a> </p>
+</li>
+<li><p><a href="/6-%E7%AE%97%E6%B3%95/%E6%B1%89%E8%AF%BA%E5%A1%94">汉诺塔</a> </p>
+</li>
 </ul>
 <h1 style="color: #ba2f7b">TypeScript</h1> 
 
 <ul>
+<li><p><a href="/8-TypeScript/4.3%E6%96%B0%E5%A2%9E%E6%96%B9%E6%B3%95">4.3新增方法</a> </p>
+</li>
 <li><p><a href="/8-TypeScript/enum">enum</a> </p>
+</li>
+<li><p><a href="/8-TypeScript/interface-vs-type">interface-vs-type</a> </p>
+</li>
+<li><p><a href="/8-TypeScript/%E4%B8%80%E4%BA%9B%E8%AE%B0%E5%BD%95">一些记录</a> </p>
 </li>
 <li><p><a href="/8-TypeScript/%E6%B5%8B%E8%AF%95%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84">测试目录结构</a> </p>
 </li>
 <li><p><a href="/8-TypeScript/%E7%94%BB%E7%93%A2">画瓢</a> </p>
 </li>
+</ul>
+<h1 style="color: #ba2f7b">React</h1> 
+
+<ul>
+<li><a href="/React/%E5%AF%B9hooks%E7%90%86%E8%A7%A3">对hooks理解</a> </li>
 </ul>
 <h1 style="color: #ba2f7b">前端other</h1> 
 
@@ -339,73 +368,51 @@ function sidebar_toggle() {
 </header>
 </div>
             <div class="book-content"><div class="book-post">
-  const FULLFILLED = "fullfiled";
-const REJECTED = "rejected";
-const PENDING = "pending";
+  <h1 id="bind-的介绍"><a href="#bind-的介绍" class="headerlink" title="bind 的介绍"></a>bind 的介绍</h1><p>要想实现一个方法，首先要了解他的特性, bind方法有两个特性：</p>
+<h2 id="1-bind可以对函数的this指针进行显式绑定"><a href="#1-bind可以对函数的this指针进行显式绑定" class="headerlink" title="1. bind可以对函数的this指针进行显式绑定"></a>1. bind可以对函数的this指针进行显式绑定</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> person = &#123;</span><br><span class="line">  name: <span class="string">"lixingjuan"</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayName</span>(<span class="params">greet</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;greet&#125;</span>,<span class="subst">$&#123;<span class="keyword">this</span>.name&#125;</span>`</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">sayName.bind(person)(<span class="string">"hello"</span>);</span><br></pre></td></tr></table></figure>
 
-/**
- * @desc 构造函数
- * @param {*} executor
- */
-class MyPromise {
-  constructor(executor) {
-    if (typeof executor !== "function") throw new Error("need function");
-    // 赋予每个实例一些常量
-    this.state = PENDING;
-    this.value = undefined;
-    this.reason = undefined;
+<p>看另外一个例子，声明一个对象，拥有一个属性和一个方法</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="built_in">module</span> = &#123;</span><br><span class="line">  x: <span class="number">42</span>,</span><br><span class="line">  getX: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.x;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-    const resolve = (value) => {
-      if (this.state === PENDING) {
-        this.state = "fulfilled";
-        this.value = value;
-      }
-    };
+<p>如下的执行会输出 undefined, 因为 <code>getX</code> 方法执行时，他的this指向了全局作用域(浏览器window, node是global), 而全局并没有x属性，所以打印出 <code>undefined</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> unboundGetX = <span class="built_in">module</span>.getX;</span><br><span class="line"><span class="built_in">console</span>.log(unboundGetX()); <span class="comment">// The function gets invoked at the global scope</span></span><br><span class="line"><span class="comment">// expected output: undefined</span></span><br></pre></td></tr></table></figure>
 
-    const reject = (value) => {
-      if (this.state === PENDING) {
-        this.state = REJECTED;
-        this.value = value;
-      }
-    };
+<p>如下的执行会输出 42， 因为 bind 将函数的 <code>unboundGetX</code> 的this指向bind的第一个参数，即module对象</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">const</span> boundGetX = unboundGetX.bind(<span class="built_in">module</span>);</span><br><span class="line"><span class="built_in">console</span>.log(boundGetX());</span><br><span class="line"><span class="comment">// expected output: 42</span></span><br></pre></td></tr></table></figure>
 
-    executor(resolve, reject);
 
-    // 如果执行executor出错直接执行reject
-    try {
-      executor(resolve, reject);
-    } catch (err) {
-      reject(err);
-    }
-  }
+<h2 id="2-当bind返回的函数被使用new操作符调用时，bind被指定的this指向就会失效"><a href="#2-当bind返回的函数被使用new操作符调用时，bind被指定的this指向就会失效" class="headerlink" title="2. 当bind返回的函数被使用new操作符调用时，bind被指定的this指向就会失效"></a>2. 当bind返回的函数被使用new操作符调用时，bind被指定的this指向就会失效</h2><p>如下代码，instance1.job会输出undefined, 因为对他来说，this是执行全局作用域的<br>instance1.description会打印”我可以向你的职业打招呼” 这句话，因为在执行new操作符的时候，this执行实例，所以instance1上拥有属性description</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> tempObj = &#123;</span><br><span class="line">  job: <span class="string">"programmer"</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayName</span>(<span class="params">greet</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.description = <span class="string">"我可以向你的职业打招呼"</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;greet&#125;</span>,<span class="subst">$&#123;<span class="keyword">this</span>.job&#125;</span>`</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> bindName = sayName.bind(tempObj, <span class="string">"hello"</span>);</span><br><span class="line"><span class="keyword">const</span> instance1 = <span class="keyword">new</span> bindName();</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(instance1.job);</span><br><span class="line"><span class="built_in">console</span>.log(instance1.description);</span><br></pre></td></tr></table></figure>
 
-  then(onFullfilled, onRejected) {
-    console.log("我是then方法");
-    if (this.state === FULLFILLED) {
-      onFullfilled(this.value);
-      return MyPromise(() => {});
-    }
-    if (this.state === REJECTED) {
-      onRejected(this.value);
-    }
-  }
-}
 
-const p1 = new MyPromise((resolve, reject) => {
-  resolve(1);
-}).then(
-  () => {
-    console.log("我是resolve");
-  },
-  () => {
-    console.log("我是 rejected");
-  }
-);
 
-console.log(p1);
-let p1 = Promise.reject("foo");
 
-p1.then().catch((res) => console.log(res));
+
+
+<h2 id="bind-实现普通的函数柯里化"><a href="#bind-实现普通的函数柯里化" class="headerlink" title="bind 实现普通的函数柯里化"></a>bind 实现普通的函数柯里化</h2><blockquote>
+<p>bind()函数可以使一个函数拥有预设的初始参数，当绑定函数被调用时，这些参数会被插入到目标函数的参数列表的开始位置<br>利用该特性，可以实现一个函数柯里化</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> demoFunc = <span class="function"><span class="keyword">function</span> (<span class="params">disCount, val</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(val * disCount);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> disCountFunc = demoFunc.bind(<span class="keyword">this</span>, <span class="number">0.3</span>);</span><br><span class="line">disCountFunc(<span class="number">100</span>);</span><br><span class="line">disCountFunc(<span class="number">200</span>);</span><br></pre></td></tr></table></figure>
+
+
+
+
+<h1 id="手写-bind"><a href="#手写-bind" class="headerlink" title="手写 bind"></a>手写 bind</h1><p>首先回顾下 bind 的特点</p>
+<ol>
+<li>返回一个新函数；</li>
+<li>参数 1 为要绑定 this 的对象，参数 2 作为新函数的参数；</li>
+<li>可以使用 new 操作符，创建 bind 返回的新函数的实例，此时传入的 this 失效；</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Function</span>.prototype.bind2 = <span class="function"><span class="keyword">function</span> (<span class="params">context, ...args</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> <span class="keyword">this</span> !== <span class="string">"function"</span>) &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="built_in">TypeError</span>(<span class="string">"bind can only be used on function!"</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 保存父作用域的this指向只是为了后面判断，bind返回的函数是否被用了new 调用</span></span><br><span class="line">  <span class="keyword">const</span> _self = <span class="keyword">this</span>;</span><br><span class="line">  <span class="keyword">const</span> fNOP = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;&#125;;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> bound = <span class="function"><span class="keyword">function</span> (<span class="params">...innerArgs</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> isUesdByNew = <span class="keyword">this</span> <span class="keyword">instanceof</span> _self;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 如果被new调用，则this指向不变</span></span><br><span class="line">    <span class="keyword">const</span> newThis = isUesdByNew ? <span class="keyword">this</span> : context;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> _self.apply(newThis, [...args, ...innerArgs]);</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  fNOP.prototype = <span class="keyword">this</span>.prototype;</span><br><span class="line">  bound.prototype = <span class="keyword">new</span> fNOP();</span><br><span class="line">  <span class="keyword">return</span> bound;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="手写-bind2-使用基本类型的扩充基本类型的扩充"><a href="#手写-bind2-使用基本类型的扩充基本类型的扩充" class="headerlink" title="手写 bind2: 使用基本类型的扩充基本类型的扩充"></a>手写 bind2: 使用基本类型的扩充基本类型的扩充</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Function</span>.prototype.method = <span class="function"><span class="keyword">function</span> (<span class="params">name, func</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (!<span class="keyword">this</span>.prototype[name]) &#123;</span><br><span class="line">    <span class="keyword">this</span>.prototype[name] = func;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">Function</span>.method(<span class="string">"bind2"</span>, <span class="function"><span class="keyword">function</span> (<span class="params">context, ...args</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">this</span>.apply(context, args);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h1 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h1><ol>
+<li>《javascript 高级程序设计-高级技巧》(第 5 章-Function 类型)</li>
+<li>call,apply-MDN</li>
+<li>《JavaScript 语言精粹-第四章-扩充基本类型的功能》</li>
+<li><a href="https://juejin.cn/post/6844903476623835149" target="_blank" rel="noopener">掘金-JavaScript 深入之 bind 的模拟实现</a></li>
+</ol>
 
 </div>
 
@@ -449,7 +456,7 @@ p1.then().catch((res) => console.log(res));
     <!-- Author title -->
     <div class="author-title">
       <div>平凡生活的英雄梦想</div>
-      <div>2021-09-02</div>
+      <div>2021-08-24</div>
     </div>
   </div>
 

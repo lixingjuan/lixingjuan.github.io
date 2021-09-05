@@ -368,155 +368,32 @@ function sidebar_toggle() {
 </header>
 </div>
             <div class="book-content"><div class="book-post">
-  <h1 id="防抖和节流"><a href="#防抖和节流" class="headerlink" title="防抖和节流"></a>防抖和节流</h1><p>=&gt; <a href="https://jsbin.com/rebucuputi/edit?html,css,output" target="_blank" rel="noopener">测试地址</a></p>
-<p>提到防抖、节流，我们常常会背概念<code>高频事件在规定的时间只执行一次，如规定的时间内再次触发，则重新计算时间</code>, 背概念的缺点就是很容易虽然常用但是被问到就记混乱，其实知识的学习结合业务场景，思考其命名就很简单很多</p>
-<h2 id="防抖"><a href="#防抖" class="headerlink" title="防抖"></a>防抖</h2><p>想象一个业务场景，根据用户input的输入进行查询数据，并将数据渲染出列表，如果我们在用户每次的onChange都查询，数据每次返回都去渲染列表，如果容器没有给固定宽高，那页面是不是就一直在抖动？<br>这种处理方法，不仅用户体验效果差，同时浪费网络资源。</p>
-<p>这种场景下，产品经理又会希望这里的查询是实时的，那我们自然会想说，拉大没两次查询的间隔，那防抖的设计就应运而生了，</p>
-<p>如果规定一分钟，</p>
-<p>三种场景</p>
-<ol>
-<li>如果在29秒还在触发，就不会执行</li>
-<li>如果在29秒停顿了下，就不触发了，那就会立即执行</li>
-<li>如果到了59秒59毫秒还在触发，就执行事件，</li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@des </span>防抖</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;Function&#125;</span> </span>func 要进行防抖的数据</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span>:</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">debounce</span>(<span class="params">func, wait = <span class="number">1000</span></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> timeout;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">    clearTimeout(timeout);</span><br><span class="line">    timeout = setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">      func.call(<span class="keyword">this</span>, event);</span><br><span class="line">    &#125;, wait);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+  /* 节流，定时执行一次 */
+function throttle(fn, interval) {
+  let last = 0;
+  return function () {
+    let now = Date.now();
+    if (now - last >= interval) {
+      last = now;
+      fn.apply(this, arguments);
+    }
+  };
+}
 
+function handle() {
+  console.log(Math.random());
+}
 
+const throttleHandle = throttle(handle, 1000);
 
+throttleHandle();
+throttleHandle();
+throttleHandle();
+throttleHandle();
+throttleHandle();
+throttleHandle();
+throttleHandle();
 
-
-
-<h2 id="节流"><a href="#节流" class="headerlink" title="节流"></a>节流</h2><p>高频时间在规定的时间内不管触发事件多少次，都只定时去执行一次</p>
-<p>节流讲究的是两次事件的间隔一定是相同的</p>
-<p>设置了节流时间为一分钟</p>
-<p>三种场景, (假设用户飞快频繁触发事件)</p>
-<ol>
-<li>如果在29秒还在触发，不会执行;</li>
-<li>如果在29秒停顿了下，就不触发了，也不会执行;</li>
-<li>59秒59毫秒, 不管用户是否在触发，都一定会执行;</li>
-</ol>
-<ol start="4">
-<li>节流1:时间戳</li>
-</ol>
-<p>特点</p>
-<ul>
-<li>第一次触发即立即执行</li>
-<li>最后一次触发离开后不会再执行</li>
-</ul>
-<p>实现思路：设置一个时间戳，调用函数的时候，如果当前的时间戳减去设置的时间错，大于wait,则执行函数；若小于则不执行；</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">throttle</span>(<span class="params">func, wait = <span class="number">1000</span></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> context, args;</span><br><span class="line">  <span class="keyword">let</span> previous = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> now = +<span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line">    context = <span class="keyword">this</span>;</span><br><span class="line">    args = <span class="built_in">arguments</span>;</span><br><span class="line">    <span class="keyword">if</span> (now - previous &gt; wait) &#123;</span><br><span class="line">      func.apply(context, args);</span><br><span class="line">      previous = now;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>节流2:定时器</li>
-</ol>
-<ul>
-<li>特点<ul>
-<li>第一次触发不执行</li>
-<li>最后一次触发离开后仍执行执行</li>
-</ul>
-</li>
-<li>实现思路：触发事件的时候，设置一个定时器，再次触发的时候，若定时器存在，则不执行；知道定时器执行，然后执行函数，清空定时器，这样就可以设置下个定时器；</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">throttle</span>(<span class="params">func, wait = <span class="number">1000</span></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> context, args;</span><br><span class="line">  <span class="keyword">let</span> timeout;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    context = <span class="keyword">this</span>;</span><br><span class="line">    args = <span class="built_in">arguments</span>;</span><br><span class="line">    <span class="keyword">if</span> (!timeout) &#123;</span><br><span class="line">      timeout = setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        timeout = <span class="literal">null</span>;</span><br><span class="line">        func.apply(context, args);</span><br><span class="line">      &#125;, wait);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="节流3-结合版"><a href="#节流3-结合版" class="headerlink" title="节流3:结合版"></a>节流3:结合版</h3><p>特点</p>
-<ul>
-<li>第一次触发即立即执行</li>
-<li>最后一次触发离开后仍执行执行</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">throttle</span>(<span class="params">func, wait</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> timeout, context, args, result;</span><br><span class="line">    <span class="keyword">var</span> previous = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> later = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        previous = +<span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line">        timeout = <span class="literal">null</span>;</span><br><span class="line">        func.apply(context, args)</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> throttled = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> now = +<span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line">        <span class="comment">//下次触发 func 剩余的时间</span></span><br><span class="line">        <span class="keyword">var</span> remaining = wait - (now - previous);</span><br><span class="line">        context = <span class="keyword">this</span>;</span><br><span class="line">        args = <span class="built_in">arguments</span>;</span><br><span class="line">         <span class="comment">// 如果没有剩余的时间了或者你改了系统时间</span></span><br><span class="line">        <span class="keyword">if</span> (remaining &lt;= <span class="number">0</span> || remaining &gt; wait) &#123;</span><br><span class="line">            <span class="keyword">if</span> (timeout) &#123;</span><br><span class="line">                clearTimeout(timeout);</span><br><span class="line">                timeout = <span class="literal">null</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            previous = now;</span><br><span class="line">            func.apply(context, args);</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (!timeout) &#123;</span><br><span class="line">            timeout = setTimeout(later, remaining);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">return</span> throttled;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>参考文章：<a href="https://github.com/mqyqingfeng/Blog/issues/22" target="_blank" rel="noopener">https://github.com/mqyqingfeng/Blog/issues/22</a></li>
-<li>参考文章：<a href="https://github.com/mqyqingfeng/Blog/issues/26" target="_blank" rel="noopener">https://github.com/mqyqingfeng/Blog/issues/26</a></li>
-</ul>
-<style>
-  #demo-wrapper {
-    /* position: absolute: */
-    /* top: 30px; */
-  }
-  div.content {
-    width: 100%;
-    height: 200px;
-    line-height: 200px;
-    text-align: center;
-    color: #fff;
-    font-size: 30px;
-    margin-top: 30px;
-  }
-  #debounceDiv {
-    background-color: #f5c160;
-  }
-  #throttleDiv {
-    background-color: #e4980d;
-  }
-</style>
-
-
-<div id="demo-wrapper">
-
-
-
-
-
-
-   <h3>防抖测试块</h3>
-    <p>高频事件在规定的时间内仅执行一次，若规定时间内再次触发，则重新计算时间</p>
-    <div class="content" id="debounceDiv"></div>
-    <h3>节流测试块</h3>
-    <p>高频事件在规定的时间内不管触发多少次，都只触发一次</p>
-    <div class="content" id="throttleDiv"></div>
-
-<pre><code>&lt;script&gt;
-  let count = 1;
-  const debounceDiv = document.getElementById(&quot;debounceDiv&quot;);
-
-  function getUserAction() {
-    debounceDiv.innerHTML = count++;
-  }
-
-  function debounce(func, wait = 1000) {
-    let timeout;
-
-    return function(event) {
-      console.log(&quot;清除计时器&quot;);
-      clearTimeout(timeout);
-      timeout = setTimeout(() =&gt; {
-        func.call(this, event);
-      }, wait);
-    };
-  }
-
-  debounceDiv.onmousemove = debounce(getUserAction);
-&lt;/script&gt;
-
-&lt;script&gt;
-  let throttleCount = 1;
-  const throttleDiv = document.getElementById(&quot;throttleDiv&quot;);
-
-  function getUserAction() {
-    throttleDiv.innerHTML = throttleCount++;
-  }
-
-  function throttle(func, wait = 1000) {
-    let context, args;
-    let previous = 0;
-
-    return function() {
-      var now = +new Date();
-      context = this;
-      args = arguments;
-      if (now - previous &gt; wait) {
-        func.apply(context, args);
-        previous = now;
-      }
-    };
-  }
-
-  throttleDiv.onmousemove = throttle(getUserAction);
-&lt;/script&gt;
-</code></pre>
-</div>
 </div>
 
 

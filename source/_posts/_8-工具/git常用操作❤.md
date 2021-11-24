@@ -1,5 +1,16 @@
 # git常用操作 🎀
 
+
+## 推代码
+
+```bash
+## 向指定分支推代码
+git push origin HEAD:远程分支名字
+
+
+
+```
+
 ## log
 
 

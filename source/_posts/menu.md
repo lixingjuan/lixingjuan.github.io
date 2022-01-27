@@ -21,8 +21,6 @@
 
 * [for和forEach的区别](/1-JavaScript基础/for和forEach的区别) 
 
-* [new的时候发生了什么](/1-JavaScript基础/new的时候发生了什么) 
-
 * [reduce](/1-JavaScript基础/reduce) 
 
 * [this相关](/1-JavaScript基础/this相关) 
@@ -72,6 +70,8 @@
 * [bfc](/2-CSS相关/bfc) 
 
 * [blur和change](/2-CSS相关/blur和change) 
+
+## drawio_assets 
 
 * [flex](/2-CSS相关/flex) 
 
@@ -209,6 +209,8 @@
 
 * [4.3新增方法](/8-TypeScript/4.3新增方法) 
 
+* [DDos](/8-TypeScript/DDos) 
+
 * [enum](/8-TypeScript/enum) 
 
 * [interface-vs-type](/8-TypeScript/interface-vs-type) 
@@ -225,9 +227,15 @@
 
 <h1 style="color: #ba2f7b">前端other</h1> 
 
+* [STAR](/前端other/STAR) 
+
 * [code-review](/前端other/code-review) 
 
+* [mine](/前端other/mine) 
+
 * [性能优化](/前端other/性能优化) 
+
+* [腾讯面试题](/前端other/腾讯面试题) 
 
 <h1 style="color: #ba2f7b">非技术类</h1> 
 

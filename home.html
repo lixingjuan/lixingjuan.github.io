@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head class="e-ar">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <title class="e-as">hello, world</title>
+
+  <link class="e-bc" rel="stylesheet" href="./home.css" />
+
+
+  <style>
+    .body {
+      position: relative;
+      height: 100vh;
+      width: 100vw;
+    }
+
+    .bg-image {
+      position: fixed;
+      right: 100px;
+      top: 50%;
+      right: 30%;
+    }
+
+    .my-content {
+      position: absolute;
+      width: 80vw;
+      top: 40px;
+      right: 0px;
+      left: 0px;
+      margin: 0px auto;
+      color: #7e7e7e;
+      padding: 60px 30px;
+      border-radius: 40px;
+      border: 1px solid #881787;
+      z-index: 1;
+    }
+
+    h2 {
+      text-align: center;
+    }
+
+    .list-wrapper {
+      display: grid;
+      margin-top: 50px;
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .bottom-img {
+      position: fixed;
+      bottom: 0px;
+      right: 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="my-content">
+    <h2>hello</h2>
+    <ul class="list-wrapper">
+      <li>博客 <a href="">博客地址</a></li>
+      <li>插件 <a href="">插件地址</a></li>
+      <li>mock-server</a> <a href="">地址</a></li>
+    </ul>
+  </div>
+
+  <div class="bg-image">
+    <svg class="cl-ak shape cl_af" viewBox="0 0 312 303" width="312" height="303" fill="none">
+      <path fill-rule="evenodd" clip-rule="evenodd"
+        d="M139.7 8.8c37.8 2.8 76.4 1.8 106.6 24.9C280.7 59.9 307.9 97 311.4 140c3.9 46.3-12 94-45.8 125.8-33 31.2-80.6 39.6-126 36.5-42-3-83-20-109.5-52.9-24.1-30-18.6-70.8-20.9-109.4-2.5-42.7-23.1-92.8 7-123.2C46.5-13.5 97 5.7 139.8 9z"
+        fill="currentColor"></path>
+    </svg>
+
+
+    <svg class="cl-al shape cl_af" viewBox="0 0 388 307" width="388" height="307" fill="none">
+      <path fill-rule="evenodd" clip-rule="evenodd"
+        d="M187.4 6.4c54.2-4 114.7-19.1 154 18.6C384.8 66.7 397.5 134.2 381 192c-15.6 55-64 95.4-118.7 111.6-46.2 13.6-88-18.1-131.9-37.5-47.3-21-110.4-27.1-126.2-76.5C-12.2 138.3 21.9 84.4 60 46.2 93.1 13 140.7 9.9 187.4 6.4z"
+        fill="currentColor" />
+    </svg>
+  </div>
+
+  <img class="bottom-img" src="./peep-crowd.svg" />
+</body>
+
+</html>

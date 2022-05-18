@@ -66,10 +66,10 @@ grid-template-columns: repeat(2, 100px) auto repeat(2, 80px) auto;
 }
 
 .AAAA ul {
-height: 100%;
-display: grid;
-overflow: scroll;
-grid-template-columns: repeat(2, 100px) auto repeat(2, 80px) auto;
+  height: 100%;
+  display: grid;
+  overflow: scroll;
+  grid-template-columns: repeat(2, 100px) auto repeat(2, 80px) auto;
 }
 
 .AAAA ul li {

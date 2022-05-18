@@ -1,6 +1,43 @@
 # git常用操作 🎀
 
 
+## submodul
+
+
+```bash
+# 1. 向已有项目添加submodules
+git submodule add [git仓库地址] [指定文件夹，若省略则在项目根目录创建制定仓库地址文件夹]
+
+# 添加submodule的时候报错已经存在, 可以查看并删除缓存 packages/hooks 是举例的文件地址
+# 查看
+git ls-files --stage [文件夹名称]
+# 删除
+git rm --cached [要移除缓存的]
+# 2. 拉取有submodules的项目，但是本地只有空文件夹，需要先
+## 2-1 初始化
+git submodule init
+## 2-2 从该项目中抓取所有数据并检出父项目中列出的合适的提交
+git submodule update
+
+
+# 针对2，更简单的方法, 给 git clone 命令传递 --recurse-submodules 选项，它就会自动初始化并更新仓库中的每一个子模块， 包括可能存在的嵌套子模块
+git clone --recurse-submodules https://github.com/chaconinc/MainProject
+
+# 如果你已经克隆了项目但忘记了 --recurse-submodules，那么可以运行 git submodule update --init 将 git submodule init 和 git submodule update 合并成一步。如果还要初始化、抓取并检出任何嵌套的子模块， 请使用简明的 git submodule update --init --recursive
+```
+
+### 更新
+```bash
+# 递归更新
+git submodule update --init --recursive
+
+# 自动化此过程，配置如下命令，之后git都会在拉取后执行git submodule update
+git pull --recurse-submodules
+
+```
+
+
+
 ## 推代码
 
 ```bash
@@ -384,16 +421,7 @@ git stash pop
 ```
 
 
-## 更新submodules
 
-```bash
-# 递归更新
-git submodule update --init --recursive
-
-# 自动化此过程，配置如下命令，之后git都会在拉取后执行git submodule update
-：git pull --recurse-submodules
-
-```
 
 ## 查看git 状态
 
